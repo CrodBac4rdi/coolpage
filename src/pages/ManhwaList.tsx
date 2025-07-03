@@ -113,49 +113,30 @@ export default function ManhwaList() {
             </motion.div>
           ))}
 
-          {/* Add New Story Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: manhwaStories.length * 0.1 }}
-            className="group"
-          >
-            <div className="bg-gradient-to-br from-gray-600/20 to-gray-700/20 backdrop-blur-sm border border-white/10 border-dashed rounded-3xl p-6 h-full flex flex-col items-center justify-center text-center transition-all duration-300 hover:border-white/20">
-              <div className="text-4xl mb-4">➕</div>
-              <h3 className="text-xl font-bold text-white mb-2">Neue Story</h3>
-              <p className="text-gray-300 text-sm mb-4">
-                Füge eine neue Manhwa-Geschichte hinzu
-              </p>
-              <div className="text-sm text-gray-400">
-                Erstelle einfach eine neue Datei in /src/data/stories/
-              </div>
-            </div>
-          </motion.div>
         </div>
 
-        {/* How to Add Stories */}
+        {/* Coming Soon Teaser */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-16 p-8 bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10"
+          className="mt-16 p-8 bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-3xl border border-purple-500/20"
         >
-          <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-            <Star className="w-6 h-6 text-yellow-400" />
-            Neue Stories hinzufügen
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6 text-sm text-gray-300">
-            <div>
-              <h3 className="font-semibold mb-2">1. Story-Datei erstellen</h3>
-              <p>Erstelle eine neue .ts Datei in /src/data/stories/ mit deinen Kapiteln</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">2. Story registrieren</h3>
-              <p>Füge deine Story zu manhwaStories.ts hinzu mit allen Details</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">3. Route hinzufügen</h3>
-              <p>Die Story ist automatisch unter /manhwa/deine-story-id verfügbar</p>
+          <div className="text-center">
+            <h2 className="text-3xl font-bold mb-4 flex items-center justify-center gap-2">
+              <Star className="w-8 h-8 text-yellow-400" />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+                More Stories Coming Soon
+              </span>
+              <Star className="w-8 h-8 text-yellow-400" />
+            </h2>
+            <p className="text-xl text-gray-300 mb-6">
+              New romantic adventures, deeper character development, and expanded universes await...
+            </p>
+            <div className="flex justify-center gap-4 text-sm text-gray-400">
+              <span>🌸 New Chapters Weekly</span>
+              <span>💕 More Romance Genres</span>
+              <span>✨ Interactive Elements</span>
             </div>
           </div>
         </motion.div>

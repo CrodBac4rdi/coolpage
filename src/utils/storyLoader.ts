@@ -25,8 +25,13 @@ export interface ManhwaStory {
   chapters: Chapter[]
 }
 
+// Cache for loaded stories
+let cachedStories: ManhwaStory[] | null = null
+
 // Load all stories from JSON files
 export const loadStories = (): ManhwaStory[] => {
+  if (cachedStories) return cachedStories
+
   const stories: ManhwaStory[] = []
   
   // Sort by filename to maintain order
@@ -39,6 +44,7 @@ export const loadStories = (): ManhwaStory[] => {
     }
   }
   
+  cachedStories = stories
   return stories
 }
 

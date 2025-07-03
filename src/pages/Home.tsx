@@ -8,64 +8,74 @@ export default function Home() {
     {
       id: 'hero',
       size: 'large',
-      title: 'Welcome to Crod Babylon',
-      subtitle: 'Your Digital Experience',
-      description: 'Explore stories, play games, and discover creativity',
-      gradient: 'from-violet-600/20 to-purple-600/20',
+      title: 'I Create Digital Worlds',
+      subtitle: '✨ Manhwa • Light Novels • Interactive Stories ✨',
+      description: 'Where code meets storytelling, where pixels become poetry',
+      gradient: 'from-purple-500/30 to-pink-500/30 via-blue-500/20',
       icon: <Sparkles className="w-8 h-8" />,
-      link: '/about'
+      link: '/about',
+      anime: true
     },
     {
       id: 'manhwa',
       size: 'medium',
-      title: 'Read Stories',
-      description: 'Dive into romantic tales',
-      gradient: 'from-pink-600/20 to-rose-600/20',
+      title: '📚 Light Novels',
+      description: '恋愛 Romance stories that steal hearts',
+      gradient: 'from-pink-500/25 to-rose-400/25',
       icon: <Book className="w-6 h-6" />,
-      link: '/manhwa'
+      link: '/manhwa',
+      japanese: '小説'
     },
     {
-      id: 'games',
+      id: 'projects',
       size: 'medium',
-      title: 'Play Games',
-      description: 'Interactive mini-games',
-      gradient: 'from-emerald-600/20 to-green-600/20',
-      icon: <Gamepad2 className="w-6 h-6" />,
-      link: '/games'
+      title: '🎨 Story Universe',
+      description: 'My digital novel collections',
+      gradient: 'from-indigo-500/25 to-purple-500/25',
+      icon: <Star className="w-6 h-6" />,
+      link: '/projects',
+      japanese: '作品'
     },
     {
       id: 'features',
       size: 'small',
-      title: 'Features',
-      gradient: 'from-blue-600/20 to-cyan-600/20',
+      title: '⚡ Reader Mode',
+      description: 'Perfect reading experience',
+      gradient: 'from-cyan-500/25 to-blue-500/25',
       icon: <Zap className="w-5 h-5" />,
-      link: '/features'
+      link: '/features',
+      japanese: '機能'
     },
     {
-      id: 'projects',
+      id: 'games',
       size: 'small',
-      title: 'Projects',
-      gradient: 'from-amber-600/20 to-orange-600/20',
-      icon: <Star className="w-5 h-5" />,
-      link: '/projects'
+      title: '🎮 Mini Games',
+      description: 'Interactive story elements',
+      gradient: 'from-emerald-500/25 to-green-500/25',
+      icon: <Gamepad2 className="w-5 h-5" />,
+      link: '/games',
+      japanese: 'ゲーム'
     },
     {
       id: 'blog',
       size: 'small',
-      title: 'Blog',
-      gradient: 'from-indigo-600/20 to-blue-600/20',
+      title: '📖 Chronicles',
+      description: 'Behind the stories',
+      gradient: 'from-orange-500/25 to-red-500/25',
       icon: <Heart className="w-5 h-5" />,
-      link: '/blog'
+      link: '/blog',
+      japanese: '日記'
     },
     {
       id: 'contact',
       size: 'wide',
-      title: 'Get in Touch',
-      description: 'Let\'s create something amazing together',
-      gradient: 'from-purple-600/20 to-pink-600/20',
+      title: '💌 Connect with me',
+      description: 'Join the story creation journey • コミュニティ参加',
+      gradient: 'from-violet-500/25 to-pink-500/25',
       icon: <Rocket className="w-6 h-6" />,
       link: '/contact',
-      cta: true
+      cta: true,
+      japanese: '連絡'
     }
   ]
 
