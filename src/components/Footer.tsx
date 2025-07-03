@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const footerLinks = {
+  const footerLinks: Record<string, Array<{ label: string; to: string; external?: boolean }>> = {
     Company: [
       { label: 'About', to: '/about' },
       { label: 'Features', to: '/features' },
