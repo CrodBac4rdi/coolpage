@@ -12,12 +12,10 @@ export default function Navbar() {
   const links = [
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
-    { to: '/features', label: 'Features' },
     { to: '/projects', label: 'Projects' },
-    { to: '/blog', label: 'Blog' },
-    { to: '/manhwa', label: 'Manhwa' },
+    { to: '/blog', label: 'Characters' },
+    { to: '/manhwa', label: 'Stories' },
     { to: '/games', label: 'Games' },
-    { to: '/contact', label: 'Contact' },
   ]
 
   return (
@@ -64,11 +62,11 @@ export default function Navbar() {
             ))}
             <Link to="/contact">
               <motion.button
-                className="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-full font-semibold"
-                whileHover={{ scale: 1.05 }}
+                className="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-full font-semibold shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(168, 85, 247, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
               >
-                Get Started
+                ✨ Contact
               </motion.button>
             </Link>
             
@@ -78,6 +76,7 @@ export default function Navbar() {
               className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 ml-4"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label={theme === 'dark' ? 'Zu hellem Modus wechseln' : 'Zu dunklem Modus wechseln'}
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </motion.button>
@@ -91,6 +90,7 @@ export default function Navbar() {
               className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
+              aria-label={theme === 'dark' ? 'Zu hellem Modus wechseln' : 'Zu dunklem Modus wechseln'}
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </motion.button>
@@ -99,6 +99,8 @@ export default function Navbar() {
             <button
               className="p-2 rounded-lg hover:bg-white/10 transition-colors"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? 'Menü schließen' : 'Menü öffnen'}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -130,8 +132,8 @@ export default function Navbar() {
             ))}
             <div className="pt-4 border-t border-white/10">
               <Link to="/contact" onClick={() => setIsOpen(false)}>
-                <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-4 rounded-full font-semibold text-lg">
-                  Get Started
+                <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-4 rounded-full font-semibold text-lg shadow-lg shadow-purple-500/25">
+                  ✨ Contact
                 </button>
               </Link>
             </div>

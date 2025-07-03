@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Book, Heart, ChevronUp, Menu, X, ArrowLeft, Bookmark, Settings } from 'lucide-react'
+import { Book, Heart, Menu, X, ArrowLeft, Bookmark, Settings } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getStoryById } from '../utils/storyLoader'
@@ -292,7 +292,7 @@ export default function Reader() {
           {story.chapters.map((chapter, index) => (
             <motion.div
               key={chapter.id}
-              ref={(el) => (chapterRefs.current[index] = el)}
+              ref={(el) => { chapterRefs.current[index] = el }}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
