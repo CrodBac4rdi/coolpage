@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles, Zap, Rocket, Star, Gamepad2, Book, Heart } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import AnimatedBackground from '../components/AnimatedBackground'
 
 export default function Home() {
   const bentoItems = [
@@ -95,8 +94,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative">
-      <AnimatedBackground />
-      
       <div className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-20">
         {/* Clean Header */}
         <motion.div
