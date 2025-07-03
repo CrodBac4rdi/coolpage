@@ -10,7 +10,7 @@ const blogPosts = [
     date: "2025-01-15",
     readTime: "5 min read",
     category: "Technology",
-    image: "https://via.placeholder.com/800x400/9333ea/ffffff?text=Future+Web+Dev"
+    gradient: "from-purple-600 to-indigo-600"
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const blogPosts = [
     date: "2025-01-10",
     readTime: "8 min read",
     category: "AI",
-    image: "https://via.placeholder.com/800x400/ec4899/ffffff?text=AI+Apps"
+    gradient: "from-pink-600 to-rose-600"
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const blogPosts = [
     date: "2025-01-05",
     readTime: "6 min read",
     category: "Design",
-    image: "https://via.placeholder.com/800x400/3b82f6/ffffff?text=Digital+Design"
+    gradient: "from-blue-600 to-cyan-600"
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const blogPosts = [
     date: "2024-12-28",
     readTime: "10 min read",
     category: "Innovation",
-    image: "https://via.placeholder.com/800x400/10b981/ffffff?text=Quantum+Computing"
+    gradient: "from-green-600 to-emerald-600"
   }
 ]
 
@@ -88,18 +88,11 @@ export default function Blog() {
               transition={{ delay: index * 0.1 }}
             >
               <Link to={`/blog/${post.id}`}>
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className={`h-48 bg-gradient-to-br ${post.gradient} opacity-20 relative`}>
                   <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-purple-500/80 text-sm">
                     {post.category}
                   </span>
                 </div>
-                
                 <div className="p-8">
                   <h2 className="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">
                     {post.title}

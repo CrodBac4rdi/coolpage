@@ -5,56 +5,56 @@ const projects = [
   {
     title: "Neural Canvas",
     description: "AI-powered design tool that transforms ideas into stunning visuals",
-    image: "https://via.placeholder.com/600x400/9333ea/ffffff?text=Neural+Canvas",
     tags: ["AI", "Design", "React"],
     stars: 2340,
     link: "#",
-    github: "#"
+    github: "#",
+    gradient: "from-purple-600 to-pink-600"
   },
   {
     title: "Quantum Core",
     description: "Next-generation state management for complex applications",
-    image: "https://via.placeholder.com/600x400/ec4899/ffffff?text=Quantum+Core",
     tags: ["TypeScript", "State Management", "Performance"],
     stars: 1876,
     link: "#",
-    github: "#"
+    github: "#",
+    gradient: "from-pink-600 to-rose-600"
   },
   {
     title: "Cyber Flow",
     description: "Visual programming interface for blockchain smart contracts",
-    image: "https://via.placeholder.com/600x400/3b82f6/ffffff?text=Cyber+Flow",
     tags: ["Blockchain", "Web3", "Visual Programming"],
     stars: 3210,
     link: "#",
-    github: "#"
+    github: "#",
+    gradient: "from-blue-600 to-cyan-600"
   },
   {
     title: "Holo UI",
     description: "Futuristic component library for modern web applications",
-    image: "https://via.placeholder.com/600x400/10b981/ffffff?text=Holo+UI",
     tags: ["UI Library", "Components", "Design System"],
     stars: 4520,
     link: "#",
-    github: "#"
+    github: "#",
+    gradient: "from-green-600 to-emerald-600"
   },
   {
     title: "Data Forge",
     description: "Real-time data processing and visualization platform",
-    image: "https://via.placeholder.com/600x400/f59e0b/ffffff?text=Data+Forge",
     tags: ["Data", "Analytics", "Real-time"],
     stars: 1654,
     link: "#",
-    github: "#"
+    github: "#",
+    gradient: "from-orange-600 to-amber-600"
   },
   {
     title: "Echo Mind",
     description: "AI assistant framework for building intelligent applications",
-    image: "https://via.placeholder.com/600x400/ef4444/ffffff?text=Echo+Mind",
     tags: ["AI", "Framework", "Machine Learning"],
     stars: 2890,
     link: "#",
-    github: "#"
+    github: "#",
+    gradient: "from-red-600 to-pink-600"
   }
 ]
 
@@ -85,15 +85,7 @@ export default function Projects() {
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
             >
-              <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              </div>
-              
+              <div className={`h-32 bg-gradient-to-br ${project.gradient} opacity-20 rounded-t-3xl`} />
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
                 <p className="text-gray-300 mb-4">{project.description}</p>
