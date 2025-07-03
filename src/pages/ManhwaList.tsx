@@ -39,7 +39,7 @@ export default function ManhwaList() {
               transition={{ delay: index * 0.1 }}
               className="group"
             >
-              <Link to={`/manhwa/${story.id}`}>
+              <Link to={`/reader/${story.id}`}>
                 <div className={`bg-gradient-to-br ${story.gradient} backdrop-blur-sm border border-white/10 rounded-3xl p-6 transition-all duration-300 hover:scale-[1.02] hover:border-white/20 h-full`}>
                   {/* Story Cover */}
                   <div className="text-center mb-6">
