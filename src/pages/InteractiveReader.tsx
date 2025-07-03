@@ -262,8 +262,8 @@ export default function InteractiveReader() {
                   </motion.div>
                 )}
 
-                {/* Continue Button (if no choices or can continue main) */}
-                {(!currentChapter.choices || currentChapter.canContinueMain) && (
+                {/* Continue Button (if no choices) */}
+                {(!currentChapter.choices || currentChapter.choices.length === 0) && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
