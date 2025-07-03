@@ -1,13 +1,23 @@
+import { lazy, Suspense } from 'react'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import RootLayout from './layouts/RootLayout'
-import Home from './pages/Home'
-import About from './pages/About'
-import Features from './pages/Features'
-import Projects from './pages/Projects'
-import Blog from './pages/Blog'
-import Contact from './pages/Contact'
-import NotFound from './pages/NotFound'
 import ScrollToTop from './components/ScrollToTop'
+
+// Lazy load all pages
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const Features = lazy(() => import('./pages/Features'))
+const Projects = lazy(() => import('./pages/Projects'))
+const Blog = lazy(() => import('./pages/Blog'))
+const Contact = lazy(() => import('./pages/Contact'))
+const NotFound = lazy(() => import('./pages/NotFound'))
+
+// Loading component
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
+  </div>
+)
 
 function App() {
   return (
@@ -15,13 +25,13 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<RootLayout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="features" element={<Features />} />
-          <Route path="projects" element={<Projects />} />
-          <Route path="blog" element={<Blog />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
+          <Route index element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
+          <Route path="about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
+          <Route path="features" element={<Suspense fallback={<PageLoader />}><Features /></Suspense>} />
+          <Route path="projects" element={<Suspense fallback={<PageLoader />}><Projects /></Suspense>} />
+          <Route path="blog" element={<Suspense fallback={<PageLoader />}><Blog /></Suspense>} />
+          <Route path="contact" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />
+          <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
         </Route>
       </Routes>
     </Router>
