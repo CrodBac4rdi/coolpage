@@ -6,6 +6,7 @@ import Features from './pages/Features'
 import Projects from './pages/Projects'
 import Blog from './pages/Blog'
 import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
 import ScrollToTop from './components/ScrollToTop'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="projects" element={<Projects />} />
           <Route path="blog" element={<Blog />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Router>

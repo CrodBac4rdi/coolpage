@@ -58,13 +58,15 @@ export default function Navbar() {
                 )}
               </Link>
             ))}
-            <motion.button
-              className="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-full font-semibold"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get Started
-            </motion.button>
+            <Link to="/contact">
+              <motion.button
+                className="bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-2 rounded-full font-semibold"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get Started
+              </motion.button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,9 +97,11 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 rounded-full font-semibold">
-              Get Started
-            </button>
+            <Link to="/contact" onClick={() => setIsOpen(false)}>
+              <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 rounded-full font-semibold">
+                Get Started
+              </button>
+            </Link>
           </div>
         </motion.div>
       )}

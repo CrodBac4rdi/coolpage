@@ -9,11 +9,32 @@ export default function Contact() {
     subject: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    
+    // Simulate form submission
+    try {
+      // In a real app, you would send this to your backend
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      
+      console.log('Form submitted:', formData)
+      setSubmitStatus('success')
+      
+      // Reset form after successful submission
+      setTimeout(() => {
+        setFormData({ name: '', email: '', subject: '', message: '' })
+        setSubmitStatus('idle')
+      }, 3000)
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactInfo = [
@@ -146,12 +167,40 @@ export default function Contact() {
 
               <motion.button
                 type="submit"
-                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2 group"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                disabled={isSubmitting || submitStatus === 'success'}
+                className={`w-full px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2 group transition-all ${
+                  submitStatus === 'success'
+                    ? 'bg-green-500'
+                    : submitStatus === 'error'
+                    ? 'bg-red-500'
+                    : 'bg-gradient-to-r from-purple-500 to-pink-500'
+                } ${
+                  isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
+                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
               >
-                Send Message
-                <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                {isSubmitting ? (
+                  <>
+                    <span className="animate-pulse">Sending...</span>
+                  </>
+                ) : submitStatus === 'success' ? (
+                  <>
+                    <span>Message Sent!</span>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </>
+                ) : submitStatus === 'error' ? (
+                  <>
+                    <span>Error! Try Again</span>
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </motion.button>
             </form>
           </motion.div>

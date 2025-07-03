@@ -8,25 +8,25 @@ export default function Footer() {
   const footerLinks = {
     Company: [
       { label: 'About', to: '/about' },
-      { label: 'Careers', to: '/careers' },
-      { label: 'Press', to: '/press' },
+      { label: 'Features', to: '/features' },
+      { label: 'Projects', to: '/projects' },
     ],
     Resources: [
       { label: 'Blog', to: '/blog' },
-      { label: 'Documentation', to: '/docs' },
-      { label: 'Support', to: '/support' },
+      { label: 'Contact', to: '/contact' },
+      { label: 'Home', to: '/' },
     ],
-    Legal: [
-      { label: 'Privacy', to: '/privacy' },
-      { label: 'Terms', to: '/terms' },
-      { label: 'Cookie Policy', to: '/cookies' },
+    Connect: [
+      { label: 'GitHub', to: 'https://github.com/CrodBac4rdi', external: true },
+      { label: 'Twitter', to: 'https://twitter.com', external: true },
+      { label: 'LinkedIn', to: 'https://linkedin.com', external: true },
     ],
   }
 
   const socialLinks = [
     { icon: <Github className="w-5 h-5" />, href: 'https://github.com/CrodBac4rdi', label: 'GitHub' },
-    { icon: <Twitter className="w-5 h-5" />, href: '#', label: 'Twitter' },
-    { icon: <Linkedin className="w-5 h-5" />, href: '#', label: 'LinkedIn' },
+    { icon: <Twitter className="w-5 h-5" />, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: <Linkedin className="w-5 h-5" />, href: 'https://linkedin.com', label: 'LinkedIn' },
   ]
 
   return (
@@ -58,12 +58,23 @@ export default function Footer() {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.to}>
-                    <Link
-                      to={link.to}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.external ? (
+                      <a
+                        href={link.to}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-white transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.to}
+                        className="text-gray-400 hover:text-white transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
