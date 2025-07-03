@@ -4,7 +4,9 @@
   "author": "Digital Manhwa Studio",
   "description": "Ein aufstrebender Autor und eine Verlagslektorin - ihre professionelle Beziehung entwickelt sich zu etwas viel Tieferem. Aber Geheimnisse und Missverständnisse drohen alles zu zerstören.",
   "coverEmoji": "📖",
-  "genre": "Romance",
+  "genre": ["Romance", "Drama"],
+  "mature": false,
+  "gradient": "from-purple-500/20 to-blue-500/20",
   "tags": ["Romance", "Drama", "Workplace", "Second Chances"],
   "chapters": [
     {

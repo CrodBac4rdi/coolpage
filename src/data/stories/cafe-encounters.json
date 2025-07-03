@@ -4,7 +4,9 @@
   "author": "Digital Manhwa Studio",
   "description": "Zwei Leben kreuzen sich zufällig in einem kleinen Café. Was als alltägliche Begegnung beginnt, entwickelt sich zu einer Geschichte voller Liebe, Missverständnisse und zweiter Chancen.",
   "coverEmoji": "☕",
-  "genre": "Romance",
+  "genre": ["Romance"],
+  "mature": false,
+  "gradient": "from-amber-500/20 to-orange-500/20",
   "tags": ["Romance", "Slice of Life", "Drama", "Slow Burn"],
   "chapters": [
     {
