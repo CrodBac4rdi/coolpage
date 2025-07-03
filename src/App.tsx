@@ -12,7 +12,9 @@ function App() {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+      requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY })
+      })
     }
     window.addEventListener('mousemove', handleMouseMove)
     return () => window.removeEventListener('mousemove', handleMouseMove)
@@ -61,24 +63,26 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white overflow-hidden relative">
       {/* Gradient orbs */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div 
+        <motion.div 
           className="absolute w-96 h-96 bg-purple-600 rounded-full blur-3xl opacity-20"
-          style={{
-            left: `${mousePosition.x * 0.05}px`,
-            top: `${mousePosition.y * 0.05}px`,
+          animate={{
+            x: mousePosition.x * 0.02,
+            y: mousePosition.y * 0.02,
           }}
+          transition={{ type: "spring", damping: 30, stiffness: 200 }}
         />
-        <div 
-          className="absolute w-96 h-96 bg-pink-600 rounded-full blur-3xl opacity-20"
-          style={{
-            right: `${mousePosition.x * 0.05}px`,
-            bottom: `${mousePosition.y * 0.05}px`,
+        <motion.div 
+          className="absolute w-96 h-96 bg-pink-600 rounded-full blur-3xl opacity-20 right-0 bottom-0"
+          animate={{
+            x: -mousePosition.x * 0.02,
+            y: -mousePosition.y * 0.02,
           }}
+          transition={{ type: "spring", damping: 30, stiffness: 200 }}
         />
       </div>
       {/* Animated particles */}
       <div className="fixed inset-0 overflow-hidden">
-        {[...Array(80)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"
@@ -98,7 +102,7 @@ function App() {
               opacity: [0.1, 0.5, 0.1],
             }}
             transition={{
-              duration: Math.random() * 30 + 20,
+              duration: Math.random() * 40 + 30,
               repeat: Infinity,
               ease: "linear",
             }}
@@ -123,9 +127,9 @@ function App() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            <a href="#" className="hover:text-purple-300 transition">Features</a>
-            <a href="#" className="hover:text-purple-300 transition">About</a>
-            <a href="#" className="hover:text-purple-300 transition">Contact</a>
+            <a href="#features" className="hover:text-purple-300 transition">Features</a>
+            <a href="#stats" className="hover:text-purple-300 transition">Stats</a>
+            <a href="#cta" className="hover:text-purple-300 transition">Contact</a>
           </motion.div>
         </nav>
 
@@ -209,6 +213,7 @@ function App() {
 
         {/* Stats Section */}
         <motion.div 
+          id="stats"
           className="relative z-10 py-20 px-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -252,7 +257,7 @@ function App() {
         </motion.div>
 
         {/* Features Section */}
-        <div className="relative z-10 py-20 px-8">
+        <div id="features" className="relative z-10 py-20 px-8">
           <div className="max-w-6xl mx-auto">
             <motion.div className="text-center mb-16">
               <motion.h2 
@@ -326,6 +331,7 @@ function App() {
 
         {/* CTA Section */}
         <motion.div 
+          id="cta"
           className="relative z-10 py-20 px-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
