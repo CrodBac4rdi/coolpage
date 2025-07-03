@@ -13,6 +13,8 @@ export default function Navbar() {
     { to: '/features', label: 'Features' },
     { to: '/projects', label: 'Projects' },
     { to: '/blog', label: 'Blog' },
+    { to: '/manhwa', label: 'Manhwa' },
+    { to: '/games', label: 'Games' },
     { to: '/contact', label: 'Contact' },
   ]
 

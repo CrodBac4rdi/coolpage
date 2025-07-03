@@ -1,136 +1,207 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles, Zap, Code, Palette, Rocket, Heart, Star, Coffee, Music, Gamepad2, Pizza } from 'lucide-react'
+import { ArrowRight, Sparkles, Zap, Rocket, Star, Gamepad2, Pizza, Book, Smile, Flame } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import AnimatedBackground from '../components/AnimatedBackground'
 import { useState } from 'react'
 
 export default function Home() {
   const [hoveredBox, setHoveredBox] = useState<string | null>(null)
+  const [clickCount, setClickCount] = useState(0)
 
   const bentoItems = [
     {
       id: 'hero',
-      size: 'large',
+      size: 'xlarge',
       title: 'Welcome to Crod Babylon',
-      subtitle: 'Your Digital Paradise',
-      description: 'Where creativity meets technology in the most unexpected ways',
+      subtitle: 'Your Digital Playground',
       gradient: 'from-purple-600 to-pink-600',
       icon: <Sparkles className="w-8 h-8" />,
       link: '/about',
       emoji: '🚀'
     },
     {
+      id: 'games',
+      size: 'large',
+      title: 'Play Games',
+      description: 'Mini-games galore!',
+      gradient: 'from-green-500 to-teal-500',
+      icon: <Gamepad2 className="w-6 h-6" />,
+      link: '/games',
+      floatingEmoji: '🎮'
+    },
+    {
+      id: 'manhwa',
+      size: 'large',
+      title: 'Read Manhwa',
+      description: 'Romance story awaits',
+      gradient: 'from-pink-500 to-red-500',
+      icon: <Book className="w-6 h-6" />,
+      link: '/manhwa',
+      floatingEmoji: '💕'
+    },
+    {
       id: 'stats1',
-      size: 'small',
-      title: '42+',
-      subtitle: 'Happy Clients',
+      size: 'tiny',
+      title: '42',
+      subtitle: 'Vibes',
       gradient: 'from-blue-500 to-cyan-500',
-      icon: <Heart className="w-6 h-6" />,
-      animated: true
+      emoji: '✨'
     },
     {
       id: 'stats2',
-      size: 'small',
+      size: 'tiny',
       title: '∞',
-      subtitle: 'Lines of Code',
+      subtitle: 'Fun',
+      gradient: 'from-purple-500 to-violet-500',
+      emoji: '🎉'
+    },
+    {
+      id: 'stats3',
+      size: 'tiny',
+      title: '24/7',
+      subtitle: 'Online',
       gradient: 'from-green-500 to-emerald-500',
-      icon: <Code className="w-6 h-6" />,
-      animated: true
+      emoji: '🌟'
+    },
+    {
+      id: 'stats4',
+      size: 'tiny',
+      title: '100%',
+      subtitle: 'Cool',
+      gradient: 'from-orange-500 to-red-500',
+      emoji: '🔥'
     },
     {
       id: 'feature1',
       size: 'medium',
       title: 'Lightning Fast',
-      description: 'Performance that makes your competitors cry',
       gradient: 'from-yellow-500 to-orange-500',
       icon: <Zap className="w-6 h-6" />,
-      link: '/features',
-      floatingEmoji: '⚡'
+      link: '/features'
     },
     {
-      id: 'feature2',
-      size: 'medium',
-      title: 'Beautiful Design',
-      description: 'Pixel-perfect and gorgeous on every device',
-      gradient: 'from-pink-500 to-rose-500',
-      icon: <Palette className="w-6 h-6" />,
-      link: '/features',
-      floatingEmoji: '🎨'
+      id: 'projects',
+      size: 'small',
+      title: 'Projects',
+      gradient: 'from-indigo-500 to-purple-500',
+      icon: <Star className="w-5 h-5" />,
+      link: '/projects'
+    },
+    {
+      id: 'blog',
+      size: 'small',
+      title: 'Blog',
+      gradient: 'from-red-500 to-pink-500',
+      icon: <Pizza className="w-5 h-5" />,
+      link: '/blog'
+    },
+    {
+      id: 'music',
+      size: 'tiny',
+      title: '🎵',
+      gradient: 'from-purple-500 to-pink-500',
+      animated: true
+    },
+    {
+      id: 'coffee',
+      size: 'tiny',
+      title: '☕',
+      gradient: 'from-amber-600 to-orange-600',
+      animated: true
+    },
+    {
+      id: 'trophy',
+      size: 'tiny',
+      title: '🏆',
+      gradient: 'from-yellow-500 to-amber-500',
+      animated: true
+    },
+    {
+      id: 'diamond',
+      size: 'tiny',
+      title: '💎',
+      gradient: 'from-cyan-500 to-blue-500',
+      animated: true
+    },
+    {
+      id: 'mood',
+      size: 'small',
+      title: 'Mood',
+      subtitle: getRandomMood(),
+      gradient: 'from-pink-500 to-purple-500',
+      icon: <Smile className="w-5 h-5" />,
+      interactive: true
+    },
+    {
+      id: 'counter',
+      size: 'small',
+      title: 'Clicks',
+      subtitle: clickCount.toString(),
+      gradient: 'from-green-500 to-blue-500',
+      icon: <Flame className="w-5 h-5" />,
+      clickable: true
+    },
+    {
+      id: 'easter1',
+      size: 'tiny',
+      title: '👻',
+      gradient: 'from-gray-600 to-gray-700',
+      easter: true
+    },
+    {
+      id: 'rainbow',
+      size: 'tiny',
+      title: '🌈',
+      gradient: 'from-red-500 via-yellow-500 to-blue-500',
+      animated: true
+    },
+    {
+      id: 'party',
+      size: 'tiny',
+      title: '🎊',
+      gradient: 'from-purple-500 to-pink-500',
+      animated: true
     },
     {
       id: 'cta',
       size: 'wide',
-      title: 'Ready to Start Your Journey?',
-      description: 'Join the digital revolution today',
+      title: 'Ready to explore?',
       gradient: 'from-indigo-600 to-purple-600',
       icon: <Rocket className="w-6 h-6" />,
       link: '/contact',
       cta: true
-    },
-    {
-      id: 'fun1',
-      size: 'small',
-      title: '24/7',
-      subtitle: 'Coffee Consumed',
-      gradient: 'from-amber-600 to-orange-600',
-      icon: <Coffee className="w-6 h-6" />,
-      emoji: '☕'
-    },
-    {
-      id: 'fun2',
-      size: 'small',
-      title: '100%',
-      subtitle: 'Vibes',
-      gradient: 'from-purple-500 to-violet-500',
-      icon: <Music className="w-6 h-6" />,
-      emoji: '🎵'
-    },
-    {
-      id: 'projects',
-      size: 'medium',
-      title: 'Our Projects',
-      description: 'See what we\'ve been cooking',
-      gradient: 'from-teal-500 to-cyan-500',
-      icon: <Star className="w-6 h-6" />,
-      link: '/projects',
-      floatingEmoji: '✨'
-    },
-    {
-      id: 'blog',
-      size: 'medium',
-      title: 'Latest Thoughts',
-      description: 'Fresh ideas and hot takes',
-      gradient: 'from-red-500 to-pink-500',
-      icon: <Pizza className="w-6 h-6" />,
-      link: '/blog',
-      floatingEmoji: '🍕'
-    },
-    {
-      id: 'easter-egg',
-      size: 'small',
-      title: '???',
-      subtitle: 'Click me!',
-      gradient: 'from-gray-600 to-gray-700',
-      icon: <Gamepad2 className="w-6 h-6" />,
-      easter: true
     }
   ]
 
+  function getRandomMood() {
+    const moods = ['Happy', 'Excited', 'Chill', 'Hyped', 'Groovy', 'Blessed', 'Vibing']
+    return moods[Math.floor(Math.random() * moods.length)]
+  }
+
   const handleEasterEgg = () => {
-    const emojis = ['🎮', '🎯', '🎪', '🎭', '🎨', '🎬', '🎤', '🎧', '🎹', '🎸']
-    const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)]
-    alert(`You found the secret! Here's your prize: ${randomEmoji}`)
+    const messages = [
+      'Boo! You found me! 👻',
+      'Secret unlocked! Here\'s a cookie 🍪',
+      'You\'re awesome! 🌟',
+      'Ghost mode activated! 👻',
+      'Spooky vibes only! 🎃'
+    ]
+    alert(messages[Math.floor(Math.random() * messages.length)])
   }
 
   const getSizeClasses = (size: string) => {
     switch (size) {
+      case 'xlarge':
+        return 'col-span-2 row-span-2 md:col-span-3 md:row-span-2'
       case 'large':
         return 'col-span-2 row-span-2'
       case 'wide':
-        return 'col-span-2'
+        return 'col-span-2 md:col-span-3'
       case 'medium':
-        return 'col-span-1 row-span-1'
+        return 'col-span-1 md:col-span-2'
       case 'small':
+        return 'col-span-1'
+      case 'tiny':
       default:
         return 'col-span-1'
     }
@@ -151,19 +222,19 @@ export default function Home() {
             Welcome to the Future
           </h1>
           <p className="text-xl text-gray-300">
-            A playful digital experience that breaks all the rules
+            Where every pixel tells a story 🎨
           </p>
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 auto-rows-[120px]">
           {bentoItems.map((item, index) => (
             <motion.div
               key={item.id}
               className={`${getSizeClasses(item.size)} relative group`}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.05 }}
+              transition={{ delay: index * 0.03 }}
               onMouseEnter={() => setHoveredBox(item.id)}
               onMouseLeave={() => setHoveredBox(null)}
             >
@@ -178,14 +249,42 @@ export default function Home() {
               ) : (
                 <div 
                   className="h-full cursor-pointer"
-                  onClick={item.easter ? handleEasterEgg : undefined}
+                  onClick={() => {
+                    if (item.easter) {
+                      handleEasterEgg()
+                    } else if (item.clickable) {
+                      setClickCount(prev => prev + 1)
+                    } else if (item.interactive) {
+                      // Force re-render to get new mood
+                      setHoveredBox(null)
+                      setTimeout(() => setHoveredBox(item.id), 10)
+                    }
+                  }}
                 >
-                  <BentoBox item={item} isHovered={hoveredBox === item.id} />
+                  <BentoBox 
+                    item={{
+                      ...item,
+                      subtitle: item.id === 'counter' ? clickCount.toString() : 
+                               item.id === 'mood' && hoveredBox === item.id ? getRandomMood() : 
+                               item.subtitle
+                    }} 
+                    isHovered={hoveredBox === item.id} 
+                  />
                 </div>
               )}
             </motion.div>
           ))}
         </div>
+
+        {/* Fun Footer Text */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="text-center mt-12 text-gray-400"
+        >
+          <p>Made with 💜 and lots of ☕</p>
+        </motion.div>
       </div>
     </div>
   )
@@ -193,14 +292,14 @@ export default function Home() {
 
 function BentoBox({ item, isHovered }: { item: any; isHovered: boolean }) {
   return (
-    <div className={`relative h-full rounded-3xl bg-gradient-to-br ${item.gradient} p-[2px] overflow-hidden`}>
-      <div className="h-full bg-gray-900/90 backdrop-blur-xl rounded-3xl p-6 flex flex-col justify-between">
+    <div className={`relative h-full rounded-2xl bg-gradient-to-br ${item.gradient} p-[1px] overflow-hidden`}>
+      <div className="h-full bg-gray-900/90 backdrop-blur-xl rounded-2xl p-4 flex flex-col justify-center items-center">
         {/* Floating Emoji */}
         {item.floatingEmoji && (
           <motion.div
-            className="absolute top-4 right-4 text-2xl"
+            className="absolute top-2 right-2 text-xl"
             animate={{
-              y: isHovered ? -10 : 0,
+              y: isHovered ? -5 : 0,
               rotate: isHovered ? 360 : 0,
             }}
             transition={{ duration: 0.4 }}
@@ -211,28 +310,57 @@ function BentoBox({ item, isHovered }: { item: any; isHovered: boolean }) {
 
         {/* Static Emoji */}
         {item.emoji && !item.floatingEmoji && (
-          <div className="absolute top-4 right-4 text-2xl opacity-50">
+          <div className="text-2xl mb-2 opacity-70">
             {item.emoji}
           </div>
         )}
 
-        {/* Content */}
-        <div>
-          <div className="flex items-center gap-3 mb-3">
-            <div className={`p-2 rounded-xl bg-gradient-to-br ${item.gradient} bg-opacity-20`}>
-              {item.icon}
-            </div>
-            <h3 className="text-xl font-bold">{item.title}</h3>
-          </div>
-          
-          {item.subtitle && (
-            <p className="text-gray-400 text-sm">{item.subtitle}</p>
-          )}
-          
-          {item.description && (
-            <p className="text-gray-300 mt-2">{item.description}</p>
-          )}
-        </div>
+        {/* Just Emoji for tiny boxes */}
+        {item.size === 'tiny' && !item.subtitle && !item.icon && (
+          <motion.div 
+            className="text-4xl"
+            animate={{ 
+              scale: isHovered ? 1.2 : 1,
+              rotate: item.animated && isHovered ? 360 : 0 
+            }}
+          >
+            {item.title}
+          </motion.div>
+        )}
+
+        {/* Content for other boxes */}
+        {(item.size !== 'tiny' || item.subtitle || item.icon) && (
+          <>
+            {item.icon && (
+              <div className={`mb-2 ${item.size === 'tiny' ? 'p-1' : 'p-2'} rounded-xl bg-white/10`}>
+                {item.icon}
+              </div>
+            )}
+            
+            <h3 className={`font-bold text-center ${
+              item.size === 'xlarge' ? 'text-2xl' :
+              item.size === 'large' ? 'text-xl' :
+              item.size === 'tiny' ? 'text-sm' :
+              'text-base'
+            }`}>
+              {item.title}
+            </h3>
+            
+            {item.subtitle && (
+              <p className={`text-gray-400 text-center ${
+                item.size === 'tiny' ? 'text-xs' : 'text-sm'
+              }`}>
+                {item.subtitle}
+              </p>
+            )}
+            
+            {item.description && item.size !== 'tiny' && (
+              <p className="text-gray-300 text-sm mt-2 text-center">
+                {item.description}
+              </p>
+            )}
+          </>
+        )}
 
         {/* CTA */}
         {item.cta && (
@@ -240,26 +368,13 @@ function BentoBox({ item, isHovered }: { item: any; isHovered: boolean }) {
             className="flex items-center gap-2 text-white font-semibold mt-4"
             animate={{ x: isHovered ? 10 : 0 }}
           >
-            Get Started <ArrowRight className="w-5 h-5" />
-          </motion.div>
-        )}
-
-        {/* Animated Stats */}
-        {item.animated && (
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            animate={{
-              scale: isHovered ? [1, 1.1, 1] : 1,
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            <span className="text-4xl font-bold opacity-10">{item.title}</span>
+            Let's Go <ArrowRight className="w-5 h-5" />
           </motion.div>
         )}
 
         {/* Hover Glow Effect */}
         <motion.div
-          className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-20 transition-opacity rounded-3xl`}
+          className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-20 transition-opacity rounded-2xl`}
         />
       </div>
     </div>

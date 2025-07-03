@@ -13,8 +13,8 @@ export default function CustomCursor() {
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 16)
-      cursorY.set(e.clientY - 16)
+      cursorX.set(e.clientX)
+      cursorY.set(e.clientY)
     }
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -61,45 +61,35 @@ export default function CustomCursor() {
     <>
       {/* Trail effect */}
       <motion.div
-        className="fixed top-0 left-0 w-12 h-12 pointer-events-none z-[9998] mix-blend-screen"
-        style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
-        }}
-      >
-        <div className="w-full h-full rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-20 blur-xl" />
-      </motion.div>
-
-      {/* Main cursor */}
-      <motion.div
-        className={`fixed top-0 left-0 w-8 h-8 pointer-events-none z-[9999] mix-blend-difference ${
+        className={`fixed top-0 left-0 w-12 h-12 pointer-events-none z-[9998] mix-blend-screen ${
           isHidden ? 'opacity-0' : 'opacity-100'
         }`}
         style={{
-          x: cursorX,
-          y: cursorY,
+          x: cursorXSpring,
+          y: cursorYSpring,
+          translateX: '-50%',
+          translateY: '-50%',
         }}
-        animate={{
-          scale: isPointer ? 1.5 : 1,
-          rotate: isPointer ? 90 : 0,
-        }}
-        transition={{ type: 'spring', damping: 20, stiffness: 400 }}
       >
-        <div className={`w-full h-full rounded-full border-2 ${
-          isPointer ? 'border-white bg-white/20' : 'border-white'
-        } transition-colors duration-200`} />
-        
-        {/* Fun emoji that appears on hover */}
-        {isPointer && (
-          <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{ scale: 1, rotate: 0 }}
-            className="absolute -top-8 left-1/2 -translate-x-1/2 text-2xl"
-          >
-            ✨
-          </motion.div>
-        )}
+        <div className="w-full h-full rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-30 blur-xl" />
       </motion.div>
+
+      {/* Fun emoji that appears on hover */}
+      {isPointer && !isHidden && (
+        <motion.div
+          initial={{ scale: 0, rotate: -180 }}
+          animate={{ scale: 1, rotate: 0 }}
+          className="fixed pointer-events-none z-[9999] text-2xl"
+          style={{
+            x: cursorX,
+            y: cursorY,
+            translateX: '-50%',
+            translateY: '-150%',
+          }}
+        >
+          ✨
+        </motion.div>
+      )}
     </>
   )
 }
