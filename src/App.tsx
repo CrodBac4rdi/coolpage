@@ -7,7 +7,6 @@ import { ThemeProvider } from './contexts/ThemeContext'
 // Lazy load all pages
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
-const Projects = lazy(() => import('./pages/Projects'))
 const Blog = lazy(() => import('./pages/Blog'))
 const Contact = lazy(() => import('./pages/Contact'))
 const NotFound = lazy(() => import('./pages/NotFound'))
@@ -31,7 +30,6 @@ function App() {
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
           <Route path="about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
-          <Route path="projects" element={<Suspense fallback={<PageLoader />}><Projects /></Suspense>} />
           <Route path="blog" element={<Suspense fallback={<PageLoader />}><Blog /></Suspense>} />
           <Route path="contact" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />
           <Route path="manhwa" element={<Suspense fallback={<PageLoader />}><ManhwaList /></Suspense>} />

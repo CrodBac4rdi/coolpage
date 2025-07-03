@@ -12,7 +12,6 @@ export default function Navbar() {
   const links = [
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
-    { to: '/projects', label: 'Projects' },
     { to: '/blog', label: 'Characters' },
     { to: '/manhwa', label: 'Stories' },
     { to: '/games', label: 'Games' },

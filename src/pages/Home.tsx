@@ -63,17 +63,6 @@ export default function Home() {
       stats: '2 Mini Games'
     },
     {
-      id: 'projects',
-      size: 'medium',
-      title: '🎨 Projekte',
-      subtitle: 'Technik & Kunst',
-      description: 'Die technische Seite hinter den digitalen Welten',
-      gradient: 'from-orange-500/25 to-amber-500/30',
-      icon: <Star className="w-6 h-6" />,
-      link: '/projects',
-      stats: 'React + TypeScript'
-    },
-    {
       id: 'contact',
       size: 'wide',
       title: '✨ Lass uns connecten',
