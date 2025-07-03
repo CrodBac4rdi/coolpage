@@ -115,7 +115,7 @@ export default function ManhwaList() {
           {/* Beautiful Story Cards - Book Cover Style */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {manhwaStories.map((story, index) => {
-              const mood = storyMoods[story.id] || storyMoods['forbidden-desire']
+              const mood = storyMoods[story.id as keyof typeof storyMoods] || storyMoods['forbidden-desire']
               
               return (
                 <motion.div

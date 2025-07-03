@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles, Zap, Star, Gamepad2, Book, Users, Mail } from 'lucide-react'
+import { ArrowRight, Sparkles, Zap, Gamepad2, Book, Users, Mail } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useMemo } from 'react'
 import SEOHead from '../components/SEOHead'
