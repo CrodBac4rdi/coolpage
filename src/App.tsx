@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import RootLayout from './layouts/RootLayout'
 import ScrollToTop from './components/ScrollToTop'
-import CustomCursor from './components/CustomCursor'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 // Lazy load all pages
@@ -27,7 +26,6 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <CustomCursor />
         <ScrollToTop />
         <Routes>
         <Route path="/" element={<RootLayout />}>

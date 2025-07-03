@@ -84,38 +84,57 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X /> : <Menu />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            {/* Theme Toggle for Mobile */}
+            <motion.button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </motion.button>
+            
+            {/* Mobile Menu Toggle */}
+            <button
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
         <motion.div
-          className="md:hidden bg-black/90 backdrop-blur-lg"
+          className="md:hidden bg-black/90 backdrop-blur-lg border-t border-white/10"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="px-4 py-6 space-y-4">
+          <div className="px-4 py-6 space-y-2">
             {links.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-white"
+                className={`block px-4 py-3 text-base font-medium rounded-lg transition-colors ${
+                  location.pathname === link.to
+                    ? 'text-purple-400 bg-purple-400/10'
+                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
-            <Link to="/contact" onClick={() => setIsOpen(false)}>
-              <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-3 rounded-full font-semibold">
-                Get Started
-              </button>
-            </Link>
+            <div className="pt-4 border-t border-white/10">
+              <Link to="/contact" onClick={() => setIsOpen(false)}>
+                <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 px-6 py-4 rounded-full font-semibold text-lg">
+                  Get Started
+                </button>
+              </Link>
+            </div>
           </div>
         </motion.div>
       )}

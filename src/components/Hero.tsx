@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-8 pt-20">
+    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20">
       <motion.div
         className="relative z-10 text-center max-w-5xl mx-auto"
         initial={{ opacity: 0 }}
@@ -12,17 +12,17 @@ export default function Hero() {
         transition={{ duration: 0.8 }}
       >
         <motion.div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8"
+          className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 sm:mb-8"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
           <Star className="w-4 h-4 text-yellow-400" />
-          <span className="text-sm">Welcome to the Digital Paradise</span>
+          <span className="text-xs sm:text-sm">Welcome to the Digital Paradise</span>
         </motion.div>
 
         <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+          className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -31,13 +31,13 @@ export default function Hero() {
             Crod Babylon
           </span>
           <br />
-          <span className="text-3xl md:text-5xl lg:text-6xl text-white/80">
+          <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl text-white/80">
             Where Dreams Code Reality
           </span>
         </motion.h1>
 
         <motion.p
-          className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto mb-12"
+          className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 sm:mb-12 px-4"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -47,14 +47,14 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <Link to="/projects">
+          <Link to="/projects" className="w-full sm:w-auto">
             <motion.button
-              className="group bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-4 rounded-full font-semibold text-lg flex items-center gap-2 shadow-2xl shadow-purple-500/25"
+              className="group bg-gradient-to-r from-purple-500 to-pink-500 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg flex items-center justify-center gap-2 shadow-2xl shadow-purple-500/25 w-full sm:w-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -62,9 +62,9 @@ export default function Hero() {
               <ChevronRight className="group-hover:translate-x-1 transition-transform" />
             </motion.button>
           </Link>
-          <Link to="/about">
+          <Link to="/about" className="w-full sm:w-auto">
             <motion.button
-              className="px-8 py-4 rounded-full font-semibold text-lg border-2 border-white/20 backdrop-blur-sm hover:bg-white/10 transition-all"
+              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg border-2 border-white/20 backdrop-blur-sm hover:bg-white/10 transition-all w-full sm:w-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
