@@ -1,0 +1,136 @@
+/* Mobile-first enhancements */
+
+/* Improve touch targets for mobile */
+@media (max-width: 768px) {
+  /* Ensure minimum touch target size */
+  button, 
+  [role="button"], 
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing for mobile cards */
+  .mobile-card-spacing {
+    margin-bottom: 1rem;
+  }
+  
+  /* Prevent text selection on touch devices */
+  .touch-action-manipulation {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* Better scroll performance */
+  .mobile-scroll-smooth {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  /* Reduce motion for battery optimization */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Extra small devices optimization */
+@media (max-width: 475px) {
+  /* Adjust text sizes for very small screens */
+  .text-5xl { font-size: 2.5rem !important; }
+  .text-6xl { font-size: 3rem !important; }
+  .text-7xl { font-size: 3.5rem !important; }
+  .text-8xl { font-size: 4rem !important; }
+  
+  /* Better padding for small screens */
+  .mobile-xs-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Stack elements vertically on tiny screens */
+  .mobile-xs-stack > * {
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Enhance story cards specifically for mobile */
+@media (max-width: 640px) {
+  .story-card-mobile {
+    min-height: 380px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .story-card-mobile:active {
+    transform: scale(0.98);
+  }
+  
+  /* Better emoji sizing for mobile */
+  .story-emoji-mobile {
+    font-size: clamp(3rem, 8vw, 5rem);
+  }
+  
+  /* Responsive story title */
+  .story-title-mobile {
+    font-size: clamp(1.125rem, 4vw, 1.5rem);
+    line-height: 1.3;
+  }
+}
+
+/* Improve mobile navigation */
+@media (max-width: 768px) {
+  /* Better mobile menu spacing */
+  .mobile-nav-item {
+    padding: 0.75rem 1rem;
+    margin: 0.25rem 0;
+  }
+  
+  /* Touch-friendly filter buttons */
+  .mobile-filter-button {
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+  }
+  
+  .mobile-filter-button:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Bento grid mobile optimizations */
+@media (max-width: 640px) {
+  .bento-mobile {
+    gap: 1rem;
+  }
+  
+  .bento-item-mobile {
+    min-height: 180px;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  
+  .bento-hero-mobile {
+    min-height: 220px;
+  }
+}
+
+/* Character gallery mobile improvements */
+@media (max-width: 640px) {
+  .character-card-mobile {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+  
+  .character-emoji-mobile {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+  
+  .character-grid-mobile {
+    gap: 1rem;
+  }
+}

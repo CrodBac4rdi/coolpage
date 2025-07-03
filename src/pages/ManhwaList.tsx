@@ -66,6 +66,7 @@ export default function ManhwaList() {
       backgroundPattern: 'bg-gradient-to-br from-gray-900/40 via-slate-800/30 to-black/40'
     }
   }), [])
+
   
   return (
     <>
@@ -113,7 +114,7 @@ export default function ManhwaList() {
           </motion.div>
 
           {/* Beautiful Story Cards - Book Cover Style */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 lg:gap-10">
             {manhwaStories.map((story, index) => {
               const mood = storyMoods[story.id as keyof typeof storyMoods] || storyMoods['forbidden-desire']
               
@@ -127,7 +128,7 @@ export default function ManhwaList() {
                 >
                   <Link to={`/reader/${story.id}`} className="block">
                     {/* Book Cover Card */}
-                    <div className={`relative h-[480px] rounded-3xl overflow-hidden border border-white/20 transition-all duration-700 hover:scale-[1.03] hover:rotate-1 hover:border-white/40 group-hover:shadow-2xl group-hover:shadow-${mood.accentColor}-500/20`}>
+                    <div className={`story-card-mobile relative h-[380px] xs:h-[420px] sm:h-[460px] lg:h-[480px] rounded-2xl xs:rounded-3xl overflow-hidden border border-white/20 transition-all duration-700 hover:scale-[1.02] xs:hover:scale-[1.03] hover:rotate-1 hover:border-white/40 group-hover:shadow-2xl group-hover:shadow-${mood.accentColor}-500/20 touch-action-manipulation`}>
                       
                       {/* Background with Mood */}
                       <div className={`absolute inset-0 ${mood.backgroundPattern}`} />
@@ -139,13 +140,13 @@ export default function ManhwaList() {
                       </div>
 
                       {/* Story Cover Content */}
-                      <div className="relative z-10 h-full flex flex-col p-8">
+                      <div className="relative z-10 h-full flex flex-col p-4 xs:p-6 sm:p-8">
                         
                         {/* Top Section - Title & Atmosphere */}
                         <div className="flex-1 flex flex-col justify-center text-center">
                           {/* Magical Emoji */}
                           <motion.div 
-                            className="text-7xl mb-6"
+                            className="story-emoji-mobile text-4xl xs:text-5xl sm:text-6xl lg:text-7xl mb-3 xs:mb-4 sm:mb-6"
                             whileHover={{ scale: 1.1, rotate: 5 }}
                             transition={{ type: "spring", stiffness: 300 }}
                           >
@@ -153,19 +154,19 @@ export default function ManhwaList() {
                           </motion.div>
                           
                           {/* Title */}
-                          <h3 className={`text-2xl lg:text-3xl font-bold mb-3 ${mood.textColor} leading-tight`}>
+                          <h3 className={`story-title-mobile text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold mb-2 xs:mb-3 ${mood.textColor} leading-tight`}>
                             {story.title}
                           </h3>
                           
                           {/* Atmosphere Badge */}
-                          <div className={`inline-flex items-center px-4 py-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 mb-4`}>
-                            <span className={`text-sm font-medium ${mood.textColor}`}>
+                          <div className={`inline-flex items-center px-3 xs:px-4 py-1 xs:py-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 mb-3 xs:mb-4`}>
+                            <span className={`text-xs xs:text-sm font-medium ${mood.textColor}`}>
                               {mood.atmosphere}
                             </span>
                           </div>
                           
                           {/* Emotional Tagline */}
-                          <p className={`text-base lg:text-lg ${mood.textColor} leading-relaxed font-medium mb-6 opacity-90`}>
+                          <p className={`text-sm xs:text-base lg:text-lg ${mood.textColor} leading-relaxed font-medium mb-4 xs:mb-6 opacity-90`}>
                             {mood.tagline}
                           </p>
                         </div>
@@ -174,14 +175,14 @@ export default function ManhwaList() {
                         <div className="space-y-4">
                           {/* Mood Indicators */}
                           <div className="text-center">
-                            <p className={`text-sm ${mood.textColor} opacity-80 font-medium`}>
+                            <p className={`text-xs xs:text-sm ${mood.textColor} opacity-80 font-medium`}>
                               {mood.mood}
                             </p>
                           </div>
                           
                           {/* Beautiful Read Button */}
                           <motion.div
-                            className={`w-full bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm border border-white/30 text-white py-4 px-6 rounded-2xl font-semibold text-center transition-all hover:from-white/30 hover:to-white/20 hover:border-white/50 flex items-center justify-center gap-3`}
+                            className={`w-full bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm border border-white/30 text-white py-3 xs:py-4 px-4 xs:px-6 rounded-xl xs:rounded-2xl font-semibold text-center transition-all hover:from-white/30 hover:to-white/20 hover:border-white/50 flex items-center justify-center gap-2 xs:gap-3 text-sm xs:text-base`}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                           >

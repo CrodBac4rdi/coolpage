@@ -79,11 +79,11 @@ export default function Home() {
   const getSizeClasses = useMemo(() => (size: string) => {
     switch (size) {
       case 'hero':
-        return 'col-span-2 row-span-3 lg:col-span-3 lg:row-span-2'
+        return 'col-span-1 xs:col-span-2 lg:col-span-3 row-span-2 xs:row-span-3 lg:row-span-2'
       case 'large':
-        return 'col-span-2 row-span-2'
+        return 'col-span-1 xs:col-span-2 row-span-2'
       case 'wide':
-        return 'col-span-2 lg:col-span-3'
+        return 'col-span-1 xs:col-span-2 lg:col-span-3 row-span-1'
       case 'medium':
       default:
         return 'col-span-1 row-span-2'
@@ -157,7 +157,7 @@ export default function Home() {
         </motion.div>
 
         {/* Modern Bento Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {bentoItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -167,7 +167,7 @@ export default function Home() {
               transition={{ delay: index * 0.1, type: "spring", damping: 25, stiffness: 120 }}
             >
               <Link to={item.link} className="block h-full">
-                <div className={`h-full min-h-[200px] lg:min-h-[240px] rounded-3xl bg-gradient-to-br ${item.gradient} backdrop-blur-xl border border-white/10 p-6 lg:p-8 transition-all duration-500 hover:scale-[1.02] hover:border-white/30 hover:shadow-2xl group relative overflow-hidden`}>
+                <div className={`h-full min-h-[180px] xs:min-h-[200px] lg:min-h-[240px] rounded-2xl xs:rounded-3xl bg-gradient-to-br ${item.gradient} backdrop-blur-xl border border-white/10 p-4 xs:p-6 lg:p-8 transition-all duration-500 hover:scale-[1.02] hover:border-white/30 hover:shadow-2xl group relative overflow-hidden`}>
                   
                   {/* Background Pattern */}
                   <div className="absolute inset-0 opacity-5">
@@ -179,7 +179,7 @@ export default function Home() {
                     {/* Icon & Stats */}
                     <div className="flex items-start justify-between mb-4">
                       <motion.div
-                        className="p-3 lg:p-4 rounded-2xl bg-white/15 backdrop-blur-sm text-white group-hover:scale-110 transition-transform duration-300"
+                        className="p-2 xs:p-3 lg:p-4 rounded-xl xs:rounded-2xl bg-white/15 backdrop-blur-sm text-white group-hover:scale-110 transition-transform duration-300"
                         whileHover={{ rotate: 5 }}
                       >
                         {item.icon}
@@ -194,21 +194,21 @@ export default function Home() {
                     {/* Content */}
                     <div className="flex-grow">
                       <h3 className={`font-bold text-white mb-2 group-hover:text-purple-100 transition-colors ${
-                        item.size === 'hero' ? 'text-2xl lg:text-3xl' : 
-                        item.size === 'large' ? 'text-xl lg:text-2xl' : 
-                        'text-lg lg:text-xl'
+                        item.size === 'hero' ? 'text-xl xs:text-2xl lg:text-3xl' : 
+                        item.size === 'large' ? 'text-lg xs:text-xl lg:text-2xl' : 
+                        'text-base xs:text-lg lg:text-xl'
                       }`}>
                         {item.title}
                       </h3>
                       
                       {item.subtitle && (
-                        <p className="text-white/80 mb-3 text-sm lg:text-base font-medium">
+                        <p className="text-white/80 mb-3 text-xs xs:text-sm lg:text-base font-medium">
                           {item.subtitle}
                         </p>
                       )}
                       
                       <p className={`text-white/70 leading-relaxed ${
-                        item.size === 'hero' ? 'text-base lg:text-lg' : 'text-sm lg:text-base'
+                        item.size === 'hero' ? 'text-sm xs:text-base lg:text-lg' : 'text-xs xs:text-sm lg:text-base'
                       }`}>
                         {item.description}
                       </p>
@@ -220,7 +220,7 @@ export default function Home() {
                         className="mt-6 flex items-center gap-3 text-white group-hover:text-purple-100 transition-colors"
                         whileHover={{ x: 5 }}
                       >
-                        <span className="font-semibold text-base lg:text-lg">Jetzt connecten</span>
+                        <span className="font-semibold text-sm xs:text-base lg:text-lg">Jetzt connecten</span>
                         <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                       </motion.div>
                     )}

@@ -230,11 +230,11 @@ export default function Blog() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-2 xs:gap-3 mb-8 xs:mb-12 px-4"
         >
           <button
             onClick={() => setFilter('all')}
-            className={`px-6 py-2 rounded-full transition-all ${
+            className={`px-4 xs:px-6 py-2 rounded-full transition-all text-sm xs:text-base ${
               filter === 'all'
                 ? 'bg-purple-500 text-white'
                 : 'bg-white/10 text-gray-300 hover:bg-white/20'
@@ -246,7 +246,7 @@ export default function Blog() {
             <button
               key={story.id}
               onClick={() => setFilter(story.id)}
-              className={`px-6 py-2 rounded-full transition-all ${
+              className={`px-4 xs:px-6 py-2 rounded-full transition-all text-sm xs:text-base ${
                 filter === story.id
                   ? 'bg-purple-500 text-white'
                   : 'bg-white/10 text-gray-300 hover:bg-white/20'
@@ -260,7 +260,7 @@ export default function Blog() {
         {/* Character Grid */}
         <motion.div
           layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 xs:gap-6"
         >
           <AnimatePresence>
             {filteredCharacters.map((character, index) => (
@@ -274,14 +274,14 @@ export default function Blog() {
                 className="group cursor-pointer"
                 onClick={() => setSearchParams({ character: character.id })}
               >
-                <div className={`bg-gradient-to-br ${character.gradient} backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:border-white/20 h-full`}>
+                <div className={`bg-gradient-to-br ${character.gradient} backdrop-blur-sm border border-white/10 rounded-xl xs:rounded-2xl p-4 xs:p-6 transition-all duration-300 hover:scale-105 hover:border-white/20 h-full`}>
                   {/* Character Avatar */}
-                  <div className="text-center mb-4">
-                    <div className="text-5xl mb-3">{character.emoji}</div>
-                    <h3 className="text-xl font-bold text-white mb-1">
+                  <div className="text-center mb-3 xs:mb-4">
+                    <div className="text-3xl xs:text-4xl sm:text-5xl mb-2 xs:mb-3">{character.emoji}</div>
+                    <h3 className="text-base xs:text-lg sm:text-xl font-bold text-white mb-1">
                       {character.name}
                     </h3>
-                    <p className="text-sm text-gray-300">{character.role}</p>
+                    <p className="text-xs xs:text-sm text-gray-300">{character.role}</p>
                   </div>
 
                   {/* Story Badge */}
