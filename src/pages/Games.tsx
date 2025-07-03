@@ -2,21 +2,11 @@ import { motion } from 'framer-motion'
 import { Gamepad2, Heart, Brain, Zap, Dice1 } from 'lucide-react'
 import HeartCollector from '../components/games/HeartCollector'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 export default function Games() {
   const [selectedGame, setSelectedGame] = useState<string | null>('heart-collector')
 
   const games = [
-    {
-      id: 'interactive-stories',
-      name: 'Interactive Stories',
-      icon: <Gamepad2 className="w-6 h-6" />,
-      description: 'Your choices shape the story! Multiple paths and endings.',
-      color: 'from-purple-500 to-pink-500',
-      isInteractive: true,
-      link: '/interactive/shadow-hunter-awakening'
-    },
     {
       id: 'heart-collector',
       name: 'Heart Collector',
@@ -77,31 +67,7 @@ export default function Games() {
           {/* Game Selector */}
           <div className="lg:col-span-1 order-2 lg:order-1">
             <div className="space-y-2 sm:space-y-3">
-              {games.map((game) => 
-                game.isInteractive ? (
-                  <Link key={game.id} to={game.link}>
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full p-3 sm:p-4 rounded-xl transition-all text-left bg-gradient-to-r from-purple-500/20 to-pink-500/20 hover:from-purple-500/30 hover:to-pink-500/30 border-2 border-purple-500/30 hover:border-purple-500/50"
-                    >
-                      <div className="flex items-center gap-2 sm:gap-3">
-                        <div className={`p-1.5 sm:p-2 rounded-lg bg-gradient-to-br ${game.color}`}>
-                          {game.icon}
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold flex items-center gap-2 text-sm sm:text-base">
-                            {game.name}
-                            <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded">
-                              ⚡ Interactive
-                            </span>
-                          </h3>
-                          <p className="text-xs sm:text-sm text-gray-400 hidden sm:block">{game.description}</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </Link>
-                ) : (
+              {games.map((game) => (
                   <motion.button
                     key={game.id}
                     whileHover={{ scale: 1.02 }}
@@ -131,8 +97,7 @@ export default function Games() {
                       </div>
                     </div>
                   </motion.button>
-                )
-              )}
+              ))}
             </div>
 
             {/* Global Leaderboard */}
