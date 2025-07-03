@@ -47,7 +47,7 @@ export default function Contact() {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      details: "hello@crodbabylon.com",
+      details: "birkner.daniel@googlemail.com",
       subdetails: "We reply within 24 hours"
     },
     {
