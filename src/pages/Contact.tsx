@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Send, MessageSquare, Clock } from 'lucide-react'
+import { Mail, Send, MessageSquare, Clock, Heart, BookOpen, Users, Coffee } from 'lucide-react'
 import { useState } from 'react'
 
 export default function Contact() {
@@ -7,7 +7,8 @@ export default function Contact() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    interest: 'general'
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -18,15 +19,13 @@ export default function Contact() {
     
     // Simulate form submission
     try {
-      // In a real app, you would send this to your backend
       await new Promise(resolve => setTimeout(resolve, 1500))
       
       console.log('Form submitted:', formData)
       setSubmitStatus('success')
       
-      // Reset form after successful submission
       setTimeout(() => {
-        setFormData({ name: '', email: '', subject: '', message: '' })
+        setFormData({ name: '', email: '', subject: '', message: '', interest: 'general' })
         setSubmitStatus('idle')
       }, 3000)
     } catch (error) {
@@ -39,23 +38,37 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
-      details: "Digital Realm, Internet",
-      subdetails: "Available Worldwide"
-    },
-    {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
       details: "birkner.daniel@googlemail.com",
-      subdetails: "We reply within 24 hours"
+      subdetails: "Romance stories & collaboration",
+      emoji: "💌",
+      japanese: "メール"
     },
     {
       icon: <Clock className="w-6 h-6" />,
-      title: "Working Hours",
-      details: "24/7 Digital Presence",
-      subdetails: "Always here for you"
+      title: "Response Time",
+      details: "Within 24 hours",
+      subdetails: "Usually much faster!",
+      emoji: "⚡",
+      japanese: "返信時間"
+    },
+    {
+      icon: <Heart className="w-6 h-6" />,
+      title: "Community",
+      details: "Discord & Social",
+      subdetails: "Join the romance readers",
+      emoji: "🌸",
+      japanese: "コミュニティ"
     }
+  ]
+
+  const interests = [
+    { value: 'general', label: 'General Inquiry', emoji: '💬' },
+    { value: 'story', label: 'Story Feedback', emoji: '📖' },
+    { value: 'collaboration', label: 'Collaboration', emoji: '🤝' },
+    { value: 'technical', label: 'Technical Question', emoji: '💻' },
+    { value: 'fanart', label: 'Fan Art / Content', emoji: '🎨' }
   ]
 
   return (
@@ -66,18 +79,18 @@ export default function Contact() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 mb-6">
-            <MessageSquare className="w-4 h-4 text-purple-400" />
-            <span className="text-sm text-purple-300">Get in Touch</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-500/20 border border-pink-500/30 mb-6">
+            <MessageSquare className="w-4 h-4 text-pink-400" />
+            <span className="text-sm text-pink-300">連絡 Connect</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Let's Build Something
+            Let's Create
             <span className="block bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
-              Amazing Together
+              Romance Together
             </span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
-            Have a project in mind? We'd love to hear about it. Send us a message and let's create the future.
+            Story ideas, feedback, collaboration, or just want to chat about romance? • 一緒に恋愛物語を作りましょう ✨
           </p>
         </motion.div>
 
@@ -90,22 +103,58 @@ export default function Contact() {
             transition={{ delay: 0.2 }}
           >
             {contactInfo.map((info, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-white/10"
+                className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-white/10 hover:border-white/20 transition-all group"
+                whileHover={{ scale: 1.02 }}
               >
                 <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20">
+                  <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 group-hover:scale-110 transition-transform">
                     {info.icon}
                   </div>
-                  <div>
-                    <h3 className="font-semibold mb-1 text-sm sm:text-base">{info.title}</h3>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="font-semibold text-sm sm:text-base text-white">{info.title}</h3>
+                      <span className="text-2xl">{info.emoji}</span>
+                    </div>
                     <p className="text-gray-300 text-sm sm:text-base">{info.details}</p>
-                    <p className="text-xs sm:text-sm text-gray-400">{info.subdetails}</p>
+                    <p className="text-xs sm:text-sm text-gray-400 mb-2">{info.subdetails}</p>
+                    <span className="text-xs text-purple-300 font-medium">{info.japanese}</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
+
+            {/* Quick Stats */}
+            <motion.div
+              className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-white/10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <Users className="w-5 h-5 text-purple-400" />
+                Community Stats
+              </h3>
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-white">200+</div>
+                  <div className="text-xs text-gray-400">Chapters</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-white">4</div>
+                  <div className="text-xs text-gray-400">Stories</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-white">∞</div>
+                  <div className="text-xs text-gray-400">Love</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-white">24/7</div>
+                  <div className="text-xs text-gray-400">Reading</div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* Contact Form */}
@@ -118,49 +167,64 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Your Name</label>
+                  <label className="block text-sm font-medium mb-2">Your Name • お名前</label>
                   <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 focus:border-purple-400 focus:outline-none transition-colors text-base"
-                    placeholder="John Doe"
+                    placeholder="Romance Reader"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Your Email</label>
+                  <label className="block text-sm font-medium mb-2">Your Email • メール</label>
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 focus:border-purple-400 focus:outline-none transition-colors text-base"
-                    placeholder="john@example.com"
+                    placeholder="reader@example.com"
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Subject</label>
+                <label className="block text-sm font-medium mb-2">What's this about? • 内容</label>
+                <select
+                  value={formData.interest}
+                  onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
+                  className="w-full px-4 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 focus:border-purple-400 focus:outline-none transition-colors text-base"
+                >
+                  {interests.map(interest => (
+                    <option key={interest.value} value={interest.value} className="bg-gray-800">
+                      {interest.emoji} {interest.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">Subject • 件名</label>
                 <input
                   type="text"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   className="w-full px-4 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 focus:border-purple-400 focus:outline-none transition-colors text-base"
-                  placeholder="Project Inquiry"
+                  placeholder="Love your stories! 💕"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Message</label>
+                <label className="block text-sm font-medium mb-2">Message • メッセージ</label>
                 <textarea
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-4 py-3 sm:py-4 rounded-xl bg-white/10 border border-white/20 focus:border-purple-400 focus:outline-none transition-colors resize-none text-base"
                   rows={6}
-                  placeholder="Tell us about your project..."
+                  placeholder="Tell me about your favorite chapter, story ideas, or just say hi! ✨"
                   required
                 />
               </div>
@@ -173,7 +237,7 @@ export default function Contact() {
                     ? 'bg-green-500'
                     : submitStatus === 'error'
                     ? 'bg-red-500'
-                    : 'bg-gradient-to-r from-purple-500 to-pink-500'
+                    : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600'
                 } ${
                   isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
                 }`}
@@ -183,21 +247,20 @@ export default function Contact() {
                 {isSubmitting ? (
                   <>
                     <span className="animate-pulse">Sending...</span>
+                    <Coffee className="w-5 h-5 animate-bounce" />
                   </>
                 ) : submitStatus === 'success' ? (
                   <>
-                    <span>Message Sent!</span>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+                    <span>Message Sent! ✨</span>
+                    <Heart className="w-5 h-5 text-red-300" />
                   </>
                 ) : submitStatus === 'error' ? (
                   <>
-                    <span>Error! Try Again</span>
+                    <span>Error! Try Again 😅</span>
                   </>
                 ) : (
                   <>
-                    Send Message
+                    Send Message • 送信
                     <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}
@@ -206,24 +269,41 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        {/* Map Section */}
+        {/* Social & Community */}
         <motion.div
           className="mt-16 sm:mt-20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <div className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-8 sm:p-12 border border-white/10 text-center">
-            <h3 className="text-xl sm:text-2xl font-bold mb-4">We're Everywhere</h3>
-            <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">
-              As a digital-first company, we work with clients from all around the globe. 
-              No matter where you are, we're just a message away.
+          <div className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-8 sm:p-12 border border-purple-500/20 text-center">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 flex items-center justify-center gap-2">
+              <BookOpen className="w-6 h-6 lg:w-8 lg:h-8 text-purple-400" />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+                Join the Romance Community
+              </span>
+              <BookOpen className="w-6 h-6 lg:w-8 lg:h-8 text-purple-400" />
+            </h3>
+            <p className="text-gray-300 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg mb-8">
+              Connect with fellow romance readers, get early access to new chapters, and be part of the story creation process • 
+              恋愛小説コミュニティに参加して一緒に物語を楽しみましょう ✨
             </p>
-            <div className="mt-6 sm:mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-              {['New York', 'London', 'Tokyo', 'Sydney'].map((city) => (
-                <div key={city} className="px-3 sm:px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm sm:text-base">
-                  {city}
-                </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+              {[
+                { platform: 'Discord', emoji: '💬', japanese: 'チャット' },
+                { platform: 'Twitter', emoji: '🐦', japanese: 'ツイッター' },
+                { platform: 'GitHub', emoji: '👨‍💻', japanese: 'コード' },
+                { platform: 'Email List', emoji: '📧', japanese: '通知' }
+              ].map((social) => (
+                <motion.div 
+                  key={social.platform} 
+                  className="px-3 sm:px-4 py-3 rounded-full bg-white/10 border border-white/20 hover:border-white/40 transition-all cursor-pointer group"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <div className="text-lg sm:text-xl mb-1 group-hover:scale-110 transition-transform">{social.emoji}</div>
+                  <div className="text-xs sm:text-sm font-medium">{social.platform}</div>
+                  <div className="text-xs text-purple-300">{social.japanese}</div>
+                </motion.div>
               ))}
             </div>
           </div>
