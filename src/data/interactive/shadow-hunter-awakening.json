@@ -1,0 +1,138 @@
+{
+  "id": "shadow-hunter-awakening",
+  "title": "Shadow Hunter: Awakening",
+  "description": "Ein schwacher E-Rank Hunter entdeckt ein mysteriöses System, das ihn zum stärksten Kämpfer der Welt machen könnte. Aber jede Entscheidung hat Konsequenzen...",
+  "author": "Crod Babylon",
+  "genre": ["Action", "Fantasy", "System", "Interactive"],
+  "mature": false,
+  "coverEmoji": "⚔️",
+  "gradient": "from-gray-500/20 to-red-500/20",
+  "tags": ["Hunter System", "Leveling", "Action", "Choices Matter"],
+  "mainPath": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+  "branchPaths": {
+    "aggressive": [4, 21, 22, 23, 24, 25],
+    "strategic": [4, 26, 27, 28, 29, 30], 
+    "lone_wolf": [8, 31, 32, 33, 34, 35],
+    "team_leader": [8, 36, 37, 38, 39, 40]
+  },
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Der schwächste Hunter",
+      "emoji": "😔",
+      "arc": "Awakening",
+      "branchPath": "main",
+      "content": [
+        "Mein Name ist Jin Woo, und ich bin der schwächste Hunter der Welt.",
+        "E-Rank. Das ist alles, was ich bin. Während andere Monster töten und Level aufsteigen, kämpfe ich ums Überleben gegen die schwächsten Goblins.",
+        "Heute ist wieder ein Dungeon-Raid. Meine Party sieht mich mit Verachtung an.",
+        "\"Jin Woo, bleib hinten und pass auf, dass du nicht stirbst\", sagt der Team-Leader.",
+        "Ich nicke stumm. Was soll ich auch sagen? Er hat recht.",
+        "Wir betreten den D-Rank Dungeon. Für die anderen Routine, für mich... ein Alptraum.",
+        "Plötzlich hören wir ein seltsames Geräusch aus der Tiefe des Dungeons.",
+        "\"Das... das sollte hier nicht sein\", flüstert jemand."
+      ],
+      "canContinueMain": true
+    },
+    {
+      "id": 2,
+      "title": "Die verborgene Kammer",
+      "emoji": "🕳️",
+      "arc": "Awakening", 
+      "branchPath": "main",
+      "content": [
+        "Wir finden eine versteckte Kammer, die nicht auf der Dungeon-Karte verzeichnet ist.",
+        "Uralte Runen bedecken die Wände, sie glühen in einem gespenstischen Blau.",
+        "\"Wir sollten umkehren\", sage ich leise. Niemand hört auf mich.",
+        "Der Team-Leader geht voraus. \"Versteckte Kammern bedeuten seltene Items. Das wird uns reich machen!\"",
+        "Ich folge zögernd. Mein Instinkt sagt mir, dass hier etwas furchtbar falsch ist.",
+        "In der Mitte der Kammer steht ein Altar mit einem pulsierenden, schwarzen Kristall.",
+        "\"Berührt ihn nicht!\", rufe ich, aber es ist zu spät.",
+        "Der Kristall explodiert in dunklem Licht. Schreie. Schmerz. Dann... Stille."
+      ],
+      "canContinueMain": true
+    },
+    {
+      "id": 3,
+      "title": "Das System erwacht",
+      "emoji": "💫",
+      "arc": "Awakening",
+      "branchPath": "main", 
+      "content": [
+        "Ich erwache allein. Meine Party... sie sind alle tot.",
+        "Ihr Blut klebt an meinen Händen, aber ich bin unverletzt. Wie ist das möglich?",
+        "Plötzlich erscheint ein durchsichtiges Fenster vor meinen Augen:",
+        "[SYSTEM AKTIVIERT]",
+        "[WILLKOMMEN, SPIELER]",
+        "[LEVEL: 1]",
+        "[EXP: 0/100]",
+        "\"Was... was ist das?\", stammele ich.",
+        "[TÄGLICHE QUEST VERFÜGBAR]",
+        "[100 PUSH-UPS, 100 SIT-UPS, 10KM LAUFEN]",
+        "[BELOHNUNG: +1 ALLE STATS]",
+        "Ein System... wie in einem Videospiel? Das kann nicht real sein."
+      ],
+      "canContinueMain": true
+    },
+    {
+      "id": 4,
+      "title": "Erste Entscheidung",
+      "emoji": "🤔",
+      "arc": "Awakening",
+      "branchPath": "main",
+      "content": [
+        "Das System ist real. Nach drei Tagen Training spüre ich bereits die Veränderung.",
+        "Meine Muskeln sind stärker, meine Reflexe schneller. Aber was bedeutet das alles?",
+        "Ein neuer Dungeon-Raid wird angekündigt. C-Rank diesmal.",
+        "Normalerweise würde ich niemals teilnehmen. Aber mit dem System...",
+        "Ich stehe vor einer wichtigen Entscheidung:",
+        "Soll ich meine neue Kraft sofort testen und aggressive vorgehen?",
+        "Oder sollte ich vorsichtig bleiben und erstmal beobachten, wie weit meine Kräfte wirklich reichen?"
+      ],
+      "choices": [
+        {
+          "id": "aggressive_path",
+          "text": "Aggressive vorgehen - Zeit zu zeigen, was ich drauf habe!",
+          "emoji": "🔥",
+          "nextChapter": 21,
+          "branchPath": "aggressive",
+          "consequences": ["Höheres Risiko", "Schnellere Entwicklung", "Mehr Aufmerksamkeit"]
+        },
+        {
+          "id": "strategic_path", 
+          "text": "Strategisch bleiben - erstmal vorsichtig testen",
+          "emoji": "🧠",
+          "nextChapter": 26,
+          "branchPath": "strategic",
+          "consequences": ["Sicherer Ansatz", "Langsame aber stetige Entwicklung", "Weniger Verdacht"]
+        },
+        {
+          "id": "continue_main",
+          "text": "Den normalen Weg weitergehen",
+          "emoji": "➡️",
+          "nextChapter": 5,
+          "branchPath": "main"
+        }
+      ],
+      "canContinueMain": true
+    },
+    {
+      "id": 5,
+      "title": "Versteckte Macht",
+      "emoji": "🎭",
+      "arc": "Growing Power",
+      "branchPath": "main",
+      "content": [
+        "Ich entscheide mich, meine Kräfte vorerst zu verbergen.",
+        "Im C-Rank Dungeon tue ich so, als wäre ich immer noch der schwache Jin Woo.",
+        "Aber innerlich koche ich vor Ungeduld. Das System zeigt mir ständig neue Möglichkeiten.",
+        "[NEUE FÄHIGKEIT FREIGESCHALTET: SCHATTEN-EXTRAKTION]",
+        "Was bedeutet das? Als ich einen besiegten Goblin berühre, passiert etwas Unglaubliches.",
+        "Ein dunkler Schatten erhebt sich aus dem Leichnam. \"Meister\", sagt er mit gespenstischer Stimme.",
+        "Ich kann... Monster wiederbeleben? Als meine Diener?",
+        "Diese Macht ist gefährlich. Zu gefährlich, um sie anderen zu zeigen."
+      ],
+      "canContinueMain": true
+    }
+  ]
+}

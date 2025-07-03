@@ -180,14 +180,20 @@ export default function ManhwaReader() {
               {/* Navigation */}
               <div className="flex justify-between mt-8">
                 <button
-                  onClick={() => setCurrentChapter(Math.max(0, currentChapter - 1))}
+                  onClick={() => {
+                    setCurrentChapter(Math.max(0, currentChapter - 1))
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }}
                   disabled={currentChapter === 0}
                   className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                 >
                   Previous Chapter
                 </button>
                 <button
-                  onClick={() => setCurrentChapter(Math.min(story.chapters.length - 1, currentChapter + 1))}
+                  onClick={() => {
+                    setCurrentChapter(Math.min(story.chapters.length - 1, currentChapter + 1))
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }}
                   disabled={currentChapter === story.chapters.length - 1}
                   className="px-6 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                 >

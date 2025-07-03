@@ -14,6 +14,7 @@ const Contact = lazy(() => import('./pages/Contact'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const ManhwaList = lazy(() => import('./pages/ManhwaList'))
 const ManhwaReader = lazy(() => import('./pages/ManhwaReader'))
+const InteractiveReader = lazy(() => import('./pages/InteractiveReader'))
 const Games = lazy(() => import('./pages/Games'))
 
 // Loading component
@@ -38,6 +39,7 @@ function App() {
           <Route path="contact" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />
           <Route path="manhwa" element={<Suspense fallback={<PageLoader />}><ManhwaList /></Suspense>} />
           <Route path="manhwa/:id" element={<Suspense fallback={<PageLoader />}><ManhwaReader /></Suspense>} />
+          <Route path="interactive/:id" element={<Suspense fallback={<PageLoader />}><InteractiveReader /></Suspense>} />
           <Route path="games" element={<Suspense fallback={<PageLoader />}><Games /></Suspense>} />
           <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
         </Route>
