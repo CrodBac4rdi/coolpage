@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import RootLayout from './layouts/RootLayout'
 import ScrollToTop from './components/ScrollToTop'
 import CustomCursor from './components/CustomCursor'
+import { ThemeProvider } from './contexts/ThemeContext'
 
 // Lazy load all pages
 const Home = lazy(() => import('./pages/Home'))
@@ -24,10 +25,11 @@ const PageLoader = () => (
 
 function App() {
   return (
-    <Router>
-      <CustomCursor />
-      <ScrollToTop />
-      <Routes>
+    <ThemeProvider>
+      <Router>
+        <CustomCursor />
+        <ScrollToTop />
+        <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
           <Route path="about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
@@ -41,6 +43,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    </ThemeProvider>
   )
 }
 

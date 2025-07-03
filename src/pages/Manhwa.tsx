@@ -106,6 +106,111 @@ export default function Manhwa() {
         "And under the cherry blossoms of their new city, they kissed, ready for whatever levels life would throw at them next.",
         "The End... or rather, The Beginning ❤️"
       ]
+    },
+    {
+      id: 6,
+      title: "Moving Day Chaos",
+      emoji: "📦",
+      content: [
+        "Three months after the proposal. Moving boxes filled their Tokyo apartment as Luna and Kai prepared for their next adventure.",
+        "\"I can't believe we're actually moving in together officially,\" Luna said, taping up another box labeled 'Gaming Gear - FRAGILE!!!'",
+        "\"I can't believe you have THREE gaming chairs,\" Kai teased, struggling with a particularly heavy box.",
+        "\"Says the guy with five mechanical keyboards,\" Luna shot back with a grin.",
+        "They worked in comfortable rhythm, occasionally stealing kisses between boxes. Their cats, Pixel and Sprite, supervised from their perch on the windowsill.",
+        "\"Hey, look what I found!\" Kai held up a photo from their first gaming night together.",
+        "Luna's eyes softened. \"We've come so far from that night.\"",
+        "\"The best player two upgrade of my life,\" Kai said, pulling her close.",
+        "As the sun set over Tokyo, they sat among the boxes, eating takeout ramen and planning their future gaming setup.",
+        "\"Ready for this new level?\" Luna asked.",
+        "\"With you? Always,\" Kai replied, and they sealed it with a kiss."
+      ]
+    },
+    {
+      id: 7,
+      title: "The Tournament",
+      emoji: "🏆",
+      content: [
+        "The esports arena buzzed with energy. Luna adjusted her headset nervously while Kai gave her shoulders a reassuring squeeze.",
+        "\"You've got this, champion,\" he whispered. \"Show them what you're made of.\"",
+        "It was Luna's first major tournament, and she'd made it to the finals. Kai wore her team colors proudly in the audience.",
+        "The match began. Luna's fingers flew across the keyboard, her concentration absolute. Every move was calculated, every strategy perfect.",
+        "In the crowd, Kai cheered louder than anyone, holding up a sign that read 'That's My Fiancée!'",
+        "The final round came down to the wire. Luna's heart pounded as she executed her signature combo.",
+        "\"VICTORY!\" flashed across the screen.",
+        "Luna jumped up, tears of joy streaming down her face. Kai rushed onto the stage, lifting her in a spinning hug.",
+        "\"I knew you could do it!\" he exclaimed.",
+        "\"I had the best coach,\" Luna laughed, kissing him as confetti rained down.",
+        "That night, they celebrated with their gaming friends, the trophy sitting proudly on their table.",
+        "\"Next year, we enter the couples tournament,\" Luna declared.",
+        "\"Game on,\" Kai grinned."
+      ]
+    },
+    {
+      id: 8,
+      title: "Wedding Bells & Power-Ups",
+      emoji: "💒",
+      content: [
+        "The wedding venue was a perfect blend of elegance and geek chic. Fairy lights twinkled like stars, and each table was named after a different game world.",
+        "Luna stood before the mirror in her dress, a subtle pattern of cherry blossoms embroidered along the hem - a nod to their Tokyo proposal.",
+        "\"You look like a princess from a JRPG,\" her best friend said, fixing her veil.",
+        "\"The kind that saves herself AND the kingdom,\" Luna laughed nervously.",
+        "Meanwhile, Kai adjusted his boutonniere - a tiny controller pin hidden among the flowers. His groomsmen all wore matching Triforce cufflinks.",
+        "The ceremony began. As Luna walked down the aisle to a orchestral version of their favorite game soundtrack, Kai's eyes filled with tears.",
+        "\"Player One, ready?\" the officiant asked Kai.",
+        "\"Ready,\" he said, voice thick with emotion.",
+        "\"Player Two, ready?\" they asked Luna.",
+        "\"Always ready,\" she beamed.",
+        "They exchanged rings engraved with 'GG WP' - Good Game, Well Played.",
+        "\"You may now kiss your co-op partner for life!\"",
+        "As they kissed, their friends released butterfly confetti, and someone definitely played the victory fanfare.",
+        "At the reception, their first dance was to 'Sweden' from Minecraft, and yes, there was a gaming tournament instead of a bouquet toss.",
+        "\"Best quest reward ever,\" Kai whispered.",
+        "\"Achievement unlocked: Happily Ever After,\" Luna whispered back."
+      ]
+    },
+    {
+      id: 9,
+      title: "New Game Plus",
+      emoji: "👶",
+      content: [
+        "Two years later. Luna stared at the test in her hands, heart racing. Two pink lines.",
+        "\"Kai!\" she called, voice shaking.",
+        "He rushed in, concerned. \"What's wrong? Did the PC crash again?\"",
+        "Wordlessly, she showed him the test. His eyes widened, then filled with tears.",
+        "\"We're... we're having a player three?\" he whispered.",
+        "Luna nodded, laughing and crying at the same time. Kai swept her into his arms, spinning her gently.",
+        "\"We're going to be parents,\" he said in wonder.",
+        "\"Ready for the hardest game of our lives?\" Luna asked.",
+        "\"Tutorial mode is going to be rough,\" Kai laughed, hand moving to her still-flat stomach.",
+        "They spent the evening planning - not just the nursery (definitely space-themed), but their future as a family of gamers.",
+        "\"Our kid is going to have the coolest parents,\" Kai said proudly.",
+        "\"Just wait until we teach them their first combo,\" Luna grinned.",
+        "As they curled up together, controller set aside for once, they knew their greatest adventure was just beginning.",
+        "Game Start: Parent Mode - Loading..."
+      ]
+    },
+    {
+      id: 10,
+      title: "The Legacy Continues",
+      emoji: "🌟",
+      content: [
+        "Five years later. The sound of button mashing filled the living room, but it wasn't Luna or Kai at the controls.",
+        "\"I won! I won!\" little Hana jumped up and down, controller still in her tiny hands.",
+        "\"You sure did, sweetie,\" Kai said, high-fiving his daughter. \"You beat your old man fair and square.\"",
+        "\"Mama, did you see? I did the combo you taught me!\" Hana ran to Luna, who was working on her latest game design.",
+        "\"I saw everything, my little champion,\" Luna said, pulling her daughter onto her lap. \"You're getting better every day.\"",
+        "Their home was a perfect blend of family life and gaming paradise. Hana's drawings of game characters covered the fridge, right next to her parents' tournament trophies.",
+        "\"Tell me the story again,\" Hana asked, settling between her parents. \"About how you met.\"",
+        "Luna and Kai exchanged smiles. \"Well, it was a rainy day at a coffee shop...\" Luna began.",
+        "\"And Daddy was nervous!\" Hana giggled.",
+        "\"Very nervous,\" Kai admitted. \"But your mom had the coolest laptop stickers.\"",
+        "As they told their story, Hana listened with wide eyes, already dreaming of her own adventures.",
+        "Outside, the rain began to fall, just like that first day.",
+        "\"And they lived happily ever after?\" Hana asked sleepily.",
+        "\"No, sweetheart,\" Luna said, kissing her head. \"They lived happily ever now.\"",
+        "In the glow of the TV screen, three controllers sat side by side - a family of gamers, writing their story one level at a time.",
+        "Continue? → Yes ❤️"
+      ]
     }
   ]
 
@@ -198,7 +303,7 @@ export default function Manhwa() {
                 <p className="text-sm text-gray-300 mb-2">Your Reading Stats</p>
                 <div className="space-y-1">
                   <p className="text-xs text-gray-400">
-                    Chapters Read: {currentChapter + 1}/5
+                    Chapters Read: {currentChapter + 1}/10
                   </p>
                   <p className="text-xs text-gray-400">
                     Favorites: {favorites.length}

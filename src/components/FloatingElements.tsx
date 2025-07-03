@@ -26,14 +26,14 @@ export default function FloatingElements() {
     
     // Generate random floating elements
     const newElements: FloatingElement[] = []
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 5; i++) {
       newElements.push({
         id: i,
         emoji: emojis[Math.floor(Math.random() * emojis.length)],
         x: Math.random() * 100,
         y: Math.random() * 100,
-        duration: 15 + Math.random() * 20,
-        delay: Math.random() * 5
+        duration: 20 + Math.random() * 10,
+        delay: Math.random() * 3
       })
     }
     setElements(newElements)
@@ -46,7 +46,7 @@ export default function FloatingElements() {
       {elements.map((element) => (
         <motion.div
           key={element.id}
-          className="absolute text-2xl opacity-20"
+          className="absolute text-2xl opacity-10 dark:opacity-20"
           style={{
             left: `${element.x}%`,
             top: `${element.y}%`,

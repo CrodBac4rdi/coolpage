@@ -5,7 +5,7 @@ import FloatingElements from '../components/FloatingElements'
 
 export default function RootLayout() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
       <FloatingElements />
       <Navbar />
       <main>

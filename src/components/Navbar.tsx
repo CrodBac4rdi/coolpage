@@ -1,11 +1,13 @@
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Rocket, Menu, X } from 'lucide-react'
+import { Rocket, Menu, X, Sun, Moon } from 'lucide-react'
 import { useState } from 'react'
+import { useTheme } from '../contexts/ThemeContext'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
+  const { theme, toggleTheme } = useTheme()
 
   const links = [
     { to: '/', label: 'Home' },
@@ -20,7 +22,7 @@ export default function Navbar() {
 
   return (
     <motion.nav 
-      className="fixed top-0 w-full z-50 backdrop-blur-lg bg-black/20 border-b border-white/10"
+      className="fixed top-0 w-full z-50 backdrop-blur-lg bg-white/80 dark:bg-black/20 border-b border-gray-200 dark:border-white/10"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -69,6 +71,16 @@ export default function Navbar() {
                 Get Started
               </motion.button>
             </Link>
+            
+            {/* Theme Toggle */}
+            <motion.button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 ml-4"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
