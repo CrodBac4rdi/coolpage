@@ -4,7 +4,7 @@ const interactiveStoryModules = import.meta.glob('/src/data/interactive/*.json',
   import: 'default' 
 }) as Record<string, any>
 
-import { InteractiveStory } from '../types/interactiveStory'
+import type { InteractiveStory } from '../types/interactiveStory'
 
 // Cache for loaded stories
 let cachedInteractiveStories: InteractiveStory[] | null = null

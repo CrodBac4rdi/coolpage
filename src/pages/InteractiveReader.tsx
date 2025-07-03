@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, BookOpen, Zap, RotateCcw, TrendingUp, Heart } from 'lucide-react'
+import { ArrowLeft, BookOpen, Zap, RotateCcw, TrendingUp } from 'lucide-react'
 import { useParams, Link } from 'react-router-dom'
 import { getInteractiveStoryById } from '../utils/interactiveStoryLoader'
 import { useInteractiveStory } from '../hooks/useInteractiveStory'

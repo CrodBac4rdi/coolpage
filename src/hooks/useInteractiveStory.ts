@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { InteractiveStory, ReaderState, Choice } from '../types/interactiveStory'
+import type { InteractiveStory, ReaderState, Choice } from '../types/interactiveStory'
 
 export const useInteractiveStory = (story: InteractiveStory) => {
   const [readerState, setReaderState] = useState<ReaderState>({

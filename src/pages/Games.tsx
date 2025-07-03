@@ -77,8 +77,8 @@ export default function Games() {
           {/* Game Selector */}
           <div className="lg:col-span-1 order-2 lg:order-1">
             <div className="space-y-2 sm:space-y-3">
-              {games.map((game) => (
-                {game.isInteractive ? (
+              {games.map((game) => 
+                game.isInteractive ? (
                   <Link key={game.id} to={game.link}>
                     <motion.div
                       whileHover={{ scale: 1.02 }}
@@ -131,8 +131,8 @@ export default function Games() {
                       </div>
                     </div>
                   </motion.button>
-                )}
-              ))}
+                )
+              )}
             </div>
 
             {/* Global Leaderboard */}

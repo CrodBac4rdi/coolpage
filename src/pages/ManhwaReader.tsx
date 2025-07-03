@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getStoryById } from '../utils/storyLoader'
 
+const ROMANCE_MAX_LEVEL_INDEX = 2;
+
 export default function ManhwaReader() {
   const { id } = useParams<{ id: string }>()
   const [currentChapter, setCurrentChapter] = useState(0)
@@ -134,7 +136,7 @@ export default function ManhwaReader() {
                     Favorites: {favorites.length}
                   </p>
                   <p className="text-xs text-gray-400">
-                    Romance Level: {currentChapter >= 2 ? '💕 Maximum' : '💗 Building'}
+                    Romance Level: {currentChapter >= ROMANCE_MAX_LEVEL_INDEX ? '💕 Maximum' : '💗 Building'}
                   </p>
                 </div>
               </div>
