@@ -172,7 +172,7 @@ export default function Home() {
           className="mt-16 sm:mt-20 md:mt-24 grid grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-3xl mx-auto px-4"
         >
           {[
-            { label: 'Stories', value: '50+' },
+            { label: 'Stories', value: '3+' },
             { label: 'Mini Games', value: '1+' },
             { label: 'Experiences', value: '∞' }
           ].map((stat, index) => (

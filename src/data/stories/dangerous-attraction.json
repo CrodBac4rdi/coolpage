@@ -1,0 +1,67 @@
+{
+  "id": "dangerous-attraction",
+  "title": "Dangerous Attraction",
+  "description": "Eine junge Anwältin trifft auf einen geheimnisvollen Geschäftsmann mit dunkler Vergangenheit. Gefährliche Spiele, verbotene Leidenschaft und eine Liebe, die beide zerstören könnte.",
+  "author": "Crod Babylon",
+  "genre": ["Romance", "Thriller", "Mature"],
+  "mature": true,
+  "coverEmoji": "🖤",
+  "gradient": "from-gray-500/20 to-black/20",
+  "tags": ["Dark Romance", "Dangerous Love", "Lawyer Romance", "Mysterious", "Intense"],
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Der gefährliche Klient",
+      "emoji": "⚖️",
+      "arc": "Dangerous Games",
+      "content": [
+        "\"Miss Carter, Ihr neuer Mandant ist da\", sagte die Sekretärin und schloss die Tür hinter sich.",
+        "Emma blickte auf von ihren Unterlagen. \"Schicken Sie ihn rein.\"",
+        "Als die Tür sich öffnete, stockte ihr der Atem. Der Mann, der eintrat, war Gefahr in Person.",
+        "Schwarzer Anzug, der seinen perfekten Körper umschloss. Eiskalte blaue Augen. Eine Ausstrahlung, die schrie: 'Berühre mich nicht'.",
+        "\"Miss Carter\", sagte er mit einer Stimme wie dunkler Samt. \"Ich bin Vincent Cross.\"",
+        "\"Mr. Cross\", antwortete sie professionell und stand auf. \"Bitte setzen Sie sich.\"",
+        "\"Ich stehe lieber\", murmelte er und musterte sie von Kopf bis Fuß. \"Interessant.\"",
+        "\"Was ist interessant?\", fragte Emma irritiert.",
+        "\"Sie zittern nicht\", stellte er fest und lächelte kalt. \"Die meisten Menschen haben Angst vor mir.\"",
+        "\"Sollte ich?\", fragte sie mutig und verschränkte die Arme."
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Verbotene Spiele",
+      "emoji": "🎲",
+      "arc": "Dangerous Games",
+      "content": [
+        "\"Das kommt darauf an\", antwortete Vincent und trat näher zu ihrem Schreibtisch.",
+        "\"Worauf?\", fragte Emma und merkte, wie ihr Herz schneller schlug.",
+        "\"Darauf, wie mutig Sie sind\", murmelte er und legte die Hände auf ihren Schreibtisch.",
+        "\"Ich bin Anwältin, Mr. Cross. Mut ist mein Beruf.\"",
+        "\"Und Ihr Privatleben?\" Seine Augen funkelten gefährlich. \"Sind Sie da auch so... mutig?\"",
+        "\"Das geht Sie nichts an\", antwortete Emma, aber ihre Stimme zitterte leicht.",
+        "\"Alles geht mich etwas an\", sagte er leise und beugte sich vor. \"Besonders, wenn es um Sie geht.\"",
+        "\"Mr. Cross, das ist unangemessen...\"",
+        "\"Ich bin ein unangemessener Mann\", unterbrach er sie. \"Aber Sie finden das aufregend, nicht wahr?\"",
+        "Emma schluckte schwer. Er hatte recht, und das erschreckte sie."
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Dunkle Versuchung",
+      "emoji": "💀",
+      "arc": "Dangerous Games",
+      "content": [
+        "\"Sie wissen nichts über mich\", flüsterte Emma und stand auf.",
+        "\"Ich weiß genug\", antwortete Vincent und umrundete den Schreibtisch. \"Emma Carter, 28, Spitzenanwältin, einsam.\"",
+        "\"Ich bin nicht einsam\", protestierte sie, aber er war jetzt direkt vor ihr.",
+        "\"Lügen Sie nicht\", murmelte er und hob eine Hand zu ihrer Wange. \"Ich erkenne eine einsame Seele.\"",
+        "\"Und Sie? Sind Sie einsam?\", fragte sie leise, unfähig wegzusehen.",
+        "\"Ich bin viele Dinge, Emma. Einsam ist das harmloseste davon.\"",
+        "\"Was sind die anderen?\", hauchte sie, als seine Finger über ihre Haut glitten.",
+        "\"Gefährlich. Besitzergreifend. Und sehr, sehr hungrig.\"",
+        "\"Hungrig?\", wiederholte sie mit schwacher Stimme.",
+        "\"Nach Ihnen\", gab er zu und zog sie an sich."
+      ]
+    }
+  ]
+}

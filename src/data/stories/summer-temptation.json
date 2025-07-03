@@ -1,0 +1,66 @@
+{
+  "id": "summer-temptation",
+  "title": "Summer Temptation",
+  "description": "Eine heiße Sommernacht, ein Strandresort und die Begegnung mit einem verführerischen Fremden. Leidenschaft unter dem Sternenhimmel und eine Liebe, die alle Grenzen sprengt.",
+  "author": "Crod Babylon",
+  "genre": ["Romance", "Summer Love", "Mature"],
+  "mature": true,
+  "coverEmoji": "🌊",
+  "gradient": "from-cyan-500/20 to-blue-500/20",
+  "tags": ["Beach Romance", "Summer Love", "Passionate", "Vacation Romance", "Steamy"],
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Heiße Nächte",
+      "emoji": "🏖️",
+      "arc": "Summer Passion",
+      "content": [
+        "Die Cocktailbar am Strand war voller Menschen, aber Sophia sah nur ihn. Den Mann mit den bronzenen Haaren und dem räuberischen Lächeln.",
+        "\"Allein hier?\" Seine Stimme war wie warmer Honig, als er sich neben sie setzte.",
+        "\"Nicht mehr\", antwortete sie und drehte sich zu ihm um. Ihre Augen trafen sich - grün auf braun.",
+        "\"Ich bin Marco\", sagte er und hob sein Glas. \"Und Sie sind wunderschön.\"",
+        "\"Sophia\", flüsterte sie und spürte, wie ihre Wangen warm wurden. \"Und Sie sind sehr direkt.\"",
+        "\"Das Leben ist zu kurz für Spielchen\", murmelte er und lehnte sich näher. \"Besonders im Urlaub.\"",
+        "\"Und was schlagen Sie vor?\", fragte sie keck, ermutigt vom Alkohol und seiner Nähe.",
+        "\"Einen Spaziergang am Strand. Unter den Sternen.\" Seine Hand streifte ihre. \"Wenn Sie sich trauen.\"",
+        "\"Ich traue mich zu allem\", log sie und stand auf."
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Mondschein und Meer",
+      "emoji": "🌙",
+      "arc": "Summer Passion",
+      "content": [
+        "Der Strand war menschenleer, nur die Wellen plätscherten sanft ans Ufer.",
+        "\"Erzählen Sie mir von sich\", sagte Marco und zog seine Schuhe aus.",
+        "\"Was wollen Sie wissen?\" Sophia ließ ihre Sandalen fallen und spürte den warmen Sand zwischen ihren Zehen.",
+        "\"Alles\", antwortete er und blieb stehen. \"Aber vor allem... sind Sie glücklich?\"",
+        "Die Frage traf sie unvorbereitet. \"Ich... weiß nicht.\"",
+        "\"Dann lassen Sie mich Ihnen zeigen, was Glück bedeutet\", murmelte er und zog sie sanft zu sich.",
+        "\"Marco...\", seufzte sie, als seine Arme sie umschlossen.",
+        "\"Sagen Sie mir, wenn ich aufhören soll\", flüsterte er und küsste ihren Hals.",
+        "\"Hör niemals auf\", bat sie und schmolz in seinen Armen.",
+        "Das Mondlicht tanzte auf den Wellen, während sie sich in der Brandung küssten."
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Sandschloss der Lust",
+      "emoji": "🔥",
+      "arc": "Summer Passion",
+      "content": [
+        "\"Hier\", flüsterte Marco und zog sie hinter die Felsen, wo eine kleine Bucht versteckt lag.",
+        "\"Jemand könnte uns sehen\", protestierte Sophia schwach.",
+        "\"Nur die Sterne\", murmelte er und streichelte ihre Wange. \"Und die werden unser Geheimnis hüten.\"",
+        "Seine Lippen fanden ihre, hungriger diesmal. Seine Hände glitten über ihre Haut.",
+        "\"Du bist so schön\", stöhnte er. \"Ich will dich. Hier. Jetzt.\"",
+        "\"Ja\", hauchte sie und zog ihn auf den warmen Sand hinunter.",
+        "Die Wellen spülten über ihre Füße, während sie sich liebten unter dem Sternenhimmel.",
+        "\"Sophia\", murmelte er ihren Namen wie ein Gebet.",
+        "\"Ich will, dass diese Nacht niemals endet\", flüsterte sie.",
+        "\"Dann sorgen wir dafür, dass sie unvergesslich wird\", versprach er."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "midnight-confessions",
+  "title": "Midnight Confessions",
+  "description": "Eine mysteriöse Liebesgeschichte zwischen einer Buchladenbesitzerin und dem rätselhaften Stammkunden, der nur nachts kommt. Geheimnisse, Leidenschaft und eine Liebe, die alle Regeln bricht.",
+  "author": "Crod Babylon",
+  "genre": ["Romance", "Mystery", "Mature"],
+  "mature": true,
+  "coverEmoji": "🌙",
+  "gradient": "from-purple-500/20 to-indigo-500/20",
+  "tags": ["Mystery Romance", "Forbidden Love", "Night Meetings", "Passionate", "Mysterious"],
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Der Mitternachtskunde",
+      "emoji": "📚",
+      "arc": "Mysterious Encounters",
+      "content": [
+        "Der Buchladen war eigentlich schon geschlossen, aber Mia hörte das vertraute Klingeln der Türglocke. Es war Mitternacht - wieder einmal.",
+        "\"Wir haben geschlossen\", rief sie, ohne aufzublicken von ihrem Inventar.",
+        "\"Ich weiß.\" Die tiefe, samtweiche Stimme ließ sie erstarren. \"Aber Sie lassen mich trotzdem rein. Wie immer.\"",
+        "Adrian. Natürlich war er es. Seit drei Monaten kam er jeden Dienstag um Mitternacht, kaufte ein Buch und verschwand wieder.",
+        "\"Was ist heute Nacht?\" fragte Mia und drehte sich um. Ihr Herz machte einen Sprung, als sie ihn sah.",
+        "Schwarze Haare, die im Mondlicht schimmerten. Augen so dunkel wie die Nacht. Ein Lächeln, das Geheimnisse versprach.",
+        "\"Etwas... Leidenschaftliches\", murmelte er und trat näher. \"Etwas, das mich an Sie erinnert.\"",
+        "\"Adrian...\", flüsterte sie warnend, aber ihre Stimme zitterte.",
+        "\"Haben Sie sich schon einmal gefragt, warum ich nur nachts komme, Mia?\""
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Verbotene Berührungen",
+      "emoji": "🔥",
+      "arc": "Mysterious Encounters",
+      "content": [
+        "\"Ich frage mich viele Dinge über Sie\", gab Mia zu und trat einen Schritt zurück.",
+        "\"Zum Beispiel?\" Seine Augen funkelten amüsiert.",
+        "\"Warum Sie nie bei Tageslicht kommen. Warum Sie immer in bar bezahlen. Warum Sie...\"",
+        "\"Warum ich Sie so ansehe?\" unterbrach er sie und kam noch näher.",
+        "Mia spürte die Buchregalwand in ihrem Rücken. \"Das wollte ich nicht sagen.\"",
+        "\"Aber Sie haben es gedacht.\" Seine Hand legte sich neben ihren Kopf an das Regal.",
+        "\"Sie sind gefährlich\", flüsterte sie, aber ihre Augen wanderten zu seinen Lippen.",
+        "\"Nur für Sie\", murmelte er und neigte den Kopf. \"Nur für Sie bin ich gefährlich.\"",
+        "\"Warum?\", hauchte sie, als sein Gesicht nur Zentimeter von ihrem entfernt war.",
+        "\"Weil Sie mich dazu bringen, Dinge zu wollen, die ich nicht haben kann.\""
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Mitternachtskuss",
+      "emoji": "💋",
+      "arc": "Mysterious Encounters",
+      "content": [
+        "\"Dann hör auf, hierher zu kommen\", flüsterte Mia, aber ihre Hand griff nach seinem Mantel.",
+        "\"Ich kann nicht\", gestand er. \"Ich brauche... das hier. Sie.\"",
+        "Der Kuss war unvermeidlich. Sanft zuerst, dann hungriger, als alle Barrieren fielen.",
+        "Mia stöhnte leise, als seine Hände durch ihr Haar glitten. Er schmeckte nach Gefahr und Versprechen.",
+        "\"Mia\", murmelte er gegen ihre Lippen. \"Sie haben keine Ahnung, was Sie mit mir machen.\"",
+        "\"Dann zeig es mir\", flüsterte sie kühn und zog ihn näher.",
+        "Seine Augen verdunkelten sich. \"Wenn ich das tue, gibt es kein Zurück mehr.\"",
+        "\"Vielleicht will ich nicht zurück\", gab sie zu.",
+        "Plötzlich zog er sich zurück, die Augen weit. \"Es ist spät. Ich muss...\"",
+        "\"Bleib\", bat sie. \"Diesmal bleib.\""
+      ]
+    }
+  ]
+}
