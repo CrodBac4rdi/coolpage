@@ -20,9 +20,28 @@ a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
+  position: relative;
+  transition: all 0.3s ease;
 }
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #a855f7, #ec4899);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
 a:hover {
   color: #535bf2;
+  transform: translateY(-2px);
 }
 
 * {
@@ -65,6 +84,29 @@ button {
   transition: all 0.3s ease;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+button:active {
+  transform: scale(0.95);
 }
 
 button:focus-visible {
