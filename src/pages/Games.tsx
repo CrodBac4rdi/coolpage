@@ -1,11 +1,14 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Gamepad2, Dice6, RefreshCw, BarChart3, TrendingUp, Heart, Book, Users, Sparkles } from 'lucide-react'
+import { Gamepad2, Dice6, RefreshCw, BarChart3, TrendingUp, Heart, Book, Users, Sparkles, Trophy } from 'lucide-react'
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { loadStories } from '../utils/storyLoader'
 import { characters } from '../data/characters'
 import SEOHead from '../components/SEOHead'
 import ModernIcon from '../components/ModernIcon'
+import { useAchievements } from '../hooks/useAchievements'
+import AchievementDisplay from '../components/AchievementDisplay'
+import AchievementNotification from '../components/AchievementNotification'
 
 export default function Games() {
   const [selectedSection, setSelectedSection] = useState<string>('stats')
@@ -14,6 +17,13 @@ export default function Games() {
   const [isRolling, setIsRolling] = useState(false)
   
   const stories = loadStories()
+  const { 
+    achievements, 
+    totalPoints, 
+    level, 
+    showNotification,
+    getCompletionPercentage
+  } = useAchievements()
 
   const sections = [
     {
@@ -36,6 +46,13 @@ export default function Games() {
       icon: <Book className="w-6 h-6" />,
       description: 'Übersicht über alle Stories und Charaktere',
       color: 'from-pink-500 to-rose-500'
+    },
+    {
+      id: 'achievements',
+      name: 'Achievements',
+      icon: <Trophy className="w-6 h-6" />,
+      description: 'Sammle Erfolge und steige im Level auf',
+      color: 'from-yellow-500 to-orange-500'
     }
   ]
 
@@ -403,9 +420,37 @@ export default function Games() {
                 </div>
               </motion.div>
             )}
+
+            {selectedSection === 'achievements' && (
+              <motion.div
+                key="achievements"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="space-y-8"
+              >
+                <h2 className="text-2xl font-bold text-white flex items-center gap-2 mb-6">
+                  <Trophy className="w-6 h-6 text-yellow-400" />
+                  Achievements & Erfolge
+                </h2>
+
+                <AchievementDisplay
+                  achievements={achievements}
+                  totalPoints={totalPoints}
+                  level={level}
+                  completionPercentage={getCompletionPercentage()}
+                />
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Achievement Notification */}
+      <AchievementNotification
+        achievement={showNotification}
+        onClose={() => {}}
+      />
     </>
   )
 }

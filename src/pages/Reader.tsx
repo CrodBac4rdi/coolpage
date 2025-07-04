@@ -5,6 +5,8 @@ import { useParams, Link } from 'react-router-dom'
 import { getStoryById } from '../utils/storyLoader'
 import ModernIcon from '../components/ModernIcon'
 import ScrollProgressBar from '../components/ScrollProgressBar'
+import { useAchievements } from '../hooks/useAchievements'
+import AchievementNotification from '../components/AchievementNotification'
 
 export default function Reader() {
   const { id } = useParams<{ id: string }>()
@@ -16,8 +18,16 @@ export default function Reader() {
   const lastScrollY = useRef(0)
   const chapterRefs = useRef<{ [key: number]: HTMLDivElement | null }>({})
   const [activeChapter, setActiveChapter] = useState(0)
+  const [hasReadFirstChapter, setHasReadFirstChapter] = useState(false)
+  const [chaptersRead, setChaptersRead] = useState<Set<number>>(new Set())
 
   const story = id ? getStoryById(id) : null
+  const { 
+    unlockAchievement, 
+    updateProgress, 
+    showNotification,
+    checkTimeBasedAchievements 
+  } = useAchievements()
 
   // Handle scroll to detect direction
   useEffect(() => {
@@ -42,7 +52,32 @@ export default function Reader() {
           const elementBottom = elementTop + rect.height
 
           if (scrollPos >= elementTop && scrollPos <= elementBottom) {
-            setActiveChapter(parseInt(index))
+            const chapterIndex = parseInt(index)
+            setActiveChapter(chapterIndex)
+            
+            // Track chapter reading for achievements
+            if (!chaptersRead.has(chapterIndex)) {
+              setChaptersRead(prev => new Set(prev).add(chapterIndex))
+              
+              // First chapter achievement
+              if (!hasReadFirstChapter) {
+                setHasReadFirstChapter(true)
+                unlockAchievement('first-chapter')
+              }
+              
+              // Update speed reader progress
+              const today = new Date().toDateString()
+              const todayChapters = localStorage.getItem(`chapters-read-${today}`)
+              const count = todayChapters ? parseInt(todayChapters) + 1 : 1
+              localStorage.setItem(`chapters-read-${today}`, count.toString())
+              
+              if (count >= 5) {
+                unlockAchievement('speed-reader')
+              } else {
+                updateProgress('speed-reader', count)
+              }
+            }
+            
             break
           }
         }
@@ -60,6 +95,11 @@ export default function Reader() {
       return () => clearTimeout(timer)
     }
   }, [lastScrollDirection, showMenu])
+
+  // Check time-based achievements on mount
+  useEffect(() => {
+    checkTimeBasedAchievements()
+  }, [])
 
   if (!story) {
     return (
@@ -432,6 +472,12 @@ export default function Reader() {
           </div>
         </motion.div>
       </div>
+
+      {/* Achievement Notification */}
+      <AchievementNotification
+        achievement={showNotification}
+        onClose={() => {}}
+      />
     </div>
   )
 }
