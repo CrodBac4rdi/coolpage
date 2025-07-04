@@ -4,7 +4,7 @@ import ScrollToTop from './components/ScrollToTop'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 // Lazy load all pages
-const Home = lazy(() => import('./pages/StoryFocusedHome'))
+const Home = lazy(() => import('./pages/FullFeaturedHome'))
 const About = lazy(() => import('./pages/ModernAbout'))
 const Contact = lazy(() => import('./pages/ModernContact'))
 const NotFound = lazy(() => import('./pages/NotFound'))
