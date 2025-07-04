@@ -12,12 +12,12 @@ export default function TabbedHome() {
         description="Welcome to Crod Babylon - Digital Paradise für fesselnde Geschichten"
       />
       
-      <div className="min-h-screen bg-gray-950">
+      <div className="min-h-screen bg-gray-800">
         {/* Hero Section */}
         <section className="px-4 sm:px-6 lg:px-8 py-24">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900/50 border border-gray-700/50 mb-8">
@@ -41,7 +41,7 @@ export default function TabbedHome() {
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Stories Card */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 1, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
@@ -70,7 +70,7 @@ export default function TabbedHome() {
 
             {/* Contact Card */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 1, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
