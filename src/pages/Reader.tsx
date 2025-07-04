@@ -7,6 +7,8 @@ import ModernIcon from '../components/ModernIcon'
 import ScrollProgressBar from '../components/ScrollProgressBar'
 import { useAchievements } from '../hooks/useAchievements'
 import AchievementNotification from '../components/AchievementNotification'
+import { useFocusMode } from '../hooks/useFocusMode'
+import FocusModeControl from '../components/FocusModeControl'
 
 export default function Reader() {
   const { id } = useParams<{ id: string }>()
@@ -28,6 +30,15 @@ export default function Reader() {
     showNotification,
     checkTimeBasedAchievements 
   } = useAchievements()
+  
+  const {
+    focusMode,
+    focusIntensity,
+    toggleFocusMode,
+    changeFocusIntensity,
+    setCurrentParagraph,
+    getFocusStyles
+  } = useFocusMode()
 
   // Handle scroll to detect direction
   useEffect(() => {
@@ -359,7 +370,10 @@ export default function Reader() {
                     viewport={{ once: true, margin: "-200px" }}
                     className="flex items-center justify-center py-16 my-8"
                   >
-                    <div className={`flex items-center gap-4 px-6 py-3 rounded-full backdrop-blur-sm border ${isDark ? 'bg-gray-800/50 border-gray-600/30' : 'bg-white/50 border-gray-300/30'}`}>
+                    <div 
+                      className={`flex items-center gap-4 px-6 py-3 rounded-full backdrop-blur-sm border ${isDark ? 'bg-gray-800/50 border-gray-600/30' : 'bg-white/50 border-gray-300/30'}`}
+                      style={getFocusStyles(false)}
+                    >
                       <div className="w-8 h-px bg-gradient-to-r from-transparent via-pink-500 to-transparent"></div>
                       <span className={`text-sm font-medium ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                         {chapter.title}
@@ -378,6 +392,7 @@ export default function Reader() {
                 {/* Flowing Content */}
                 {chapter.content.map((paragraph, paragraphIndex) => {
                   const isFirstParagraph = chapterIndex === 0 && paragraphIndex === 0
+                  const globalParagraphIndex = story.chapters.slice(0, chapterIndex).reduce((acc, ch) => acc + ch.content.length, 0) + paragraphIndex
                   
                   return (
                     <motion.p
@@ -391,8 +406,10 @@ export default function Reader() {
                         stiffness: 100,
                         damping: 20
                       }}
+                      onMouseEnter={() => focusMode && setCurrentParagraph(globalParagraphIndex)}
+                      onMouseLeave={() => focusMode && setCurrentParagraph(null)}
                       className={`
-                        leading-relaxed transition-all duration-300
+                        leading-relaxed transition-all duration-300 cursor-default
                         ${isDark ? 'text-gray-300' : 'text-gray-700'}
                         ${
                           isFirstParagraph 
@@ -400,7 +417,10 @@ export default function Reader() {
                             : 'mb-6'
                         }
                       `}
-                      style={{ fontSize: isFirstParagraph ? undefined : `${fontSize}px` }}
+                      style={{ 
+                        fontSize: isFirstParagraph ? undefined : `${fontSize}px`,
+                        ...getFocusStyles(true, globalParagraphIndex)
+                      }}
                     >
                       {paragraph}
                     </motion.p>
@@ -472,6 +492,14 @@ export default function Reader() {
           </div>
         </motion.div>
       </div>
+
+      {/* Focus Mode Control */}
+      <FocusModeControl
+        focusMode={focusMode}
+        focusIntensity={focusIntensity}
+        onToggle={toggleFocusMode}
+        onIntensityChange={changeFocusIntensity}
+      />
 
       {/* Achievement Notification */}
       <AchievementNotification
