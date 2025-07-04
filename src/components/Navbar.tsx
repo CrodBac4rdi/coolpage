@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Rocket, Menu, X, Sun, Moon, Book, Users, Sparkles, Clock, Gamepad2, Map } from 'lucide-react'
+import { Rocket, Menu, X, Sun, Moon, Book, Users, Sparkles, Clock, Gamepad2 } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useTheme } from '../contexts/ThemeContext'
 
@@ -25,7 +25,6 @@ export default function Navbar() {
     { to: '/manhwa', label: 'Stories', icon: Book, description: 'Alle Geschichten' },
     { to: '/blog', label: 'Characters', icon: Users, description: 'Charaktere & Mood Board' },
     { to: '/timeline', label: 'Timeline', icon: Clock, description: 'Story Timeline' },
-    { to: '/memory', label: 'Memory', icon: Map, description: 'Memory Palace' },
     { to: '/games', label: 'Games', icon: Gamepad2, description: 'Story Universe' },
   ]
 

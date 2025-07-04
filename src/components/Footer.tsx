@@ -12,9 +12,9 @@ export default function Footer() {
       { label: 'Timeline', to: '/timeline' },
     ],
     'Features': [
-      { label: 'Memory Palace', to: '/memory' },
       { label: 'Story Games', to: '/games' },
       { label: 'About', to: '/about' },
+      { label: 'Contact', to: '/contact' },
     ],
     'Connect': [
       { label: 'GitHub', to: 'https://github.com/CrodBac4rdi', external: true },
