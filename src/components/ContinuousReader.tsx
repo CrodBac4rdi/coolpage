@@ -29,15 +29,9 @@ const ContinuousReader: React.FC = () => {
       
       try {
         setLoading(true)
-        const response = await fetch(`/stories/${storyId}/story.json`)
-        if (!response.ok) {
-          // Fallback to data directory
-          const fallbackResponse = await import(`../data/stories/${storyId}.json`)
-          setStory(fallbackResponse.default)
-        } else {
-          const storyData = await response.json()
-          setStory(storyData)
-        }
+        // Direct import from data directory (faster)
+        const storyModule = await import(`../data/stories/${storyId}.json`)
+        setStory(storyModule.default)
       } catch (err) {
         console.error('Error loading story:', err)
         setError('Story not found')

@@ -12,11 +12,8 @@
     "deploy": "npm run build && echo 'Deploy-Befehl hier einfügen'"
   },
   "dependencies": {
-    "dompurify": "^3.2.6",
     "framer-motion": "^12.20.1",
-    "gray-matter": "^4.0.3",
     "lucide-react": "^0.525.0",
-    "marked": "^16.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3"
