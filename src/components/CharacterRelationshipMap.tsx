@@ -58,12 +58,6 @@ export default function CharacterRelationshipMap({
   const [hoveredRelationship, setHoveredRelationship] = useState<Relationship | null>(null)
   const [selectedRelationType, setSelectedRelationType] = useState<string | null>(null)
   
-  // Debug log
-  console.log('CharacterRelationshipMap render:', {
-    charactersCount: characters.length,
-    relationshipsCount: relationships.length,
-    relationships: relationships.slice(0, 3)
-  })
 
   // Calculate positions for characters in a circle
   const calculatePosition = (index: number, total: number) => {
@@ -138,7 +132,15 @@ export default function CharacterRelationshipMap({
 
       {/* Relationship Map */}
       <div className="relative w-full h-[600px] bg-black/20 rounded-3xl overflow-hidden">
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 600">
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet">
+          {/* Global definitions */}
+          <defs>
+            <radialGradient id="gradient-bg">
+              <stop offset="0%" stopColor="rgba(139, 92, 246, 0.3)" />
+              <stop offset="100%" stopColor="rgba(59, 130, 246, 0.3)" />
+            </radialGradient>
+          </defs>
+          
           {/* Relationship Lines */}
           {filteredRelationships.map((relationship, index) => {
             const fromChar = characters.find(c => c.id === relationship.from)
@@ -150,9 +152,6 @@ export default function CharacterRelationshipMap({
               (selectedCharacterId && (relationship.from === selectedCharacterId || relationship.to === selectedCharacterId))
 
 
-            const path = getRelationshipPath(fromChar, toChar)
-            console.log(`Path for ${fromChar.name} -> ${toChar.name}:`, path)
-            
             return (
               <g key={index}>
                 <defs>
@@ -181,10 +180,10 @@ export default function CharacterRelationshipMap({
                   stroke={`url(#gradient-${index})`}
                   strokeWidth={relationship.intensity * 2}
                   strokeLinecap="round"
-                  initial={{ pathLength: 0, opacity: 0 }}
+                  initial={{ pathLength: 0 }}
                   animate={{ 
                     pathLength: 1, 
-                    opacity: isHighlighted ? 1 : 0.3,
+                    opacity: isHighlighted ? 1 : 0.6,
                     strokeWidth: isHighlighted ? relationship.intensity * 3 : relationship.intensity * 2
                   }}
                   transition={{ duration: 1, delay: index * 0.1 }}
@@ -195,49 +194,60 @@ export default function CharacterRelationshipMap({
               </g>
             )
           })}
-        </svg>
-
-        {/* Character Nodes */}
-        {characters.map((character, index) => {
-          const position = calculatePosition(index, characters.length)
-          const isHighlighted = selectedCharacterId === character.id
-          const hasActiveRelationship = hoveredRelationship && 
-            (hoveredRelationship.from === character.id || hoveredRelationship.to === character.id)
-
-          return (
-            <motion.div
-              key={character.id}
-              className="absolute"
-              style={{ left: position.x - 40, top: position.y - 40 }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ 
-                scale: isHighlighted || hasActiveRelationship ? 1.2 : 1, 
-                opacity: 1 
-              }}
-              transition={{ delay: index * 0.05, type: "spring" }}
-            >
-              <motion.div
-                className={`w-20 h-20 rounded-full border-3 flex items-center justify-center cursor-pointer transition-all ${
-                  isHighlighted || hasActiveRelationship
-                    ? 'border-white shadow-2xl shadow-purple-500/50'
-                    : 'border-white/30 hover:border-white/60'
-                }`}
-                style={{ 
-                  background: `linear-gradient(135deg, ${character.gradient.split(' ')[1]}, ${character.gradient.split(' ')[3]})` 
+          
+          {/* Character Nodes */}
+          {characters.map((character, index) => {
+            const position = calculatePosition(index, characters.length)
+            const isHighlighted = selectedCharacterId === character.id
+            const hasActiveRelationship = hoveredRelationship && 
+              (hoveredRelationship.from === character.id || hoveredRelationship.to === character.id)
+            
+            return (
+              <motion.g
+                key={character.id}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ 
+                  scale: isHighlighted || hasActiveRelationship ? 1.2 : 1, 
+                  opacity: 1 
                 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                transition={{ delay: index * 0.05, type: "spring" }}
+                style={{
+                  transformOrigin: `${position.x}px ${position.y}px`
+                }}
               >
-                <span className="text-2xl">{character.icon}</span>
-              </motion.div>
-              <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 text-center">
-                <p className="text-xs font-medium text-white whitespace-nowrap bg-black/50 px-2 py-1 rounded">
+                <circle
+                  cx={position.x}
+                  cy={position.y}
+                  r="40"
+                  fill="url(#gradient-bg)"
+                  stroke={isHighlighted || hasActiveRelationship ? "white" : "rgba(255,255,255,0.3)"}
+                  strokeWidth="3"
+                  className="cursor-pointer"
+                />
+                <text
+                  x={position.x}
+                  y={position.y}
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fontSize="24"
+                  className="pointer-events-none"
+                >
+                  {character.icon}
+                </text>
+                <text
+                  x={position.x}
+                  y={position.y + 55}
+                  textAnchor="middle"
+                  fontSize="12"
+                  fill="white"
+                  className="pointer-events-none"
+                >
                   {character.name}
-                </p>
-              </div>
-            </motion.div>
-          )
-        })}
+                </text>
+              </motion.g>
+            )
+          })}
+        </svg>
 
         {/* Relationship Tooltip */}
         {hoveredRelationship && (
