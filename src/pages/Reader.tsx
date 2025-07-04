@@ -12,6 +12,9 @@ import FocusModeControl from '../components/FocusModeControl'
 import { useAmbientMode } from '../hooks/useAmbientMode'
 import AmbientBackground from '../components/AmbientBackground'
 import AmbientModeControls from '../components/AmbientModeControls'
+import CharacterVoiceVisualizer from '../components/CharacterVoiceVisualizer'
+import CharacterMoodIndicator from '../components/CharacterMoodIndicator'
+import { characters } from '../data/characters'
 
 export default function Reader() {
   const { id } = useParams<{ id: string }>()
@@ -25,6 +28,8 @@ export default function Reader() {
   const [activeChapter, setActiveChapter] = useState(0)
   const [hasReadFirstChapter, setHasReadFirstChapter] = useState(false)
   const [chaptersRead, setChaptersRead] = useState<Set<number>>(new Set())
+  const [activeDialogue, setActiveDialogue] = useState<{ character: any, text: string } | null>(null)
+  const [currentParagraphText, setCurrentParagraphText] = useState<string>('')
 
   const story = id ? getStoryById(id) : null
   const { 
@@ -139,6 +144,45 @@ export default function Reader() {
         </div>
       </div>
     )
+  }
+
+  // Detect which character is speaking based on context
+  const detectSpeakingCharacter = (paragraph: string, chapter: any, paragraphIndex: number) => {
+    // Get characters from this story
+    const storyCharacters = characters.filter(char => char.storyId === story.id)
+    
+    // Look for character names in surrounding paragraphs
+    const contextRange = 3
+    const startIndex = Math.max(0, paragraphIndex - contextRange)
+    const endIndex = Math.min(chapter.content.length - 1, paragraphIndex + contextRange)
+    
+    for (let i = startIndex; i <= endIndex; i++) {
+      const contextParagraph = chapter.content[i]
+      
+      for (const character of storyCharacters) {
+        // Check for character name mentions
+        if (contextParagraph.includes(character.name)) {
+          return character
+        }
+        
+        // Check for character-specific keywords
+        const characterKeywords = [
+          ...(character.quirks || []),
+          ...(character.personality || [])
+        ]
+        
+        const matchCount = characterKeywords.filter(keyword => 
+          contextParagraph.toLowerCase().includes(keyword.toLowerCase())
+        ).length
+        
+        if (matchCount >= 2) {
+          return character
+        }
+      }
+    }
+    
+    // Default to first character if no match found
+    return storyCharacters[0]
   }
 
   const toggleFavorite = (chapterId: number) => {
@@ -260,6 +304,23 @@ export default function Reader() {
                         className="w-full mt-1"
                       />
                     </div>
+                  </div>
+                </div>
+
+                {/* Character Moods */}
+                <div className="mb-6">
+                  <h3 className="font-semibold mb-3 flex items-center gap-2">
+                    <Heart className="w-4 h-4" />
+                    Charakter-Stimmungen
+                  </h3>
+                  <div className="space-y-3">
+                    {characters.filter(char => char.storyId === story.id).map(character => (
+                      <CharacterMoodIndicator
+                        key={character.id}
+                        character={character}
+                        currentText={currentParagraphText}
+                      />
+                    ))}
                   </div>
                 </div>
 
@@ -435,6 +496,24 @@ export default function Reader() {
                         if (ambientConfig.colorShiftEnabled) {
                           updateMoodFromText(paragraph)
                         }
+                        
+                        // Update current paragraph for mood tracking
+                        setCurrentParagraphText(paragraph)
+                        
+                        // Check if this is dialogue
+                        const dialogueMatch = paragraph.match(/^"(.+)"/)
+                        if (dialogueMatch) {
+                          // Try to identify which character is speaking
+                          const detectedCharacter = detectSpeakingCharacter(paragraph, chapter, paragraphIndex)
+                          if (detectedCharacter) {
+                            setActiveDialogue({
+                              character: detectedCharacter,
+                              text: dialogueMatch[1]
+                            })
+                          }
+                        } else {
+                          setActiveDialogue(null)
+                        }
                       }}
                       onMouseEnter={() => focusMode && setCurrentParagraph(globalParagraphIndex)}
                       onMouseLeave={() => focusMode && setCurrentParagraph(null)}
@@ -541,6 +620,15 @@ export default function Reader() {
         onToggleColorShift={toggleColorShift}
         moodPresets={moodPresets}
       />
+
+      {/* Character Voice Visualizer */}
+      {activeDialogue && (
+        <CharacterVoiceVisualizer
+          character={activeDialogue.character}
+          dialogue={activeDialogue.text}
+          isActive={true}
+        />
+      )}
 
       {/* Achievement Notification */}
       <AchievementNotification
