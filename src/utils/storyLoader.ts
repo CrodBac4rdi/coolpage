@@ -10,6 +10,9 @@ export interface Chapter {
   emoji: string
   content: string[]
   arc?: string
+  description?: string
+  keyMoments?: string[]
+  emotionalIntensity?: 1 | 2 | 3 | 4 | 5
 }
 
 export interface ManhwaStory {

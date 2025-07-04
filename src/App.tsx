@@ -13,6 +13,7 @@ const NotFound = lazy(() => import('./pages/NotFound'))
 const ManhwaList = lazy(() => import('./pages/ManhwaList'))
 const Reader = lazy(() => import('./pages/Reader'))
 const Games = lazy(() => import('./pages/Games'))
+const Timeline = lazy(() => import('./pages/Timeline'))
 
 // Loading component
 const PageLoader = () => (
@@ -35,6 +36,7 @@ function App() {
           <Route path="manhwa" element={<Suspense fallback={<PageLoader />}><ManhwaList /></Suspense>} />
           <Route path="reader/:id" element={<Suspense fallback={<PageLoader />}><Reader /></Suspense>} />
           <Route path="games" element={<Suspense fallback={<PageLoader />}><Games /></Suspense>} />
+          <Route path="timeline" element={<Suspense fallback={<PageLoader />}><Timeline /></Suspense>} />
           <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
         </Route>
       </Routes>
