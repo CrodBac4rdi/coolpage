@@ -13,15 +13,41 @@ export default function Blog() {
   const [selectedCharacter, setSelectedCharacter] = useState<any>(null)
   const [viewMode, setViewMode] = useState<'grid' | 'map'>('grid')
   const [searchTerm, setSearchTerm] = useState('')
+  const [selectedStory, setSelectedStory] = useState<string>('all')
   const stories = loadStories()
 
   const filteredCharacters = useMemo(() => {
-    if (!searchTerm) return characters
-    return characters.filter(char => 
-      char.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      char.role.toLowerCase().includes(searchTerm.toLowerCase())
+    let filtered = characters
+    
+    // Filter by story
+    if (selectedStory !== 'all') {
+      filtered = filtered.filter(char => char.storyId === selectedStory)
+    }
+    
+    // Filter by search term
+    if (searchTerm) {
+      filtered = filtered.filter(char => 
+        char.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        char.role.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    }
+    
+    return filtered
+  }, [searchTerm, selectedStory])
+
+  const filteredRelationships = useMemo(() => {
+    if (selectedStory === 'all') return characterRelationships
+    
+    // Get character IDs from selected story
+    const storyCharacterIds = characters
+      .filter(char => char.storyId === selectedStory)
+      .map(char => char.id)
+    
+    // Filter relationships to only include those between characters in the selected story
+    return characterRelationships.filter(rel => 
+      storyCharacterIds.includes(rel.from) && storyCharacterIds.includes(rel.to)
     )
-  }, [searchTerm])
+  }, [selectedStory])
 
   return (
     <>
@@ -60,32 +86,48 @@ export default function Blog() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="flex flex-col sm:flex-row gap-4 items-center justify-between mb-8"
+            className="flex flex-col lg:flex-row gap-4 items-center justify-between mb-8"
           >
-            {/* View Mode Toggle */}
-            <div className="flex gap-2 bg-white/5 rounded-full p-1">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
-                  viewMode === 'grid'
-                    ? 'bg-white/20 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
+            <div className="flex flex-col sm:flex-row gap-4 items-center">
+              {/* Story Filter */}
+              <select
+                value={selectedStory}
+                onChange={(e) => setSelectedStory(e.target.value)}
+                className="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-white focus:outline-none focus:border-purple-500/50 focus:bg-white/20 transition-all"
               >
-                <Users className="w-4 h-4" />
-                <span>Charaktere</span>
-              </button>
-              <button
-                onClick={() => setViewMode('map')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
-                  viewMode === 'map'
-                    ? 'bg-white/20 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                <Network className="w-4 h-4" />
-                <span>Beziehungen</span>
-              </button>
+                <option value="all">Alle Stories</option>
+                {stories.map(story => (
+                  <option key={story.id} value={story.id}>
+                    {story.title}
+                  </option>
+                ))}
+              </select>
+
+              {/* View Mode Toggle */}
+              <div className="flex gap-2 bg-white/5 rounded-full p-1">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
+                    viewMode === 'grid'
+                      ? 'bg-white/20 text-white'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  <Users className="w-4 h-4" />
+                  <span>Charaktere</span>
+                </button>
+                <button
+                  onClick={() => setViewMode('map')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
+                    viewMode === 'map'
+                      ? 'bg-white/20 text-white'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  <Network className="w-4 h-4" />
+                  <span>Beziehungen</span>
+                </button>
+              </div>
             </div>
 
             {/* Search (only in grid view) */}
@@ -166,8 +208,8 @@ export default function Blog() {
                 exit={{ opacity: 0, scale: 0.95 }}
               >
                 <CharacterRelationshipMap
-                  characters={characters}
-                  relationships={characterRelationships}
+                  characters={filteredCharacters}
+                  relationships={filteredRelationships}
                 />
               </motion.div>
             )}
@@ -181,10 +223,10 @@ export default function Blog() {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
           >
             {[
-              { label: 'Charaktere', value: characters.length, icon: '👥' },
-              { label: 'Stories', value: stories.length, icon: '📚' },
-              { label: 'Beziehungen', value: characterRelationships.length, icon: '💞' },
-              { label: 'Welten', value: '∞', icon: '🌟' }
+              { label: 'Charaktere', value: filteredCharacters.length, icon: '👥' },
+              { label: 'Stories', value: selectedStory === 'all' ? stories.length : 1, icon: '📚' },
+              { label: 'Beziehungen', value: filteredRelationships.length, icon: '💞' },
+              { label: 'Welten', value: selectedStory === 'all' ? '∞' : '1', icon: '🌟' }
             ].map((stat, i) => (
               <div key={i} className="text-center p-6 bg-white/5 rounded-2xl backdrop-blur-sm">
                 <div className="text-3xl mb-2">{stat.icon}</div>
