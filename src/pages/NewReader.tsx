@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Book, Menu, X, Settings, ChevronUp, Moon, Sun, Type, Bookmark, Home } from 'lucide-react'
+import { Book, Menu, X, Settings, Moon, Sun, Bookmark, Home } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getStoryById } from '../utils/storyLoader'
@@ -14,15 +14,15 @@ export default function NewReader() {
   const [fontSize, setFontSize] = useState(20)
   const [fontFamily, setFontFamily] = useState('serif')
   const [lineHeight, setLineHeight] = useState(1.8)
-  const [bookmarks, setBookmarks] = useState<string[]>([])
+  const [bookmarks] = useState<string[]>([])
   const [isScrollingUp, setIsScrollingUp] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
   
   const contentRef = useRef<HTMLDivElement>(null)
   const lastScrollY = useRef(0)
-  const scrollTimeout = useRef<NodeJS.Timeout>()
+  const scrollTimeout = useRef<NodeJS.Timeout | undefined>(undefined)
   
-  const story = id ? getStoryById(id) : null
+  const story = id ? getStoryById(id) : undefined
   
   if (!story) {
     return (
@@ -79,14 +79,14 @@ export default function NewReader() {
     }
   }
 
-  // Toggle bookmark
-  const toggleBookmark = (chapterId: string) => {
-    setBookmarks(prev => 
-      prev.includes(chapterId) 
-        ? prev.filter(id => id !== chapterId)
-        : [...prev, chapterId]
-    )
-  }
+  // Toggle bookmark - currently unused but kept for future
+  // const toggleBookmark = (chapterId: string) => {
+  //   setBookmarks(prev => 
+  //     prev.includes(chapterId) 
+  //       ? prev.filter(id => id !== chapterId)
+  //       : [...prev, chapterId]
+  //   )
+  // }
 
   return (
     <>
@@ -270,7 +270,7 @@ export default function NewReader() {
                           Chapter {index + 1}
                         </div>
                       </div>
-                      {bookmarks.includes(chapter.id) && (
+                      {bookmarks.includes(String(chapter.id)) && (
                         <Bookmark className="w-4 h-4 fill-current" />
                       )}
                     </button>
