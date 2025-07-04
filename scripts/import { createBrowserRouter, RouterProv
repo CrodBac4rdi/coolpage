@@ -1,7 +1,0 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-const router = createBrowserRouter([
-  // deine Routen hier
-], {
-  basename: '/coolpage' // Muss dem Repository-Namen entsprechen
-});

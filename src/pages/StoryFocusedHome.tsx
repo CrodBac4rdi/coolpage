@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Book, ArrowRight, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { manhwaStories } from '../utils/clientStoryLoader'
+import { loadStories } from '../utils/clientStoryLoader'
 
 // Convert story data to display format
 const convertStoryToDisplay = (story: any) => ({
@@ -48,15 +48,32 @@ function getThemeForGenre(genre: string) {
   return themes[genre] || themes['Romance']
 }
 
-// Convert loaded stories to display format
-const stories = manhwaStories.map(convertStoryToDisplay)
-
 export default function StoryFocusedHome() {
   const [currentTime, setCurrentTime] = useState(new Date())
+  const [stories, setStories] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
   
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000)
     return () => clearInterval(timer)
+  }, [])
+
+  // Load stories
+  useEffect(() => {
+    const loadStoriesData = () => {
+      setLoading(true)
+      try {
+        const storyData = loadStories()
+        const displayStories = storyData.map(convertStoryToDisplay)
+        setStories(displayStories)
+      } catch (error) {
+        console.error('Failed to load stories:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    
+    loadStoriesData()
   }, [])
 
   const getTimeGreeting = () => {
@@ -139,8 +156,14 @@ export default function StoryFocusedHome() {
 
       {/* Stories Grid */}
       <div className="container mx-auto px-4 sm:px-6 pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
-          {stories.map((story, index) => (
+        {loading ? (
+          <div className="text-center py-16">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+            <p className="text-gray-300">Loading stories...</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
+            {stories.map((story, index) => (
             <motion.div
               key={story.id}
               initial={{ opacity: 0, y: 20 }}
@@ -213,7 +236,8 @@ export default function StoryFocusedHome() {
               </Link>
             </motion.div>
           ))}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   )
