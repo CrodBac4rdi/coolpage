@@ -1,18 +1,18 @@
 import { Outlet } from 'react-router-dom'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import ModernNavbar from '../components/ModernNavbar'
+import ModernFooter from '../components/ModernFooter'
 import { useGestureNavigation } from '../hooks/useGestureNavigation'
 
 export default function RootLayout() {
   useGestureNavigation()
   
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
-      <Navbar />
+    <div className="min-h-screen surface-base text-primary transition-colors">
+      <ModernNavbar />
       <main>
         <Outlet />
       </main>
-      <Footer />
+      <ModernFooter />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 // Auto-import all story JSON files
-const storyModules = import.meta.glob('/src/data/stories/*.json', { 
+const storyModules = import.meta.glob('../data/stories/*.json', { 
   eager: true, 
   import: 'default' 
 }) as Record<string, any>

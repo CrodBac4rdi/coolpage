@@ -5,12 +5,12 @@ import ScrollToTop from './components/ScrollToTop'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 // Lazy load all pages
-const Home = lazy(() => import('./pages/Home'))
-const About = lazy(() => import('./pages/About'))
+const Home = lazy(() => import('./pages/ModernHome'))
+const About = lazy(() => import('./pages/ModernAbout'))
 const Blog = lazy(() => import('./pages/Blog'))
-const Contact = lazy(() => import('./pages/Contact'))
+const Contact = lazy(() => import('./pages/ModernContact'))
 const NotFound = lazy(() => import('./pages/NotFound'))
-const ManhwaList = lazy(() => import('./pages/ManhwaList'))
+const ManhwaList = lazy(() => import('./pages/ModernManhwaList'))
 const Reader = lazy(() => import('./pages/ModernReader'))
 const Games = lazy(() => import('./pages/Games'))
 const Timeline = lazy(() => import('./pages/Timeline'))
