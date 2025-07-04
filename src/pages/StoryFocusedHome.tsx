@@ -2,7 +2,14 @@ import { motion } from 'framer-motion'
 import { Book, ArrowRight, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { loadStories } from '../utils/clientStoryLoader'
+// Import stories directly from the data directory
+import forbiddenDesire from '../data/stories/forbidden-desire.json'
+import moonlightAcademy from '../data/stories/moonlight-academy.json'
+import codeBreakers from '../data/stories/code-breakers.json'
+import dreamCatcher from '../data/stories/dream-catcher.json'
+import myBossIsACat from '../data/stories/my-boss-is-a-cat.json'
+import shadowInMirror from '../data/stories/shadow-in-the-mirror.json'
+import transferStudent from '../data/stories/the-transfer-student.json'
 
 // Convert story data to display format
 const convertStoryToDisplay = (story: any) => ({
@@ -63,8 +70,16 @@ export default function StoryFocusedHome() {
     const loadStoriesData = () => {
       setLoading(true)
       try {
-        const storyData = loadStories()
-        const displayStories = storyData.map(convertStoryToDisplay)
+        const allStories = [
+          forbiddenDesire,
+          moonlightAcademy,
+          codeBreakers,
+          dreamCatcher,
+          myBossIsACat,
+          shadowInMirror,
+          transferStudent
+        ]
+        const displayStories = allStories.map(convertStoryToDisplay)
         setStories(displayStories)
       } catch (error) {
         console.error('Failed to load stories:', error)
