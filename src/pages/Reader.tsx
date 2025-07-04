@@ -12,10 +12,7 @@ import FocusModeControl from '../components/FocusModeControl'
 import { useAmbientMode } from '../hooks/useAmbientMode'
 import AmbientBackground from '../components/AmbientBackground'
 import AmbientModeControls from '../components/AmbientModeControls'
-import CharacterVoiceVisualizer from '../components/CharacterVoiceVisualizer'
 import CharacterMoodIndicator from '../components/CharacterMoodIndicator'
-import ReadingRhythmAnalyzer from '../components/ReadingRhythmAnalyzer'
-import SocialReadingTraces from '../components/SocialReadingTraces'
 import { characters } from '../data/characters'
 
 export default function Reader() {

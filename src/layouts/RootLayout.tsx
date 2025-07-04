@@ -1,7 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import SecretNetwork from '../components/SecretNetwork'
 import { useGestureNavigation } from '../hooks/useGestureNavigation'
 
 export default function RootLayout() {
@@ -15,7 +14,6 @@ export default function RootLayout() {
         <Outlet />
       </main>
       <Footer />
-      <SecretNetwork currentPage={location.pathname.slice(1) || 'home'} />
     </div>
   )
 }
