@@ -5,6 +5,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { characters, getCharacterById } from '../data/characters'
 import { loadStories } from '../utils/storyLoader'
 import SEOHead from '../components/SEOHead'
+import ModernIcon, { getCharacterIconType } from '../components/ModernIcon'
 
 export default function Blog() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -54,7 +55,11 @@ export default function Blog() {
             {/* Header */}
             <div className="relative p-8 pb-0">
               <div className="flex items-start gap-6">
-                <div className="text-8xl">{selectedCharacter.icon}</div>
+                <ModernIcon 
+                  type={getCharacterIconType(selectedCharacter)} 
+                  size="xl"
+                  className="mb-4"
+                />
                 <div className="flex-1">
                   <h1 className="text-4xl font-bold text-white mb-2">
                     {selectedCharacter.name}
@@ -461,13 +466,11 @@ export default function Blog() {
                 <div className={`bg-gradient-to-br ${character.gradient} backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:scale-105 hover:border-white/30 hover:shadow-2xl hover:shadow-${character.iconColor}-500/20 h-full min-h-[320px] flex flex-col`}>
                   {/* Character Avatar & Identity */}
                   <div className="text-center mb-4 flex-shrink-0">
-                    <motion.div 
-                      className="text-6xl mb-3 inline-block"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      {character.icon}
-                    </motion.div>
+                    <ModernIcon 
+                      type={getCharacterIconType(character)} 
+                      size="lg"
+                      className="mb-3"
+                    />
                     <h3 className="text-xl font-bold text-white mb-1 leading-tight">
                       {character.name}
                     </h3>

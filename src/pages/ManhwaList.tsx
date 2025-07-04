@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { loadStories } from '../utils/storyLoader'
 import SEOHead from '../components/SEOHead'
 import { useMemo } from 'react'
+import ModernIcon from '../components/ModernIcon'
 
 export default function ManhwaList() {
   const manhwaStories = loadStories()
@@ -145,13 +146,17 @@ export default function ManhwaList() {
                         {/* Top Section - Title & Atmosphere */}
                         <div className="flex-1 flex flex-col justify-center text-center">
                           {/* Magical Emoji */}
-                          <motion.div 
-                            className="story-emoji-mobile text-4xl xs:text-5xl sm:text-6xl lg:text-7xl mb-3 xs:mb-4 sm:mb-6"
-                            whileHover={{ scale: 1.1, rotate: 3 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                          >
-                            {story.coverEmoji}
-                          </motion.div>
+                          <ModernIcon 
+                            type={story.id.includes('desire') ? 'romance' : 
+                                  story.id.includes('academy') ? 'magic' :
+                                  story.id.includes('code') ? 'cyberpunk' :
+                                  story.id.includes('dream') ? 'fantasy' :
+                                  story.id.includes('cat') ? 'comedy' :
+                                  story.id.includes('mirror') ? 'supernatural' :
+                                  story.id.includes('transfer') ? 'drama' : 'sparkles'}
+                            size="lg"
+                            className="mb-3 xs:mb-4 sm:mb-6"
+                          />
                           
                           {/* Title */}
                           <h3 className={`story-title-mobile text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold mb-2 xs:mb-3 ${mood.textColor} leading-tight`}>

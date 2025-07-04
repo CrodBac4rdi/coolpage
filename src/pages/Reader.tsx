@@ -3,6 +3,7 @@ import { Book, Heart, Menu, X, ArrowLeft, Bookmark, Settings } from 'lucide-reac
 import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getStoryById } from '../utils/storyLoader'
+import ModernIcon from '../components/ModernIcon'
 
 export default function Reader() {
   const { id } = useParams<{ id: string }>()
@@ -115,7 +116,7 @@ export default function Reader() {
               </button>
 
               <div className="text-sm font-medium">
-                {story.title} - Chapter {activeChapter + 1}
+                {story.title}
               </div>
 
               <button
@@ -268,7 +269,17 @@ export default function Reader() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12 pt-16"
         >
-          <div className="text-6xl mb-4">{story.coverEmoji}</div>
+          <ModernIcon 
+            type={story.id.includes('desire') ? 'romance' : 
+                  story.id.includes('academy') ? 'magic' :
+                  story.id.includes('code') ? 'cyberpunk' :
+                  story.id.includes('dream') ? 'fantasy' :
+                  story.id.includes('cat') ? 'comedy' :
+                  story.id.includes('mirror') ? 'supernatural' :
+                  story.id.includes('transfer') ? 'drama' : 'sparkles'}
+            size="xl"
+            className="mb-4"
+          />
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400">
               {story.title}
@@ -287,84 +298,95 @@ export default function Reader() {
           </div>
         </motion.div>
 
-        {/* Chapters */}
-        <div className="space-y-16">
-          {story.chapters.map((chapter, index) => (
-            <motion.div
-              key={chapter.id}
-              ref={(el) => { chapterRefs.current[index] = el }}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: 0.1 }}
-              className={`${isDark ? 'bg-gray-800/30' : 'bg-white/70'} backdrop-blur-sm rounded-2xl p-8 border ${isDark ? 'border-gray-700/50' : 'border-gray-200/50'}`}
-            >
-              {/* Chapter Header */}
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex items-center gap-4">
-                  <div className="text-4xl">{story.coverEmoji}</div>
-                  <div>
-                    <h2 className="text-2xl md:text-3xl font-bold">
-                      Chapter {chapter.id}
-                    </h2>
-                    <p className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                      {chapter.title}
-                    </p>
-                  </div>
-                </div>
-                <button
-                  onClick={() => toggleFavorite(chapter.id)}
-                  className="p-3 rounded-full transition-all hover:scale-110"
-                >
-                  <Heart
-                    className={`w-6 h-6 ${
-                      favorites.includes(chapter.id)
-                        ? 'fill-red-500 text-red-500'
-                        : isDark ? 'text-gray-400 hover:text-red-400' : 'text-gray-500 hover:text-red-500'
-                    }`}
-                  />
-                </button>
-              </div>
-
-              {/* Chapter Content */}
-              <div className="prose prose-lg max-w-none">
-                {chapter.content.map((paragraph, paragraphIndex) => (
-                  <motion.p
-                    key={paragraphIndex}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: paragraphIndex * 0.05 }}
-                    className={`leading-relaxed mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}
-                    style={{ fontSize: `${fontSize}px` }}
+        {/* Continuous Story Flow - 2025 Scrollytelling Style */}
+        <div className="relative">
+          {/* Seamless Story Content */}
+          <div className="prose prose-lg max-w-none">
+            {story.chapters.map((chapter, chapterIndex) => (
+              <div key={chapter.id} className="relative">
+                {/* Subtle Chapter Transition */}
+                {chapterIndex > 0 && (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, margin: "-200px" }}
+                    className="flex items-center justify-center py-16 my-8"
                   >
-                    {paragraph}
-                  </motion.p>
-                ))}
-              </div>
+                    <div className={`flex items-center gap-4 px-6 py-3 rounded-full backdrop-blur-sm border ${isDark ? 'bg-gray-800/50 border-gray-600/30' : 'bg-white/50 border-gray-300/30'}`}>
+                      <div className="w-8 h-px bg-gradient-to-r from-transparent via-pink-500 to-transparent"></div>
+                      <span className={`text-sm font-medium ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                        {chapter.title}
+                      </span>
+                      <div className="w-8 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+                    </div>
+                  </motion.div>
+                )}
 
-              {/* Chapter Footer */}
-              <div className={`mt-8 pt-6 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'} flex items-center justify-between`}>
-                <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  Chapter {chapter.id} von {story.chapters.length}
-                </div>
-                <div className="flex items-center gap-2">
-                  {index < story.chapters.length - 1 && (
-                    <button
-                      onClick={() => scrollToChapter(index + 1)}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        isDark 
-                          ? 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30' 
-                          : 'bg-blue-100 text-blue-600 hover:bg-blue-200'
-                      }`}
+                {/* Chapter Reference for Navigation */}
+                <div 
+                  ref={(el) => { chapterRefs.current[chapterIndex] = el }}
+                  className="absolute -top-24"
+                />
+
+                {/* Flowing Content */}
+                {chapter.content.map((paragraph, paragraphIndex) => {
+                  const isFirstParagraph = chapterIndex === 0 && paragraphIndex === 0
+                  
+                  return (
+                    <motion.p
+                      key={`${chapter.id}-${paragraphIndex}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ 
+                        delay: paragraphIndex * 0.03,
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 20
+                      }}
+                      className={`
+                        leading-relaxed transition-all duration-300
+                        ${isDark ? 'text-gray-300' : 'text-gray-700'}
+                        ${
+                          isFirstParagraph 
+                            ? 'text-xl md:text-2xl font-medium mb-8 first-letter:text-6xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:text-transparent first-letter:bg-clip-text first-letter:bg-gradient-to-br first-letter:from-pink-400 first-letter:to-purple-500' 
+                            : 'mb-6'
+                        }
+                      `}
+                      style={{ fontSize: isFirstParagraph ? undefined : `${fontSize}px` }}
                     >
-                      Nächstes Kapitel
-                    </button>
-                  )}
-                </div>
+                      {paragraph}
+                    </motion.p>
+                  )
+                })}
+
+                {/* Breathing Space Between Chapters */}
+                {chapterIndex < story.chapters.length - 1 && (
+                  <div className="h-16" />
+                )}
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
+
+          {/* Floating Progress Indicator */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="fixed right-6 top-1/2 transform -translate-y-1/2 z-30"
+          >
+            <div className={`w-1 h-32 rounded-full ${isDark ? 'bg-gray-700' : 'bg-gray-300'} relative overflow-hidden`}>
+              <motion.div 
+                className="absolute top-0 left-0 w-full bg-gradient-to-b from-pink-500 to-purple-500 rounded-full"
+                style={{ 
+                  height: `${((activeChapter + 1) / story.chapters.length) * 100}%`,
+                  transition: 'height 0.3s ease-out'
+                }}
+              />
+            </div>
+            <div className={`text-xs mt-2 text-center ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              {activeChapter + 1}/{story.chapters.length}
+            </div>
+          </motion.div>
         </div>
 
         {/* Story End */}
