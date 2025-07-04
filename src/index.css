@@ -58,13 +58,7 @@ body {
   background-color: var(--surface-base);
 }
 
-/* Text selection */
-* {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+/* Text selection - FIXED */
 
 p, span, div[class*="text"], h1, h2, h3, h4, h5, h6, .selectable {
   -webkit-user-select: text;
