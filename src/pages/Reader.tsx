@@ -27,7 +27,7 @@ export default function Reader() {
   const [activeChapter, setActiveChapter] = useState(0)
   const [hasReadFirstChapter, setHasReadFirstChapter] = useState(false)
   const [chaptersRead, setChaptersRead] = useState<Set<number>>(new Set())
-  const [activeDialogue, setActiveDialogue] = useState<{ character: any, text: string } | null>(null)
+  // const [activeDialogue, setActiveDialogue] = useState<{ character: any, text: string } | null>(null)
   const [currentParagraphText, setCurrentParagraphText] = useState<string>('')
 
   const story = id ? getStoryById(id) : null
@@ -505,13 +505,13 @@ export default function Reader() {
                           // Try to identify which character is speaking
                           const detectedCharacter = detectSpeakingCharacter(paragraph, chapter, paragraphIndex)
                           if (detectedCharacter) {
-                            setActiveDialogue({
-                              character: detectedCharacter,
-                              text: dialogueMatch[1]
-                            })
+                            // setActiveDialogue({
+                            //   character: detectedCharacter,
+                            //   text: dialogueMatch[1]
+                            // })
                           }
                         } else {
-                          setActiveDialogue(null)
+                          // setActiveDialogue(null)
                         }
                       }}
                       onMouseEnter={() => focusMode && setCurrentParagraph(globalParagraphIndex)}
@@ -620,33 +620,33 @@ export default function Reader() {
         moodPresets={moodPresets}
       />
 
-      {/* Character Voice Visualizer */}
-      {activeDialogue && (
+      {/* Character Voice Visualizer - temporarily disabled */}
+      {/* {activeDialogue && (
         <CharacterVoiceVisualizer
           character={activeDialogue.character}
           dialogue={activeDialogue.text}
           isActive={true}
         />
-      )}
+      )} */}
 
-      {/* Reading Rhythm Analyzer */}
-      <ReadingRhythmAnalyzer
+      {/* Reading Rhythm Analyzer - temporarily disabled */}
+      {/* <ReadingRhythmAnalyzer
         currentStoryId={story.id}
-        onInsightGenerated={(insight) => {
+        onInsightGenerated={(insight: any) => {
           // Could show as toast notification
           console.log('Reading insight:', insight)
         }}
-      />
+      /> */}
 
-      {/* Social Reading Traces */}
-      <SocialReadingTraces
+      {/* Social Reading Traces - temporarily disabled */}
+      {/* <SocialReadingTraces
         storyId={story.id}
         chapterId={activeChapter}
         currentParagraph={currentParagraphText ? Math.floor(Math.random() * 20) : 0}
-        onTraceClick={(trace) => {
+        onTraceClick={(trace: any) => {
           console.log('Trace clicked:', trace)
         }}
-      />
+      /> */}
 
 
       {/* Achievement Notification */}

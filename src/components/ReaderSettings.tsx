@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Settings, X, Type, Palette, Eye, Volume2 } from 'lucide-react'
-import { useState } from 'react'
+import { Settings, X, Type, Palette, Eye } from 'lucide-react'
 
 interface ReaderSettingsProps {
   isOpen: boolean

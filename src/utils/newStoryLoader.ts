@@ -164,7 +164,15 @@ export const loadStories = async (): Promise<ManhwaStory[]> => {
     console.warn('File-based loading failed, falling back to old system')
     // Import old loader as fallback
     const { loadStories: oldLoader } = await import('./storyLoader')
-    return oldLoader()
+    const oldStories = await oldLoader()
+    // Convert old format to new format
+    return oldStories.map(story => ({
+      ...story,
+      chapters: story.chapters.map(chapter => ({
+        ...chapter,
+        content: Array.isArray(chapter.content) ? chapter.content.join('\n\n') : chapter.content
+      }))
+    }))
   }
 }
 
