@@ -125,11 +125,14 @@ export default function ManhwaList() {
                   initial={{ opacity: 0, y: 30, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ delay: index * 0.1, type: "spring", damping: 30, stiffness: 200 }}
-                  className="group relative"
+                  className="group relative preserve-3d"
                 >
+                  {/* Book Shadow */}
+                  <div className="book-shadow" />
+                  
                   <Link to={`/reader/${story.id}`} className="block">
-                    {/* Book Cover Card */}
-                    <div className={`story-card-mobile relative h-[380px] xs:h-[420px] sm:h-[460px] lg:h-[480px] rounded-2xl xs:rounded-3xl overflow-hidden border border-white/20 transition-all duration-500 hover:scale-[1.02] xs:hover:scale-[1.03] hover:border-white/40 group-hover:shadow-2xl group-hover:shadow-${mood.accentColor}-500/20 touch-action-manipulation`}>
+                    {/* Book Cover Card with 3D Effect */}
+                    <div className={`book-3d story-card-mobile relative h-[380px] xs:h-[420px] sm:h-[460px] lg:h-[480px] rounded-2xl xs:rounded-3xl overflow-hidden border border-white/20 transition-all duration-500 hover:border-white/40 group-hover:shadow-2xl group-hover:shadow-${mood.accentColor}-500/20 touch-action-manipulation`}>
                       
                       {/* Background with Mood */}
                       <div className={`absolute inset-0 ${mood.backgroundPattern}`} />

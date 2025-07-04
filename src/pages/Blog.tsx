@@ -460,10 +460,11 @@ export default function Blog() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: -20 }}
                 transition={{ delay: index * 0.05, type: "spring", damping: 25 }}
-                className="group cursor-pointer"
+                className="group cursor-pointer preserve-3d"
                 onClick={() => setSearchParams({ character: character.id })}
               >
-                <div className={`bg-gradient-to-br ${character.gradient} backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:scale-105 hover:border-white/30 hover:shadow-2xl hover:shadow-${character.iconColor}-500/20 h-full min-h-[320px] flex flex-col`}>
+                <div className="book-shadow" />
+                <div className={`book-3d bg-gradient-to-br ${character.gradient} backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-${character.iconColor}-500/20 h-full min-h-[320px] flex flex-col`}>
                   {/* Character Avatar & Identity */}
                   <div className="text-center mb-4 flex-shrink-0">
                     <ModernIcon 
