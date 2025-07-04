@@ -57,11 +57,18 @@ export default function CharacterRelationshipMap({
 }: CharacterRelationshipMapProps) {
   const [hoveredRelationship, setHoveredRelationship] = useState<Relationship | null>(null)
   const [selectedRelationType, setSelectedRelationType] = useState<string | null>(null)
+  
+  // Debug log
+  console.log('CharacterRelationshipMap render:', {
+    charactersCount: characters.length,
+    relationshipsCount: relationships.length,
+    relationships: relationships.slice(0, 3)
+  })
 
   // Calculate positions for characters in a circle
   const calculatePosition = (index: number, total: number) => {
     const angle = (index * 2 * Math.PI) / total - Math.PI / 2
-    const radius = 250
+    const radius = 200
     const x = Math.cos(angle) * radius + 300
     const y = Math.sin(angle) * radius + 300
     return { x, y }
@@ -131,7 +138,7 @@ export default function CharacterRelationshipMap({
 
       {/* Relationship Map */}
       <div className="relative w-full h-[600px] bg-black/20 rounded-3xl overflow-hidden">
-        <svg className="absolute inset-0 w-full h-full">
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 600">
           {/* Relationship Lines */}
           {filteredRelationships.map((relationship, index) => {
             const fromChar = characters.find(c => c.id === relationship.from)
@@ -143,6 +150,9 @@ export default function CharacterRelationshipMap({
               (selectedCharacterId && (relationship.from === selectedCharacterId || relationship.to === selectedCharacterId))
 
 
+            const path = getRelationshipPath(fromChar, toChar)
+            console.log(`Path for ${fromChar.name} -> ${toChar.name}:`, path)
+            
             return (
               <g key={index}>
                 <defs>
