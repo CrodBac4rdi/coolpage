@@ -6,20 +6,20 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const footerLinks: Record<string, Array<{ label: string; to: string; external?: boolean }>> = {
-    Company: [
-      { label: 'About', to: '/about' },
-      { label: 'Features', to: '/features' },
-      { label: 'Projects', to: '/projects' },
+    'Story Universe': [
+      { label: 'Alle Stories', to: '/manhwa' },
+      { label: 'Charaktere', to: '/blog' },
+      { label: 'Timeline', to: '/timeline' },
     ],
-    Resources: [
-      { label: 'Blog', to: '/blog' },
+    'Features': [
+      { label: 'Memory Palace', to: '/memory' },
+      { label: 'Story Games', to: '/games' },
+      { label: 'About', to: '/about' },
+    ],
+    'Connect': [
+      { label: 'GitHub', to: 'https://github.com/CrodBac4rdi', external: true },
       { label: 'Contact', to: '/contact' },
       { label: 'Home', to: '/' },
-    ],
-    Connect: [
-      { label: 'GitHub', to: 'https://github.com/CrodBac4rdi', external: true },
-      { label: 'Twitter', to: 'https://twitter.com', external: true },
-      { label: 'LinkedIn', to: 'https://linkedin.com', external: true },
     ],
   }
 
@@ -39,7 +39,7 @@ export default function Footer() {
               Crod Babylon
             </h3>
             <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">
-              Your digital paradise in 2025. Building the future, one pixel at a time.
+              Dein digitales Story-Universum. Tauche ein in Welten voller Emotionen, Magie und unvergesslicher Momente.
             </p>
             <div className="flex items-center gap-2 text-gray-400 mb-2 text-sm">
               <MapPin className="w-4 h-4 flex-shrink-0" />

@@ -1,13 +1,18 @@
-import { motion } from 'framer-motion'
-import { Star, ArrowRight, Sparkles } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Star, ArrowRight, Sparkles, Search, Filter, Clock, Heart, Moon, Computer, Cat, Ghost, School } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { loadStories } from '../utils/storyLoader'
 import SEOHead from '../components/SEOHead'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import ModernIcon from '../components/ModernIcon'
 
 export default function ManhwaList() {
   const manhwaStories = loadStories()
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedGenre, setSelectedGenre] = useState('all')
+  const [selectedMood, setSelectedMood] = useState('all')
+  const [sortBy, setSortBy] = useState('default')
+  const [showFilters, setShowFilters] = useState(false)
   
   const storyMoods = useMemo(() => ({
     'forbidden-desire': {
@@ -68,6 +73,97 @@ export default function ManhwaList() {
     }
   }), [])
 
+  // Story filtering and sorting logic
+  const filteredAndSortedStories = useMemo(() => {
+    let filtered = manhwaStories
+
+    // Search filter
+    if (searchTerm) {
+      filtered = filtered.filter(story =>
+        story.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        story.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        storyMoods[story.id as keyof typeof storyMoods]?.tagline.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    }
+
+    // Genre filter (based on story themes)
+    if (selectedGenre !== 'all') {
+      filtered = filtered.filter(story => {
+        const mood = storyMoods[story.id as keyof typeof storyMoods]
+        return mood?.mood.toLowerCase().includes(selectedGenre.toLowerCase())
+      })
+    }
+
+    // Mood filter
+    if (selectedMood !== 'all') {
+      filtered = filtered.filter(story => {
+        const mood = storyMoods[story.id as keyof typeof storyMoods]
+        return mood?.atmosphere.toLowerCase().includes(selectedMood.toLowerCase())
+      })
+    }
+
+    // Sorting
+    switch (sortBy) {
+      case 'title':
+        return [...filtered].sort((a, b) => a.title.localeCompare(b.title))
+      case 'length':
+        return [...filtered].sort((a, b) => (b.chapters?.length || 0) - (a.chapters?.length || 0))
+      case 'newest':
+        return [...filtered].reverse()
+      default:
+        return filtered
+    }
+  }, [manhwaStories, searchTerm, selectedGenre, selectedMood, sortBy, storyMoods])
+
+  // Get unique genres and moods for filters
+  const availableGenres = useMemo(() => {
+    const genres = new Set<string>()
+    manhwaStories.forEach(story => {
+      const mood = storyMoods[story.id as keyof typeof storyMoods]
+      if (mood?.mood) {
+        mood.mood.split('•').forEach(genre => {
+          const cleanGenre = genre.trim().replace(/[🔥💼🖤🌙✨💙💻🔮📚🔍🐱😄💕👻🪞]/g, '').trim()
+          if (cleanGenre) genres.add(cleanGenre)
+        })
+      }
+    })
+    return Array.from(genres)
+  }, [manhwaStories, storyMoods])
+
+  const availableMoods = useMemo(() => {
+    const moods = new Set<string>()
+    manhwaStories.forEach(story => {
+      const mood = storyMoods[story.id as keyof typeof storyMoods]
+      if (mood?.atmosphere) {
+        moods.add(mood.atmosphere)
+      }
+    })
+    return Array.from(moods)
+  }, [manhwaStories, storyMoods])
+
+  const getReadingTime = (story: any) => {
+    const avgWordsPerChapter = 800
+    const totalWords = (story.chapters?.length || 1) * avgWordsPerChapter
+    const readingSpeed = 200 // words per minute
+    const minutes = Math.ceil(totalWords / readingSpeed)
+    
+    if (minutes < 60) return `${minutes} Min.`
+    const hours = Math.floor(minutes / 60)
+    const remainingMinutes = minutes % 60
+    return remainingMinutes > 0 ? `${hours}h ${remainingMinutes}m` : `${hours}h`
+  }
+
+  const getStoryIcon = (storyId: string) => {
+    if (storyId.includes('desire')) return <Heart className="w-4 h-4" />
+    if (storyId.includes('academy')) return <Moon className="w-4 h-4" />
+    if (storyId.includes('code')) return <Computer className="w-4 h-4" />
+    if (storyId.includes('dream')) return <Sparkles className="w-4 h-4" />
+    if (storyId.includes('transfer')) return <School className="w-4 h-4" />
+    if (storyId.includes('cat')) return <Cat className="w-4 h-4" />
+    if (storyId.includes('mirror')) return <Ghost className="w-4 h-4" />
+    return <Star className="w-4 h-4" />
+  }
+
   
   return (
     <>
@@ -114,9 +210,172 @@ export default function ManhwaList() {
             </p>
           </motion.div>
 
+          {/* Smart Story Browser Controls */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mb-12"
+          >
+            <div className="max-w-4xl mx-auto">
+              {/* Search Bar */}
+              <div className="relative mb-6">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input
+                  type="text"
+                  placeholder="Suche nach Geschichten, Charakteren oder Stimmungen..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-12 pr-16 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:border-pink-500/50 focus:bg-white/15 transition-all"
+                />
+                <button
+                  onClick={() => setShowFilters(!showFilters)}
+                  className={`absolute right-2 top-1/2 transform -translate-y-1/2 p-2 rounded-xl transition-all ${
+                    showFilters 
+                      ? 'bg-pink-500/20 text-pink-400 border border-pink-500/30' 
+                      : 'bg-white/10 text-gray-400 hover:bg-white/20 hover:text-white'
+                  }`}
+                >
+                  <Filter className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Filter Panel */}
+              <AnimatePresence>
+                {showFilters && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 mb-6">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {/* Genre Filter */}
+                        <div>
+                          <label className="block text-sm font-medium text-gray-300 mb-2">Genre</label>
+                          <select
+                            value={selectedGenre}
+                            onChange={(e) => setSelectedGenre(e.target.value)}
+                            className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-pink-500/50"
+                          >
+                            <option value="all" className="text-black">Alle Genres</option>
+                            {availableGenres.map(genre => (
+                              <option key={genre} value={genre} className="text-black">{genre}</option>
+                            ))}
+                          </select>
+                        </div>
+
+                        {/* Mood Filter */}
+                        <div>
+                          <label className="block text-sm font-medium text-gray-300 mb-2">Stimmung</label>
+                          <select
+                            value={selectedMood}
+                            onChange={(e) => setSelectedMood(e.target.value)}
+                            className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-pink-500/50"
+                          >
+                            <option value="all" className="text-black">Alle Stimmungen</option>
+                            {availableMoods.map(mood => (
+                              <option key={mood} value={mood} className="text-black">{mood}</option>
+                            ))}
+                          </select>
+                        </div>
+
+                        {/* Sort Filter */}
+                        <div>
+                          <label className="block text-sm font-medium text-gray-300 mb-2">Sortierung</label>
+                          <select
+                            value={sortBy}
+                            onChange={(e) => setSortBy(e.target.value)}
+                            className="w-full p-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:border-pink-500/50"
+                          >
+                            <option value="default" className="text-black">Standard</option>
+                            <option value="title" className="text-black">Alphabetisch</option>
+                            <option value="length" className="text-black">Nach Länge</option>
+                            <option value="newest" className="text-black">Neueste zuerst</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      {/* Active Filters Display */}
+                      {(searchTerm || selectedGenre !== 'all' || selectedMood !== 'all' || sortBy !== 'default') && (
+                        <div className="mt-4 pt-4 border-t border-white/10">
+                          <div className="flex flex-wrap gap-2 items-center">
+                            <span className="text-sm text-gray-400">Aktive Filter:</span>
+                            {searchTerm && (
+                              <span className="px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-sm border border-pink-500/30">
+                                "{searchTerm}"
+                              </span>
+                            )}
+                            {selectedGenre !== 'all' && (
+                              <span className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30">
+                                {selectedGenre}
+                              </span>
+                            )}
+                            {selectedMood !== 'all' && (
+                              <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm border border-cyan-500/30">
+                                {selectedMood}
+                              </span>
+                            )}
+                            <button
+                              onClick={() => {
+                                setSearchTerm('')
+                                setSelectedGenre('all')
+                                setSelectedMood('all')
+                                setSortBy('default')
+                              }}
+                              className="px-3 py-1 bg-red-500/20 text-red-300 rounded-full text-sm border border-red-500/30 hover:bg-red-500/30 transition-all"
+                            >
+                              Filter zurücksetzen
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Results Counter */}
+              <div className="text-center mb-8">
+                <p className="text-gray-400">
+                  {filteredAndSortedStories.length} von {manhwaStories.length} Geschichten
+                  {searchTerm && ` für "${searchTerm}"`}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Beautiful Story Cards - Book Cover Style */}
-          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 lg:gap-10">
-            {manhwaStories.map((story, index) => {
+          {filteredAndSortedStories.length === 0 ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center py-20"
+            >
+              <div className="text-6xl mb-6">📚</div>
+              <h3 className="text-2xl font-bold text-white mb-4">Keine Geschichten gefunden</h3>
+              <p className="text-gray-400 mb-6">
+                {searchTerm 
+                  ? `Keine Ergebnisse für "${searchTerm}". Versuche andere Suchbegriffe.`
+                  : 'Keine Geschichten entsprechen den gewählten Filtern.'
+                }
+              </p>
+              <button
+                onClick={() => {
+                  setSearchTerm('')
+                  setSelectedGenre('all')
+                  setSelectedMood('all')
+                  setSortBy('default')
+                }}
+                className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl font-medium hover:shadow-lg transition-all"
+              >
+                Filter zurücksetzen
+              </button>
+            </motion.div>
+          ) : (
+            <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6 xs:gap-8 lg:gap-10">
+              {filteredAndSortedStories.map((story, index) => {
               const mood = storyMoods[story.id as keyof typeof storyMoods] || storyMoods['forbidden-desire']
               
               return (
@@ -173,6 +432,18 @@ export default function ManhwaList() {
                             </span>
                           </div>
                           
+                          {/* Story Info */}
+                          <div className="flex items-center justify-center gap-4 mb-4">
+                            <div className="flex items-center gap-1 text-xs text-white/70">
+                              <Clock className="w-3 h-3" />
+                              <span>{getReadingTime(story)}</span>
+                            </div>
+                            <div className="flex items-center gap-1 text-xs text-white/70">
+                              {getStoryIcon(story.id)}
+                              <span>{story.chapters?.length || 1} Kapitel</span>
+                            </div>
+                          </div>
+                          
                           {/* Emotional Tagline */}
                           <p className={`text-sm xs:text-base lg:text-lg ${mood.textColor} leading-relaxed font-medium mb-4 xs:mb-6 opacity-90`}>
                             {mood.tagline}
@@ -212,9 +483,10 @@ export default function ManhwaList() {
                     </div>
                   </Link>
                 </motion.div>
-              )
-            })}
-          </div>
+                )
+              })}
+            </div>
+          )}
 
           {/* Magical Footer Section */}
           <motion.div
