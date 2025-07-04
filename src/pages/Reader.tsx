@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getStoryById } from '../utils/storyLoader'
 import ModernIcon from '../components/ModernIcon'
+import ScrollProgressBar from '../components/ScrollProgressBar'
 
 export default function Reader() {
   const { id } = useParams<{ id: string }>()
@@ -91,6 +92,12 @@ export default function Reader() {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
+      {/* Scroll Progress Bar */}
+      <ScrollProgressBar 
+        color={isDark ? 'from-purple-500 to-pink-500' : 'from-purple-400 to-pink-400'}
+        showMilestones={true}
+        height={6}
+      />
       {/* Floating Menu Button */}
       <AnimatePresence>
         {(lastScrollDirection === 'up' || showMenu) && (
