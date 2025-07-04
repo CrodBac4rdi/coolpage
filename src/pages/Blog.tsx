@@ -1,13 +1,12 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Users, Network, Sparkles, Search } from 'lucide-react'
+import { Users, Palette, Sparkles, Search } from 'lucide-react'
 import { useState, useMemo } from 'react'
 import { characters } from '../data/characters'
 import { loadStories } from '../utils/storyLoader'
 import SEOHead from '../components/SEOHead'
 import ModernIcon, { getCharacterIconType } from '../components/ModernIcon'
-import CharacterRelationshipMap from '../components/CharacterRelationshipMap'
+import CharacterMoodBoard from '../components/CharacterMoodBoard'
 import CharacterShowcase from '../components/CharacterShowcase'
-import { characterRelationships } from '../data/relationships'
 
 export default function Blog() {
   const [selectedCharacter, setSelectedCharacter] = useState<any>(null)
@@ -35,19 +34,6 @@ export default function Blog() {
     return filtered
   }, [searchTerm, selectedStory])
 
-  const filteredRelationships = useMemo(() => {
-    if (selectedStory === 'all') return characterRelationships
-    
-    // Get character IDs from selected story
-    const storyCharacterIds = characters
-      .filter(char => char.storyId === selectedStory)
-      .map(char => char.id)
-    
-    // Filter relationships to only include those between characters in the selected story
-    return characterRelationships.filter(rel => 
-      storyCharacterIds.includes(rel.from) && storyCharacterIds.includes(rel.to)
-    )
-  }, [selectedStory])
 
   return (
     <>
@@ -124,8 +110,8 @@ export default function Blog() {
                       : 'text-gray-400 hover:text-white'
                   }`}
                 >
-                  <Network className="w-4 h-4" />
-                  <span>Beziehungen</span>
+                  <Palette className="w-4 h-4" />
+                  <span>Mood Board</span>
                 </button>
               </div>
             </div>
@@ -207,9 +193,8 @@ export default function Blog() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
               >
-                <CharacterRelationshipMap
+                <CharacterMoodBoard
                   characters={filteredCharacters}
-                  relationships={filteredRelationships}
                 />
               </motion.div>
             )}
@@ -225,7 +210,7 @@ export default function Blog() {
             {[
               { label: 'Charaktere', value: filteredCharacters.length, icon: '👥' },
               { label: 'Stories', value: selectedStory === 'all' ? stories.length : 1, icon: '📚' },
-              { label: 'Beziehungen', value: filteredRelationships.length, icon: '💞' },
+              { label: 'Stimmungen', value: '∞', icon: '🎭' },
               { label: 'Welten', value: selectedStory === 'all' ? '∞' : '1', icon: '🌟' }
             ].map((stat, i) => (
               <div key={i} className="text-center p-6 bg-white/5 rounded-2xl backdrop-blur-sm">
