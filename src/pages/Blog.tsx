@@ -1,11 +1,13 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Star, BookOpen, ArrowLeft, Users, Quote } from 'lucide-react'
+import { Heart, Star, BookOpen, ArrowLeft, Users, Quote, Network } from 'lucide-react'
 import { useState, useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { characters, getCharacterById } from '../data/characters'
 import { loadStories } from '../utils/storyLoader'
 import SEOHead from '../components/SEOHead'
 import ModernIcon, { getCharacterIconType } from '../components/ModernIcon'
+import CharacterRelationshipMap from '../components/CharacterRelationshipMap'
+import { characterRelationships } from '../data/relationships'
 
 export default function Blog() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -531,6 +533,35 @@ export default function Blog() {
               </motion.div>
             ))}
           </AnimatePresence>
+        </motion.div>
+
+        {/* Character Relationship Map */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="mt-16"
+        >
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 border border-purple-500/30 mb-4">
+              <Network className="w-4 h-4 text-purple-400" />
+              <span className="text-sm text-purple-300">Character Connections</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+                Beziehungsgeflecht
+              </span>
+            </h2>
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              Entdecke die komplexen Verbindungen zwischen unseren Charakteren
+            </p>
+          </div>
+          
+          <CharacterRelationshipMap
+            characters={characters}
+            relationships={characterRelationships}
+            selectedCharacterId={selectedCharacterId || undefined}
+          />
         </motion.div>
 
         {/* Featured Quote */}
