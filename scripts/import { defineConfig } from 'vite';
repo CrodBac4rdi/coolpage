@@ -1,0 +1,19 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  base: '/coolpage/',
+  build: {
+    outDir: 'dist',
+    // Stelle sicher, dass Markdown-Dateien kopiert werden
+    assetsInlineLimit: 0,
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+      },
+    },
+  },
+  // Kopiere Stories-Verzeichnis in den Build
+  publicDir: 'public',
+});

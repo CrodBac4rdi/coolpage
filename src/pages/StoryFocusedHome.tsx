@@ -2,106 +2,54 @@ import { motion } from 'framer-motion'
 import { Book, ArrowRight, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { manhwaStories } from '../utils/clientStoryLoader'
 
-const stories = [
-  {
-    id: 'forbidden-desire',
-    title: 'Forbidden Desire',
-    subtitle: 'CEO Romance • Slow Burn • 🔥 Passion',
-    emoji: '🔥',
-    chapters: 50,
-    enhanced: true, // NEW: Enhanced version available
-    theme: {
+// Convert story data to display format
+const convertStoryToDisplay = (story: any) => ({
+  id: story.id,
+  title: story.title,
+  subtitle: story.genre?.join(' • ') || 'Story',
+  emoji: story.coverEmoji || '📚',
+  chapters: story.chapters?.length || 0,
+  enhanced: true,
+  theme: getThemeForGenre(story.genre?.[0] || 'Romance')
+})
+
+// Get theme colors based on genre
+function getThemeForGenre(genre: string) {
+  const themes: Record<string, any> = {
+    'Romance': {
       bg: 'from-rose-500/20 via-pink-500/10 to-purple-500/20',
       accent: 'from-rose-500 to-pink-500',
       text: 'text-rose-900'
-    }
-  },
-  {
-    id: 'moonlight-academy',
-    title: 'Moonlight Academy',
-    subtitle: 'Magical School • Fantasy Romance • 🌙 Mystik',
-    emoji: '🌙',
-    chapters: 12,
-    theme: {
+    },
+    'Fantasy': {
       bg: 'from-blue-500/20 via-indigo-500/10 to-purple-500/20',
       accent: 'from-blue-500 to-indigo-500',
       text: 'text-blue-900'
-    }
-  },
-  {
-    id: 'code-breakers',
-    title: 'Code Breakers',
-    subtitle: 'Hacker Romance • Cyberpunk • 💻 Tech',
-    emoji: '💻',
-    chapters: 50,
-    theme: {
+    },
+    'Cyberpunk': {
       bg: 'from-green-500/20 via-emerald-500/10 to-teal-500/20',
       accent: 'from-green-500 to-emerald-500',
       text: 'text-green-900'
-    }
-  },
-  {
-    id: 'dream-catcher',
-    title: 'Dream Catcher',
-    subtitle: 'Supernatural • Mystery Romance • ✨ Träume',
-    emoji: '✨',
-    chapters: 25,
-    theme: {
+    },
+    'Mystery': {
       bg: 'from-purple-500/20 via-violet-500/10 to-indigo-500/20',
       accent: 'from-purple-500 to-violet-500',
       text: 'text-purple-900'
-    }
-  },
-  {
-    id: 'my-boss-is-a-cat',
-    title: 'My Boss is a Cat',
-    subtitle: 'Comedy • Urban Fantasy • 🐱 Süß',
-    emoji: '🐱',
-    chapters: 15,
-    theme: {
-      bg: 'from-orange-500/20 via-amber-500/10 to-yellow-500/20',
-      accent: 'from-orange-500 to-amber-500',
-      text: 'text-orange-900'
-    }
-  },
-  {
-    id: 'shadow-in-the-mirror',
-    title: 'Shadow in the Mirror',
-    subtitle: 'Psychological Thriller • Dark Romance • 🪞 Mystery',
-    emoji: '🪞',
-    chapters: 20,
-    theme: {
-      bg: 'from-gray-500/20 via-slate-500/10 to-zinc-500/20',
-      accent: 'from-gray-500 to-slate-500',
-      text: 'text-gray-900'
-    }
-  },
-  {
-    id: 'the-transfer-student',
-    title: 'The Transfer Student',
-    subtitle: 'School Drama • Romance • 📚 Academy',
-    emoji: '📚',
-    chapters: 18,
-    theme: {
-      bg: 'from-cyan-500/20 via-sky-500/10 to-blue-500/20',
-      accent: 'from-cyan-500 to-sky-500',
-      text: 'text-cyan-900'
-    }
-  },
-  {
-    id: 'summer-temptation',
-    title: 'Summer Temptation',
-    subtitle: 'Beach Romance • Summer Love • 🌅 Sonne',
-    emoji: '🌅',
-    chapters: 12,
-    theme: {
-      bg: 'from-yellow-500/20 via-orange-500/10 to-red-500/20',
-      accent: 'from-yellow-500 to-orange-500',
-      text: 'text-yellow-900'
+    },
+    'Slice of Life': {
+      bg: 'from-amber-500/20 via-orange-500/10 to-red-500/20',
+      accent: 'from-amber-500 to-orange-500',
+      text: 'text-amber-900'
     }
   }
-]
+  
+  return themes[genre] || themes['Romance']
+}
+
+// Convert loaded stories to display format
+const stories = manhwaStories.map(convertStoryToDisplay)
 
 export default function StoryFocusedHome() {
   const [currentTime, setCurrentTime] = useState(new Date())
@@ -113,40 +61,77 @@ export default function StoryFocusedHome() {
 
   const getTimeGreeting = () => {
     const hour = currentTime.getHours()
-    if (hour < 12) return 'Guten Morgen'
-    if (hour < 18) return 'Guten Tag'
-    return 'Guten Abend'
+    
+    if (hour < 6) return "✨ Gute Nacht"
+    if (hour < 12) return "🌅 Guten Morgen"
+    if (hour < 18) return "☀️ Guten Tag"
+    if (hour < 22) return "🌆 Guten Abend"
+    return "🌙 Gute Nacht"
   }
 
   const getTimeTheme = () => {
     const hour = currentTime.getHours()
-    if (hour >= 6 && hour < 12) {
-      return 'from-purple-900/20 via-black to-pink-900/20' // Morning
-    } else if (hour >= 12 && hour < 18) {
-      return 'from-cyan-900/20 via-black to-blue-900/20' // Afternoon
-    } else {
-      return 'from-indigo-900/20 via-black to-purple-900/20' // Evening/Night
-    }
+    
+    if (hour >= 6 && hour < 8) return "from-amber-400 via-orange-500 to-pink-500" // Sunrise
+    if (hour >= 8 && hour < 11) return "from-blue-400 via-cyan-400 to-teal-400" // Morning
+    if (hour >= 11 && hour < 14) return "from-yellow-300 via-blue-400 to-indigo-500" // Midday
+    if (hour >= 14 && hour < 17) return "from-orange-300 via-pink-400 to-purple-500" // Afternoon
+    if (hour >= 17 && hour < 20) return "from-red-400 via-pink-500 to-purple-600" // Evening
+    if (hour >= 20 && hour < 22) return "from-purple-600 via-blue-700 to-indigo-800" // Twilight
+    return "from-indigo-900 via-purple-900 to-blue-900" // Night
   }
 
   return (
     <div className={`min-h-screen bg-gradient-to-br ${getTimeTheme()} transition-all duration-1000`}>
-      {/* Header */}
-      <div className="container mx-auto px-6 pt-16 pb-8">
+      {/* Background Animation */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 right-1/2 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+      </div>
+
+      {/* Navigation */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-6">
+        <div className="flex items-center justify-between mb-8">
+          <Link to="/" className="text-2xl font-bold text-gray-100 hover:text-gray-300 transition-colors">
+            ← Crod Babylon
+          </Link>
+          
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-right"
+          >
+            <p className="text-sm text-gray-300">{getTimeGreeting()}</p>
+            <p className="text-xs text-gray-400">
+              {currentTime.toLocaleTimeString('de-DE', {
+                hour: '2-digit',
+                minute: '2-digit'
+              })}
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-8 pb-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/20">
-            <Sparkles className="w-5 h-5 text-purple-400" />
-            <span className="text-sm font-medium text-white">Crod Babylon</span>
+          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-6">
+            <Sparkles className="w-5 h-5 text-yellow-400" />
+            <span className="text-sm font-medium text-gray-300">Digital Paradise</span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
-            {getTimeGreeting()}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-100 mb-4">
+            Stories Collection
           </h1>
-          <p className="text-xl lg:text-2xl text-gray-300 mb-8">
+          <p className="text-lg sm:text-xl text-gray-300 mb-2">
+            Entdecke fesselnde Geschichten voller Emotionen
+          </p>
+          <p className="text-xl text-gray-300 mb-8">
             Welche Geschichte möchtest du heute erleben?
           </p>
         </motion.div>
@@ -229,32 +214,6 @@ export default function StoryFocusedHome() {
             </motion.div>
           ))}
         </div>
-      </div>
-
-      {/* Stats */}
-      <div className="container mx-auto px-4 sm:px-6 pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="bg-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 max-w-3xl mx-auto text-center border border-white/20"
-        >
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-6">Die Zahlen sprechen</h2>
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            <div className="p-4 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl border border-white/10 hover:border-white/20 transition-all">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">8</div>
-              <div className="text-xs sm:text-sm text-gray-300">Stories</div>
-            </div>
-            <div className="p-4 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl border border-white/10 hover:border-white/20 transition-all">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">200+</div>
-              <div className="text-xs sm:text-sm text-gray-300">Kapitel</div>
-            </div>
-            <div className="p-4 bg-gradient-to-br from-pink-500/20 to-red-500/20 rounded-xl border border-white/10 hover:border-white/20 transition-all">
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2">∞</div>
-              <div className="text-xs sm:text-sm text-gray-300">Abenteuer</div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </div>
   )

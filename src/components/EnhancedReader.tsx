@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowLeft, Settings, Eye, Clock, Hash } from 'lucide-react'
 import { useParams, Link } from 'react-router-dom'
 import { useEnhancedStoryLoader } from '../utils/enhancedStoryLoader'
+import { getStoryById } from '../utils/clientStoryLoader'
 import type { EnhancedStory, ReaderPreferences } from '../types/story'
 import { isEnhancedChapter } from '../types/story'
 import ScrollProgressBar from './ScrollProgressBar'
@@ -65,15 +66,47 @@ export default function EnhancedReader() {
     const loadStory = async () => {
       try {
         setLoading(true)
-        const storyData = await storyLoader.loadStoryMetadata(id)
-        setStory(storyData)
         
-        // Load first chapter
-        const chapterData = await storyLoader.loadChapter(id, 1)
-        setChapterContent(chapterData.content)
-        
-        // Preload next chapters
-        await storyLoader.preloadNextChapters(id, 1, 3)
+        // Try enhanced loader first
+        try {
+          const storyData = await storyLoader.loadStoryMetadata(id)
+          setStory(storyData)
+          
+          // Load first chapter
+          const chapterData = await storyLoader.loadChapter(id, 1)
+          setChapterContent(chapterData.content)
+          
+          // Preload next chapters
+          await storyLoader.preloadNextChapters(id, 1, 3)
+        } catch (enhancedError) {
+          console.warn('Enhanced loader failed, falling back to client loader:', enhancedError)
+          
+          // Fallback to client loader
+          const legacyStory = getStoryById(id)
+          if (!legacyStory) {
+            throw new Error('Story not found in either loader')
+          }
+          
+          // Convert legacy story to enhanced format
+          const enhancedStory: any = {
+            ...legacyStory,
+            status: 'completed' as const,
+            language: 'de',
+            bookmarkable: true,
+            commentable: true,
+            shareable: true,
+            totalWordCount: legacyStory.chapters.reduce((total, ch) => total + ch.content.join(' ').split(' ').length, 0),
+            estimatedReadTime: Math.ceil(legacyStory.chapters.reduce((total, ch) => total + ch.content.join(' ').split(' ').length, 0) / 200)
+          }
+          
+          setStory(enhancedStory)
+          
+          // Load first chapter from legacy format
+          const firstChapter = legacyStory.chapters[0]
+          if (firstChapter) {
+            setChapterContent(firstChapter.content.join('\n\n'))
+          }
+        }
         
         setLoading(false)
       } catch (error) {
@@ -93,11 +126,27 @@ export default function EnhancedReader() {
     const loadChapter = async () => {
       try {
         setLoading(true)
-        const chapterData = await storyLoader.loadChapter(id, currentChapter)
-        setChapterContent(chapterData.content)
         
-        // Preload next chapters
-        await storyLoader.preloadNextChapters(id, currentChapter, 2)
+        // Try enhanced loader first
+        try {
+          const chapterData = await storyLoader.loadChapter(id, currentChapter)
+          setChapterContent(chapterData.content)
+          
+          // Preload next chapters
+          await storyLoader.preloadNextChapters(id, currentChapter, 2)
+        } catch (enhancedError) {
+          console.warn('Enhanced chapter loading failed, using legacy data:', enhancedError)
+          
+          // Use already loaded story data
+          if (story) {
+            const chapter = story.chapters.find(c => c.id === currentChapter)
+            if (chapter && Array.isArray(chapter.content)) {
+              setChapterContent(chapter.content.join('\n\n'))
+            } else if (chapter && typeof chapter.content === 'string') {
+              setChapterContent(chapter.content)
+            }
+          }
+        }
         
         // Reset reading progress for new chapter
         setReadingProgress(0)
