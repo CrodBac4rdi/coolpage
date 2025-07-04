@@ -11,7 +11,7 @@ const Blog = lazy(() => import('./pages/Blog'))
 const Contact = lazy(() => import('./pages/Contact'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const ManhwaList = lazy(() => import('./pages/ManhwaList'))
-const Reader = lazy(() => import('./pages/Reader'))
+const Reader = lazy(() => import('./pages/NewReader'))
 const Games = lazy(() => import('./pages/Games'))
 const Timeline = lazy(() => import('./pages/Timeline'))
 

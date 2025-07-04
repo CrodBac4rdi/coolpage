@@ -1,0 +1,42 @@
+{
+  "id": "code-breakers",
+  "title": "Code Breakers: Liebe im Cyberspace",
+  "author": "Alex Binary",
+  "description": "Die geniale Hackerin Maya gerät in ein gefährliches Katz-und-Maus-Spiel mit dem mysteriösen Hacker 'Phoenix'. Zwischen verschlüsselten Nachrichten und digitalen Verfolgungsjagden entwickelt sich eine unerwartete Anziehung, die beide in Gefahr bringt.",
+  "tags": ["Thriller", "Hacker", "Technologie", "Romantik", "Spannung"],
+  "language": "de",
+  "status": "ongoing",
+  "coverImage": "/images/covers/code-breakers.jpg",
+  "createdAt": "2024-01-11",
+  "updatedAt": "2024-01-11",
+  "chapters": [
+    {
+      "id": "chapter-01",
+      "number": 1,
+      "title": "Der erste Kontakt",
+      "file": "chapter-01.md",
+      "publishedAt": "2024-01-11"
+    },
+    {
+      "id": "chapter-02",
+      "number": 2,
+      "title": "Digitale Verfolgungsjagd",
+      "file": "chapter-02.md",
+      "publishedAt": "2024-01-11"
+    },
+    {
+      "id": "chapter-03",
+      "number": 3,
+      "title": "Verschlüsselte Gefühle",
+      "file": "chapter-03.md",
+      "publishedAt": "2024-01-11"
+    }
+  ],
+  "stats": {
+    "totalChapters": 3,
+    "totalWords": 2900,
+    "views": 0,
+    "likes": 0,
+    "rating": 0
+  }
+}

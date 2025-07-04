@@ -1,0 +1,42 @@
+{
+  "id": "my-boss-is-a-cat",
+  "title": "Mein Chef ist eine Katze!",
+  "author": "Klara Schnurr",
+  "description": "Als Lara ihren neuen Job in der Werbeagentur 'Kreative Pfoten' antritt, entdeckt sie, dass ihr exzentrischer Chef Maximilian sich nachts in einen Kater verwandelt. Zwischen chaotischen Meetings und fliegenden Katzenleckerlis entwickelt sich eine ungewöhnliche Romanze.",
+  "tags": ["Comedy", "Urban Fantasy", "Büro", "Romantik", "Humor"],
+  "language": "de",
+  "status": "ongoing",
+  "coverImage": "/images/covers/my-boss-is-a-cat.jpg",
+  "createdAt": "2024-01-14",
+  "updatedAt": "2024-01-14",
+  "chapters": [
+    {
+      "id": "chapter-01",
+      "number": 1,
+      "title": "Der erste Arbeitstag",
+      "file": "chapter-01.md",
+      "publishedAt": "2024-01-14"
+    },
+    {
+      "id": "chapter-02",
+      "number": 2,
+      "title": "Nächtliche Verwandlung",
+      "file": "chapter-02.md",
+      "publishedAt": "2024-01-14"
+    },
+    {
+      "id": "chapter-03",
+      "number": 3,
+      "title": "Katzenminze und Chaos",
+      "file": "chapter-03.md",
+      "publishedAt": "2024-01-14"
+    }
+  ],
+  "stats": {
+    "totalChapters": 3,
+    "totalWords": 2900,
+    "views": 0,
+    "likes": 0,
+    "rating": 0
+  }
+}

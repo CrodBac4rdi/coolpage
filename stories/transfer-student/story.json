@@ -1,0 +1,42 @@
+{
+  "id": "transfer-student",
+  "title": "Der Austauschschüler: Geheimnisse im Internat",
+  "author": "Marie Dunkelwald",
+  "description": "Als der mysteriöse Austauschschüler Alexander an das Elite-Internat Schloss Steinberg kommt, häufen sich seltsame Vorfälle. Emma wird in ein Netz aus Geheimnissen gezogen, während sie sich zu dem rätselhaften Neuen hingezogen fühlt.",
+  "tags": ["Mystery", "Internat", "Jugend", "Romantik", "Spannung"],
+  "language": "de",
+  "status": "ongoing",
+  "coverImage": "/images/covers/transfer-student.jpg",
+  "createdAt": "2024-01-13",
+  "updatedAt": "2024-01-13",
+  "chapters": [
+    {
+      "id": "chapter-01",
+      "number": 1,
+      "title": "Der Neue",
+      "file": "chapter-01.md",
+      "publishedAt": "2024-01-13"
+    },
+    {
+      "id": "chapter-02",
+      "number": 2,
+      "title": "Nächtliche Begegnungen",
+      "file": "chapter-02.md",
+      "publishedAt": "2024-01-13"
+    },
+    {
+      "id": "chapter-03",
+      "number": 3,
+      "title": "Das Geheimnis der Bibliothek",
+      "file": "chapter-03.md",
+      "publishedAt": "2024-01-13"
+    }
+  ],
+  "stats": {
+    "totalChapters": 3,
+    "totalWords": 2950,
+    "views": 0,
+    "likes": 0,
+    "rating": 0
+  }
+}
