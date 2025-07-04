@@ -16,6 +16,8 @@ import CharacterVoiceVisualizer from '../components/CharacterVoiceVisualizer'
 import CharacterMoodIndicator from '../components/CharacterMoodIndicator'
 import ReadingRhythmAnalyzer from '../components/ReadingRhythmAnalyzer'
 import SocialReadingTraces from '../components/SocialReadingTraces'
+import DynamicSoundtrack from '../components/DynamicSoundtrack'
+import ARStoryCards from '../components/ARStoryCards'
 import { characters } from '../data/characters'
 
 export default function Reader() {
@@ -649,6 +651,20 @@ export default function Reader() {
         onTraceClick={(trace) => {
           console.log('Trace clicked:', trace)
         }}
+      />
+
+      {/* Dynamic Soundtrack */}
+      <DynamicSoundtrack
+        currentMood={ambientConfig.mood}
+        textContent={currentParagraphText}
+        isReading={!!currentParagraphText}
+        readingSpeed={200} // Could calculate from reading rhythm analyzer
+      />
+
+      {/* AR Story Cards */}
+      <ARStoryCards
+        characters={characters.filter(char => char.storyId === story.id)}
+        currentStory={story.id}
       />
 
       {/* Achievement Notification */}
