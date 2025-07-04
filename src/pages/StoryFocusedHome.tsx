@@ -164,7 +164,7 @@ export default function StoryFocusedHome() {
               whileHover={{ y: -8, scale: 1.02 }}
               className="group"
             >
-              <Link to={story.enhanced ? `/enhanced-reader/${story.id}` : `/reader/${story.id}`}>
+              <Link to={`/reader/${story.id}`}>
                 <div className={`
                   relative bg-gradient-to-br ${story.theme.bg} 
                   rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 

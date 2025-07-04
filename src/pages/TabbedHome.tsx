@@ -282,6 +282,21 @@ export default function TabbedHome() {
                     </motion.div>
                   ))}
                 </div>
+                
+                {/* View All Stories Button */}
+                <div className="text-center mt-8">
+                  <Link to="/stories">
+                    <motion.button
+                      whileHover={{ y: -2, scale: 1.05 }}
+                      whileTap={{ y: 0, scale: 0.95 }}
+                      className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl text-white font-semibold hover:shadow-lg transition-all duration-200"
+                    >
+                      <Book className="w-5 h-5" />
+                      <span>Alle Stories entdecken</span>
+                      <ArrowRight className="w-5 h-5" />
+                    </motion.button>
+                  </Link>
+                </div>
               </div>
 
               {/* Characters Section */}
