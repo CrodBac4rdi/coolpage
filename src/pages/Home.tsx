@@ -52,15 +52,15 @@ export default function Home() {
       stats: 'Scroll & Read'
     },
     {
-      id: 'games',
+      id: 'universe',
       size: 'medium',
-      title: '🎮 Games',
-      subtitle: 'Interaktiv',
-      description: 'Q&A Quiz über Charaktere und Story-Würfel für zufällige Entdeckungen',
+      title: '📊 Universe',
+      subtitle: 'Story Stats',
+      description: 'Statistiken, Discovery und Collection - erkunde die Story-Welt',
       gradient: 'from-emerald-500/25 to-green-500/30',
       icon: <Gamepad2 className="w-6 h-6" />,
       link: '/games',
-      stats: '2 Mini Games'
+      stats: 'Interactive Features'
     },
     {
       id: 'contact',
