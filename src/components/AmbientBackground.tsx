@@ -30,7 +30,7 @@ export default function AmbientBackground({
   particleConfig
 }: AmbientBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number | undefined>(undefined)
 
   // Generate particles
   const particles: Particle[] = particleConfig ? 
@@ -114,7 +114,7 @@ export default function AmbientBackground({
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const getParticleAnimation = (animation: string) => {
+  const getParticleAnimation = (animation: string): any => {
     switch (animation) {
       case 'float':
         return {
@@ -185,7 +185,7 @@ export default function AmbientBackground({
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: intensity / 200,
-                  ...getParticleAnimation(particleConfig.animation)
+                  ...(getParticleAnimation(particleConfig.animation) as any)
                 }}
                 transition={{
                   delay: particle.delay

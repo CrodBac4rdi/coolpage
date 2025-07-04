@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, Key, Lock, Unlock, Eye, EyeOff, Sparkles, Gift, Map } from 'lucide-react'
+import { Search, Key, Lock, Unlock, Eye, EyeOff, Sparkles, Gift } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 interface Secret {
   id: string
@@ -31,7 +30,7 @@ export default function SecretNetwork({ currentPage, currentScroll = 0 }: Secret
   const [activeHunt, setActiveHunt] = useState(false)
   const [foundSecret, setFoundSecret] = useState<Secret | null>(null)
   const [konami, setKonami] = useState<string[]>([])
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   // Define all hidden secrets
   useEffect(() => {

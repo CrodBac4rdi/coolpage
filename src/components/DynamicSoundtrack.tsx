@@ -24,7 +24,7 @@ interface DynamicSoundtrackProps {
 export default function DynamicSoundtrack({
   currentMood,
   textContent,
-  isReading,
+  isReading: _isReading,
   readingSpeed
 }: DynamicSoundtrackProps) {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -35,7 +35,7 @@ export default function DynamicSoundtrack({
   const oscillatorsRef = useRef<Map<string, OscillatorNode>>(new Map())
   const gainNodesRef = useRef<Map<string, GainNode>>(new Map())
   const analyserRef = useRef<AnalyserNode | null>(null)
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number | undefined>(undefined)
 
   // Initialize Web Audio API
   useEffect(() => {

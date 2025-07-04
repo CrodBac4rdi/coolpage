@@ -25,7 +25,7 @@ export default function AmbientModeControls({
   onIntensityChange,
   onToggleParticles,
   onToggleColorShift,
-  moodPresets
+  moodPresets: _moodPresets
 }: AmbientModeControlsProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [isMinimized, setIsMinimized] = useState(true)

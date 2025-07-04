@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Volume2, Mic, Activity, Heart, Brain, Sparkles } from 'lucide-react'
+import { Volume2, Mic, Activity, Heart, Brain } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import type { Character } from '../data/characters'
 
@@ -27,7 +27,7 @@ const emotionColors = {
 
 export default function CharacterVoiceVisualizer({ character, dialogue, isActive }: CharacterVoiceVisualizerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number | undefined>(undefined)
   const [voiceProfile, setVoiceProfile] = useState<VoiceProfile>({
     pitch: 'medium',
     speed: 'normal',

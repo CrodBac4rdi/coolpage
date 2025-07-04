@@ -132,7 +132,7 @@ export const useGestureNavigation = (config: GestureConfig = {
     }
   }, [config.enablePinchZoom, config.pinchThreshold])
 
-  const handleTouchEnd = useCallback((e: TouchEvent) => {
+  const handleTouchEnd = useCallback((_e: TouchEvent) => {
     if (!touchStartRef.current) return
 
     const endTime = Date.now()

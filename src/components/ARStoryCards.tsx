@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Camera, Maximize, RotateCcw, Sparkles, Eye, Hand } from 'lucide-react'
+import { Camera, Sparkles, Eye, Hand } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import type { Character } from '../data/characters'
 
@@ -93,7 +93,7 @@ export default function ARStoryCards({ characters, currentStory }: ARStoryCardsP
     if (xrSupported) {
       // Use WebXR if available
       try {
-        const session = await (navigator as any).xr.requestSession('immersive-ar')
+        await (navigator as any).xr.requestSession('immersive-ar')
         // Handle WebXR session...
         setIsARActive(true)
       } catch (error) {

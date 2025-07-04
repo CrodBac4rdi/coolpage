@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Activity, Clock, TrendingUp, BarChart3, Eye, Calendar, Target, Award } from 'lucide-react'
+import { Activity, Clock, TrendingUp, Award } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 
 interface ReadingSession {
@@ -254,11 +254,11 @@ export default function ReadingRhythmAnalyzer({ currentStoryId, onInsightGenerat
   }
 
   // Update word count (called externally)
-  const updateWordsRead = (words: number) => {
-    if (currentSession) {
-      setCurrentSession(prev => prev ? { ...prev, wordsRead: prev.wordsRead + words } : null)
-    }
-  }
+  // const updateWordsRead = (words: number) => {
+  //   if (currentSession) {
+  //     setCurrentSession(prev => prev ? { ...prev, wordsRead: prev.wordsRead + words } : null)
+  //   }
+  // }
 
   // Auto-start/stop based on story reading
   useEffect(() => {

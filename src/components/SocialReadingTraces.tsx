@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Users, Eye, ThumbsUp, MessageCircle, Sparkles, TrendingUp, Globe } from 'lucide-react'
+import { Users, Eye, MessageCircle, TrendingUp } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 interface ReadingTrace {
@@ -244,7 +244,7 @@ export default function SocialReadingTraces({
         <div className="bg-black/80 backdrop-blur-sm rounded-xl p-4 border border-white/20">
           <p className="text-xs text-gray-400 mb-3 text-center">Wie findest du diese Stelle?</p>
           <div className="grid grid-cols-3 gap-2">
-            {(['love', 'laugh', 'surprise', 'cry', 'think', 'angry'] as const).map(emotion => (
+            {(['love', 'laugh', 'surprise', 'cry', 'think', 'angry'] as const).map((emotion: ReadingTrace['anonymousData']['emotion']) => (
               <motion.button
                 key={emotion}
                 onClick={() => addReaction(currentParagraph, emotion)}
@@ -274,7 +274,7 @@ export default function SocialReadingTraces({
             className="fixed bottom-40 right-4 z-50"
           >
             <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-medium">
-              {getEmotionIcon(userReaction)} Reaktion gespeichert!
+              {getEmotionIcon(userReaction as ReadingTrace['anonymousData']['emotion'])} Reaktion gespeichert!
             </div>
           </motion.div>
         )}

@@ -164,9 +164,9 @@ export default function Timeline() {
                 </div>
                 
                 <StoryTimeline
-                  storyId={selectedStoryId}
+                  storyId={selectedStoryId!}
                   chapters={selectedStory.chapters}
-                  currentChapter={currentChapters[selectedStoryId] || 0}
+                  currentChapter={currentChapters[selectedStoryId!] || 0}
                   readProgress={readProgress}
                 />
               </motion.div>

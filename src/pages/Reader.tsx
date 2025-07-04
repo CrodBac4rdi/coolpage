@@ -60,7 +60,7 @@ export default function Reader() {
     toggleParticles,
     toggleColorShift,
     updateMoodFromText,
-    getAmbientStyles,
+    // getAmbientStyles,
     getParticleConfig,
     moodPresets
   } = useAmbientMode()
@@ -151,7 +151,7 @@ export default function Reader() {
   }
 
   // Detect which character is speaking based on context
-  const detectSpeakingCharacter = (paragraph: string, chapter: any, paragraphIndex: number) => {
+  const detectSpeakingCharacter = (_paragraph: string, chapter: any, paragraphIndex: number) => {
     // Get characters from this story
     const storyCharacters = characters.filter(char => char.storyId === story.id)
     
