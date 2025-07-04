@@ -121,14 +121,14 @@ export default function ManhwaList() {
               return (
                 <motion.div
                   key={story.id}
-                  initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ delay: index * 0.15, type: "spring", damping: 25, stiffness: 120 }}
+                  transition={{ delay: index * 0.1, type: "spring", damping: 30, stiffness: 200 }}
                   className="group relative"
                 >
                   <Link to={`/reader/${story.id}`} className="block">
                     {/* Book Cover Card */}
-                    <div className={`story-card-mobile relative h-[380px] xs:h-[420px] sm:h-[460px] lg:h-[480px] rounded-2xl xs:rounded-3xl overflow-hidden border border-white/20 transition-all duration-700 hover:scale-[1.02] xs:hover:scale-[1.03] hover:rotate-1 hover:border-white/40 group-hover:shadow-2xl group-hover:shadow-${mood.accentColor}-500/20 touch-action-manipulation`}>
+                    <div className={`story-card-mobile relative h-[380px] xs:h-[420px] sm:h-[460px] lg:h-[480px] rounded-2xl xs:rounded-3xl overflow-hidden border border-white/20 transition-all duration-500 hover:scale-[1.02] xs:hover:scale-[1.03] hover:border-white/40 group-hover:shadow-2xl group-hover:shadow-${mood.accentColor}-500/20 touch-action-manipulation`}>
                       
                       {/* Background with Mood */}
                       <div className={`absolute inset-0 ${mood.backgroundPattern}`} />
@@ -147,8 +147,8 @@ export default function ManhwaList() {
                           {/* Magical Emoji */}
                           <motion.div 
                             className="story-emoji-mobile text-4xl xs:text-5xl sm:text-6xl lg:text-7xl mb-3 xs:mb-4 sm:mb-6"
-                            whileHover={{ scale: 1.1, rotate: 5 }}
-                            transition={{ type: "spring", stiffness: 300 }}
+                            whileHover={{ scale: 1.1, rotate: 3 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 15 }}
                           >
                             {story.coverEmoji}
                           </motion.div>
@@ -182,17 +182,24 @@ export default function ManhwaList() {
                           
                           {/* Beautiful Read Button */}
                           <motion.div
-                            className={`w-full bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm border border-white/30 text-white py-3 xs:py-4 px-4 xs:px-6 rounded-xl xs:rounded-2xl font-semibold text-center transition-all hover:from-white/30 hover:to-white/20 hover:border-white/50 flex items-center justify-center gap-2 xs:gap-3 text-sm xs:text-base`}
+                            className={`w-full bg-gradient-to-r from-white/20 to-white/10 backdrop-blur-sm border border-white/30 text-white py-3 xs:py-4 px-4 xs:px-6 rounded-xl xs:rounded-2xl font-semibold text-center transition-all duration-300 hover:from-white/30 hover:to-white/20 hover:border-white/50 flex items-center justify-center gap-2 xs:gap-3 text-sm xs:text-base`}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 20 }}
                           >
                             <span>Geschichte entdecken</span>
-                            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                            <motion.div
+                              animate={{ x: 0 }}
+                              whileHover={{ x: 3 }}
+                              transition={{ type: "spring", stiffness: 300 }}
+                            >
+                              <ArrowRight className="w-5 h-5" />
+                            </motion.div>
                           </motion.div>
                         </div>
 
                         {/* Hover Glow Effect */}
-                        <div className={`absolute inset-0 bg-gradient-to-r from-${mood.accentColor}-500/0 via-${mood.accentColor}-500/0 to-${mood.accentColor}-500/0 group-hover:from-${mood.accentColor}-500/10 group-hover:via-${mood.accentColor}-500/5 group-hover:to-${mood.accentColor}-500/10 rounded-3xl transition-all duration-700`} />
+                        <div className={`absolute inset-0 bg-gradient-to-r from-${mood.accentColor}-500/0 via-${mood.accentColor}-500/0 to-${mood.accentColor}-500/0 group-hover:from-${mood.accentColor}-500/10 group-hover:via-${mood.accentColor}-500/5 group-hover:to-${mood.accentColor}-500/10 rounded-3xl transition-all duration-500`} />
                       </div>
                     </div>
                   </Link>
