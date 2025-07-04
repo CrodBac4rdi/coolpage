@@ -132,7 +132,7 @@ export default function TabbedHome() {
         description="Entdecke fesselnde Geschichten in unserem digitalen Paradies. Romance, Fantasy, Thriller und mehr."
       />
       
-      <div className={`min-h-screen bg-gradient-to-br ${getTimeTheme()} transition-all duration-1000`}>
+      <div className="min-h-screen bg-gray-950">
         {/* Navigation Tabs */}
         <div className="container mx-auto px-6 pt-6">
           <div className="flex justify-center mb-8">
@@ -192,14 +192,11 @@ export default function TabbedHome() {
               <span className="text-sm font-medium text-gray-300">Crod Babylon</span>
             </div>
             
-            <h1 className="text-6xl font-bold text-gray-100 mb-4">
-              Digital Paradise
+            <h1 className="text-6xl font-bold text-white mb-4">
+              Welcome to Crod Babylon
             </h1>
-            <p className="text-2xl text-gray-300 mb-2">
-              {getTimeGreeting()}
-            </p>
             <p className="text-xl text-gray-300 mb-8">
-              Welche Geschichte möchtest du heute erleben?
+              Digital Paradise für fesselnde Geschichten
             </p>
           </motion.div>
         </div>
@@ -227,13 +224,14 @@ export default function TabbedHome() {
                       className="group"
                     >
                       <Link to={`/reader/${story.id}`}>
-                        <div className={`
-                          relative bg-gradient-to-br ${story.theme.bg} 
+                        <div className="
+                          relative bg-gray-900/50 backdrop-blur-sm
                           rounded-2xl p-6 h-80 overflow-hidden
-                          backdrop-blur-sm border border-white/20
-                          hover:shadow-2xl transition-all duration-300
+                          border border-gray-700/50
+                          hover:bg-gray-800/50 hover:border-gray-600/50
+                          transition-all duration-300
                           cursor-pointer
-                        `}>
+                        ">
                           {/* Background Pattern */}
                           <div className="absolute inset-0 opacity-10">
                             <div className="absolute top-4 right-4 text-6xl">{story.emoji}</div>
@@ -244,11 +242,11 @@ export default function TabbedHome() {
                           <div className="relative z-10 flex flex-col h-full">
                             <div className="flex-1">
                               <div className="text-4xl mb-4">{story.emoji}</div>
-                              <h3 className="text-2xl font-bold text-gray-100 mb-2 group-hover:text-gray-300 transition-colors">
+                              <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-gray-200 transition-colors">
                                 {story.title}
                               </h3>
-                              <p className="text-gray-300 mb-3 text-sm">{story.subtitle}</p>
-                              <p className="text-gray-400 mb-4 text-sm leading-relaxed">{story.description}</p>
+                              <p className="text-gray-400 mb-3 text-sm">{story.subtitle}</p>
+                              <p className="text-gray-300 mb-4 text-sm leading-relaxed">{story.description}</p>
                               
                               {/* Stats */}
                               <div className="bg-white/10 rounded-full p-3 mb-4">
@@ -266,13 +264,13 @@ export default function TabbedHome() {
                             </div>
                             
                             {/* Read Button */}
-                            <div className={`
+                            <div className="
                               inline-flex items-center gap-2 
-                              bg-gradient-to-r ${story.theme.accent}
+                              bg-gray-700 hover:bg-gray-600
                               text-white px-6 py-3 rounded-xl
                               font-medium
                               group-hover:shadow-lg transform transition-all duration-200
-                            `}>
+                            ">
                               <span>Lesen</span>
                               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                             </div>

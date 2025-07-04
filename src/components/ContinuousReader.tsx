@@ -61,10 +61,55 @@ const ContinuousReader: React.FC = () => {
       accent: 'text-purple-300',
       border: 'border-purple-800'
     },
+    'code-breakers': {
+      background: 'from-green-950 via-emerald-900 to-black',
+      accent: 'text-green-300',
+      border: 'border-green-800'
+    },
+    'dream-catcher': {
+      background: 'from-indigo-950 via-purple-900 to-black',
+      accent: 'text-indigo-300',
+      border: 'border-indigo-800'
+    },
+    'my-boss-is-a-cat': {
+      background: 'from-orange-950 via-amber-900 to-black',
+      accent: 'text-orange-300',
+      border: 'border-orange-800'
+    },
     'shadow-in-mirror': {
       background: 'from-gray-950 via-slate-900 to-black',
       accent: 'text-slate-300',
       border: 'border-slate-800'
+    },
+    'the-transfer-student': {
+      background: 'from-pink-950 via-rose-900 to-black',
+      accent: 'text-pink-300',
+      border: 'border-pink-800'
+    },
+    'between-the-lines': {
+      background: 'from-blue-950 via-cyan-900 to-black',
+      accent: 'text-blue-300',
+      border: 'border-blue-800'
+    },
+    'cafe-encounters': {
+      background: 'from-yellow-950 via-amber-900 to-black',
+      accent: 'text-yellow-300',
+      border: 'border-yellow-800'
+    },
+    'dangerous-attraction': {
+      background: 'from-violet-950 via-purple-900 to-black',
+      accent: 'text-violet-300',
+      border: 'border-violet-800'
+    },
+    'midnight-confessions': {
+      background: 'from-sky-950 via-blue-900 to-black',
+      accent: 'text-sky-300',
+      border: 'border-sky-800'
+    },
+    'summer-temptation': {
+      background: 'from-teal-950 via-emerald-900 to-black',
+      accent: 'text-teal-300',
+      border: 'border-teal-800'
     },
     default: {
       background: 'from-slate-950 via-gray-900 to-black',

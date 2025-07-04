@@ -114,34 +114,14 @@ export default function StoryFocusedHome() {
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${getTimeTheme()} transition-all duration-1000`}>
-      {/* Background Animation */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 -left-40 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 right-1/2 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-      </div>
+    <div className="min-h-screen bg-gray-950">
 
       {/* Navigation */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-6">
         <div className="flex items-center justify-between mb-8">
-          <Link to="/" className="text-2xl font-bold text-gray-100 hover:text-gray-300 transition-colors">
+          <Link to="/" className="text-2xl font-bold text-white hover:text-gray-300 transition-colors">
             ← Crod Babylon
           </Link>
-          
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-right"
-          >
-            <p className="text-sm text-gray-300">{getTimeGreeting()}</p>
-            <p className="text-xs text-gray-400">
-              {currentTime.toLocaleTimeString('de-DE', {
-                hour: '2-digit',
-                minute: '2-digit'
-              })}
-            </p>
-          </motion.div>
         </div>
       </div>
 
@@ -157,14 +137,11 @@ export default function StoryFocusedHome() {
             <span className="text-sm font-medium text-gray-300">Digital Paradise</span>
           </div>
           
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-100 mb-4">
-            Stories Collection
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
+            Enhanced Stories
           </h1>
-          <p className="text-lg sm:text-xl text-gray-300 mb-2">
-            Entdecke fesselnde Geschichten voller Emotionen
-          </p>
           <p className="text-xl text-gray-300 mb-8">
-            Welche Geschichte möchtest du heute erleben?
+            Alle Enhanced Stories im Clean Black Look
           </p>
         </motion.div>
       </div>
@@ -188,14 +165,15 @@ export default function StoryFocusedHome() {
               className="group"
             >
               <Link to={`/reader/${story.id}`}>
-                <div className={`
-                  relative bg-gradient-to-br ${story.theme.bg} 
+                <div className="
+                  relative bg-gray-900/50 backdrop-blur-sm
                   rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 
                   h-64 sm:h-72 lg:h-80 overflow-hidden
-                  backdrop-blur-xl border border-white/20
-                  hover:shadow-2xl hover:border-white/40 transition-all duration-300
+                  border border-gray-700/50
+                  hover:bg-gray-800/50 hover:border-gray-600/50
+                  transition-all duration-300
                   cursor-pointer hover:scale-[1.02]
-                `}>
+                ">
                   {/* Background Pattern */}
                   <div className="absolute inset-0 opacity-5">
                     <div className="absolute top-4 right-4 text-4xl sm:text-5xl lg:text-6xl">{story.emoji}</div>
@@ -232,14 +210,14 @@ export default function StoryFocusedHome() {
                     
                     {/* Read Button */}
                     <motion.div 
-                      className={`
+                      className="
                         w-full flex items-center justify-center gap-2 
-                        bg-gradient-to-r ${story.theme.accent}
+                        bg-gray-700 hover:bg-gray-600
                         text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl
                         font-semibold text-sm sm:text-base
                         group-hover:shadow-lg transform transition-all duration-200
                         hover:scale-105 active:scale-95
-                      `}
+                      "
                       whileHover={{ y: -2 }}
                       whileTap={{ y: 0 }}
                     >
