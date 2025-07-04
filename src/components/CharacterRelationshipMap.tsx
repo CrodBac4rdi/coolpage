@@ -142,14 +142,27 @@ export default function CharacterRelationshipMap({
               hoveredRelationship === relationship ||
               (selectedCharacterId && (relationship.from === selectedCharacterId || relationship.to === selectedCharacterId))
 
-            const config = relationshipConfig[relationship.type]
 
             return (
               <g key={index}>
                 <defs>
-                  <linearGradient id={`gradient-${index}`}>
-                    <stop offset="0%" className={`text-${config.color.split(' ')[1].replace('to-', '')}`} />
-                    <stop offset="100%" className={`text-${config.color.split(' ')[0].replace('from-', '')}`} />
+                  <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor={
+                      relationship.type === 'love' ? '#ec4899' :
+                      relationship.type === 'friendship' ? '#3b82f6' :
+                      relationship.type === 'rivalry' ? '#f97316' :
+                      relationship.type === 'mentor' ? '#8b5cf6' :
+                      relationship.type === 'family' ? '#10b981' :
+                      '#6b7280'
+                    } />
+                    <stop offset="100%" stopColor={
+                      relationship.type === 'love' ? '#ef4444' :
+                      relationship.type === 'friendship' ? '#06b6d4' :
+                      relationship.type === 'rivalry' ? '#ef4444' :
+                      relationship.type === 'mentor' ? '#6366f1' :
+                      relationship.type === 'family' ? '#10b981' :
+                      '#8b5cf6'
+                    } />
                   </linearGradient>
                 </defs>
                 <motion.path
