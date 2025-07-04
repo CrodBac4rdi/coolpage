@@ -9,7 +9,7 @@ const About = lazy(() => import('./pages/ModernAbout'))
 const Contact = lazy(() => import('./pages/ModernContact'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const ManhwaList = lazy(() => import('./pages/StoryFocusedHome'))
-const Reader = lazy(() => import('./pages/ThemeAwareReader'))
+const Reader = lazy(() => import('./pages/CleanReader'))
 
 // Loading component
 const PageLoader = () => (

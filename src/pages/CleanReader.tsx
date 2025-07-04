@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Book, Menu, X, Settings, Moon, Sun, Home, Minus, Plus, ArrowLeft } from 'lucide-react'
+import { Book, Menu, X, Settings, Home, Minus, Plus, ArrowLeft, Bookmark, Eye } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getStoryById } from '../utils/storyLoader'
@@ -7,94 +7,86 @@ import SEOHead from '../components/SEOHead'
 
 const storyThemes = {
   'forbidden-desire': {
-    light: {
-      bg: 'bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50',
-      text: 'text-rose-900',
-      accent: 'bg-gradient-to-r from-rose-500 to-pink-500',
-      panel: 'bg-rose-50/80 border-rose-200',
-      button: 'hover:bg-rose-100'
-    },
-    dark: {
-      bg: 'bg-gradient-to-br from-rose-950 via-pink-950 to-purple-950',
-      text: 'text-rose-100',
-      accent: 'bg-gradient-to-r from-rose-600 to-pink-600',
-      panel: 'bg-rose-950/80 border-rose-800',
-      button: 'hover:bg-rose-900'
-    }
+    bg: 'bg-gradient-to-br from-rose-950 via-pink-950 to-purple-950',
+    text: 'text-rose-100',
+    accent: 'bg-gradient-to-r from-rose-600 to-pink-600',
+    panel: 'bg-rose-950/90 border-rose-800',
+    button: 'hover:bg-rose-900'
   },
   'moonlight-academy': {
-    light: {
-      bg: 'bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50',
-      text: 'text-blue-900',
-      accent: 'bg-gradient-to-r from-blue-500 to-indigo-500',
-      panel: 'bg-blue-50/80 border-blue-200',
-      button: 'hover:bg-blue-100'
-    },
-    dark: {
-      bg: 'bg-gradient-to-br from-blue-950 via-indigo-950 to-purple-950',
-      text: 'text-blue-100',
-      accent: 'bg-gradient-to-r from-blue-600 to-indigo-600',
-      panel: 'bg-blue-950/80 border-blue-800',
-      button: 'hover:bg-blue-900'
-    }
+    bg: 'bg-gradient-to-br from-blue-950 via-indigo-950 to-purple-950',
+    text: 'text-blue-100',
+    accent: 'bg-gradient-to-r from-blue-600 to-indigo-600',
+    panel: 'bg-blue-950/90 border-blue-800',
+    button: 'hover:bg-blue-900'
   },
   'code-breakers': {
-    light: {
-      bg: 'bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50',
-      text: 'text-green-900',
-      accent: 'bg-gradient-to-r from-green-500 to-emerald-500',
-      panel: 'bg-green-50/80 border-green-200',
-      button: 'hover:bg-green-100'
-    },
-    dark: {
-      bg: 'bg-gradient-to-br from-green-950 via-emerald-950 to-teal-950',
-      text: 'text-green-100',
-      accent: 'bg-gradient-to-r from-green-600 to-emerald-600',
-      panel: 'bg-green-950/80 border-green-800',
-      button: 'hover:bg-green-900'
-    }
+    bg: 'bg-gradient-to-br from-green-950 via-emerald-950 to-teal-950',
+    text: 'text-green-100',
+    accent: 'bg-gradient-to-r from-green-600 to-emerald-600',
+    panel: 'bg-green-950/90 border-green-800',
+    button: 'hover:bg-green-900'
+  },
+  'dream-catcher': {
+    bg: 'bg-gradient-to-br from-purple-950 via-violet-950 to-indigo-950',
+    text: 'text-purple-100',
+    accent: 'bg-gradient-to-r from-purple-600 to-violet-600',
+    panel: 'bg-purple-950/90 border-purple-800',
+    button: 'hover:bg-purple-900'
+  },
+  'my-boss-is-a-cat': {
+    bg: 'bg-gradient-to-br from-orange-950 via-amber-950 to-yellow-950',
+    text: 'text-orange-100',
+    accent: 'bg-gradient-to-r from-orange-600 to-amber-600',
+    panel: 'bg-orange-950/90 border-orange-800',
+    button: 'hover:bg-orange-900'
+  },
+  'shadow-in-mirror': {
+    bg: 'bg-gradient-to-br from-gray-950 via-slate-950 to-zinc-950',
+    text: 'text-gray-100',
+    accent: 'bg-gradient-to-r from-gray-600 to-slate-600',
+    panel: 'bg-gray-950/90 border-gray-800',
+    button: 'hover:bg-gray-900'
+  },
+  'transfer-student': {
+    bg: 'bg-gradient-to-br from-cyan-950 via-sky-950 to-blue-950',
+    text: 'text-cyan-100',
+    accent: 'bg-gradient-to-r from-cyan-600 to-sky-600',
+    panel: 'bg-cyan-950/90 border-cyan-800',
+    button: 'hover:bg-cyan-900'
   },
   'default': {
-    light: {
-      bg: 'bg-gradient-to-br from-gray-50 via-slate-50 to-zinc-50',
-      text: 'text-gray-900',
-      accent: 'bg-gradient-to-r from-gray-500 to-slate-500',
-      panel: 'bg-white/80 border-gray-200',
-      button: 'hover:bg-gray-100'
-    },
-    dark: {
-      bg: 'bg-gradient-to-br from-gray-950 via-slate-950 to-zinc-950',
-      text: 'text-gray-100',
-      accent: 'bg-gradient-to-r from-gray-600 to-slate-600',
-      panel: 'bg-gray-950/80 border-gray-800',
-      button: 'hover:bg-gray-900'
-    }
+    bg: 'bg-gradient-to-br from-gray-950 via-slate-950 to-zinc-950',
+    text: 'text-gray-100',
+    accent: 'bg-gradient-to-r from-gray-600 to-slate-600',
+    panel: 'bg-gray-950/90 border-gray-800',
+    button: 'hover:bg-gray-900'
   }
 }
 
-export default function ThemeAwareReader() {
+export default function CleanReader() {
   const { id } = useParams<{ id: string }>()
   const [showSidebar, setShowSidebar] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const [activeChapter, setActiveChapter] = useState(0)
-  const [isDark, setIsDark] = useState(false)
   const [fontSize, setFontSize] = useState(18)
   const [fontFamily, setFontFamily] = useState('serif')
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [focusMode, setFocusMode] = useState(false)
+  const [bookmarkedParagraphs, setBookmarkedParagraphs] = useState<Set<string>>(new Set())
   
   const contentRef = useRef<HTMLDivElement>(null)
   const story = id ? getStoryById(id) : undefined
   
-  // Get theme based on story ID
+  // Get theme
   const currentTheme = storyThemes[id as keyof typeof storyThemes] || storyThemes.default
-  const theme = currentTheme[isDark ? 'dark' : 'light']
   
   if (!story) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gray-950 text-white">
         <div className="text-center">
           <p className="text-xl mb-4">Story not found</p>
-          <Link to="/" className="text-blue-500 hover:underline">
+          <Link to="/" className="text-blue-400 hover:underline">
             Back to Home
           </Link>
         </div>
@@ -135,6 +127,20 @@ export default function ThemeAwareReader() {
     }
   }
 
+  // Toggle bookmark for paragraph
+  const toggleBookmark = (chapterIndex: number, paragraphIndex: number) => {
+    const bookmarkId = `${story.id}-${chapterIndex}-${paragraphIndex}`
+    setBookmarkedParagraphs(prev => {
+      const newSet = new Set(prev)
+      if (newSet.has(bookmarkId)) {
+        newSet.delete(bookmarkId)
+      } else {
+        newSet.add(bookmarkId)
+      }
+      return newSet
+    })
+  }
+
   return (
     <>
       <SEOHead 
@@ -142,30 +148,30 @@ export default function ThemeAwareReader() {
         description={story.description}
       />
       
-      <div className={`min-h-screen transition-all duration-500 ${theme.bg} ${theme.text}`}>
+      <div className={`min-h-screen transition-all duration-500 ${currentTheme.bg} ${currentTheme.text}`}>
         {/* Progress Bar */}
         <div className="fixed top-0 left-0 w-full h-1 bg-black/10 z-50">
           <motion.div 
-            className={`h-full ${theme.accent}`}
+            className={`h-full ${currentTheme.accent}`}
             style={{ width: `${scrollProgress}%` }}
             transition={{ duration: 0.1 }}
           />
         </div>
 
         {/* Fixed Header */}
-        <div className={`fixed top-0 left-0 right-0 z-40 backdrop-blur-md ${theme.panel} border-b`}>
+        <div className={`fixed top-0 left-0 right-0 z-40 backdrop-blur-md ${currentTheme.panel} border-b`}>
           <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
             {/* Left: Back + Menu */}
             <div className="flex items-center gap-2">
               <Link
                 to="/"
-                className={`p-2 ${theme.button} rounded-lg transition-colors`}
+                className={`p-2 ${currentTheme.button} rounded-lg transition-colors`}
               >
                 <ArrowLeft className="w-5 h-5" />
               </Link>
               <button
                 onClick={() => setShowSidebar(true)}
-                className={`p-2 ${theme.button} rounded-lg transition-colors`}
+                className={`p-2 ${currentTheme.button} rounded-lg transition-colors`}
               >
                 <Menu className="w-5 h-5" />
               </button>
@@ -176,13 +182,23 @@ export default function ThemeAwareReader() {
               {story.chapters[activeChapter]?.title || story.title}
             </div>
 
-            {/* Right: Settings */}
-            <button
-              onClick={() => setShowSettings(!showSettings)}
-              className={`p-2 ${theme.button} rounded-lg transition-colors`}
-            >
-              <Settings className="w-5 h-5" />
-            </button>
+            {/* Right: Focus Mode + Settings */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setFocusMode(!focusMode)}
+                className={`p-2 rounded-lg transition-colors ${
+                  focusMode ? currentTheme.accent + ' text-white' : currentTheme.button
+                }`}
+              >
+                <Eye className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => setShowSettings(!showSettings)}
+                className={`p-2 ${currentTheme.button} rounded-lg transition-colors`}
+              >
+                <Settings className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -201,30 +217,15 @@ export default function ThemeAwareReader() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className={`fixed top-16 right-4 z-40 rounded-xl shadow-xl p-4 w-80 ${theme.panel} border backdrop-blur-md`}
+                className={`fixed top-16 right-4 z-40 rounded-xl shadow-xl p-4 w-80 ${currentTheme.panel} border backdrop-blur-md`}
               >
-                {/* Theme Toggle */}
+                {/* Story Atmosphere */}
                 <div className="mb-6">
-                  <p className="text-xs font-medium opacity-60 mb-3">THEME</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      onClick={() => setIsDark(false)}
-                      className={`p-3 rounded-lg border transition-all ${
-                        !isDark ? 'border-current bg-current/10' : 'border-current/20 hover:border-current/40'
-                      }`}
-                    >
-                      <Sun className="w-4 h-4 mx-auto mb-1" />
-                      <span className="text-xs">Light</span>
-                    </button>
-                    <button
-                      onClick={() => setIsDark(true)}
-                      className={`p-3 rounded-lg border transition-all ${
-                        isDark ? 'border-current bg-current/10' : 'border-current/20 hover:border-current/40'
-                      }`}
-                    >
-                      <Moon className="w-4 h-4 mx-auto mb-1" />
-                      <span className="text-xs">Dark</span>
-                    </button>
+                  <p className="text-xs font-medium opacity-60 mb-3">STORY ATMOSPHERE</p>
+                  <div className="p-3 rounded-lg border border-current/20 text-center">
+                    <div className="text-sm opacity-80">
+                      Dark mode optimized for {story.title}
+                    </div>
                   </div>
                 </div>
 
@@ -252,7 +253,7 @@ export default function ThemeAwareReader() {
                 </div>
 
                 {/* Font Style */}
-                <div>
+                <div className="mb-6">
                   <p className="text-xs font-medium opacity-60 mb-3">FONT STYLE</p>
                   <div className="grid grid-cols-3 gap-2">
                     {['serif', 'sans', 'mono'].map((font) => (
@@ -271,6 +272,26 @@ export default function ThemeAwareReader() {
                       </button>
                     ))}
                   </div>
+                </div>
+
+                {/* Focus Mode */}
+                <div>
+                  <p className="text-xs font-medium opacity-60 mb-3">FOCUS MODE</p>
+                  <button
+                    onClick={() => setFocusMode(!focusMode)}
+                    className={`w-full p-3 rounded-lg border transition-all ${
+                      focusMode 
+                        ? 'border-current bg-current/10' 
+                        : 'border-current/20 hover:border-current/40'
+                    }`}
+                  >
+                    <div className="flex items-center justify-center gap-2">
+                      <Eye className="w-4 h-4" />
+                      <span className="text-sm">
+                        {focusMode ? 'Disable Focus' : 'Enable Focus'}
+                      </span>
+                    </div>
+                  </button>
                 </div>
               </motion.div>
             </>
@@ -293,7 +314,7 @@ export default function ThemeAwareReader() {
                 initial={{ x: -300 }}
                 animate={{ x: 0 }}
                 exit={{ x: -300 }}
-                className={`fixed left-0 top-0 h-full w-80 shadow-xl z-50 overflow-y-auto ${theme.bg} border-r ${theme.panel.split(' ')[1]}`}
+                className={`fixed left-0 top-0 h-full w-80 shadow-xl z-50 overflow-y-auto ${currentTheme.bg} border-r ${currentTheme.panel.split(' ')[1]}`}
               >
                 <div className="p-6 border-b border-current/10">
                   <div className="flex items-center justify-between mb-4">
@@ -303,7 +324,7 @@ export default function ThemeAwareReader() {
                     </div>
                     <button
                       onClick={() => setShowSidebar(false)}
-                      className={`p-2 ${theme.button} rounded-lg`}
+                      className={`p-2 ${currentTheme.button} rounded-lg`}
                     >
                       <X className="w-5 h-5" />
                     </button>
@@ -332,7 +353,7 @@ export default function ThemeAwareReader() {
                       className={`w-full text-left p-4 rounded-lg mb-2 transition-all ${
                         activeChapter === index
                           ? 'bg-current/10 font-medium'
-                          : theme.button
+                          : currentTheme.button
                       }`}
                     >
                       <div className="flex items-center justify-between">
@@ -357,7 +378,14 @@ export default function ThemeAwareReader() {
           <div 
             ref={contentRef}
             className={`max-w-3xl mx-auto px-6 py-12 ${getFontFamily()}`}
-            style={{ fontSize: `${fontSize}px`, lineHeight: 1.7 }}
+            style={{ 
+              fontSize: `${fontSize}px`, 
+              lineHeight: 1.7,
+              ...(focusMode && {
+                filter: 'blur(0px)',
+                transition: 'all 0.3s ease'
+              })
+            }}
           >
             {/* Story Header */}
             <div className="mb-16 text-center">
@@ -375,19 +403,37 @@ export default function ThemeAwareReader() {
                 </div>
                 
                 {/* Chapter Content */}
-                <div className="space-y-6 leading-relaxed">
-                  {chapter.content.map((paragraph, pIndex) => (
-                    <p 
-                      key={pIndex}
-                      className={`${
-                        pIndex === 0 && chapterIndex === 0 
-                          ? 'first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:leading-none first-letter:text-current' 
-                          : ''
-                      }`}
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
+                <div className="space-y-6">
+                  {chapter.content.map((paragraph, pIndex) => {
+                    const bookmarkId = `${story.id}-${chapterIndex}-${pIndex}`
+                    const isBookmarked = bookmarkedParagraphs.has(bookmarkId)
+                    
+                    return (
+                      <div key={pIndex} className="group relative">
+                        <p 
+                          className={`leading-relaxed transition-all duration-300 ${
+                            pIndex === 0 && chapterIndex === 0 
+                              ? 'first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:leading-none first-letter:text-current' 
+                              : ''
+                          } ${
+                            focusMode ? 'hover:opacity-100 opacity-50' : ''
+                          }`}
+                        >
+                          {paragraph}
+                        </p>
+                        
+                        {/* Bookmark Button */}
+                        <button
+                          onClick={() => toggleBookmark(chapterIndex, pIndex)}
+                          className={`absolute -left-8 top-0 opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded ${
+                            isBookmarked ? 'text-yellow-400' : 'hover:text-yellow-400'
+                          }`}
+                        >
+                          <Bookmark className={`w-4 h-4 ${isBookmarked ? 'fill-current' : ''}`} />
+                        </button>
+                      </div>
+                    )
+                  })}
                 </div>
                 
                 {/* Chapter Separator */}
@@ -404,7 +450,7 @@ export default function ThemeAwareReader() {
               <p className="text-xl mb-8 opacity-60">Ende der Geschichte</p>
               <Link
                 to="/"
-                className={`inline-flex items-center gap-2 px-6 py-3 ${theme.accent} text-white rounded-lg hover:opacity-80 transition-opacity`}
+                className={`inline-flex items-center gap-2 px-6 py-3 ${currentTheme.accent} text-white rounded-lg hover:opacity-80 transition-opacity`}
               >
                 <Book className="w-5 h-5" />
                 Mehr Geschichten entdecken
