@@ -12,7 +12,7 @@ import FocusModeControl from '../components/FocusModeControl'
 import { useAmbientMode } from '../hooks/useAmbientMode'
 import AmbientBackground from '../components/AmbientBackground'
 import AmbientModeControls from '../components/AmbientModeControls'
-import CharacterMoodIndicator from '../components/CharacterMoodIndicator'
+// import CharacterMoodIndicator from '../components/CharacterMoodIndicator' // Removed
 import { characters } from '../data/characters'
 
 export default function Reader() {
@@ -28,7 +28,7 @@ export default function Reader() {
   const [hasReadFirstChapter, setHasReadFirstChapter] = useState(false)
   const [chaptersRead, setChaptersRead] = useState<Set<number>>(new Set())
   // const [activeDialogue, setActiveDialogue] = useState<{ character: any, text: string } | null>(null)
-  const [currentParagraphText, setCurrentParagraphText] = useState<string>('')
+  // const [currentParagraphText, setCurrentParagraphText] = useState<string>('')
 
   const story = id ? getStoryById(id) : null
   const { 
@@ -307,21 +307,7 @@ export default function Reader() {
                 </div>
 
                 {/* Character Moods */}
-                <div className="mb-6">
-                  <h3 className="font-semibold mb-3 flex items-center gap-2">
-                    <Heart className="w-4 h-4" />
-                    Charakter-Stimmungen
-                  </h3>
-                  <div className="space-y-3">
-                    {characters.filter(char => char.storyId === story.id).map(character => (
-                      <CharacterMoodIndicator
-                        key={character.id}
-                        character={character}
-                        currentText={currentParagraphText}
-                      />
-                    ))}
-                  </div>
-                </div>
+                {/* Character moods removed for cleaner focus */}
 
                 {/* Chapter List */}
                 <h3 className="font-semibold mb-3 flex items-center gap-2">
@@ -497,7 +483,7 @@ export default function Reader() {
                         }
                         
                         // Update current paragraph for mood tracking
-                        setCurrentParagraphText(paragraph)
+                        // setCurrentParagraphText(paragraph)
                         
                         // Check if this is dialogue
                         const dialogueMatch = paragraph.match(/^"(.+)"/)

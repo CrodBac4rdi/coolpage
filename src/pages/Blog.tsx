@@ -5,7 +5,7 @@ import { characters } from '../data/characters'
 import { loadStories } from '../utils/storyLoader'
 import SEOHead from '../components/SEOHead'
 import ModernIcon, { getCharacterIconType } from '../components/ModernIcon'
-import CharacterMoodBoard from '../components/CharacterMoodBoard'
+// import CharacterMoodBoard from '../components/CharacterMoodBoard' // Removed
 import CharacterShowcase from '../components/CharacterShowcase'
 
 export default function Blog() {
@@ -192,10 +192,9 @@ export default function Blog() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
+                className="text-center py-12"
               >
-                <CharacterMoodBoard
-                  characters={filteredCharacters}
-                />
+                <p className="text-gray-500">Character Map coming soon...</p>
               </motion.div>
             )}
           </AnimatePresence>

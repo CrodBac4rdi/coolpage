@@ -1,19 +1,15 @@
 import { lazy, Suspense } from 'react'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
-import RootLayout from './layouts/RootLayout'
 import ScrollToTop from './components/ScrollToTop'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 // Lazy load all pages
-const Home = lazy(() => import('./pages/ModernHome'))
+const Home = lazy(() => import('./pages/StoryFocusedHome'))
 const About = lazy(() => import('./pages/ModernAbout'))
-const Blog = lazy(() => import('./pages/Blog'))
 const Contact = lazy(() => import('./pages/ModernContact'))
 const NotFound = lazy(() => import('./pages/NotFound'))
-const ManhwaList = lazy(() => import('./pages/ModernManhwaList'))
-const Reader = lazy(() => import('./pages/ModernReader'))
-const Games = lazy(() => import('./pages/Games'))
-const Timeline = lazy(() => import('./pages/Timeline'))
+const ManhwaList = lazy(() => import('./pages/StoryFocusedHome'))
+const Reader = lazy(() => import('./pages/ThemeAwareReader'))
 
 // Loading component
 const PageLoader = () => (
@@ -28,19 +24,14 @@ function App() {
       <Router>
         <ScrollToTop />
         <Routes>
-        <Route path="/" element={<RootLayout />}>
           <Route index element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
+          <Route path="reader/:id" element={<Suspense fallback={<PageLoader />}><Reader /></Suspense>} />
           <Route path="about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
-          <Route path="blog" element={<Suspense fallback={<PageLoader />}><Blog /></Suspense>} />
           <Route path="contact" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />
           <Route path="manhwa" element={<Suspense fallback={<PageLoader />}><ManhwaList /></Suspense>} />
-          <Route path="reader/:id" element={<Suspense fallback={<PageLoader />}><Reader /></Suspense>} />
-          <Route path="games" element={<Suspense fallback={<PageLoader />}><Games /></Suspense>} />
-          <Route path="timeline" element={<Suspense fallback={<PageLoader />}><Timeline /></Suspense>} />
           <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
-        </Route>
-      </Routes>
-    </Router>
+        </Routes>
+      </Router>
     </ThemeProvider>
   )
 }
