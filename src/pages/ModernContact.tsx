@@ -41,8 +41,8 @@ export default function ModernContact() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'hello@crodbabylon.com',
-      href: 'mailto:hello@crodbabylon.com'
+      value: 'birkner.daniel@googlemail.com',
+      href: 'mailto:birkner.daniel@googlemail.com'
     },
     {
       icon: Github,

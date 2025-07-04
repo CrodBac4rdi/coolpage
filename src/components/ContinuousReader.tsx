@@ -148,9 +148,9 @@ const ContinuousReader: React.FC = () => {
     <div className={`min-h-screen bg-gradient-to-br ${theme.background}`}>
       {/* Header */}
       <div className="sticky top-0 z-10 bg-black/50 backdrop-blur-sm border-b border-white/10">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <button
                 onClick={() => navigate(-1)}
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
@@ -158,12 +158,12 @@ const ContinuousReader: React.FC = () => {
                 <ArrowLeft className="w-5 h-5 text-white" />
               </button>
               <div>
-                <h1 className="text-xl font-bold text-white">{story.title}</h1>
-                <p className="text-sm text-gray-300">von {story.author}</p>
+                <h1 className="text-lg sm:text-xl font-bold text-white">{story.title}</h1>
+                <p className="text-xs sm:text-sm text-gray-300">von {story.author}</p>
               </div>
             </div>
             
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <div className="flex items-center space-x-2">
                 <Type className="w-4 h-4 text-gray-400" />
                 <select
@@ -183,14 +183,14 @@ const ContinuousReader: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="space-y-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+        <div className="space-y-8 sm:space-y-12">
           {story.chapters.map((chapter, index) => (
-            <div key={chapter.id} className={`p-6 rounded-lg bg-white/5 backdrop-blur-sm border ${theme.border}`}>
-              <div className="mb-6">
-                <div className="flex items-center space-x-3 mb-2">
-                  <span className="text-2xl">{chapter.emoji || '📖'}</span>
-                  <h2 className="text-2xl font-bold text-white">
+            <div key={chapter.id} className={`p-4 sm:p-6 rounded-lg bg-white/5 backdrop-blur-sm border ${theme.border}`}>
+              <div className="mb-4 sm:mb-6">
+                <div className="flex items-center space-x-3 mb-2 flex-wrap">
+                  <span className="text-xl sm:text-2xl">{chapter.emoji || '📖'}</span>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white">
                     Kapitel {chapter.id}: {chapter.title}
                   </h2>
                 </div>
@@ -207,12 +207,13 @@ const ContinuousReader: React.FC = () => {
                 </div>
               </div>
               
-              <div 
-                className="prose prose-invert max-w-none"
-                style={{ fontSize: `${fontSize}px` }}
-              >
+              <div className="prose prose-invert max-w-none">
                 {chapter.content.map((paragraph, pIndex) => (
-                  <p key={pIndex} className="mb-4 leading-relaxed text-gray-200">
+                  <p 
+                    key={pIndex} 
+                    className="mb-4 leading-relaxed text-gray-200"
+                    style={{ fontSize: `${fontSize}px` }}
+                  >
                     {paragraph}
                   </p>
                 ))}

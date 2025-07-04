@@ -10,6 +10,11 @@ import dreamCatcher from '../data/stories/dream-catcher.json'
 import myBossIsACat from '../data/stories/my-boss-is-a-cat.json'
 import shadowInMirror from '../data/stories/shadow-in-the-mirror.json'
 import transferStudent from '../data/stories/the-transfer-student.json'
+import betweenTheLines from '../data/stories/between-the-lines.json'
+import cafeEncounters from '../data/stories/cafe-encounters.json'
+import dangerousAttraction from '../data/stories/dangerous-attraction.json'
+import midnightConfessions from '../data/stories/midnight-confessions.json'
+import summerTemptation from '../data/stories/summer-temptation.json'
 
 // Convert story data to display format
 const convertStoryToDisplay = (story: any) => ({
@@ -77,7 +82,12 @@ export default function StoryFocusedHome() {
           dreamCatcher,
           myBossIsACat,
           shadowInMirror,
-          transferStudent
+          transferStudent,
+          betweenTheLines,
+          cafeEncounters,
+          dangerousAttraction,
+          midnightConfessions,
+          summerTemptation
         ]
         const displayStories = allStories.map(convertStoryToDisplay)
         setStories(displayStories)
