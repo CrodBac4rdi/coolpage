@@ -10,6 +10,7 @@ const Contact = lazy(() => import('./pages/ModernContact'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const ManhwaList = lazy(() => import('./pages/StoryFocusedHome'))
 const Reader = lazy(() => import('./pages/CleanReader'))
+const EnhancedReader = lazy(() => import('./components/EnhancedReader'))
 
 // Loading component
 const PageLoader = () => (
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route index element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
           <Route path="reader/:id" element={<Suspense fallback={<PageLoader />}><Reader /></Suspense>} />
+          <Route path="enhanced-reader/:id" element={<Suspense fallback={<PageLoader />}><EnhancedReader /></Suspense>} />
           <Route path="about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
           <Route path="contact" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />
           <Route path="manhwa" element={<Suspense fallback={<PageLoader />}><ManhwaList /></Suspense>} />

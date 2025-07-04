@@ -105,3 +105,8 @@ Do whatever you want! Diese Seite wurde mit KI und viel Kaffee erstellt ☕
 [Visit Live Site](https://crodbac4rdi.github.io/coolpage/) | [Follow me on GitHub](https://github.com/CrodBac4rdi)
 
 </div>
+
+## Stories als Markdown
+
+Lege neue Stories im Ordner `/stories` als `.md`-Dateien an.  
+Metadaten kommen ins Frontmatter, Kapitel werden mit `# Kapitel` eingeleitet.
