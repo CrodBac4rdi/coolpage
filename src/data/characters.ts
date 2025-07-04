@@ -188,7 +188,7 @@ export const characters: Character[] = [
     style: "Flowing bohemian dresses, vintage band tees, crystal jewelry, always barefoot when possible.",
     gradient: "from-blue-400/20 to-purple-400/20",
     iconColor: "blue",
-    mood: "mystical"
+    mood: "mysterious"
   },
   
   {
@@ -392,7 +392,7 @@ export const characters: Character[] = [
     style: "Flowing bohemian clothes with hidden protective symbols, always wears her grandmother's dreamcatcher necklace, barefoot when possible.",
     gradient: "from-purple-500/20 to-indigo-500/20",
     iconColor: "purple",
-    mood: "mystical"
+    mood: "mysterious"
   },
   
   {

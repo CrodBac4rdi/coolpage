@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { User, Heart, Star, BookOpen, ArrowLeft, Users, Quote } from 'lucide-react'
+import { Heart, Star, BookOpen, ArrowLeft, Users, Quote } from 'lucide-react'
 import { useState, useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { characters, getCharacterById } from '../data/characters'
@@ -54,7 +54,7 @@ export default function Blog() {
             {/* Header */}
             <div className="relative p-8 pb-0">
               <div className="flex items-start gap-6">
-                <div className="text-8xl">{selectedCharacter.emoji}</div>
+                <div className="text-8xl">{selectedCharacter.icon}</div>
                 <div className="flex-1">
                   <h1 className="text-4xl font-bold text-white mb-2">
                     {selectedCharacter.name}
