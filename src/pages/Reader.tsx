@@ -14,6 +14,8 @@ import AmbientBackground from '../components/AmbientBackground'
 import AmbientModeControls from '../components/AmbientModeControls'
 import CharacterVoiceVisualizer from '../components/CharacterVoiceVisualizer'
 import CharacterMoodIndicator from '../components/CharacterMoodIndicator'
+import ReadingRhythmAnalyzer from '../components/ReadingRhythmAnalyzer'
+import SocialReadingTraces from '../components/SocialReadingTraces'
 import { characters } from '../data/characters'
 
 export default function Reader() {
@@ -629,6 +631,25 @@ export default function Reader() {
           isActive={true}
         />
       )}
+
+      {/* Reading Rhythm Analyzer */}
+      <ReadingRhythmAnalyzer
+        currentStoryId={story.id}
+        onInsightGenerated={(insight) => {
+          // Could show as toast notification
+          console.log('Reading insight:', insight)
+        }}
+      />
+
+      {/* Social Reading Traces */}
+      <SocialReadingTraces
+        storyId={story.id}
+        chapterId={activeChapter}
+        currentParagraph={currentParagraphText ? Math.floor(Math.random() * 20) : 0}
+        onTraceClick={(trace) => {
+          console.log('Trace clicked:', trace)
+        }}
+      />
 
       {/* Achievement Notification */}
       <AchievementNotification
