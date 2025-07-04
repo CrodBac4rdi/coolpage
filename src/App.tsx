@@ -14,6 +14,7 @@ const ManhwaList = lazy(() => import('./pages/ManhwaList'))
 const Reader = lazy(() => import('./pages/Reader'))
 const Games = lazy(() => import('./pages/Games'))
 const Timeline = lazy(() => import('./pages/Timeline'))
+const MemoryPalace = lazy(() => import('./pages/MemoryPalace'))
 
 // Loading component
 const PageLoader = () => (
@@ -37,6 +38,7 @@ function App() {
           <Route path="reader/:id" element={<Suspense fallback={<PageLoader />}><Reader /></Suspense>} />
           <Route path="games" element={<Suspense fallback={<PageLoader />}><Games /></Suspense>} />
           <Route path="timeline" element={<Suspense fallback={<PageLoader />}><Timeline /></Suspense>} />
+          <Route path="memory" element={<Suspense fallback={<PageLoader />}><MemoryPalace /></Suspense>} />
           <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
         </Route>
       </Routes>

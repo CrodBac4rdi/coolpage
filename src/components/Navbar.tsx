@@ -15,6 +15,7 @@ export default function Navbar() {
     { to: '/blog', label: 'Characters' },
     { to: '/manhwa', label: 'Stories' },
     { to: '/timeline', label: 'Timeline' },
+    { to: '/memory', label: 'Memory' },
     { to: '/games', label: 'Games' },
   ]
 
