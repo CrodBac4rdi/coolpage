@@ -9,6 +9,9 @@ import { useAchievements } from '../hooks/useAchievements'
 import AchievementNotification from '../components/AchievementNotification'
 import { useFocusMode } from '../hooks/useFocusMode'
 import FocusModeControl from '../components/FocusModeControl'
+import { useAmbientMode } from '../hooks/useAmbientMode'
+import AmbientBackground from '../components/AmbientBackground'
+import AmbientModeControls from '../components/AmbientModeControls'
 
 export default function Reader() {
   const { id } = useParams<{ id: string }>()
@@ -39,6 +42,19 @@ export default function Reader() {
     setCurrentParagraph,
     getFocusStyles
   } = useFocusMode()
+  
+  const {
+    config: ambientConfig,
+    currentKeywords,
+    setMood,
+    setIntensity,
+    toggleParticles,
+    toggleColorShift,
+    updateMoodFromText,
+    getAmbientStyles,
+    getParticleConfig,
+    moodPresets
+  } = useAmbientMode()
 
   // Handle scroll to detect direction
   useEffect(() => {
@@ -143,6 +159,14 @@ export default function Reader() {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
+      {/* Ambient Background */}
+      <AmbientBackground
+        mood={ambientConfig.mood}
+        intensity={ambientConfig.intensity}
+        particlesEnabled={ambientConfig.particlesEnabled}
+        particleConfig={getParticleConfig()}
+      />
+      
       {/* Scroll Progress Bar */}
       <ScrollProgressBar 
         color={isDark ? 'from-purple-500 to-pink-500' : 'from-purple-400 to-pink-400'}
@@ -406,6 +430,12 @@ export default function Reader() {
                         stiffness: 100,
                         damping: 20
                       }}
+                      onViewportEnter={() => {
+                        // Update ambient mood based on paragraph text
+                        if (ambientConfig.colorShiftEnabled) {
+                          updateMoodFromText(paragraph)
+                        }
+                      }}
                       onMouseEnter={() => focusMode && setCurrentParagraph(globalParagraphIndex)}
                       onMouseLeave={() => focusMode && setCurrentParagraph(null)}
                       className={`
@@ -499,6 +529,17 @@ export default function Reader() {
         focusIntensity={focusIntensity}
         onToggle={toggleFocusMode}
         onIntensityChange={changeFocusIntensity}
+      />
+
+      {/* Ambient Mode Controls */}
+      <AmbientModeControls
+        config={ambientConfig}
+        currentKeywords={currentKeywords}
+        onMoodChange={setMood}
+        onIntensityChange={setIntensity}
+        onToggleParticles={toggleParticles}
+        onToggleColorShift={toggleColorShift}
+        moodPresets={moodPresets}
       />
 
       {/* Achievement Notification */}
