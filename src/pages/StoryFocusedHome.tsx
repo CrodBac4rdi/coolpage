@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
-import { Book, ArrowRight, Sparkles } from 'lucide-react'
+import { Sparkles, Heart, ArrowLeft } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import ModernStoryCard from '../components/ModernStoryCard'
 // Import stories directly from the data directory
 import forbiddenDesire from '../data/stories/forbidden-desire.json'
 import moonlightAcademy from '../data/stories/moonlight-academy.json'
@@ -20,55 +21,15 @@ import summerTemptation from '../data/stories/summer-temptation.json'
 const convertStoryToDisplay = (story: any) => ({
   id: story.id,
   title: story.title,
-  subtitle: story.genre?.join(' • ') || 'Story',
+  genre: story.genre || ['Romance'],
   emoji: story.coverEmoji || '📚',
   chapters: story.chapters?.length || 0,
-  enhanced: true,
-  theme: getThemeForGenre(story.genre?.[0] || 'Romance')
+  mature: story.mature || false
 })
 
-// Get theme colors based on genre
-function getThemeForGenre(genre: string) {
-  const themes: Record<string, any> = {
-    'Romance': {
-      bg: 'from-rose-500/20 via-pink-500/10 to-purple-500/20',
-      accent: 'from-rose-500 to-pink-500',
-      text: 'text-rose-900'
-    },
-    'Fantasy': {
-      bg: 'from-blue-500/20 via-indigo-500/10 to-purple-500/20',
-      accent: 'from-blue-500 to-indigo-500',
-      text: 'text-blue-900'
-    },
-    'Cyberpunk': {
-      bg: 'from-green-500/20 via-emerald-500/10 to-teal-500/20',
-      accent: 'from-green-500 to-emerald-500',
-      text: 'text-green-900'
-    },
-    'Mystery': {
-      bg: 'from-purple-500/20 via-violet-500/10 to-indigo-500/20',
-      accent: 'from-purple-500 to-violet-500',
-      text: 'text-purple-900'
-    },
-    'Slice of Life': {
-      bg: 'from-amber-500/20 via-orange-500/10 to-red-500/20',
-      accent: 'from-amber-500 to-orange-500',
-      text: 'text-amber-900'
-    }
-  }
-  
-  return themes[genre] || themes['Romance']
-}
-
 export default function StoryFocusedHome() {
-  const [currentTime, setCurrentTime] = useState(new Date())
   const [stories, setStories] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  
-  useEffect(() => {
-    const timer = setInterval(() => setCurrentTime(new Date()), 1000)
-    return () => clearInterval(timer)
-  }, [])
 
   // Load stories
   useEffect(() => {
@@ -101,144 +62,94 @@ export default function StoryFocusedHome() {
     loadStoriesData()
   }, [])
 
-  const getTimeGreeting = () => {
-    const hour = currentTime.getHours()
-    
-    if (hour < 6) return "✨ Gute Nacht"
-    if (hour < 12) return "🌅 Guten Morgen"
-    if (hour < 18) return "☀️ Guten Tag"
-    if (hour < 22) return "🌆 Guten Abend"
-    return "🌙 Gute Nacht"
-  }
-
-  const getTimeTheme = () => {
-    const hour = currentTime.getHours()
-    
-    if (hour >= 6 && hour < 8) return "from-amber-400 via-orange-500 to-pink-500" // Sunrise
-    if (hour >= 8 && hour < 11) return "from-blue-400 via-cyan-400 to-teal-400" // Morning
-    if (hour >= 11 && hour < 14) return "from-yellow-300 via-blue-400 to-indigo-500" // Midday
-    if (hour >= 14 && hour < 17) return "from-orange-300 via-pink-400 to-purple-500" // Afternoon
-    if (hour >= 17 && hour < 20) return "from-red-400 via-pink-500 to-purple-600" // Evening
-    if (hour >= 20 && hour < 22) return "from-purple-600 via-blue-700 to-indigo-800" // Twilight
-    return "from-indigo-900 via-purple-900 to-blue-900" // Night
-  }
-
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-gradient-to-b from-purple-900 via-gray-900 to-black">
+      {/* Animated background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(90deg, rgba(147, 51, 234, 0.05) 1px, transparent 1px),
+              linear-gradient(rgba(147, 51, 234, 0.05) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }}
+          animate={{
+            backgroundPosition: ['0px 0px', '60px 60px']
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+      </div>
 
       {/* Navigation */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-6">
-        <div className="flex items-center justify-between mb-8">
-          <Link to="/" className="text-2xl font-bold text-white hover:text-gray-300 transition-colors">
-            ← Crod Babylon
-          </Link>
-        </div>
-      </div>
-
-      {/* Hero Section */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-8 pb-8">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex items-center gap-4 mb-8"
         >
-          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-6">
-            <Sparkles className="w-5 h-5 text-yellow-400" />
-            <span className="text-sm font-medium text-gray-300">Digital Paradise</span>
-          </div>
-          
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Enhanced Stories
-          </h1>
-          <p className="text-xl text-gray-300 mb-8">
-            Alle Enhanced Stories im Clean Black Look
-          </p>
+          <Link to="/" className="flex items-center gap-2 text-white hover:text-purple-300 transition-colors group">
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            <span className="text-xl font-bold">Crod Babylon</span>
+          </Link>
         </motion.div>
       </div>
 
-      {/* Stories Grid */}
-      <div className="container mx-auto px-4 sm:px-6 pb-16">
+      {/* Hero Section */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 pt-8 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <motion.div
+            className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-8 border border-white/20"
+            whileHover={{ scale: 1.05 }}
+          >
+            <Heart className="w-5 h-5 text-pink-400" />
+            <span className="text-sm font-medium text-gray-300">Story Collection</span>
+            <Sparkles className="w-5 h-5 text-yellow-400" />
+          </motion.div>
+          
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-6">
+            Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Stories</span>
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            Tauche ein in fesselnde Welten voller Romantik, Fantasy und Abenteuer. 
+            12 einzigartige Geschichten warten darauf, entdeckt zu werden.
+          </p>
+        </motion.div>
+
+        {/* Stories Grid */}
         {loading ? (
           <div className="text-center py-16">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-            <p className="text-gray-300">Loading stories...</p>
+            <motion.div
+              className="w-16 h-16 border-4 border-purple-500/30 border-t-purple-500 rounded-full mx-auto mb-4"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            />
+            <p className="text-gray-300 text-lg">Loading stories...</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {stories.map((story, index) => (
-            <motion.div
-              key={story.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="group"
-            >
-              <Link to={`/reader/${story.id}`}>
-                <div className="
-                  relative bg-gray-900/50 backdrop-blur-sm
-                  rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 
-                  h-64 sm:h-72 lg:h-80 overflow-hidden
-                  border border-gray-700/50
-                  hover:bg-gray-800/50 hover:border-gray-600/50
-                  transition-all duration-300
-                  cursor-pointer hover:scale-[1.02]
-                ">
-                  {/* Background Pattern */}
-                  <div className="absolute inset-0 opacity-5">
-                    <div className="absolute top-4 right-4 text-4xl sm:text-5xl lg:text-6xl">{story.emoji}</div>
-                    <div className="absolute bottom-4 left-4 text-4xl sm:text-5xl lg:text-6xl opacity-30">{story.emoji}</div>
-                  </div>
-                  
-                  {/* Enhanced Badge */}
-                  {story.enhanced && (
-                    <div className="absolute top-4 left-4 z-20">
-                      <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                        <Sparkles className="w-3 h-3" />
-                        Enhanced
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Content */}
-                  <div className="relative z-10 flex flex-col h-full">
-                    <div className="flex-1">
-                      <div className="text-3xl sm:text-4xl lg:text-5xl mb-3 sm:mb-4">{story.emoji}</div>
-                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 group-hover:text-gray-200 transition-colors leading-tight">
-                        {story.title}
-                      </h3>
-                      <p className="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 leading-relaxed">{story.subtitle}</p>
-                      
-                      {/* Progress */}
-                      <div className="bg-white/20 backdrop-blur-sm rounded-full p-2 sm:p-3 mb-4 border border-white/30">
-                        <div className="flex items-center gap-2 text-xs sm:text-sm text-white">
-                          <Book className="w-3 h-3 sm:w-4 sm:h-4" />
-                          <span>{story.chapters} Kapitel</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Read Button */}
-                    <motion.div 
-                      className="
-                        w-full flex items-center justify-center gap-2 
-                        bg-gray-700 hover:bg-gray-600
-                        text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl
-                        font-semibold text-sm sm:text-base
-                        group-hover:shadow-lg transform transition-all duration-200
-                        hover:scale-105 active:scale-95
-                      "
-                      whileHover={{ y: -2 }}
-                      whileTap={{ y: 0 }}
-                    >
-                      <span>Geschichte entdecken</span>
-                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-                    </motion.div>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+              <ModernStoryCard
+                key={story.id}
+                id={story.id}
+                title={story.title}
+                genre={story.genre}
+                emoji={story.emoji}
+                chapters={story.chapters}
+                mature={story.mature}
+                delay={index * 0.1}
+              />
+            ))}
           </div>
         )}
       </div>

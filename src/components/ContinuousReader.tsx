@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Type, Book, Clock } from 'lucide-react'
+import { ArrowLeft, Type, Book, Clock, Settings, Plus, Minus } from 'lucide-react'
+import { useScrollDirection } from '../hooks/useScrollDirection'
 
 interface Story {
   id: string
@@ -18,10 +19,13 @@ interface Story {
 const ContinuousReader: React.FC = () => {
   const { storyId } = useParams<{ storyId: string }>()
   const navigate = useNavigate()
+  const scrollDirection = useScrollDirection()
   const [story, setStory] = useState<Story | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [fontSize, setFontSize] = useState(16)
+  const [fontSize, setFontSize] = useState(18)
+  const [fontFamily, setFontFamily] = useState('Inter')
+  const [showSettings, setShowSettings] = useState(false)
 
   useEffect(() => {
     const loadStory = async () => {
@@ -139,12 +143,14 @@ const ContinuousReader: React.FC = () => {
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${theme.background}`}>
-      {/* Header */}
-      <div className="sticky top-0 z-10 bg-black/50 backdrop-blur-sm border-b border-white/10">
+    <div className={`min-h-screen bg-gradient-to-br ${theme.background}`} style={{ fontFamily }}>
+      {/* Auto-Hide Header */}
+      <div className={`fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 transition-transform duration-300 ${
+        scrollDirection === 'down' ? '-translate-y-full' : 'translate-y-0'
+      }`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <div className="flex items-center space-x-2 sm:space-x-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
               <button
                 onClick={() => navigate(-1)}
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
@@ -152,32 +158,80 @@ const ContinuousReader: React.FC = () => {
                 <ArrowLeft className="w-5 h-5 text-white" />
               </button>
               <div>
-                <h1 className="text-lg sm:text-xl font-bold text-white">{story.title}</h1>
-                <p className="text-xs sm:text-sm text-gray-300">von {story.author}</p>
+                <h1 className="text-lg font-bold text-white">{story.title}</h1>
+                <p className="text-sm text-gray-300">von {story.author}</p>
               </div>
             </div>
             
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              <div className="flex items-center space-x-2">
-                <Type className="w-4 h-4 text-gray-400" />
-                <select
-                  value={fontSize}
-                  onChange={(e) => setFontSize(Number(e.target.value))}
-                  className="bg-white/10 border border-white/20 rounded px-2 py-1 text-white text-sm"
-                >
-                  <option value={14} className="bg-gray-800">14px</option>
-                  <option value={16} className="bg-gray-800">16px</option>
-                  <option value={18} className="bg-gray-800">18px</option>
-                  <option value={20} className="bg-gray-800">20px</option>
-                </select>
-              </div>
-            </div>
+            <button
+              onClick={() => setShowSettings(!showSettings)}
+              className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <Settings className="w-5 h-5 text-white" />
+            </button>
           </div>
         </div>
       </div>
 
+      {/* Settings Panel */}
+      {showSettings && (
+        <div className="fixed top-20 right-4 z-50 bg-black/90 backdrop-blur-md border border-white/20 rounded-xl p-6 w-80">
+          <h3 className="text-lg font-bold text-white mb-4">Lese-Einstellungen</h3>
+          
+          {/* Font Size */}
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-300 mb-2">Schriftgröße</label>
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={() => setFontSize(Math.max(12, fontSize - 2))}
+                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+              >
+                <Minus className="w-4 h-4 text-white" />
+              </button>
+              <span className="text-white font-medium w-12 text-center">{fontSize}px</span>
+              <button
+                onClick={() => setFontSize(Math.min(28, fontSize + 2))}
+                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+              >
+                <Plus className="w-4 h-4 text-white" />
+              </button>
+            </div>
+          </div>
+
+          {/* Font Family */}
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-300 mb-2">Schriftart</label>
+            <select
+              value={fontFamily}
+              onChange={(e) => setFontFamily(e.target.value)}
+              className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white"
+            >
+              <option value="Inter" className="bg-gray-800">Inter (Standard)</option>
+              <option value="Georgia" className="bg-gray-800">Georgia (Serif)</option>
+              <option value="Crimson Pro" className="bg-gray-800">Crimson Pro (Elegant)</option>
+              <option value="ui-monospace" className="bg-gray-800">Monospace</option>
+            </select>
+          </div>
+
+          <button
+            onClick={() => setShowSettings(false)}
+            className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+          >
+            Schließen
+          </button>
+        </div>
+      )}
+
+      {/* Overlay to close settings */}
+      {showSettings && (
+        <div 
+          className="fixed inset-0 z-40 bg-black/20"
+          onClick={() => setShowSettings(false)}
+        />
+      )}
+
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-24 pb-8">
         <div className="space-y-8 sm:space-y-12">
           {story.chapters.map((chapter, index) => (
             <div key={chapter.id} className={`p-4 sm:p-6 rounded-lg bg-white/5 backdrop-blur-sm border ${theme.border}`}>
