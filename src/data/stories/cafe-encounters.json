@@ -12,703 +12,289 @@
     {
       "id": 1,
       "title": "Montag Morgen Routine",
+      "emoji": "☕",
+      "arc": "First Meeting",
       "content": [
-        "Emma hastet die Straße entlang, ihre Tasche fest umklammert. Wieder zu spät. Wie jeden Montag.",
-        "Das kleine Café an der Ecke ist ihre Rettung - hier gibt es den besten Kaffee der Stadt und die Schlange ist meist kurz.",
-        "Sie stößt die Tür auf und der vertraute Duft von frisch gemahlenem Kaffee empfängt sie.",
-        "Heute ist ungewöhnlich viel los. Die Schlange reicht bis zur Tür.",
-        "'Entschuldigung', murmelt sie, als sie versehentlich jemanden anrempelt.",
-        "'Kein Problem', antwortet eine tiefe Stimme. Emma blickt auf und sieht in die wärmsten braunen Augen, die sie je gesehen hat.",
-        "Der Mann lächelt entschuldigend. 'Die Maschine ist wohl kaputt. Wir warten schon eine Weile.'",
-        "Emma nickt nur. Normalerweise würde sie jetzt gehen, aber irgendetwas hält sie hier."
+        "Emma hastet die regennasse Straße entlang, ihre Tasche fest umklammert. Die digitale Anzeige an der U-Bahn-Station zeigt 8:47 Uhr. Wieder zu spät, wie jeden Montag.",
+        "Ihre Absätze klackern auf dem nassen Asphalt, während sie versucht, den Pfützen auszuweichen. Der Himmel über der Stadt ist grau und schwer, als würde er ihre Montagsstimmung perfekt widerspiegeln.",
+        "Das kleine Café an der Ecke ist ihre Rettung - 'Rosas Kaffeeoase' steht in verschnörkelten Buchstaben über der Tür. Hier gibt es den besten Kaffee der Stadt und normalerweise ist die Schlange kurz.",
+        "Sie stößt die schwere Glastür auf, und sofort umfängt sie der vertraute Duft von frisch gemahlenem Kaffee, gemischt mit dem süßen Aroma von Gebäck.",
+        "Die kleine Glocke über der Tür klingelt fröhlich, aber Emma erstarrt. Die Schlange reicht heute bis zur Tür - mindestens fünfzehn Personen warten bereits.",
+        "Ein Blick auf ihre Armbanduhr bestätigt ihre Befürchtung. Wenn sie jetzt wartet, kommt sie definitiv zu spät zur Präsentation. Aber ohne Koffein kann sie auch gleich zu Hause bleiben.",
+        "Mit einem resignierten Seufzen reiht sie sich ein. Vielleicht kann sie wenigstens ihre E-Mails checken, während sie wartet.",
+        "Sie kramt in ihrer Handtasche nach ihrem Smartphone, dabei rutscht ihr der Regenschirm aus der Hand und fällt klappernd zu Boden.",
+        "'Entschuldigung', murmelt sie, als sie sich bückt und dabei versehentlich jemanden anrempelt.",
+        "'Kein Problem', antwortet eine tiefe, warme Stimme, die sie innehalten lässt.",
+        "Emma richtet sich langsam auf und blickt in die wärmsten braunen Augen, die sie je gesehen hat. Der Mann vor ihr ist etwa Anfang dreißig, mit dunkelbraunem, leicht zerzaustem Haar.",
+        "Er trägt einen marineblauen Anzug, aber seine Krawatte hängt locker, als hätte er sie in Eile angezogen. Ein leichtes Lächeln spielt um seine Lippen.",
+        "'Die Maschine ist wohl kaputt', erklärt er und deutet zur Theke. 'Wir warten schon eine Weile. Rosa hat den Techniker gerufen.'",
+        "Emma nickt nur, plötzlich seltsam sprachlos. Normalerweise würde sie jetzt gehen, einen Coffee-to-go vom Automaten am Bahnhof holen. Aber irgendetwas hält sie hier.",
+        "'Macht nichts', hört sie sich sagen. 'Der Kaffee hier ist das Warten wert.'",
+        "Der Fremde lächelt breiter, und sie bemerkt, dass er ein kleines Grübchen in der linken Wange hat. 'Da haben Sie recht. Ich komme jeden Morgen her, seit ich vor einem Jahr in die Gegend gezogen bin.'",
+        "'Ich auch', antwortet Emma und entspannt sich etwas. 'Nun ja, seit drei Jahren. Rosa macht den besten Cappuccino der Stadt.'",
+        "'Und die beste heiße Schokolade', fügt er hinzu. 'Nicht dass ich die oft trinke. Nur manchmal, wenn es besonders kalt ist.'",
+        "Er wirkt fast verlegen bei diesem Geständnis, und Emma muss lächeln. Ein erwachsener Mann im Anzug, der heiße Schokolade trinkt - irgendwie charmant.",
+        "Die Schlange bewegt sich minimal vorwärts. Emma kann Rosa hinter der Theke sehen, wie sie geschäftig mit der alten Reservemaschine hantiert.",
+        "'Tut mir leid, Leute!', ruft Rosa über die Köpfe hinweg. 'Gleich geht's weiter! Die alte Dame hier braucht nur etwas länger zum Aufwärmen.'",
+        "Ein kollektives Seufzen geht durch die Wartenden, aber niemand verlässt die Schlange. Rosas Kaffee hat offenbar bei allen Suchtpotenzial.",
+        "Emma schaut wieder auf ihre Uhr. 8:52. Die Präsentation ist um 9:30. Wenn sie um 9:15 im Büro ist, schafft sie es noch.",
+        "'Wichtiger Termin?', fragt der Fremde, der ihrem Blick gefolgt ist.",
+        "'Präsentation', seufzt Emma. 'Eigentlich sollte ich längst im Büro sein und nochmal alles durchgehen.'",
+        "'Dann gehen Sie vor', bietet er spontan an. 'Ich hab heute nur Papierkram, da kommt es nicht auf zehn Minuten an.'",
+        "Emma schüttelt den Kopf, gerührt von dem Angebot. 'Das ist nett, aber ich habe gestern bis Mitternacht daran gearbeitet. Entweder es sitzt jetzt oder nie.'",
+        "'Mutig', kommentiert er anerkennend. 'Die meisten Leute würden bis zur letzten Sekunde üben.'",
+        "'Oder dumm', kontert Emma mit einem schiefen Lächeln. 'Fragen Sie mich nach der Präsentation nochmal.'",
+        "Er lacht leise, ein angenehmer Klang. 'Dann drücke ich Ihnen die Daumen. Was präsentieren Sie denn, wenn ich fragen darf?'",
+        "'Eine neue Marketingkampagne für ein nachhaltiges Modelabel', erklärt Emma und wird automatisch lebhafter. 'Wir wollen weg von dem typischen Öko-Image, hin zu etwas Modernem, Urbanem.'",
+        "Seine Augen leuchten interessiert auf. 'Das klingt spannend. Ich arbeite selbst im Bereich nachhaltiges Design, allerdings in der Architektur.'",
+        "'Oh!', Emma ist ehrlich überrascht. 'Das ist ja ein Zufall. Bauen Sie diese modernen Passivhäuser?'",
+        "'Unter anderem', nickt er. 'Aber hauptsächlich öffentliche Gebäude - Schulen, Gemeindezentren. Orte, wo Nachhaltigkeit wirklich einen Unterschied macht.'",
+        "Die Leidenschaft in seiner Stimme ist unüberhörbar, und Emma findet sich fasziniert. Wie lange hatte sie nicht mehr jemanden getroffen, der so für seinen Beruf brennt?",
+        "Die Schlange bewegt sich wieder ein Stück. Nur noch fünf Personen vor ihnen. Die Reservemaschine scheint endlich auf Betriebstemperatur zu sein.",
+        "'Funktioniert!', verkündet Rosa triumphierend. 'Wer hatte einen doppelten Espresso?'",
+        "Die Bestellungen werden jetzt zügig abgearbeitet. Emma und der Fremde rücken Schritt für Schritt vor, setzen dabei ihr Gespräch fort.",
+        "'Haben Sie schon mal überlegt, Architektur in Ihre Kampagnen einzubauen?', fragt er. 'Nachhaltige Mode in nachhaltigen Räumen?'",
+        "Emma hält inne. 'Das... ist eigentlich eine brillante Idee. Wir könnten die Shooting-Locations gezielt auswählen, die Story erweitern...'",
+        "Sie kramt hastig in ihrer Tasche nach einem Notizblock. 'Darf ich das aufschreiben? Das könnte ich heute sogar noch einbauen!'",
+        "'Natürlich', er wirkt erfreut über ihre Begeisterung. 'Ich kenne einige Gebäude in der Stadt, die sich perfekt eignen würden.'",
+        "Während Emma schreibt, bemerkt sie, dass er ein abgenutztes schwarzes Notizbuch in der Hand hält. Die Ecken sind abgestoßen, als würde er es überallhin mitnehmen.",
+        "Er folgt ihrem Blick und hält das Buch etwas hoch. 'Mein Ideenbuch. Ich bin altmodisch - Papier und Stift statt Tablet.'",
+        "'Ich auch!', Emma zeigt ihm ihren eigenen Notizblock. 'Es fühlt sich echter an, oder? Als würden die Ideen besser fließen.'",
+        "'Genau!', seine Begeisterung ist ansteckend. 'Und man kann schnell Skizzen machen, Verbindungen ziehen...'",
+        "Er schlägt sein Notizbuch auf, und Emma erhascht einen Blick auf Architekturskizzen, gemischt mit eng beschriebenen Seiten.",
+        "'Schriftsteller?', fragt sie sich leise, bemerkt aber zu spät, dass sie es laut ausgesprochen hat.",
+        "Er blickt überrascht auf, dann lächelt er verlegen. 'Architekt, tatsächlich. Aber ich schreibe gerne in meiner Freizeit. Nur kleine Geschichten, nichts Ernstes.'",
+        "Ein verlegenes Lächeln huscht über sein Gesicht, und er fährt sich durch die Haare. 'Ich bin übrigens Liam. Liam Harrison.'",
+        "'Emma', antwortet sie und fühlt sich plötzlich wie ein Teenager. 'Emma Mitchell.'",
+        "Sie reichen sich die Hände, und Emma ist überrascht von der Wärme seines Händedrucks. Fest, aber nicht zu fest. Vertrauenerweckend.",
+        "Die Schlange bewegt sich endlich schneller. Als Emma an der Reihe ist, funktioniert die Maschine einwandfrei.",
+        "'Ein Cappuccino, bitte', bestellt sie bei Rosa, die sie mit einem wissenden Lächeln mustert.",
+        "'Kommt sofort, Schätzchen. Tut mir leid wegen der Warterei.'",
+        "Hinter ihr hört sie Liam das Gleiche bestellen. 'Auch einen Cappuccino, bitte. Und eines von Ihren Croissants.'",
+        "Während Rosa die Getränke zubereitet, stehen sie nebeneinander an der Theke. Emma ist sich seiner Nähe seltsam bewusst.",
+        "'Viel Erfolg bei Ihrer Präsentation', sagt Liam, als Rosa Emma ihren Cappuccino reicht. 'Denken Sie an die Architektur-Idee!'",
+        "'Danke', Emma nimmt ihren Becher und zögert einen Moment. 'Und danke für die Inspiration. Vielleicht sehen wir uns ja mal wieder.'",
+        "'Das hoffe ich', antwortet er, und etwas in seinem Blick lässt ihr Herz einen kleinen Sprung machen.",
+        "Emma verlässt das Café mit einem Lächeln auf den Lippen. Die Präsentation, die ihr den ganzen Morgen Sorgen bereitet hat, erscheint plötzlich weniger beängstigend.",
+        "Als sie sich auf der Straße noch einmal umdreht, sieht sie Liam am Fenster stehen. Er hebt grüßend die Hand, und sie winkt zurück.",
+        "Den ganzen Weg zur U-Bahn kann sie nicht aufhören zu lächeln. Vielleicht war dieser Montagmorgen doch nicht so schlecht."
       ]
     },
     {
       "id": 2,
       "title": "Der Fremde mit dem Notizbuch",
+      "emoji": "📓",
+      "arc": "First Meeting",
       "content": [
-        "Während sie warten, beobachtet Emma den Fremden aus den Augenwinkeln.",
-        "Er hat ein abgenutztes Notizbuch in der Hand, in das er konzentriert schreibt. Seine Handschrift ist klein und ordentlich.",
-        "'Schriftsteller?', fragt sie sich leise, bemerkt aber zu spät, dass sie es laut ausgesprochen hat.",
-        "Er blickt überrascht auf. 'Architekt, tatsächlich. Aber ich schreibe gerne in meiner Freizeit.'",
-        "Ein verlegenes Lächeln huscht über sein Gesicht. 'Ich bin Liam.'",
-        "'Emma', antwortet sie und fühlt sich plötzlich wie ein Teenager.",
-        "Die Schlange bewegt sich endlich. Als Emma an der Reihe ist, funktioniert die Maschine wieder.",
-        "'Ein Cappuccino, bitte', bestellt sie. Hinter ihr hört sie Liam das Gleiche bestellen."
+        "Emma sitzt in der überfüllten U-Bahn, den Kaffeebecher vorsichtig balancierend, während sie gedanklich ihre Präsentation durchgeht.",
+        "Aber immer wieder schweifen ihre Gedanken ab zu dem Fremden aus dem Café. Liam. Der Name passt zu ihm - einfach, aber einprägsam.",
+        "Sie schüttelt den Kopf über sich selbst. Sie hat wirklich keine Zeit für Tagträumereien. In zwanzig Minuten muss sie vor dem gesamten Vorstand stehen.",
+        "Im Büro angekommen stürzt sie sich in die letzten Vorbereitungen. Ihre Assistentin Sophie reicht ihr die ausgedruckten Handouts.",
+        "'Alles in Ordnung?', fragt Sophie. 'Du siehst... anders aus heute. Irgendwie fröhlicher.'",
+        "'Nur gut ausgeschlafen', weicht Emma aus, aber sie spürt, wie ihre Wangen warm werden.",
+        "Die Präsentation läuft besser als erwartet. Als sie zu dem Punkt über die Shooting-Locations kommt, fügt sie spontan die Architektur-Idee ein.",
+        "'Stellen Sie sich vor', sagt sie mit neu gewonnener Begeisterung, 'unsere nachhaltige Mode in Passivhäusern, in grünen Bürogebäuden. Die Geschichte von Nachhaltigkeit, die über die Kleidung hinausgeht.'",
+        "Die Gesichter im Vorstand hellen sich auf. Der CEO lehnt sich interessiert vor. 'Das ist brilliant, Emma. Haben Sie schon Kontakte zu solchen Locations?'",
+        "Emma denkt an Liam, der von seinen Projekten erzählt hat. 'Ich... arbeite daran. Aber ich bin zuversichtlich, dass wir die perfekten Orte finden werden.'",
+        "Nach der Präsentation klopfen ihr alle auf die Schulter. Es ist ein voller Erfolg. Sophie bringt Champagner, aber Emma kann sich nicht richtig freuen.",
+        "Sie denkt daran, dass sie Liam gerne von dem Erfolg erzählen würde. Absurd - sie kennt ihn doch gar nicht.",
+        "Den Rest des Tages verbringt sie mit Meetings und Telefonaten. Aber in ruhigen Momenten ertappt sie sich dabei, wie sie aus dem Fenster starrt.",
+        "Gegen sechs Uhr packt sie ihre Sachen. Sophie ist schon gegangen, das Büro ist ruhig.",
+        "Auf dem Heimweg kommt sie wieder am Café vorbei. Die Nachmittagssonne taucht den kleinen Laden in goldenes Licht.",
+        "Durch das Fenster kann sie Rosa sehen, wie sie die Tische abwischt. Von Liam keine Spur. Natürlich nicht - warum sollte er auch noch da sein?",
+        "Emma schüttelt den Kopf über ihre eigene Dummheit und geht weiter. Zu Hause wartet Arbeit auf sie.",
+        "In ihrer kleinen Wohnung angekommen, kickt sie die Schuhe von den Füßen und lässt sich aufs Sofa fallen.",
+        "Ihr Kater Fitzgerald springt auf ihren Schoß und schnurrt laut. 'Wenigstens du freust dich, mich zu sehen', murmelt sie.",
+        "Während sie gedankenverloren Fitzgerald krault, denkt sie über den Tag nach. Die erfolgreiche Präsentation, die neue Idee, und... Liam.",
+        "Sie greift nach ihrem Laptop und öffnet Google. 'Liam Harrison Architekt', tippt sie ein, fühlt sich dabei wie ein Stalker.",
+        "Mehrere Treffer erscheinen. Ein LinkedIn-Profil, einige Artikel über nachhaltige Architektur. Sie klickt auf einen Link.",
+        "Da ist er - auf einem Foto bei einer Preisverleihung. Er sieht gut aus im Smoking, aber irgendwie unnatürlich. Als würde er lieber in Jeans und T-Shirt herumlaufen.",
+        "Emma liest den Artikel. Liam hat tatsächlich mehrere Preise für seine Entwürfe gewonnen. Ein Gemeindezentrum in einem Problemviertel, das zum sozialen Treffpunkt wurde.",
+        "Die Bilder zeigen ein modernes, lichtdurchflutetes Gebäude mit viel Grün. Man sieht Kinder spielen, Senioren beim Kaffeeklatsch. Leben.",
+        "'Beeindruckend', murmelt Emma. Er hatte nicht übertrieben - er macht wirklich einen Unterschied.",
+        "Sie schließt den Laptop, ärgert sich über sich selbst. Was macht sie da? Sie googelt einen fremden Mann, nur weil sie zehn Minuten mit ihm geplaudert hat.",
+        "Aber es waren gute zehn Minuten, muss sie zugeben. Lange hatte sie nicht mehr so ein anregendes Gespräch mit jemandem geführt.",
+        "Ihr Telefon summt. Eine Nachricht von ihrer Mutter: 'Wie lief die Präsentation, Schatz?'",
+        "'Sehr gut!', tippt Emma zurück. 'Die neue Idee kam super an.'",
+        "'Wusste ich doch! Kommst du Sonntag zum Essen? Du kannst mir alles erzählen.'",
+        "Emma seufzt. Sonntagsessen bedeutet auch die unvermeidliche Frage nach ihrem Liebesleben. Seit ihrer Trennung vor einem Jahr ist das Moms Lieblingsthema.",
+        "'Mal sehen', antwortet sie ausweichend. 'Muss vielleicht arbeiten.'",
+        "Eine Lüge, aber besser als zwei Stunden Verhör über potenzielle Kandidaten aus Moms Bekanntenkreis.",
+        "Sie macht sich einen Salat, isst vor dem Fernseher, aber kann sich nicht konzentrieren. Ihre Gedanken wandern immer wieder zum Morgen.",
+        "Um zehn geht sie ins Bett, nimmt sich vor, morgen früher aufzustehen. Dann muss sie nicht hetzen und kann in Ruhe ihren Kaffee trinken.",
+        "Aber als sie die Augen schließt, sieht sie braune Augen und ein Grübchen. Sie schläft mit einem Lächeln ein.",
+        "Dienstag morgen. Emma ist tatsächlich früher aufgestanden, hat sogar Zeit für eine Dusche und ein richtiges Frühstück.",
+        "Um 8:15 betritt sie das Café. Es ist ruhiger als gestern, nur wenige Gäste sitzen an den kleinen Tischen.",
+        "Rosa begrüßt sie mit einem breiten Lächeln. 'Na, heute ohne Stress?'",
+        "'Ja, gestern hat mir gereicht', lacht Emma. 'Ein Cappuccino, bitte.'",
+        "Während Rosa den Kaffee macht, lässt Emma ihren Blick schweifen. Kein Liam. Sie versucht, nicht enttäuscht zu sein.",
+        "'Der nette junge Mann von gestern war schon da', sagt Rosa beiläufig. 'Hat nach dir gefragt.'",
+        "Emmas Herz macht einen Sprung. 'Ach ja?'",
+        "'Mhm', Rosa zwinkert. 'Wollte wissen, ob du jeden Tag kommst. Hab ihm gesagt, dass ich keine Kundendaten rausgebe.'",
+        "Emma weiß nicht, ob sie erleichtert oder enttäuscht sein soll. 'Das... das ist professionell von dir.'",
+        "'Aber', Rosa lehnt sich verschwörerisch vor, 'ich hab ihm gesagt, dass du meistens zwischen acht und halb neun hier bist. War doch okay, oder?'",
+        "Emma nickt, kann ein Lächeln nicht unterdrücken. Er hat nach ihr gefragt. Das bedeutet doch etwas, oder?",
+        "Sie nimmt ihren Kaffee und setzt sich ans Fenster. Vielleicht kommt er ja morgen wieder.",
+        "Den Tag über ertappt sie sich dabei, wie sie auf die Uhr schaut. Noch 24 Stunden bis zum nächsten Morgen.",
+        "Sophie bemerkt ihre Unruhe. 'Alles okay? Du wirkst so... hibbelig heute.'",
+        "'Nur aufgekratzt vom Erfolg gestern', behauptet Emma, aber Sophie sieht nicht überzeugt aus.",
+        "Mittwoch. Emma hat sich extra Mühe mit ihrem Outfit gegeben. Nicht zu viel, aber das blaue Kleid steht ihr gut.",
+        "8:20 Uhr. Sie betritt das Café mit klopfendem Herzen. Und da ist er, in der Schlange, das schwarze Notizbuch in der Hand.",
+        "Er dreht sich um, als die Glocke klingelt, und sein Gesicht hellt sich auf. 'Emma! Wie war die Präsentation?'",
+        "Sie stellt sich hinter ihn in die Schlange, glücklich über die Ausrede für Nähe. 'Fantastisch! Die Architektur-Idee war der Hit.'",
+        "'Wirklich?' Er strahlt. 'Das freut mich riesig. Erzähl!'",
+        "Und Emma erzählt. Von der Begeisterung des CEOs, von den neuen Plänen, von allem. Liam hört aufmerksam zu, stellt Fragen.",
+        "Sie merken nicht, wie die Zeit vergeht, bis Rosa räuspert. 'Die übliche Bestellung, ihr zwei?'",
+        "Beide nicken, und Emma wird bewusst, dass Rosa sie als 'ihr zwei' bezeichnet hat. Als wären sie ein Paar.",
+        "Sie warten gemeinsam auf ihre Getränke, die Unterhaltung fließt mühelos. Es fühlt sich an, als würden sie sich schon ewig kennen.",
+        "Als die Kaffees fertig sind, zögern beide. Keiner will gehen, aber die Arbeit ruft.",
+        "'Vielleicht...', beginnt Liam und fährt sich nervös durchs Haar. 'Vielleicht könnten wir mal in Ruhe über die Kooperation sprechen? Beim Mittagessen?'",
+        "Emma nickt, bevor sie nachdenken kann. 'Das wäre toll. Wann passt es dir?'",
+        "'Morgen? Es gibt ein nettes kleines Restaurant um die Ecke von meinem Büro.'",
+        "Sie tauschen Handynummern aus. Emmas Finger zittern leicht, als sie seine Nummer eintippt.",
+        "'Dann bis morgen', sagt Liam, und sein Lächeln ist warm wie der Kaffee in ihrer Hand.",
+        "Den ganzen Tag über starrt Emma auf ihr Handy. Soll sie ihm schreiben? Wäre das zu aufdringlich?",
+        "Um drei kommt eine Nachricht: 'Hier die Adresse für morgen. Freue mich! - Liam'",
+        "Emma antwortet schnell: 'Ich mich auch! Bis morgen.'",
+        "Sie liest die kurze Unterhaltung mindestens zehnmal. Sophie rollt mit den Augen. 'Wer ist er?'",
+        "'Wer ist wer?', Emma versucht unschuldig zu klingen.",
+        "'Der Typ, wegen dem du seit drei Tagen auf Wolke sieben schwebst.'",
+        "Emma gibt auf und erzählt Sophie von Liam. Es tut gut, mit jemandem darüber zu reden.",
+        "'Ein Architekt, der in seiner Freizeit schreibt? Klingt perfekt für dich', urteilt Sophie.",
+        "'Es ist nur ein Geschäftsessen', protestiert Emma schwach.",
+        "'Klar', Sophie grinst. 'Deshalb hast du auch gestern eine Stunde vor dem Spiegel gestanden.'",
+        "Emma wird rot. Ist sie wirklich so offensichtlich?",
+        "Abends ruft ihre beste Freundin Claire an. 'Ich hab von Sophie gehört, dass da was läuft!'",
+        "'Sophie ist eine Klatschbase', murmelt Emma, muss aber lachen.",
+        "'Erzähl mir alles!', fordert Claire, und Emma gibt nach.",
+        "Es tut gut, über Liam zu sprechen. Über seine warmen Augen, sein Lächeln, die Art, wie er zuhört.",
+        "'Klingt, als hättest du es erwischt', diagnostiziert Claire. 'Und das wurde auch Zeit!'",
+        "Nach dem Gespräch liegt Emma im Bett und starrt an die Decke. Morgen. Morgen wird sie Liam zum Mittagessen treffen.",
+        "Es ist kein Date, redet sie sich ein. Nur ein Geschäftsessen. Aber ihr Herz glaubt ihr nicht."
       ]
     },
     {
-      "id": 3, 
-      "title": "Alltag und Gedanken",
+      "id": 3,
+      "title": "Erste Schritte",
+      "emoji": "🍽️",
+      "arc": "Getting Closer",
       "content": [
-        "Die Woche vergeht wie im Flug. Emma ertappt sich dabei, wie sie an den Fremden aus dem Café denkt.",
-        "Bei der Arbeit in der Marketingagentur kann sie sich kaum konzentrieren. 'Liam', wiederholt sie in Gedanken.",
-        "Ihre Kollegin Sarah bemerkt ihre Abwesenheit. 'Alles okay? Du wirkst so... verträumt.'",
-        "Emma schüttelt den Kopf. 'Nur müde.'",
-        "Aber das stimmt nicht. Sie denkt an braune Augen und ein schüchternes Lächeln.",
-        "Am Freitag beschließt sie, wieder in das Café zu gehen. Zur gleichen Zeit wie am Montag.",
-        "Ihr Herz klopft schneller, als sie die Tür öffnet. Aber er ist nicht da.",
-        "Enttäuscht bestellt sie ihren Kaffee und setzt sich ans Fenster."
-      ]
-    },
-    {
-      "id": 4,
-      "title": "Liams Perspektive",
-      "content": [
-        "Liam sitzt in seinem Büro und starrt auf die Baupläne vor ihm. Aber seine Gedanken sind woanders.",
-        "Bei einer Frau mit haselnussbraunen Haaren und einem bezaubernden Lächeln.",
-        "Er ärgert sich über sich selbst. Warum hat er nicht nach ihrer Nummer gefragt?",
-        "'Emma', murmelt er und sein Kollege Tom schaut fragend auf.",
-        "'Nichts', winkt Liam ab. Aber Tom grinst wissend.",
-        "'Aha, eine Frau also. Erzähl schon!'",
-        "Liam seufzt. 'Ich hab sie im Café getroffen. Einmal. Vor einer Woche.'",
-        "'Dann geh wieder hin!', ermutigt Tom ihn. 'Was hast du zu verlieren?'"
-      ]
-    },
-    {
-      "id": 5,
-      "title": "Verpasste Chancen",
-      "content": [
-        "Die nächsten zwei Wochen sind eine Qual verpasster Gelegenheiten.",
-        "Emma geht montags ins Café - Liam dienstags.",
-        "Liam versucht es freitags - Emma war donnerstags da.",
-        "Die Barista, eine ältere Frau namens Rosa, beobachtet das Schauspiel mit wachsender Frustration.",
-        "Sie hat beide nach dem jeweils anderen fragen hören, aber ihre Schichten überschneiden sich nie.",
-        "Emma beginnt zu glauben, es sollte nicht sein. Vielleicht war es nur ihre Einbildung.",
-        "Liam fragt sich, ob er sie sich nur ausgedacht hat. War sie wirklich so besonders?",
-        "Beide versuchen weiterzumachen, aber etwas fehlt in ihrem Alltag."
-      ]
-    },
-    {
-      "id": 6,
-      "title": "Regen und Zufälle",
-      "content": [
-        "Es ist ein grauer Donnerstag und es gießt in Strömen.",
-        "Emma hat ihren Schirm vergessen und sucht Schutz unter einem Vordach.",
-        "Das Café ist nur wenige Meter entfernt, aber der Regen ist zu stark.",
-        "Plötzlich hält jemand einen Schirm über sie. 'Kann ich helfen?'",
-        "Sie dreht sich um und ihr Herz macht einen Sprung. Liam.",
-        "'Du!', sagen beide gleichzeitig und müssen lachen.",
-        "'Ich... ich hab dich gesucht', gibt er zu. 'Im Café, meine ich.'",
-        "Emma lächelt. 'Ich dich auch. Wir haben uns wohl immer verpasst.'"
-      ]
-    },
-    {
-      "id": 7,
-      "title": "Der erste richtige Kaffee",
-      "content": [
-        "Gemeinsam laufen sie ins Café. Rosa strahlt, als sie sie zusammen sieht.",
-        "'Na endlich!', ruft sie aus. 'Zwei Cappuccino, wie immer?'",
-        "Sie setzen sich an einen kleinen Tisch am Fenster und der Regen trommelt gegen die Scheibe.",
-        "'Erzähl mir von dir', sagt Liam und Emma spürt, wie alle Nervosität verfliegt.",
-        "Sie reden stundenlang. Über ihre Jobs, ihre Träume, ihre Lieblingsbücher.",
-        "Emma erfährt, dass Liam nachhaltige Gebäude entwirft und heimlich Gedichte schreibt.",
-        "Liam lernt, dass Emma eine brillante Kampagne für ein Kinderhilfswerk leitet und Horrorfilme liebt.",
-        "Als das Café schließt, wollen beide nicht gehen."
-      ]
-    },
-    {
-      "id": 8,
-      "title": "Nummern und Versprechen",
-      "content": [
-        "'Wir sollten Nummern austauschen', sagt Liam schnell. 'Damit wir uns nicht wieder verpassen.'",
-        "Emma lacht und zückt ihr Handy. 'Definitiv. Kein Versteckspiel mehr.'",
-        "Sie speichern gegenseitig ihre Kontakte. Liam nennt sie 'Emma ☕' in seinem Telefon.",
-        "Emma speichert ihn als 'Liam 📐' - wegen seiner Architektur.",
-        "'Morgen Abend?', fragt er hoffnungsvoll. 'Abendessen?'",
-        "'Ich würde gerne', antwortet Emma, 'aber ich hab ein Arbeitsessen. Samstag?'",
-        "Sie einigen sich auf Samstag. Ein richtiges Date.",
-        "Als sie sich verabschieden, gibt es einen Moment der Unsicherheit. Umarmung? Handschlag? Sie entscheiden sich für eine kurze, warme Umarmung."
-      ]
-    },
-    {
-      "id": 9,
-      "title": "Vorfreude und Nervosität",
-      "content": [
-        "Freitag zieht sich wie Kaugummi. Emma kann sich kaum konzentrieren.",
-        "Sie schreibt mit Liam - kleine Nachrichten über ihren Tag, lustige Beobachtungen.",
-        "Er schickt ihr ein Foto von einem schiefen Gebäude mit dem Text: 'Nicht mein Design, versprochen!'",
-        "Sie antwortet mit einem Bild ihres chaotischen Schreibtischs: 'Kreatives Genie bei der Arbeit.'",
-        "Sarah bemerkt ihr ständiges Lächeln. 'Okay, jetzt musst du mir aber erzählen, was los ist!'",
-        "Emma gesteht ihr alles. Sarah ist begeistert. 'Endlich! Du hast viel zu lange allein gelebt.'",
-        "Liam geht es ähnlich. Tom plant bereits die Hochzeit, was Liam peinlich ist.",
-        "'Es ist nur ein Date', protestiert er, aber sein Lächeln verrät ihn."
-      ]
-    },
-    {
-      "id": 10,
-      "title": "Das erste Date",
-      "content": [
-        "Samstag Abend. Emma hat drei Outfits ausprobiert und sich für das erste entschieden.",
-        "Liam wartet nervös vor dem kleinen italienischen Restaurant. Er hat Blumen dabei - Gerbera, keine Rosen. Zu viel?",
-        "Als Emma um die Ecke kommt, vergisst er alle Zweifel. Sie sieht umwerfend aus.",
-        "'Hi', sagt sie atemlos. 'Sorry, die Bahn hatte Verspätung.'",
-        "'Kein Problem', er reicht ihr die Blumen. 'Die sind für dich.'",
-        "Emma strahlt. 'Sie sind wunderschön! Woher wusstest du, dass ich Gerbera liebe?'",
-        "Er zuckt verlegen die Schultern. 'Geraten. Du scheinst ein Gerbera-Mensch zu sein.'",
-        "Das Essen ist perfekt. Sie reden, lachen, teilen sich das Tiramisu."
-      ]
-    },
-    {
-      "id": 11,
-      "title": "Spaziergänge und Sternschnuppen",
-      "content": [
-        "Nach dem Essen schlendern sie durch den Park.",
-        "Der Himmel ist klar und voller Sterne. 'Schau!', ruft Emma. 'Eine Sternschnuppe!'",
-        "'Wünsch dir was', sagt Liam leise.",
-        "Sie schließt die Augen. Er beobachtet sie dabei und sein Herz wird warm.",
-        "'Was hast du dir gewünscht?', fragt er.",
-        "'Das darf ich nicht verraten!', lacht sie. 'Sonst geht es nicht in Erfüllung.'",
-        "Sie setzen sich auf eine Bank. Die Nacht ist mild und voller Möglichkeiten.",
-        "Als er sie nach Hause bringt, zögern beide an ihrer Tür."
-      ]
-    },
-    {
-      "id": 12,
-      "title": "Der erste Kuss",
-      "content": [
-        "'Ich hatte einen wundervollen Abend', sagt Emma leise.",
-        "'Ich auch', Liam tritt einen kleinen Schritt näher.",
-        "Die Luft zwischen ihnen knistert. Emma blickt zu ihm auf.",
-        "Langsam beugt er sich vor. Sie kommt ihm entgegen.",
-        "Der Kuss ist sanft, vorsichtig, perfekt. Wie der erste Schluck Kaffee am Morgen.",
-        "Als sie sich lösen, lächeln beide.",
-        "'Nächste Woche?', fragt er hoffnungsvoll.",
-        "'Ruf mich morgen an', antwortet sie und verschwindet glücklich in ihrer Wohnung."
-      ]
-    },
-    {
-      "id": 13,
-      "title": "Sonntagmorgen Nachrichten",
-      "content": [
-        "Emma wacht mit einem Lächeln auf. Ihr Handy zeigt eine Nachricht.",
-        "'Guten Morgen ☀️ Hoffe, du hast gut geschlafen. - L'",
-        "Sie antwortet sofort: 'Wie ein Baby 😊 Frühstück im Café?'",
-        "'Bin schon unterwegs!', kommt die Antwort.",
-        "Sie treffen sich im 'ihrem' Café. Rosa zwinkert ihnen zu.",
-        "'Die üblichen?', fragt sie und beide nicken.",
-        "Sie sitzen an ihrem Fenstertisch und planen die Woche.",
-        "'Mittwoch Kino?', schlägt Liam vor. Emma stimmt begeistert zu."
-      ]
-    },
-    {
-      "id": 14,
-      "title": "Alltag zu zweit",
-      "content": [
-        "Die nächsten Wochen vergehen wie im Flug.",
-        "Aus gelegentlichen Dates werden regelmäßige Treffen.",
-        "Sie entwickeln Routinen - Mittwochs Kino, Samstags Abendessen, Sonntags Café.",
-        "Emma lernt, dass Liam morgens nicht ansprechbar ist vor dem ersten Kaffee.",
-        "Liam entdeckt, dass Emma beim Nachdenken auf ihrer Unterlippe kaut.",
-        "Ihre Freunde bemerken die Veränderung. Beide strahlen mehr, lachen öfter.",
-        "Nach einem Monat ist es, als würden sie sich schon ewig kennen.",
-        "Aber beide zögern noch, es 'Beziehung' zu nennen."
-      ]
-    },
-    {
-      "id": 15,
-      "title": "Das erste 'Ich liebe dich'",
-      "content": [
-        "Es passiert ungeplant. Emma hat einen schrecklichen Tag bei der Arbeit.",
-        "Ein wichtiger Kunde ist abgesprungen, ihr Chef macht ihr Vorwürfe.",
-        "Sie ruft Liam weinend an. Er lässt alles stehen und liegen.",
-        "Eine halbe Stunde später steht er mit Eiscreme und einer Umarmung vor ihrer Tür.",
-        "Während er sie tröstet und ihr zuhört, rutscht es ihm heraus:",
-        "'Ich liebe dich, Emma. Es wird alles gut.'",
-        "Beide erstarren. Er wird rot. 'Ich... das war...'",
-        "'Ich liebe dich auch', flüstert sie und vergräbt ihr Gesicht an seiner Schulter."
-      ]
-    },
-    {
-      "id": 16,
-      "title": "Zusammenziehen?",
-      "content": [
-        "Nach sechs Monaten kommt das Thema auf.",
-        "Liam verbringt sowieso die meiste Zeit bei Emma. Seine Zahnbürste steht bereits in ihrem Bad.",
-        "'Es wäre praktischer', sagt er eines Abends vorsichtig.",
-        "Emma zögert. Ihre letzte Beziehung endete schlecht nach dem Zusammenziehen.",
-        "'Ich weiß nicht... ist es nicht zu früh?'",
-        "Liam nimmt ihre Hand. 'Wir müssen nichts überstürzen. Ich warte.'",
-        "Seine Geduld berührt sie. 'Lass mich darüber nachdenken?'",
-        "Er nickt und küsst sie sanft. 'Nimm dir alle Zeit, die du brauchst.'"
-      ]
-    },
-    {
-      "id": 17,
-      "title": "Familientreffen",
-      "content": [
-        "Emmas Mutter kündigt ihren Besuch an. Emma gerät in Panik.",
-        "'Sie ist... speziell', warnt sie Liam.",
-        "'Keine Sorge', beruhigt er sie. 'Mütter lieben mich.'",
-        "Das Treffen ist... interessant. Emmas Mutter stellt tausend Fragen.",
-        "'Was sind deine Absichten mit meiner Tochter?'",
-        "'Ich möchte sie glücklich machen', antwortet Liam ehrlich.",
-        "Am Ende des Abends zieht Emmas Mutter sie beiseite.",
-        "'Er ist gut für dich', sagt sie. 'Halt ihn fest.'"
-      ]
-    },
-    {
-      "id": 18,
-      "title": "Der erste Streit",
-      "content": [
-        "Es passiert wegen etwas Dummen. Liam vergisst ihr Firmenevent.",
-        "Emma ist verletzt. 'Es war dir wichtig, dass ich komme!'",
-        "'Es tut mir leid! Die Deadline für das Krankenhausprojekt...'",
-        "'Immer ist die Arbeit wichtiger!', wirft sie ihm vor.",
-        "Er wird defensiv. 'Das ist nicht fair. Du arbeitest genauso viel!'",
-        "Sie streiten heftig. Emma wirft ihm vor, sie nicht zu priorisieren.",
-        "Liam fühlt sich unverstanden. Beide sagen Dinge, die sie nicht meinen.",
-        "Er geht. Die Tür knallt. Emma weint."
-      ]
-    },
-    {
-      "id": 19,
-      "title": "Die Stille danach",
-      "content": [
-        "Drei Tage Funkstille. Beide sind zu stolz, den ersten Schritt zu machen.",
-        "Emma vermisst ihn schrecklich. Ihr Bett fühlt sich leer an.",
-        "Liam kann sich nicht konzentrieren. Überall erinnert ihn etwas an sie.",
-        "Rosa im Café schüttelt den Kopf, als beide getrennt kommen.",
-        "'Jugend', murmelt sie. 'So stolz und so dumm.'",
-        "Sarah drängt Emma: 'Ruf ihn an! Es war nur ein Streit.'",
-        "Tom sagt das Gleiche zu Liam: 'Mann, entschuldige dich einfach!'",
-        "Aber beide zögern. Was, wenn der andere nicht verzeiht?"
-      ]
-    },
-    {
-      "id": 20,
-      "title": "Versöhnung im Regen",
-      "content": [
-        "Es regnet wieder, als sie sich zufällig vor dem Café treffen.",
-        "Beide bleiben stehen, unsicher.",
-        "'Hi', sagt Emma leise.",
-        "'Hi', antwortet Liam.",
-        "Dann sprechen beide gleichzeitig: 'Es tut mir leid!'",
-        "Sie müssen lachen, dann weinen sie, dann umarmen sie sich im Regen.",
-        "'Ich war ein Idiot', sagt Liam. 'Deine Events sind wichtig.'",
-        "'Ich hab überreagiert', gibt Emma zu. 'Ich weiß, wie wichtig deine Arbeit ist.'",
-        "Sie küssen sich im Regen, durchnässt und glücklich."
-      ]
-    },
-    {
-      "id": 21,
-      "title": "Stärker als zuvor",
-      "content": [
-        "Nach dem Streit sind sie vorsichtiger miteinander, aber auch ehrlicher.",
-        "Sie lernen zu kommunizieren, bevor Probleme eskalieren.",
-        "Liam trägt jetzt alle ihre wichtigen Termine in seinen Kalender ein.",
-        "Emma interessiert sich mehr für seine Projekte, besucht Baustellen mit ihm.",
-        "An einem Sonntagmorgen, wieder im Café, holt Emma tief Luft.",
-        "'Ich bin bereit', sagt sie.",
-        "'Bereit wofür?', fragt Liam verwirrt.",
-        "'Zusammenzuziehen. Wenn du noch willst.'"
-      ]
-    },
-    {
-      "id": 22,
-      "title": "Wohnungssuche",
-      "content": [
-        "Die Suche nach der perfekten Wohnung wird zum Abenteuer.",
-        "Die erste ist zu klein, die zweite zu teuer, die dritte hat komische Nachbarn.",
-        "'Vielleicht sollten wir aufgeben', seufzt Emma nach der zehnten Besichtigung.",
-        "'Noch eine', bittet Liam. 'Ich hab ein gutes Gefühl.'",
-        "Die Wohnung ist perfekt - hell, geräumig, mit Balkon. Und in der Nähe ihres Cafés.",
-        "'Die ist es', sagen beide gleichzeitig.",
-        "Der Vermieter ist von dem Paar angetan und sie bekommen den Zuschlag.",
-        "In zwei Wochen können sie einziehen."
-      ]
-    },
-    {
-      "id": 23,
-      "title": "Umzugschaos",
-      "content": [
-        "Der Umzugstag ist chaotisch. Es regnet, der Transporter kommt zu spät.",
-        "Liam entdeckt, dass Emma unglaublich viele Bücher hat.",
-        "Emma staunt über Liams Sammlung von Architekturmodellen.",
-        "'Wohin mit dem?', fragt Tom und hält eine hässliche Vase hoch.",
-        "'Das war ein Geschenk meiner Tante!', protestiert Emma.",
-        "'In den Keller', flüstert Liam ihm zu.",
-        "Am Abend sitzen sie erschöpft zwischen Kisten auf dem Boden.",
-        "'Unser erstes gemeinsames Zuhause', sagt Emma leise. Liam küsst sie."
-      ]
-    },
-    {
-      "id": 24,
-      "title": "Alltag in der neuen Wohnung",
-      "content": [
-        "Das Zusammenleben bringt neue Herausforderungen.",
-        "Liam ist ein Morgenmuffel, Emma ein Morgenmensch.",
-        "Sie singt unter der Dusche, er lässt überall Socken liegen.",
-        "Aber sie finden ihren Rhythmus. Gemeinsames Frühstück am Wochenende wird zur Tradition.",
-        "Abends kochen sie zusammen, er schneidet Gemüse, während sie von ihrem Tag erzählt.",
-        "Die Wohnung füllt sich mit gemeinsamen Erinnerungen.",
-        "An der Wand hängen Fotos von ihren Reisen, auf dem Regal stehen seine Modelle neben ihren Büchern.",
-        "Es fühlt sich richtig an. Wie Zuhause."
-      ]
-    },
-    {
-      "id": 25,
-      "title": "Jahrestag",
-      "content": [
-        "Ein Jahr seit ihrer ersten Begegnung im Café.",
-        "Liam plant etwas Besonderes, aber alles geht schief.",
-        "Das Restaurant verliert ihre Reservierung, es beginnt zu stürmen.",
-        "Frustriert kehren sie ins Café zurück. Rosa hat schon geschlossen.",
-        "Aber sie öffnet für sie. 'Für mein Lieblingspaar immer!'",
-        "Bei Kerzenlicht und Kaffee lachen sie über das Chaos.",
-        "'Das ist perfekt', sagt Emma. 'Hier hat alles angefangen.'",
-        "Liam stimmt zu. Kein schickes Restaurant könnte diesen Moment toppen."
-      ]
-    },
-    {
-      "id": 26,
-      "title": "Zukunftspläne",
-      "content": [
-        "Beim Sonntagsfrühstück sprechen sie über die Zukunft.",
-        "'Willst du Kinder?', fragt Emma vorsichtig.",
-        "Liam verschluckt sich fast an seinem Kaffee. 'Äh... ja? Irgendwann? Du?'",
-        "'Auch irgendwann', sie lächelt. 'Nicht jetzt, aber... später.'",
-        "Sie sprechen über Träume - ein Haus mit Garten, vielleicht ein Hund.",
-        "Liam erzählt von seinem Traum, ein eigenes Architekturbüro zu gründen.",
-        "Emma möchte sich selbständig machen, nachhaltige Kampagnen entwickeln.",
-        "Sie merken, dass ihre Zukunftsvisionen zusammenpassen."
-      ]
-    },
-    {
-      "id": 27,
-      "title": "Karriere-Stress",
-      "content": [
-        "Liam bekommt ein Angebot - Projektleitung in Berlin. Für ein Jahr.",
-        "Er ist hin- und hergerissen. Es ist eine Riesenchance.",
-        "Emma versucht unterstützend zu sein, aber die Angst nagt an ihr.",
-        "'Ein Jahr ist lang', sagt sie leise.",
-        "'Ich würde jedes Wochenende kommen', verspricht er.",
-        "Aber beide wissen, wie schwer Fernbeziehungen sind.",
-        "Emma weint nachts, wenn er schläft. Liam liegt wach und grübelt.",
-        "Die Entscheidung belastet ihre Beziehung."
-      ]
-    },
-    {
-      "id": 28,
-      "title": "Die Entscheidung",
-      "content": [
-        "Nach wochenlangem Ringen trifft Liam eine Entscheidung.",
-        "'Ich habe abgesagt', sagt er eines Abends.",
-        "Emma starrt ihn an. 'Was? Aber deine Karriere...'",
-        "'Du bist wichtiger', er nimmt ihre Hand. 'Wir sind wichtiger.'",
-        "'Ich will nicht, dass du es später bereust', flüstert sie.",
-        "'Das werde ich nicht. Es gibt andere Chancen. Aber dich gibt es nur einmal.'",
-        "Sie weint vor Erleichterung und Liebe zu diesem Mann.",
-        "In dieser Nacht schläft sie fest, zum ersten Mal seit Wochen."
-      ]
-    },
-    {
-      "id": 29,
-      "title": "Überraschungsbesuch",
-      "content": [
-        "Liams Eltern kommen überraschend zu Besuch.",
-        "Emma gerät in Panik. Die Wohnung ist ein Chaos, der Kühlschrank leer.",
-        "'Entspann dich', beruhigt Liam sie. 'Sie werden dich lieben.'",
-        "Seine Mutter ist warmherzig, sein Vater etwas reserviert.",
-        "Beim Abendessen (schnell bestellte Pizza) tauen alle auf.",
-        "Liams Mutter zeigt Emma peinliche Kinderfotos.",
-        "Sein Vater erzählt Geschichten aus Liams Jugend.",
-        "Am Ende umarmt seine Mutter Emma fest. 'Pass gut auf meinen Jungen auf.'"
-      ]
-    },
-    {
-      "id": 30,
-      "title": "Krankheit und Fürsorge",
-      "content": [
-        "Emma wird krank. Richtig krank. Grippe mit allem Drum und Dran.",
-        "Liam verwandelt sich in den fürsorglichsten Krankenpfleger.",
-        "Er kocht Suppe, bringt Tee, liest ihr vor, wenn sie nicht schlafen kann.",
-        "'Du musst nicht...', beginnt sie schwach.",
-        "'Doch, muss ich. In guten wie in schlechten Zeiten, remember?'",
-        "'Das ist das Eheversprechen', lächelt sie schwach.",
-        "'Dann betrachte es als Übung', zwinkert er.",
-        "In diesem Moment weiß Emma - er ist der Richtige."
-      ]
-    },
-    {
-      "id": 31,
-      "title": "Der Ring",
-      "content": [
-        "Liam betrachtet nervös den Ring in der kleinen Samtbox.",
-        "Er trägt ihn seit Wochen mit sich herum, wartet auf den perfekten Moment.",
-        "Tom hatte beim Aussuchen geholfen. 'Schlicht, aber elegant', hatte er geraten.",
-        "Der Ring ist perfekt - wie Emma. Ein einzelner Diamant, der im Licht funkelt.",
-        "Er hat mit ihrem Vater gesprochen, ihre Mutter um Rat gefragt.",
-        "Alle sind begeistert. 'Es wurde auch Zeit!', hatte ihre Mutter gesagt.",
-        "Aber wann ist der richtige Moment? Wie macht man so etwas?",
-        "Er will, dass es perfekt ist. So perfekt wie sie."
-      ]
-    },
-    {
-      "id": 32,
-      "title": "Fast-Antrag",
-      "content": [
-        "Mehrmals will er fragen, aber etwas kommt dazwischen.",
-        "Im Restaurant fällt der Kellner mit dem Tablett.",
-        "Im Park beginnt es zu regnen.",
-        "Zu Hause klingelt genau im falschen Moment das Telefon.",
-        "Emma bemerkt seine Nervosität. 'Alles okay? Du bist so fahrig.'",
-        "'Alles bestens', versichert er und die Box in seiner Tasche fühlt sich tonnenschwer an.",
-        "Er beginnt zu zweifeln. Vielleicht ist es noch zu früh?",
-        "Aber dann sieht er sie lachen und weiß - es ist genau richtig."
-      ]
-    },
-    {
-      "id": 33,
-      "title": "Der perfekte Moment",
-      "content": [
-        "Es passiert ungeplant. Sonntagmorgen, in ihrem Café.",
-        "Emma erzählt begeistert von einem neuen Projekt, ihre Augen leuchten.",
-        "Die Morgensonne fällt durch das Fenster und lässt ihre Haare golden schimmern.",
-        "Und Liam weiß - das ist der Moment.",
-        "'Emma', unterbricht er sie sanft.",
-        "Sie schaut ihn fragend an, als er aufsteht und sich vor ihr hinkniet.",
-        "Das Café wird still. Rosa lässt fast eine Tasse fallen.",
-        "'Emma Miller, willst du mich heiraten?'"
-      ]
-    },
-    {
-      "id": 34,
-      "title": "Die Antwort",
-      "content": [
-        "Emma starrt ihn an, die Hand vor dem Mund.",
-        "Tränen sammeln sich in ihren Augen. 'Liam...'",
-        "Das ganze Café hält den Atem an.",
-        "'Du hast mein Leben verändert', fährt er fort. 'Mit dir will ich alt werden.'",
-        "'Ja', flüstert sie. Dann lauter: 'Ja! Natürlich ja!'",
-        "Das Café bricht in Applaus aus. Rosa weint offen.",
-        "Liam steckt ihr den Ring an - er passt perfekt.",
-        "Sie küssen sich unter Jubelrufen und Liam denkt: Besser hätte es nicht sein können."
-      ]
-    },
-    {
-      "id": 35,
-      "title": "Verlobungsfeier",
-      "content": [
-        "Die Nachricht verbreitet sich wie ein Lauffeuer.",
-        "Ihre Familien sind außer sich vor Freude.",
-        "Sarah organisiert eine Überraschungsparty. Tom hilft begeistert.",
-        "Als Emma und Liam nach Hause kommen, ist die Wohnung voller Menschen.",
-        "'Überraschung!' Alle ihre Lieben sind da.",
-        "Es wird gelacht, getanzt, auf die Liebe angestoßen.",
-        "Emmas Vater nimmt Liam beiseite. 'Willkommen in der Familie, Sohn.'",
-        "Es ist perfekt - chaotisch, laut und voller Liebe."
-      ]
-    },
-    {
-      "id": 36,
-      "title": "Hochzeitsplanung beginnt",
-      "content": [
-        "Die Realität der Hochzeitsplanung trifft sie hart.",
-        "So viele Entscheidungen! Große oder kleine Feier? Kirche oder Strand?",
-        "'Lass uns durchbrennen', stöhnt Liam nach dem dritten Cateringtermin.",
-        "Emma lacht. 'Meine Mutter würde uns umbringen.'",
-        "Sie einigen sich auf einen Mittelweg - eine mittelgroße Feier im Grünen.",
-        "Die Location? Ein Landhaus mit Blick auf Hügel und Wälder.",
-        "Das Datum? In einem Jahr, im Frühling, wenn die Kirschbäume blühen.",
-        "Passend zu ihrem Anfang."
-      ]
-    },
-    {
-      "id": 37,
-      "title": "Stress und Streit",
-      "content": [
-        "Die Hochzeitsplanung zerrt an ihren Nerven.",
-        "Sie streiten über Blumenarrangements und Sitzordnungen.",
-        "'Warum ist das alles so kompliziert?', fragt Emma frustriert.",
-        "'Weil wir es kompliziert machen', erkennt Liam.",
-        "Sie setzen sich hin und reden. Was ist wirklich wichtig?",
-        "'Du und ich', sagt Emma. 'Der Rest ist nur Dekoration.'",
-        "Sie streichen die Hälfte ihrer Liste. Einfacher ist besser.",
-        "Der Stress lässt nach. Sie erinnern sich, worum es wirklich geht."
-      ]
-    },
-    {
-      "id": 38,
-      "title": "Junggesellenabschiede",
-      "content": [
-        "Sarah plant einen wilden Junggesellinnenabschied. Emma ist nervös.",
-        "Tom organisiert für Liam etwas 'Entspanntes'. Liam ist misstrauisch.",
-        "Emmas Abend wird überraschend lustig - Spa, Wein und viel Gelächter.",
-        "Liams Abend... nun ja. Tom hatte gelogen. Es wird wild.",
-        "Beide kommen spät nach Hause, leicht angetrunken und glücklich.",
-        "'Wie war dein Abend?', fragen sie gleichzeitig und müssen lachen.",
-        "'Perfekt', antworten beide. 'Aber ich bin froh, dass es vorbei ist.'",
-        "Sie kuscheln sich aneinander. Bald sind sie verheiratet."
-      ]
-    },
-    {
-      "id": 39,
-      "title": "Die Woche vor der Hochzeit",
-      "content": [
-        "Die letzte Woche ist hektisch. Letzte Anproben, finale Details.",
-        "Liams Anzug muss geändert werden. Emmas Schuhe sind zu eng.",
-        "Das Wetter droht schlecht zu werden. Plan B wird aktiviert.",
-        "Verwandte reisen an. Das Chaos nimmt zu.",
-        "Aber inmitten des Sturms finden sie ruhige Momente.",
-        "Abends, im Bett, halten sie sich fest.",
-        "'In einer Woche sind wir verheiratet', flüstert Emma.",
-        "'Ich kann es kaum erwarten', antwortet Liam."
-      ]
-    },
-    {
-      "id": 40,
-      "title": "Der Morgen der Hochzeit",
-      "content": [
-        "Emma wacht früh auf. Heute ist der Tag.",
-        "Tradition besagt, sie dürfen sich nicht sehen. Sie haben in getrennten Wohnungen geschlafen.",
-        "Sarah und die Brautjungfern trudeln ein. Sekt wird geöffnet.",
-        "Bei Liam herrscht kontrolliertes Chaos. Tom hat die Ringe fast vergessen.",
-        "Beide sind nervös, aufgeregt, glücklich.",
-        "Emma schaut in den Spiegel. Das Kleid ist perfekt.",
-        "Liam richtet seine Krawatte. Seine Hände zittern leicht.",
-        "In wenigen Stunden sind sie Mann und Frau."
-      ]
-    },
-    {
-      "id": 41,
-      "title": "Die Zeremonie",
-      "content": [
-        "Die Musik beginnt. Emma erscheint am Arm ihres Vaters.",
-        "Liam vergisst zu atmen. Sie ist die schönste Frau der Welt.",
-        "Ihre Blicke treffen sich. Beide haben Tränen in den Augen.",
-        "Der Weg zum Altar erscheint endlos und viel zu kurz zugleich.",
-        "Die Gelübde haben sie selbst geschrieben. Liams Stimme bebt.",
-        "'Emma, du bist mein Zuhause, mein Abenteuer, meine Ruhe im Sturm.'",
-        "Emma weint offen. 'Liam, du bist mein bester Freund, meine große Liebe, mein Für-Immer.'",
-        "'Ihr dürft euch küssen', und sie tun es, unter Jubelrufen."
-      ]
-    },
-    {
-      "id": 42,
-      "title": "Die Feier",
-      "content": [
-        "Die Party ist ausgelassen. Alle tanzen, lachen, feiern die Liebe.",
-        "Rosa vom Café hat die Hochzeitstorte gebacken - Kaffeegeschmack natürlich.",
-        "Die Reden sind emotional. Emmas Vater weint. Liams Mutter auch.",
-        "Der erste Tanz. 'At Last' von Etta James. Ihr Lied.",
-        "Sie schweben über die Tanzfläche, verloren ineinander.",
-        "Die Nacht vergeht wie im Flug. Mitternacht kommt zu schnell.",
-        "Als sie sich verabschieden, flüstert Emma: 'Beste Entscheidung ever.'",
-        "'Definitiv', stimmt Liam zu und küsst seine Frau."
-      ]
-    },
-    {
-      "id": 43,
-      "title": "Flitterwochen in Italien",
-      "content": [
-        "Zwei Wochen Italien. Rom, Florenz, die Amalfiküste.",
-        "Sie erkunden alte Städte, essen zu viel Pasta, trinken Wein.",
-        "In Rom werfen sie Münzen in den Trevi-Brunnen.",
-        "In Florenz schauen sie sich den Sonnenuntergang von der Piazzale Michelangelo an.",
-        "An der Amalfiküste mieten sie ein kleines Boot.",
-        "Abends sitzen sie auf Terrassen und planen ihre Zukunft.",
-        "Es ist perfekt - nur sie beide und alle Zeit der Welt.",
-        "'Ich liebe dich, Mrs. Hayes', sagt Liam. 'Ich liebe dich auch, Mr. Hayes', antwortet Emma."
-      ]
-    },
-    {
-      "id": 44,
-      "title": "Zurück im Alltag",
-      "content": [
-        "Die Rückkehr in den Alltag ist hart.",
-        "Arbeit wartet, Rechnungen auch. Das echte Leben eben.",
-        "Aber etwas ist anders. Der Ring an Emmas Finger erinnert sie - sie sind ein Team.",
-        "Sie etablieren neue Routinen. Mittwochsabends ist Date-Night, egal was kommt.",
-        "Die Wohnung wird langsam ihr gemeinsames Heim.",
-        "Hochzeitsfotos ersetzen die alten Bilder. 'Mr. & Mrs.' Tassen im Schrank.",
-        "Es ist der gleiche Alltag und doch ganz anders.",
-        "Sie sind verheiratet. Diese Tatsache macht sie immer noch glücklich."
-      ]
-    },
-    {
-      "id": 45,
-      "title": "Große Neuigkeiten",
-      "content": [
-        "Liam bekommt den Auftrag seines Lebens - ein nachhaltiges Gemeindezentrum.",
-        "Emma startet ihre eigene Agentur. Der erste Kunde ist bereits da.",
-        "Sie feiern im Café. Rosa schenkt Champagner aus.",
-        "Beide verwirklichen ihre Träume und unterstützen sich dabei.",
-        "Abends, erschöpft aber glücklich, sprechen sie über die Zukunft.",
-        "'Vielleicht ist es Zeit für den nächsten Schritt?', sagt Emma vorsichtig.",
-        "Liam versteht sofort. 'Ein Baby?'",
-        "Sie nickt. Er strahlt. 'Lass es uns versuchen.'"
-      ]
-    },
-    {
-      "id": 46,
-      "title": "Warten und Hoffen",
-      "content": [
-        "Monate vergehen. Jeden Monat die gleiche Enttäuschung.",
-        "Emma wird ungeduldig, dann traurig. 'Was, wenn es nicht klappt?'",
-        "Liam hält sie fest. 'Dann finden wir einen anderen Weg. Hauptsache, wir sind zusammen.'",
-        "Sie gehen zu Ärzten. Tests. Alles ist in Ordnung. 'Manchmal dauert es eben', sagt der Arzt.",
-        "Sie versuchen sich zu entspannen. Konzentrieren sich auf ihre Arbeit, ihre Liebe.",
-        "An einem gewöhnlichen Dienstagmorgen passiert es.",
-        "Zwei rosa Streifen. Emma starrt ungläubig auf den Test.",
-        "'Liam!', ruft sie. Er kommt angerannt. Sieht den Test. Sie umarmen sich weinend."
-      ]
-    },
-    {
-      "id": 47,
-      "title": "Neun Monate Abenteuer",
-      "content": [
-        "Die Schwangerschaft ist ein Abenteuer.",
-        "Morgenübelkeit (warum heißt es so, wenn es den ganzen Tag ist?), seltsame Gelüste, Stimmungsschwankungen.",
-        "Liam ist die Ruhe selbst. Nachts läuft er für Essiggurken und Eiscreme.",
-        "Sie streiten über Namen. Einigen sich nicht. Lachen darüber.",
-        "Die Wohnung wird zu klein. Sie suchen ein Haus. Finden eines mit Garten.",
-        "Der Umzug ist anstrengend. Emma darf nicht helfen. Sie dirigiert.",
-        "Das Kinderzimmer wird eingerichtet. Gelb, weil sie das Geschlecht nicht wissen wollen.",
-        "Die Zeit rast. Plötzlich ist es soweit."
-      ]
-    },
-    {
-      "id": 48,
-      "title": "Willkommen, kleines Wunder",
-      "content": [
-        "Die Geburt ist lang, anstrengend, überwältigend.",
-        "Liam hält ihre Hand, flüstert Ermutigung, ist ihr Fels.",
-        "Und dann - ein Schrei. Ihr Baby. Ein Mädchen.",
-        "'Sie ist perfekt', weint Emma. Liam kann nur nicken, zu überwältigt.",
-        "Sie nennen sie Lily. Wie die Blumen, die Liam beim zweiten Date gebracht hatte.",
-        "Die ersten Nächte sind hart. Niemand schläft. Aber es ist egal.",
-        "Sie sitzen nachts zu dritt im Schaukelstuhl. Eine kleine, perfekte Familie.",
-        "'Ich liebe euch beide so sehr', flüstert Liam. Emma lehnt sich an ihn. 'Wir dich auch.'"
-      ]
-    },
-    {
-      "id": 49,
-      "title": "Neues Kapitel",
-      "content": [
-        "Das Leben mit Baby ist chaotisch und wunderschön.",
-        "Erste Lächeln, erste Schritte, erste Worte. Jeder Moment ist kostbar.",
-        "Sie finden eine neue Balance. Arbeit, Familie, Partnerschaft.",
-        "Date-Nights werden seltener aber kostbarer. Rosa babysittet gerne.",
-        "An Lilys erstem Geburtstag sitzen sie im Café. Dem Ort, wo alles begann.",
-        "'Wer hätte gedacht, dass eine Kaffeemaschinen-Panne zu all dem führt?', sagt Emma.",
-        "'Das Schicksal', antwortet Liam und küsst erst seine Tochter, dann seine Frau.",
-        "Rosa bringt Kaffee und Kuchen. 'Für meine Lieblingsfamilie', strahlt sie."
-      ]
-    },
-    {
-      "id": 50,
-      "title": "Für immer und einen Tag",
-      "content": [
-        "Jahre vergehen. Lily wächst. Ein zweites Kind kommt - ein Junge, Max.",
-        "Das Haus füllt sich mit Lachen, Chaos, Liebe.",
-        "Emma und Liams Unternehmen florieren. Sie arbeiten manchmal zusammen.",
-        "Die Kinder lieben das Café. Rosa verwöhnt sie mit heißer Schokolade.",
-        "An ihrem zehnten Hochzeitstag sitzen Emma und Liam wieder dort.",
-        "Diesmal mit ihrer Familie. Der Kreis schließt sich.",
-        "'Bereust du etwas?', fragt Liam leise.",
-        "'Nur, dass ich dich nicht früher getroffen habe', antwortet Emma.",
-        "Sie stoßen mit Kaffee an. Auf die Liebe. Auf das Leben. Auf für immer und einen Tag."
+        "Donnerstag. Emma steht vor ihrem Kleiderschrank und verflucht ihre gesamte Garderobe. Nichts scheint richtig für ein 'Geschäftsessen', das sich wie ein Date anfühlt.",
+        "Nach dreißig Minuten entscheidet sie sich für eine schwarze Hose und eine cremefarbene Seidenbluse. Professionell, aber nicht zu steif.",
+        "Im Büro kann sie sich kaum konzentrieren. Die Minuten kriechen dahin. Sophie bringt ihr ungefragt Tee.",
+        "'Du machst mich nervös mit deinem Gezappel', erklärt sie. 'Trink das und beruhig dich.'",
+        "Um 11:45 macht Emma sich auf den Weg. Das Restaurant ist nur zehn Minuten entfernt, aber sie will nicht zu spät kommen.",
+        "Es ist ein kleines italienisches Lokal, gemütlich und einladend. Durch die Fenster sieht sie karierte Tischdecken und Kerzen in Weinflaschen.",
+        "Liam wartet bereits vor der Tür. Er trägt heute keine Krawatte, das hellblaue Hemd betont seine Augen.",
+        "'Hi', sagt er, und sein Lächeln vertreibt ihre Nervosität. 'Schön, dass du kommen konntest.'",
+        "'Hi', antwortet Emma. 'Danke für die Einladung.'",
+        "Er hält ihr die Tür auf, und sie betreten das Restaurant. Der Duft von Knoblauch und frischen Kräutern empfängt sie.",
+        "Der Kellner führt sie zu einem Tisch in einer ruhigen Ecke. Die Atmosphäre ist intim, fast romantisch.",
+        "'Ich hoffe, italienisch ist okay?', fragt Liam, als sie Platz nehmen. 'Ich hätte fragen sollen...'",
+        "'Italienisch ist perfekt', versichert Emma. 'Ich liebe Pasta in jeder Form.'",
+        "Sie studieren die Speisekarte, aber Emma kann sich nicht konzentrieren. Sie ist sich seiner Nähe über den kleinen Tisch hinweg sehr bewusst.",
+        "'Die Lasagne hier ist fantastisch', empfiehlt Liam. 'Aber eigentlich ist alles gut.'",
+        "Der Kellner nimmt ihre Bestellung auf - Lasagne für Emma, Risotto für Liam, dazu Wasser und Weißwein.",
+        "'Also', beginnt Liam und lehnt sich leicht vor. 'Erzähl mir mehr über deine Kampagne. Wie kann ich helfen?'",
+        "Emma holt ihr Notizbuch heraus, froh über den professionellen Einstieg. Sie erklärt das Konzept, zeigt Skizzen.",
+        "Liam hört aufmerksam zu, macht Vorschläge, skizziert auf einer Serviette mögliche Locations.",
+        "'Ich habe ein Projekt in der Nordstadt', sagt er. 'Ein renoviertes Fabrikgebäude, jetzt ein Kreativzentrum. Viel natürliches Licht, Industriecharme trifft auf moderne Nachhaltigkeit.'",
+        "'Das klingt perfekt!', Emma ist begeistert. 'Könnten wir es uns ansehen?'",
+        "'Natürlich. Wie wäre es mit Samstag? Ich habe den Schlüssel, wir könnten in Ruhe durchgehen.'",
+        "Das Essen kommt, und die Unterhaltung wird persönlicher. Emma erfährt, dass Liam aus einer kleinen Stadt im Norden stammt.",
+        "'Meine Eltern verstehen immer noch nicht ganz, was ich tue', erzählt er mit einem schiefen Lächeln. 'Für sie ist ein Haus ein Haus. Warum muss es nachhaltig sein?'",
+        "'Meine Mutter versteht auch nicht, warum ich in der Werbung arbeite', gesteht Emma. 'Sie denkt, ich verkaufe meine Seele.'",
+        "Sie lachen gemeinsam über die Eigenarten ihrer Familien, tauschen Geschichten aus.",
+        "Liam erzählt von seinem ersten Entwurf - ein Baumhaus für seine kleine Schwester. 'Es ist beim ersten Sturm zusammengebrochen. Sie war untröstlich.'",
+        "'Oh nein!', Emma kann sich die Szene vorstellen. 'Was hast du gemacht?'",
+        "'Was denkst du? Ich hab ein neues gebaut. Diesmal mit Hilfe meines Vaters. Es steht heute noch.'",
+        "Emma erzählt von ihrem ersten 'Kunstwerk' - Lippenstift-Graffiti an der Wohnzimmerwand. 'Meine Mutter war... nicht begeistert.'",
+        "'Frühe kreative Ausdrucksform', urteilt Liam grinsend. 'Sehr avantgarde.'",
+        "Die Zeit verfliegt. Der Kellner muss sie daran erinnern, dass die Mittagspause vorbei ist.",
+        "'Oh Gott, ich komme zu spät!', Emma springt auf. 'Mein Meeting!'",
+        "'Warte', Liam winkt dem Kellner. 'Ich zahle. Geh schon.'",
+        "'Nein, lass uns teilen...', beginnt Emma, aber Liam schüttelt den Kopf.",
+        "'Ich hab dich eingeladen. Außerdem schulde ich dir was für die Architektur-Idee.'",
+        "Emma zögert, dann nickt sie. 'Danke. Dann lade ich dich nächstes Mal ein.'",
+        "'Nächstes Mal?', sein Lächeln wird breiter. 'Das klingt gut.'",
+        "Sie eilt zur Tür, dreht sich nochmal um. 'Samstag? Wegen der Location?'",
+        "'Ich schreibe dir die Details', verspricht er.",
+        "Emma rennt praktisch zurück zum Büro, schafft es gerade noch rechtzeitig zum Meeting.",
+        "'Gutes Essen?', fragt Sophie unschuldig, und Emma wirft ihr einen warnenden Blick zu.",
+        "Das Meeting zieht sich endlos. Emma ertappt sich dabei, wie sie Spiralen auf ihren Block kritzelt.",
+        "Nach der Arbeit findet sie eine Nachricht von Liam: 'Samstag, 11 Uhr? Schicke dir die Adresse. Hatte einen schönen Mittag.'",
+        "Sie antwortet: 'Ich auch. Bis Samstag!' und fügt dann nach kurzem Zögern hinzu: 'Freue mich darauf.'",
+        "Freitag ist Folter. Emma kann an nichts anderes denken als an den morgigen Tag.",
+        "Claire ruft an. 'Wie war das Geschäftsessen?'",
+        "'Es war... nett', sagt Emma ausweichend.",
+        "'Nett? NETT? Emma Mitchell, du gibst mir sofort Details!'",
+        "Emma gibt nach und erzählt. Claire quietscht begeistert. 'Das war ein Date! Ein eindeutiges Date!'",
+        "'Es war geschäftlich', beharrt Emma, aber ihre Stimme klingt nicht überzeugend.",
+        "'Klar. Und morgen ist auch rein geschäftlich, nehme ich an?'",
+        "Emma seufzt. 'Ich weiß nicht, was es ist. Ich weiß nur, dass ich mich freue, ihn zu sehen.'",
+        "'Das reicht doch', sagt Claire sanft. 'Lass es einfach passieren.'",
+        "Nach dem Gespräch macht Emma sich eine Tasse Tee und setzt sich auf den Balkon.",
+        "Die Stadt summt unter ihr, Lichter gehen an, Leben pulsiert. Und morgen wird sie Liam wiedersehen.",
+        "Sie denkt an sein Lächeln beim Mittagessen, an die Art, wie er zugehört hat, wirklich zugehört.",
+        "Fitzgerald springt auf ihren Schoß und schnurrt. 'Was meinst du?', fragt sie ihn. 'Ist es zu früh, sich zu freuen?'",
+        "Der Kater blinzelt weise und schnurrt weiter. Emma nimmt das als gutes Zeichen.",
+        "Samstag morgen. Emma ist viel zu früh wach. Sie duscht ausgiebig, föhnt ihre Haare sorgfältig.",
+        "Was zieht man zu einer Gebäudebesichtigung an? Sie entscheidet sich für Jeans und einen kuscheligen Pullover. Casual, aber gepflegt.",
+        "Um zehn hält sie es nicht mehr aus und macht sich auf den Weg. Lieber zu früh als zu spät.",
+        "Die Adresse führt sie in ein Viertel, das sich im Wandel befindet. Alte Industriegebäude neben hippen Cafés.",
+        "Das Gebäude ist beeindruckend - rote Backsteine, große Fenster, moderne Glaselemente. Alt trifft auf Neu.",
+        "Liam wartet bereits, lehnt lässig an der Wand. Er trägt Jeans und einen grauen Kapuzenpulli. Entspannt, jugendlich.",
+        "'Du bist früh', begrüßt er sie mit einem Lächeln.",
+        "'Du auch', kontert Emma.",
+        "'Ich war aufgeregt', gibt er zu, und seine Ehrlichkeit überrascht sie.",
+        "'Ich auch', gesteht sie, und die Spannung zwischen ihnen löst sich.",
+        "'Komm', er schließt die schwere Tür auf. 'Lass mich dir mein Baby zeigen.'",
+        "Sie betreten einen lichtdurchfluteten Raum. Die hohen Decken, die originalen Stahlträger, alles atmet Geschichte und Moderne zugleich.",
+        "'Wow', haucht Emma. 'Das ist... unglaublich.'",
+        "Liams Augen leuchten vor Stolz. 'Warte, bis du den Rest siehst.'",
+        "Er führt sie durch das Gebäude, erklärt jedes Detail. Seine Leidenschaft ist ansteckend.",
+        "'Hier haben wir die originalen Fenster restauriert', zeigt er. 'Und hier, siehst du die Solarpanels? Sie sind in das Dach integriert, fast unsichtbar.'",
+        "Emma macht Fotos, macht sich Notizen, aber hauptsächlich beobachtet sie Liam. Wie er gestikuliert, wie seine Augen strahlen.",
+        "'Und hier', er öffnet eine weitere Tür, 'ist mein Lieblingsraum.'",
+        "Es ist eine Art Wintergarten auf dem Dach. Glas rundherum, Pflanzen überall, die Stadt liegt zu ihren Füßen.",
+        "'Oh mein Gott', Emma ist sprachlos. 'Das ist magisch.'",
+        "'Ich komme manchmal hierher zum Nachdenken', sagt Liam leise. 'Oder zum Schreiben.'",
+        "Sie stehen nebeneinander, schauen über die Stadt. Die Nähe ist elektrisch.",
+        "'Danke, dass du mir das zeigst', sagt Emma. 'Es ist perfekt für unser Shooting.'",
+        "'Freut mich, dass es dir gefällt', Liam dreht sich zu ihr. 'Aber ehrlich gesagt war das nur teilweise der Grund für die Einladung.'",
+        "Emmas Herz beginnt schneller zu schlagen. 'Ach ja?'",
+        "'Ich wollte dich wiedersehen', sagt er einfach. 'Nicht nur für fünf Minuten im Café.'",
+        "Die Ehrlichkeit in seiner Stimme raubt ihr den Atem. 'Ich... ich wollte dich auch sehen.'",
+        "Einen Moment stehen sie nur da, schauen sich an. Dann klingelt Emmas Handy schrill.",
+        "'Sorry!', sie kramt hastig danach. Es ist ihre Mutter. Sie drückt den Anruf weg.",
+        "'Wichtig?', fragt Liam.",
+        "'Nur meine Mutter. Sie will wahrscheinlich wissen, ob ich morgen zum Essen komme.'",
+        "'Gehst du?'",
+        "Emma zuckt die Schultern. 'Vermutlich. Sie lässt nicht locker.'",
+        "'Familie', sagt Liam verständnisvoll. 'Meine Mutter ruft auch ständig an.'",
+        "Sie verlassen den Wintergarten, setzen die Tour fort. Die Stimmung ist leichter jetzt, das Geständnis hat die Luft geklärt.",
+        "Nach der Besichtigung stehen sie wieder vor dem Gebäude. Keiner will gehen.",
+        "'Hast du Lust auf einen Kaffee?', fragt Liam. 'Ich kenne ein nettes Café hier in der Nähe. Nicht so gut wie Rosas, aber...'",
+        "'Gerne', sagt Emma, bevor er den Satz beenden kann.",
+        "Sie schlendern durch die Straßen, die Herbstsonne wärmt ihre Gesichter. Es fühlt sich natürlich an, zusammen zu gehen.",
+        "Das Café ist klein und gemütlich, voller Bücher und Pflanzen. Sie finden einen Platz in einer Ecke.",
+        "'Zwei Cappuccino?', fragt Liam, und Emma nickt lächelnd. Er kennt ihre Bestellung bereits.",
+        "Während sie auf die Getränke warten, erzählt Liam mehr über das Gebäude, über seine Vision für das Viertel.",
+        "'Ich möchte Räume schaffen, die Menschen zusammenbringen', sagt er. 'Architektur sollte nicht nur schön sein, sondern auch funktional und sozial.'",
+        "'Das merkt man', sagt Emma ehrlich. 'Man spürt die Seele in deinen Gebäuden.'",
+        "Er wird leicht rot bei dem Kompliment. 'Danke. Das... das bedeutet mir viel.'",
+        "Die Cappuccinos kommen, und sie stoßen scherzhaft mit den Tassen an. 'Auf erfolgreiche Kooperationen', sagt Emma.",
+        "'Und auf neue Anfänge', fügt Liam hinzu, und sein Blick sagt mehr als seine Worte.",
+        "Sie bleiben bis zum späten Nachmittag, reden über alles und nichts. Die Zeit verfliegt wieder.",
+        "Als die Sonne langsam untergeht, begleitet Liam sie zur U-Bahn. 'Das war ein schöner Tag', sagt er.",
+        "'Ja', stimmt Emma zu. 'Wirklich schön.'",
+        "An der Station zögern sie wieder. Der Abschied fällt schwer.",
+        "'Sehen wir uns Montag im Café?', fragt Liam hoffnungsvoll.",
+        "'Natürlich', Emma lächelt. 'Gleiche Zeit, gleicher Ort.'",
+        "'Es ist ein Date', sagt er, dann wird er rot. 'Ich meine...'",
+        "'Es ist ein Date', bestätigt Emma sanft und steigt in die Bahn, bevor sie ihren Mut verliert.",
+        "Durch das Fenster sieht sie ihn auf dem Bahnsteig stehen, die Hände in den Taschen, ein Lächeln im Gesicht.",
+        "Die ganze Fahrt nach Hause kann Emma nicht aufhören zu grinsen. Es ist ein Date. Ein echtes Date."
       ]
     }
   ]
