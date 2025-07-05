@@ -1,8 +1,9 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { useState } from 'react'
-import { Book, ArrowRight, Heart, Star } from 'lucide-react'
+import { Book, ArrowRight, Heart, Star, Eye } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useFavorites } from '../hooks/useFavorites'
+import StoryPreview from './StoryPreview'
 
 interface ModernStoryCardProps {
   id: string
@@ -11,6 +12,7 @@ interface ModernStoryCardProps {
   emoji: string
   delay?: number
   mature?: boolean
+  story?: any
 }
 
 export default function ModernStoryCard({
@@ -19,9 +21,11 @@ export default function ModernStoryCard({
   genre,
   emoji,
   delay = 0,
-  mature = false
+  mature = false,
+  story
 }: ModernStoryCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const [showPreview, setShowPreview] = useState(false)
   const { toggleFavorite, isFavorite } = useFavorites()
   const isStoryFavorite = isFavorite(id)
   
@@ -115,6 +119,20 @@ export default function ModernStoryCard({
                   }`}
                 />
               </motion.button>
+              
+              {/* Preview Eye */}
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  setShowPreview(true)
+                }}
+                className="w-8 h-8 flex items-center justify-center bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full transition-colors"
+              >
+                <Eye className="w-4 h-4 text-white/60 hover:text-white" />
+              </motion.button>
             </div>
 
             {/* Story emoji - large */}
@@ -182,6 +200,13 @@ export default function ModernStoryCard({
           </div>
         </motion.div>
       </Link>
+      
+      {/* Story Preview Modal */}
+      <StoryPreview 
+        story={story}
+        isOpen={showPreview}
+        onClose={() => setShowPreview(false)}
+      />
     </motion.div>
   )
 }

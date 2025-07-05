@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Type, Book, Clock, Settings, Plus, Minus } from 'lucide-react'
+import { ArrowLeft, Type, Book, Clock, Settings, Plus, Minus, Heart, BarChart3, Maximize } from 'lucide-react'
 import { useScrollDirection } from '../hooks/useScrollDirection'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { useGestures } from '../hooks/useGestures'
+import { useFavorites } from '../hooks/useFavorites'
+import { useStoryTheme } from '../hooks/useStoryTheme'
+import { useReadingAnalytics } from '../hooks/useReadingAnalytics'
+import VoiceControls from './VoiceControls'
+import FloatingQuickActions from './FloatingQuickActions'
+import ParticleBackground from './ParticleBackground'
+import ReadingInsights from './ReadingInsights'
+import ImmersiveMode from './ImmersiveMode'
 
 interface Story {
   id: string
@@ -29,6 +38,43 @@ const ContinuousReader: React.FC = () => {
     fontFamily: 'Inter'
   })
   const [showSettings, setShowSettings] = useState(false)
+  const { toggleFavorite, isFavorite } = useFavorites()
+  const isStoryFavorite = story ? isFavorite(story.id) : false
+  const { theme, themeSettings, updateThemeSettings } = useStoryTheme(storyId || '')
+  
+  // Reading analytics
+  const { startSession, endSession, trackChapterRead, trackActivity } = useReadingAnalytics(storyId)
+  const [showInsights, setShowInsights] = useState(false)
+  
+  // Immersive mode
+  const [isImmersive, setIsImmersive] = useState(false)
+  
+  // Voice synthesis for current chapter
+  const [currentChapterText, setCurrentChapterText] = useState('')
+  
+  // Gesture handling
+  const { elementRef } = useGestures({
+    onSwipeLeft: () => {
+      // Navigate to next chapter or story
+      if (story && story.chapters.length > 1) {
+        // Scroll to next chapter
+        const nextChapter = document.querySelector('[data-chapter="' + (story.chapters.length) + '"]')
+        if (nextChapter) nextChapter.scrollIntoView({ behavior: 'smooth' })
+      }
+    },
+    onSwipeRight: () => {
+      // Navigate to previous chapter or back
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    },
+    onDoubleTap: () => {
+      // Toggle reading settings
+      setShowSettings(!showSettings)
+    },
+    onLongPress: () => {
+      // Toggle favorite
+      if (story) toggleFavorite(story.id)
+    }
+  })
 
   useEffect(() => {
     const loadStory = async () => {
@@ -39,6 +85,11 @@ const ContinuousReader: React.FC = () => {
         // Direct import from data directory (faster)
         const storyModule = await import(`../data/stories/${storyId}.json`)
         setStory(storyModule.default)
+        
+        // Start reading analytics session
+        if (storyModule.default) {
+          startSession(storyId)
+        }
       } catch (err) {
         console.error('Error loading story:', err)
         setError('Story not found')
@@ -48,79 +99,14 @@ const ContinuousReader: React.FC = () => {
     }
 
     loadStory()
+
+    // End session when component unmounts
+    return () => {
+      endSession()
+    }
   }, [storyId])
 
 
-  // Story-specific themes
-  const storyThemes = {
-    'forbidden-desire': {
-      background: 'from-red-950 via-red-900 to-black',
-      accent: 'text-red-300',
-      border: 'border-red-800'
-    },
-    'moonlight-academy': {
-      background: 'from-purple-950 via-blue-900 to-black',
-      accent: 'text-purple-300',
-      border: 'border-purple-800'
-    },
-    'code-breakers': {
-      background: 'from-green-950 via-emerald-900 to-black',
-      accent: 'text-green-300',
-      border: 'border-green-800'
-    },
-    'dream-catcher': {
-      background: 'from-indigo-950 via-purple-900 to-black',
-      accent: 'text-indigo-300',
-      border: 'border-indigo-800'
-    },
-    'my-boss-is-a-cat': {
-      background: 'from-orange-950 via-amber-900 to-black',
-      accent: 'text-orange-300',
-      border: 'border-orange-800'
-    },
-    'shadow-in-mirror': {
-      background: 'from-gray-950 via-slate-900 to-black',
-      accent: 'text-slate-300',
-      border: 'border-slate-800'
-    },
-    'the-transfer-student': {
-      background: 'from-pink-950 via-rose-900 to-black',
-      accent: 'text-pink-300',
-      border: 'border-pink-800'
-    },
-    'between-the-lines': {
-      background: 'from-blue-950 via-cyan-900 to-black',
-      accent: 'text-blue-300',
-      border: 'border-blue-800'
-    },
-    'cafe-encounters': {
-      background: 'from-yellow-950 via-amber-900 to-black',
-      accent: 'text-yellow-300',
-      border: 'border-yellow-800'
-    },
-    'dangerous-attraction': {
-      background: 'from-violet-950 via-purple-900 to-black',
-      accent: 'text-violet-300',
-      border: 'border-violet-800'
-    },
-    'midnight-confessions': {
-      background: 'from-sky-950 via-blue-900 to-black',
-      accent: 'text-sky-300',
-      border: 'border-sky-800'
-    },
-    'summer-temptation': {
-      background: 'from-teal-950 via-emerald-900 to-black',
-      accent: 'text-teal-300',
-      border: 'border-teal-800'
-    },
-    default: {
-      background: 'from-slate-950 via-gray-900 to-black',
-      accent: 'text-slate-300',
-      border: 'border-slate-800'
-    }
-  }
-
-  const theme = storyThemes[storyId as keyof typeof storyThemes] || storyThemes.default
 
   if (loading) {
     return (
@@ -146,8 +132,21 @@ const ContinuousReader: React.FC = () => {
     )
   }
 
-  return (
-    <div className={`min-h-screen bg-gradient-to-br ${theme.background}`} style={{ fontFamily: readingPrefs.fontFamily }}>
+  const contentJSX = (
+    <div 
+      ref={elementRef}
+      className={`min-h-screen bg-gradient-to-br ${theme.background} relative`} 
+      style={{ fontFamily: readingPrefs.fontFamily }}
+      onScroll={trackActivity}
+      onClick={trackActivity}
+    >
+      {/* Dynamic Particle Background */}
+      <ParticleBackground 
+        color={theme.particles || 'purple'}
+        mood={theme.mood}
+        enabled={themeSettings.enableParticles}
+        density={themeSettings.intensity}
+      />
       {/* Auto-Hide Header */}
       <div className={`fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 transition-transform duration-300 ${
         scrollDirection === 'down' ? '-translate-y-full' : 'translate-y-0'
@@ -167,12 +166,42 @@ const ContinuousReader: React.FC = () => {
               </div>
             </div>
             
-            <button
-              onClick={() => setShowSettings(!showSettings)}
-              className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
-            >
-              <Settings className="w-5 h-5 text-white" />
-            </button>
+            <div className="flex items-center space-x-2">
+              {/* Voice Controls */}
+              <VoiceControls 
+                text={currentChapterText}
+                className="mr-2"
+              />
+              
+              {/* Favorite Toggle */}
+              <button
+                onClick={() => toggleFavorite(story.id)}
+                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+              >
+                <Heart className={`w-5 h-5 ${isStoryFavorite ? 'fill-red-500 text-red-500' : 'text-white'}`} />
+              </button>
+              
+              <button
+                onClick={() => setShowInsights(true)}
+                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+              >
+                <BarChart3 className="w-5 h-5 text-white" />
+              </button>
+              
+              <button
+                onClick={() => setIsImmersive(true)}
+                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+              >
+                <Maximize className="w-5 h-5 text-white" />
+              </button>
+              
+              <button
+                onClick={() => setShowSettings(!showSettings)}
+                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+              >
+                <Settings className="w-5 h-5 text-white" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -217,6 +246,60 @@ const ContinuousReader: React.FC = () => {
             </select>
           </div>
 
+          {/* Theme Effects */}
+          <div className="mb-6 p-3 bg-white/5 rounded-lg">
+            <h4 className="text-sm font-bold text-white mb-3">Atmosphäre Effekte</h4>
+            
+            <div className="space-y-3">
+              <label className="flex items-center justify-between">
+                <span className="text-sm text-gray-300">Dynamisches Theming</span>
+                <input
+                  type="checkbox"
+                  checked={themeSettings.enableDynamicTheming}
+                  onChange={(e) => updateThemeSettings({...themeSettings, enableDynamicTheming: e.target.checked})}
+                  className="w-4 h-4 text-purple-600 bg-white/10 border-white/20 rounded"
+                />
+              </label>
+              
+              <label className="flex items-center justify-between">
+                <span className="text-sm text-gray-300">Partikel Effekte</span>
+                <input
+                  type="checkbox"
+                  checked={themeSettings.enableParticles}
+                  onChange={(e) => updateThemeSettings({...themeSettings, enableParticles: e.target.checked})}
+                  className="w-4 h-4 text-purple-600 bg-white/10 border-white/20 rounded"
+                />
+              </label>
+              
+              <div>
+                <label className="block text-xs text-gray-400 mb-1">
+                  Effekt Intensität: {Math.round(themeSettings.intensity * 100)}%
+                </label>
+                <input
+                  type="range"
+                  min="0.1"
+                  max="1"
+                  step="0.1"
+                  value={themeSettings.intensity}
+                  onChange={(e) => updateThemeSettings({...themeSettings, intensity: Number(e.target.value)})}
+                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer"
+                />
+              </div>
+            </div>
+            
+            {/* Story Mood Indicator */}
+            <div className="mt-3 p-2 bg-black/30 rounded text-center">
+              <span className="text-xs text-gray-400">Aktuelle Stimmung: </span>
+              <span className={`text-xs font-medium ${theme.accent}`}>
+                {theme.mood === 'romantic' ? '💕 Romantisch' :
+                 theme.mood === 'mysterious' ? '🌙 Mysteriös' :
+                 theme.mood === 'adventure' ? '⚡ Abenteuer' :
+                 theme.mood === 'dramatic' ? '🎭 Dramatisch' :
+                 theme.mood === 'fantasy' ? '✨ Fantasy' : '🎯 Modern'}
+              </span>
+            </div>
+          </div>
+
           <button
             onClick={() => setShowSettings(false)}
             className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-medium py-2 px-4 rounded-lg transition-colors"
@@ -237,8 +320,19 @@ const ContinuousReader: React.FC = () => {
       {/* Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-24 pb-8">
         <div className="space-y-8 sm:space-y-12">
-          {story.chapters.map((chapter, index) => (
-            <div key={chapter.id} className={`p-4 sm:p-6 rounded-lg bg-white/5 backdrop-blur-sm border ${theme.border}`}>
+          {story.chapters.map((chapter, index) => {
+            const chapterText = chapter.content.join(' ')
+            
+            return (
+            <div 
+              key={chapter.id} 
+              data-chapter={chapter.id}
+              className={`p-4 sm:p-6 rounded-lg bg-white/5 backdrop-blur-sm border ${theme.border}`}
+              onMouseEnter={() => {
+                setCurrentChapterText(chapterText)
+                trackChapterRead(chapter.id, chapter.content.length * 50) // Estimate word count
+              }}
+            >
               <div className="mb-4 sm:mb-6">
                 <div className="flex items-center space-x-3 mb-2 flex-wrap">
                   <span className="text-xl sm:text-2xl">{chapter.emoji || '📖'}</span>
@@ -271,11 +365,36 @@ const ContinuousReader: React.FC = () => {
                 ))}
               </div>
             </div>
-          ))}
+            )
+          })}
         </div>
       </div>
 
+      {/* Floating Quick Actions */}
+      <FloatingQuickActions 
+        onSettingsToggle={() => setShowSettings(!showSettings)}
+        onFavoriteToggle={() => toggleFavorite(story.id)}
+        isReading={true}
+      />
+
+      {/* Reading Insights Modal */}
+      <ReadingInsights 
+        storyId={storyId}
+        isOpen={showInsights}
+        onClose={() => setShowInsights(false)}
+      />
+
     </div>
+  )
+
+  return (
+    <ImmersiveMode
+      storyMood={theme.mood}
+      isActive={isImmersive}
+      onToggle={() => setIsImmersive(false)}
+    >
+      {contentJSX}
+    </ImmersiveMode>
   )
 }
 
