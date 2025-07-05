@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
 import { ThemeProvider } from './contexts/ThemeContext'
+import UserPreferences from './components/UserPreferences'
 
 // Lazy load all pages
 const Home = lazy(() => import('./pages/TabbedHome'))
@@ -23,6 +24,7 @@ function App() {
     <ThemeProvider>
       <Router>
         <ScrollToTop />
+        <UserPreferences />
         <Routes>
           <Route index element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
           <Route path="stories" element={<Suspense fallback={<PageLoader />}><Stories /></Suspense>} />

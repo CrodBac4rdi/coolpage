@@ -2,6 +2,7 @@ import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { useState } from 'react'
 import { Book, ArrowRight, Heart, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useFavorites } from '../hooks/useFavorites'
 
 interface ModernStoryCardProps {
   id: string
@@ -21,7 +22,8 @@ export default function ModernStoryCard({
   mature = false
 }: ModernStoryCardProps) {
   const [isHovered, setIsHovered] = useState(false)
-  const [isLiked, setIsLiked] = useState(false)
+  const { toggleFavorite, isFavorite } = useFavorites()
+  const isStoryFavorite = isFavorite(id)
   
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -88,12 +90,32 @@ export default function ModernStoryCard({
               <div className="absolute top-1/3 left-4 w-1.5 h-1.5 bg-white rounded-full" />
             </div>
 
-            {/* Mature badge */}
-            {mature && (
-              <div className="absolute top-4 right-4 bg-red-500/20 border border-red-400/30 text-red-300 px-3 py-1 rounded-full text-xs font-medium">
-                18+
-              </div>
-            )}
+            {/* Badges */}
+            <div className="absolute top-4 right-4 flex gap-2">
+              {mature && (
+                <div className="bg-red-500/20 border border-red-400/30 text-red-300 px-3 py-1 rounded-full text-xs font-medium">
+                  18+
+                </div>
+              )}
+              
+              {/* Favorite Heart */}
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  toggleFavorite(id)
+                }}
+                className="w-8 h-8 flex items-center justify-center bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full transition-colors"
+              >
+                <Heart 
+                  className={`w-4 h-4 transition-all ${
+                    isStoryFavorite ? 'fill-red-500 text-red-500' : 'text-white/60 hover:text-white'
+                  }`}
+                />
+              </motion.button>
+            </div>
 
             {/* Story emoji - large */}
             <motion.div
@@ -138,26 +160,11 @@ export default function ModernStoryCard({
 
             {/* Interactive elements */}
             <motion.div
-              className="flex items-center justify-between mb-6"
+              className="flex items-center justify-center mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.3 }}
             >
-              <motion.button
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
-                whileTap={{ scale: 0.9 }}
-                onClick={(e) => {
-                  e.preventDefault()
-                  setIsLiked(!isLiked)
-                }}
-              >
-                <Heart 
-                  className={`w-5 h-5 transition-all ${
-                    isLiked ? 'fill-red-500 text-red-500' : 'text-white'
-                  }`}
-                />
-              </motion.button>
-              
               <div className="text-white/40 text-sm">
                 {Math.floor(Math.random() * 50) + 10}k Reads
               </div>

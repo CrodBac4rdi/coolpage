@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Type, Book, Clock, Settings, Plus, Minus } from 'lucide-react'
 import { useScrollDirection } from '../hooks/useScrollDirection'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 interface Story {
   id: string
@@ -23,8 +24,10 @@ const ContinuousReader: React.FC = () => {
   const [story, setStory] = useState<Story | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [fontSize, setFontSize] = useState(18)
-  const [fontFamily, setFontFamily] = useState('Inter')
+  const [readingPrefs, setReadingPrefs] = useLocalStorage('crod-babylon-reading', {
+    fontSize: 18,
+    fontFamily: 'Inter'
+  })
   const [showSettings, setShowSettings] = useState(false)
 
   useEffect(() => {
@@ -144,7 +147,7 @@ const ContinuousReader: React.FC = () => {
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br ${theme.background}`} style={{ fontFamily }}>
+    <div className={`min-h-screen bg-gradient-to-br ${theme.background}`} style={{ fontFamily: readingPrefs.fontFamily }}>
       {/* Auto-Hide Header */}
       <div className={`fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 transition-transform duration-300 ${
         scrollDirection === 'down' ? '-translate-y-full' : 'translate-y-0'
@@ -184,14 +187,14 @@ const ContinuousReader: React.FC = () => {
             <label className="block text-sm font-medium text-gray-300 mb-2">Schriftgröße</label>
             <div className="flex items-center space-x-3">
               <button
-                onClick={() => setFontSize(Math.max(12, fontSize - 2))}
+                onClick={() => setReadingPrefs(prev => ({ ...prev, fontSize: Math.max(12, prev.fontSize - 2) }))}
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
               >
                 <Minus className="w-4 h-4 text-white" />
               </button>
-              <span className="text-white font-medium w-12 text-center">{fontSize}px</span>
+              <span className="text-white font-medium w-12 text-center">{readingPrefs.fontSize}px</span>
               <button
-                onClick={() => setFontSize(Math.min(28, fontSize + 2))}
+                onClick={() => setReadingPrefs(prev => ({ ...prev, fontSize: Math.min(28, prev.fontSize + 2) }))}
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
               >
                 <Plus className="w-4 h-4 text-white" />
@@ -203,8 +206,8 @@ const ContinuousReader: React.FC = () => {
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-300 mb-2">Schriftart</label>
             <select
-              value={fontFamily}
-              onChange={(e) => setFontFamily(e.target.value)}
+              value={readingPrefs.fontFamily}
+              onChange={(e) => setReadingPrefs(prev => ({ ...prev, fontFamily: e.target.value }))}
               className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white"
             >
               <option value="Inter" className="bg-gray-800">Inter (Standard)</option>
@@ -261,7 +264,7 @@ const ContinuousReader: React.FC = () => {
                   <p 
                     key={pIndex} 
                     className="mb-4 leading-relaxed text-gray-200"
-                    style={{ fontSize: `${fontSize}px` }}
+                    style={{ fontSize: `${readingPrefs.fontSize}px` }}
                   >
                     {paragraph}
                   </p>
