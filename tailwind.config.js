@@ -17,8 +17,11 @@ export default {
     extend: {
       animation: {
         'gradient': 'gradient 8s linear infinite',
-        'float': 'float 6s ease-in-out infinite',
+        'float': 'float 4s ease-in-out infinite',
         'glow': 'glow 2s ease-in-out infinite',
+        'spin-slow': 'spin-slow 20s linear infinite',
+        'spin-reverse': 'spin-reverse 15s linear infinite',
+        'wiggle': 'wiggle 6s ease-in-out infinite',
       },
       keyframes: {
         gradient: {

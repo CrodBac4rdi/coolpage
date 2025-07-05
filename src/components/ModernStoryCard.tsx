@@ -84,8 +84,10 @@ export default function ModernStoryCard({
             animate={isHovered ? { opacity: 0.5 } : { opacity: 0 }}
           />
 
-          {/* Card content */}
-          <div className="relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 border border-white/20 rounded-3xl p-8 overflow-hidden backdrop-blur-sm">
+          {/* Card content with dynamic gradient */}
+          <div className={`relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 border border-white/20 rounded-3xl p-8 overflow-hidden backdrop-blur-sm`}>
+            {/* Gradient overlay based on genre */}
+            <div className={`absolute inset-0 bg-gradient-to-br ${getGradient()} opacity-10 rounded-3xl`} />
             
             {/* Static decoration */}
             <div className="absolute inset-0 overflow-hidden opacity-5">
@@ -135,21 +137,55 @@ export default function ModernStoryCard({
               </motion.button>
             </div>
 
-            {/* Story emoji - large */}
-            <motion.div
-              className="text-8xl mb-6 text-center"
-              animate={isHovered ? { 
-                scale: [1, 1.1, 1],
-                rotate: [0, 5, -5, 0]
-              } : {}}
-              transition={{ duration: 0.6 }}
-            >
-              {emoji}
-            </motion.div>
+            {/* Abstract design element */}
+            <div className="relative mb-8">
+              <motion.div
+                className="w-24 h-24 mx-auto relative"
+                animate={isHovered ? { 
+                  scale: [1, 1.05, 1],
+                  rotateZ: [0, 360]
+                } : {}}
+                transition={{ duration: isHovered ? 20 : 0, repeat: Infinity, ease: "linear" }}
+              >
+                {/* Gradient circle */}
+                <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${getGradient()} opacity-40 blur-xl`} />
+                
+                {/* Letter avatar */}
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-full border border-white/20">
+                  <span className="text-4xl font-black text-white/90">
+                    {title.charAt(0).toUpperCase()}
+                  </span>
+                </div>
+                
+                {/* Decorative rings */}
+                <motion.div 
+                  className="absolute inset-0 rounded-full border border-white/10"
+                  animate={isHovered ? { scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] } : {}}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+                <motion.div 
+                  className="absolute inset-0 rounded-full border border-white/10"
+                  animate={isHovered ? { scale: [1, 1.4, 1], opacity: [0.3, 0, 0.3] } : {}}
+                  transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                />
+              </motion.div>
+            </div>
 
-            {/* Title */}
-            <h3 className="text-2xl font-bold text-white mb-3 text-center leading-tight">
-              {title}
+            {/* Title with enhanced typography */}
+            <h3 className="text-2xl font-bold text-white mb-3 text-center leading-tight relative">
+              <motion.span
+                className="relative z-10"
+                animate={isHovered ? { y: [-1, 0] } : {}}
+              >
+                {title}
+              </motion.span>
+              {/* Title underline effect */}
+              <motion.div
+                className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r ${getGradient()} rounded-full`}
+                initial={{ width: 0 }}
+                animate={isHovered ? { width: '60%' } : { width: 0 }}
+                transition={{ duration: 0.3 }}
+              />
             </h3>
 
             {/* Genre tags */}
@@ -176,15 +212,20 @@ export default function ModernStoryCard({
               </div>
             </div>
 
-            {/* Interactive elements */}
+            {/* Interactive elements with better spacing */}
             <motion.div
-              className="flex items-center justify-center mb-6"
+              className="flex items-center justify-center gap-4 mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.3 }}
             >
+              <div className="flex items-center gap-1 text-white/40 text-sm">
+                <Book className="w-3 h-3" />
+                <span>{Math.floor(Math.random() * 50) + 10}k Reads</span>
+              </div>
+              <div className="w-px h-4 bg-white/20" />
               <div className="text-white/40 text-sm">
-                {Math.floor(Math.random() * 50) + 10}k Reads
+                {Math.floor(Math.random() * 20) + 5} Chapters
               </div>
             </motion.div>
 

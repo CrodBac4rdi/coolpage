@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+import { User } from 'lucide-react'
 
 export default function BrutalistHero() {
   const navigate = useNavigate()
@@ -8,15 +9,33 @@ export default function BrutalistHero() {
   const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
+    let animationFrameId: number
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+      cancelAnimationFrame(animationFrameId)
+      animationFrameId = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY })
+      })
     }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      cancelAnimationFrame(animationFrameId)
+    }
   }, [])
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-purple-900 via-pink-900 to-indigo-900">
+      {/* User Dashboard Button */}
+      <Link to="/dashboard" className="absolute top-6 right-6 z-20">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-xl transition-all group"
+        >
+          <User className="w-5 h-5 text-white group-hover:text-purple-300" />
+          <span className="text-white font-medium group-hover:text-purple-300">Dashboard</span>
+        </motion.button>
+      </Link>
       {/* Static Grid Background */}
       <div className="absolute inset-0 opacity-10">
         <div 
@@ -140,57 +159,24 @@ export default function BrutalistHero() {
       </div>
 
       {/* Floating colorful shapes */}
-      <motion.div
-        className="absolute top-20 left-10 w-32 h-32 border-4 border-yellow-400/40 bg-yellow-400/10 rounded-lg"
-        animate={{
-          rotate: 360,
-          scale: [1, 1.2, 1],
-          borderRadius: ["10%", "30%", "10%"]
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "linear"
-        }}
+      <div
+        className="absolute top-20 left-10 w-32 h-32 border-4 border-yellow-400/40 bg-yellow-400/10 rounded-lg animate-spin-slow"
+        style={{ willChange: 'transform' }}
       />
       
-      <motion.div
-        className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-br from-pink-400/20 to-purple-400/20 backdrop-blur-sm"
-        animate={{
-          rotate: -360,
-          borderRadius: ["0%", "50%", "0%"]
-        }}
-        transition={{
-          duration: 15,
-          repeat: Infinity,
-          ease: "linear"
-        }}
+      <div
+        className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-br from-pink-400/20 to-purple-400/20 backdrop-blur-sm animate-spin-reverse"
+        style={{ willChange: 'transform' }}
       />
       
-      <motion.div
-        className="absolute top-1/3 right-20 w-16 h-16 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full"
-        animate={{
-          y: [-20, 20, -20],
-          scale: [1, 1.3, 1]
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+      <div
+        className="absolute top-1/3 right-20 w-16 h-16 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full animate-float"
+        style={{ willChange: 'transform' }}
       />
       
-      <motion.div
-        className="absolute bottom-1/3 left-20 w-20 h-20 border-3 border-emerald-400/40 bg-emerald-400/10"
-        animate={{
-          x: [-10, 10, -10],
-          rotate: [0, 180, 360]
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+      <div
+        className="absolute bottom-1/3 left-20 w-20 h-20 border-3 border-emerald-400/40 bg-emerald-400/10 animate-wiggle"
+        style={{ willChange: 'transform' }}
       />
 
       {/* Mouse follower */}
