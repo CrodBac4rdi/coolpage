@@ -81,28 +81,11 @@ export default function ModernStoryCard({
           {/* Card content */}
           <div className="relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 border border-white/20 rounded-3xl p-8 overflow-hidden backdrop-blur-sm">
             
-            {/* Floating particles */}
-            <div className="absolute inset-0 overflow-hidden">
-              {[...Array(12)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-1 h-1 bg-white/30 rounded-full"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                  }}
-                  animate={{
-                    scale: [0, 1, 0],
-                    opacity: [0, 0.6, 0],
-                    y: [0, -20, 0]
-                  }}
-                  transition={{
-                    duration: 4,
-                    delay: i * 0.3,
-                    repeat: Infinity,
-                  }}
-                />
-              ))}
+            {/* Static decoration */}
+            <div className="absolute inset-0 overflow-hidden opacity-5">
+              <div className="absolute top-4 right-4 w-2 h-2 bg-white rounded-full" />
+              <div className="absolute bottom-6 left-6 w-1 h-1 bg-white rounded-full" />
+              <div className="absolute top-1/3 left-4 w-1.5 h-1.5 bg-white rounded-full" />
             </div>
 
             {/* Mature badge */}

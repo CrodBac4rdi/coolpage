@@ -64,24 +64,16 @@ export default function StoryFocusedHome() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-900 via-gray-900 to-black">
-      {/* Animated background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
+      {/* Static background */}
+      <div className="absolute inset-0 overflow-hidden opacity-5">
+        <div 
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(90deg, rgba(147, 51, 234, 0.05) 1px, transparent 1px),
-              linear-gradient(rgba(147, 51, 234, 0.05) 1px, transparent 1px)
+              linear-gradient(90deg, rgba(147, 51, 234, 0.3) 1px, transparent 1px),
+              linear-gradient(rgba(147, 51, 234, 0.3) 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px'
-          }}
-          animate={{
-            backgroundPosition: ['0px 0px', '60px 60px']
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear"
           }}
         />
       </div>

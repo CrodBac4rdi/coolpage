@@ -17,24 +17,18 @@ export default function BrutalistHero() {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-purple-900 via-pink-900 to-indigo-900">
-      {/* Animated Grid Background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="grid grid-cols-12 grid-rows-12 h-full">
-          {[...Array(144)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="border border-white/20 bg-gradient-to-br from-purple-500/5 to-pink-500/5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0.3, 0.6, 0.3] }}
-              transition={{
-                duration: 3,
-                delay: i * 0.01,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-        </div>
+      {/* Static Grid Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div 
+          className="w-full h-full"
+          style={{
+            backgroundImage: `
+              linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+              linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }}
+        />
       </div>
 
       {/* Glitch Effect Title */}

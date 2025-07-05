@@ -110,25 +110,17 @@ function AnimatedStat({ label, value, suffix = '', icon, color, delay }: StatPro
 export default function GamingStats() {
   return (
     <section className="relative py-24 overflow-hidden">
-      {/* Animated background grid */}
+      {/* Static background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent" />
-        <motion.div
-          className="absolute inset-0"
+        <div
+          className="absolute inset-0 opacity-30"
           style={{
             backgroundImage: `
               linear-gradient(90deg, rgba(147, 51, 234, 0.1) 1px, transparent 1px),
               linear-gradient(rgba(147, 51, 234, 0.1) 1px, transparent 1px)
             `,
             backgroundSize: '50px 50px'
-          }}
-          animate={{
-            backgroundPosition: ['0px 0px', '50px 50px']
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "linear"
           }}
         />
       </div>
