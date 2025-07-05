@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Type, Book, Clock, Settings, Plus, Minus } from 'lucide-react'
 import { useScrollDirection } from '../hooks/useScrollDirection'
+import FloatingNavigation from './FloatingNavigation'
 
 interface Story {
   id: string
@@ -26,6 +27,7 @@ const ContinuousReader: React.FC = () => {
   const [fontSize, setFontSize] = useState(18)
   const [fontFamily, setFontFamily] = useState('Inter')
   const [showSettings, setShowSettings] = useState(false)
+  const [showScrollToTop, setShowScrollToTop] = useState(false)
 
   useEffect(() => {
     const loadStory = async () => {
@@ -46,6 +48,16 @@ const ContinuousReader: React.FC = () => {
 
     loadStory()
   }, [storyId])
+
+  // Track scroll position for scroll-to-top button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollToTop(window.scrollY > 300)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Story-specific themes
   const storyThemes = {
@@ -175,7 +187,7 @@ const ContinuousReader: React.FC = () => {
 
       {/* Settings Panel */}
       {showSettings && (
-        <div className="fixed top-20 right-4 z-50 bg-black/90 backdrop-blur-md border border-white/20 rounded-xl p-6 w-80">
+        <div className="fixed top-20 right-4 left-4 sm:left-auto sm:right-4 z-50 bg-black/90 backdrop-blur-md border border-white/20 rounded-xl p-4 sm:p-6 sm:w-80">
           <h3 className="text-lg font-bold text-white mb-4">Lese-Einstellungen</h3>
           
           {/* Font Size */}
@@ -270,6 +282,12 @@ const ContinuousReader: React.FC = () => {
           ))}
         </div>
       </div>
+
+      {/* Floating Navigation */}
+      <FloatingNavigation 
+        onSettingsClick={() => setShowSettings(true)}
+        showScrollToTop={showScrollToTop}
+      />
     </div>
   )
 }

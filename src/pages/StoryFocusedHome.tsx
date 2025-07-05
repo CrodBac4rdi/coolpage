@@ -145,7 +145,6 @@ export default function StoryFocusedHome() {
                 title={story.title}
                 genre={story.genre}
                 emoji={story.emoji}
-                chapters={story.chapters}
                 mature={story.mature}
                 delay={index * 0.1}
               />

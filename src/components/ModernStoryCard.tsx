@@ -8,7 +8,6 @@ interface ModernStoryCardProps {
   title: string
   genre: string[]
   emoji: string
-  chapters: number
   delay?: number
   mature?: boolean
 }
@@ -18,7 +17,6 @@ export default function ModernStoryCard({
   title,
   genre,
   emoji,
-  chapters,
   delay = 0,
   mature = false
 }: ModernStoryCardProps) {
@@ -144,14 +142,14 @@ export default function ModernStoryCard({
             </div>
 
             {/* Stats */}
-            <div className="flex items-center justify-center gap-4 mb-6 text-white/60">
-              <div className="flex items-center gap-1">
-                <Book className="w-4 h-4" />
-                <span className="text-sm">{chapters} Kapitel</span>
-              </div>
+            <div className="flex items-center justify-center gap-6 mb-6 text-white/60">
               <div className="flex items-center gap-1">
                 <Star className="w-4 h-4 text-yellow-400" />
                 <span className="text-sm">4.{Math.floor(Math.random() * 5) + 3}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Heart className="w-4 h-4 text-pink-400" />
+                <span className="text-sm">{Math.floor(Math.random() * 90) + 10}%</span>
               </div>
             </div>
 
