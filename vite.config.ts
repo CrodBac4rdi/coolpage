@@ -6,3 +6,12 @@ export default defineConfig({
   plugins: [react()],
   base: process.env.NODE_ENV === 'production' ? '/coolpage/' : '/',
 })
+  build: {
+    cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  }
+})
