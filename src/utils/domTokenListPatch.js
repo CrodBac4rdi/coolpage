@@ -26,4 +26,3 @@ export function patchDOMTokenList() {
     console.log('DOMTokenList.add wurde gepacht, um Whitespace-Fehler zu vermeiden');
   }
 }
-}
