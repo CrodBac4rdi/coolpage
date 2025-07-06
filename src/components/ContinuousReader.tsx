@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Type, Book, Clock, Settings, Plus, Minus, Heart, BarChart3, Maximize } from 'lucide-react'
+import { ArrowLeft, Book, Clock, Settings, Plus, Minus, Heart } from 'lucide-react'
 import { useScrollDirection } from '../hooks/useScrollDirection'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { useGestures } from '../hooks/useGestures'
@@ -10,8 +10,6 @@ import { useReadingAnalytics } from '../hooks/useReadingAnalytics'
 import VoiceControls from './VoiceControls'
 import FloatingQuickActions from './FloatingQuickActions'
 // import ParticleBackground from './ParticleBackground' // Removed
-import ReadingInsights from './ReadingInsights'
-import ImmersiveMode from './ImmersiveMode'
 
 interface Story {
   id: string
@@ -44,10 +42,6 @@ const ContinuousReader: React.FC = () => {
   
   // Reading analytics
   const { startSession, endSession, trackChapterRead, trackActivity } = useReadingAnalytics(storyId)
-  const [showInsights, setShowInsights] = useState(false)
-  
-  // Immersive mode
-  const [isImmersive, setIsImmersive] = useState(false)
   
   // Voice synthesis for current chapter
   const [currentChapterText, setCurrentChapterText] = useState('')
@@ -179,20 +173,6 @@ const ContinuousReader: React.FC = () => {
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
               >
                 <Heart className={`w-5 h-5 ${isStoryFavorite ? 'fill-red-500 text-red-500' : 'text-white'}`} />
-              </button>
-              
-              <button
-                onClick={() => setShowInsights(true)}
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                <BarChart3 className="w-5 h-5 text-white" />
-              </button>
-              
-              <button
-                onClick={() => setIsImmersive(true)}
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
-              >
-                <Maximize className="w-5 h-5 text-white" />
               </button>
               
               <button
@@ -377,25 +357,10 @@ const ContinuousReader: React.FC = () => {
         isReading={true}
       />
 
-      {/* Reading Insights Modal */}
-      <ReadingInsights 
-        storyId={storyId}
-        isOpen={showInsights}
-        onClose={() => setShowInsights(false)}
-      />
-
     </div>
   )
 
-  return (
-    <ImmersiveMode
-      storyMood={theme.mood}
-      isActive={isImmersive}
-      onToggle={() => setIsImmersive(false)}
-    >
-      {contentJSX}
-    </ImmersiveMode>
-  )
+  return contentJSX
 }
 
 export default ContinuousReader

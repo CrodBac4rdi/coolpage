@@ -8,8 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "start": "vite",
-    "convert": "node scripts/convert.js",
-    "deploy": "npm run build && echo 'Deploy-Befehl hier einfügen'"
+    "deploy": "npm run build && echo 'Deploy successful! Check GitHub Pages.'"
   },
   "dependencies": {
     "framer-motion": "^12.20.1",

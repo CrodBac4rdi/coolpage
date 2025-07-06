@@ -1,9 +1,8 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { useState } from 'react'
-import { Book, ArrowRight, Heart, Star, Eye } from 'lucide-react'
+import { Book, ArrowRight, Heart, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useFavorites } from '../hooks/useFavorites'
-import StoryPreview from './StoryPreview'
 
 interface ModernStoryCardProps {
   id: string
@@ -19,13 +18,10 @@ export default function ModernStoryCard({
   id,
   title,
   genre,
-  emoji,
   delay = 0,
-  mature = false,
-  story
+  mature = false
 }: ModernStoryCardProps) {
   const [isHovered, setIsHovered] = useState(false)
-  const [showPreview, setShowPreview] = useState(false)
   const { toggleFavorite, isFavorite } = useFavorites()
   const isStoryFavorite = isFavorite(id)
   
@@ -120,20 +116,6 @@ export default function ModernStoryCard({
                     isStoryFavorite ? 'fill-red-500 text-red-500' : 'text-white/60 hover:text-white'
                   }`}
                 />
-              </motion.button>
-              
-              {/* Preview Eye */}
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={(e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  setShowPreview(true)
-                }}
-                className="w-8 h-8 flex items-center justify-center bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full transition-colors"
-              >
-                <Eye className="w-4 h-4 text-white/60 hover:text-white" />
               </motion.button>
             </div>
 
@@ -241,13 +223,6 @@ export default function ModernStoryCard({
           </div>
         </motion.div>
       </Link>
-      
-      {/* Story Preview Modal */}
-      <StoryPreview 
-        story={story}
-        isOpen={showPreview}
-        onClose={() => setShowPreview(false)}
-      />
     </motion.div>
   )
 }
