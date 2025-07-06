@@ -4,6 +4,19 @@ body * {
   z-index: auto !important;
 }
 
+/* Debug CSS um Klassennamen-Probleme zu lösen */
+[class*=" "] {
+  /* CSS-Fix für Elemente mit Leerzeichen in Klassen */
+}
+
+/* Sicherstellen, dass Overlays nicht die ganze Seite überlagern */
+.fixed, 
+[class*="fixed"], 
+[class*="absolute"] {
+  z-index: 10 !important;
+  background-color: rgba(0,0,0,0.8) !important;
+}
+
 /* Macht potentielle Overlays und Modals durchsichtig */
 [class*="overlay"], 
 [class*="modal"], 
@@ -16,6 +29,11 @@ body * {
   pointer-events: none !important;
   border: 1px solid red !important;
   z-index: 1 !important;
+}
+
+/* Das schwarze Overlay finden und sichtbar machen */
+body > div:first-child {
+  opacity: 0.8 !important;
 }
 
 /* Erzwinge, dass der Hauptinhalt sichtbar ist */
