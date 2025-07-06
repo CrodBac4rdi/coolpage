@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useState, useEffect } from 'react'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
 import { ThemeProvider } from './contexts/ThemeContext'
@@ -17,14 +17,26 @@ const ContentHub = lazy(() => import('./pages/ContentHub'))
 const UserDashboard = lazy(() => import('./pages/UserDashboard'))
 const RomanceAnimeGuide = lazy(() => import('./components/RomanceAnimeGuide'))
 
-// Loading component
+// Loading component with error handling
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center">
+  <div className="min-h-screen flex items-center justify-center bg-gray-900">
     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
   </div>
 )
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Force initial loading state to ensure DOM is properly painted
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) return <PageLoader />;
+
   return (
     <ThemeProvider>
       <Router>
