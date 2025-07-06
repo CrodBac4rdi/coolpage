@@ -9,7 +9,7 @@ import { useStoryTheme } from '../hooks/useStoryTheme'
 import { useReadingAnalytics } from '../hooks/useReadingAnalytics'
 import VoiceControls from './VoiceControls'
 import FloatingQuickActions from './FloatingQuickActions'
-import ParticleBackground from './ParticleBackground'
+// import ParticleBackground from './ParticleBackground' // Removed
 import ReadingInsights from './ReadingInsights'
 import ImmersiveMode from './ImmersiveMode'
 
@@ -140,13 +140,13 @@ const ContinuousReader: React.FC = () => {
       onScroll={trackActivity}
       onClick={trackActivity}
     >
-      {/* Dynamic Particle Background */}
-      <ParticleBackground 
+      {/* Dynamic Particle Background - Removed for optimization */}
+      {/* <ParticleBackground 
         color={theme.particles || 'purple'}
         mood={theme.mood}
         enabled={themeSettings.enableParticles}
         density={themeSettings.intensity}
-      />
+      /> */}
       {/* Auto-Hide Header */}
       <div className={`fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 transition-transform duration-300 ${
         scrollDirection === 'down' ? '-translate-y-full' : 'translate-y-0'
