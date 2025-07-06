@@ -21,4 +21,3 @@ export default defineConfig({
   // Erhöhe Logging
   logLevel: 'info'
 })
-

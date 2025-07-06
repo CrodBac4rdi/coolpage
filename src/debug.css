@@ -1,0 +1,12 @@
+/* Temporäres Debug-CSS */
+body * {
+  z-index: auto !important;
+}
+
+[class*="overlay"], 
+[class*="modal"], 
+[class*="drawer"],
+[class*="backdrop"] {
+  background-color: rgba(0,0,0,0.5) !important;
+  pointer-events: none !important;
+}
