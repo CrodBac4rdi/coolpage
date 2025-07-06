@@ -5,6 +5,8 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import UserPreferences from './components/UserPreferences'
 import ModernNavbar from './components/ModernNavbar'
 import ModernFooter from './components/ModernFooter'
+import DebugOverlay from './DebugOverlay'
+import './debug.css' // Debug CSS importieren
 
 // Lazy load all pages
 const Home = lazy(() => import('./pages/TabbedHome'))
@@ -41,6 +43,7 @@ function App() {
     <ThemeProvider>
       <Router>
         <ScrollToTop />
+        <DebugOverlay /> {/* Debug Overlay aktivieren */}
         <UserPreferences />
         <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
           <ModernNavbar />

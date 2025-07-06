@@ -1,12 +1,35 @@
 /* Temporäres Debug-CSS */
+/* Verhindert, dass Elemente andere überlagern */
 body * {
   z-index: auto !important;
 }
 
+/* Macht potentielle Overlays und Modals durchsichtig */
 [class*="overlay"], 
 [class*="modal"], 
 [class*="drawer"],
-[class*="backdrop"] {
-  background-color: rgba(0,0,0,0.5) !important;
+[class*="backdrop"],
+[class*="background"],
+[style*="position: fixed"],
+[style*="position: absolute"] {
+  background-color: rgba(0,0,0,0.1) !important;
   pointer-events: none !important;
+  border: 1px solid red !important;
+  z-index: 1 !important;
+}
+
+/* Erzwinge, dass der Hauptinhalt sichtbar ist */
+#root, 
+main, 
+.App, 
+div[class*="container"] {
+  z-index: 1 !important;
+  position: relative !important;
+  background-color: rgba(0,0,0,0.05) !important;
+}
+
+/* Zeige alle absolut positionierten Elemente an */
+[style*="position: absolute"],
+[style*="position: fixed"] {
+  opacity: 0.7 !important;
 }
