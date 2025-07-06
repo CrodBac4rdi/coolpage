@@ -5,7 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: process.env.NODE_ENV === 'production' ? '/coolpage/' : '/',
-})
   build: {
     cssCodeSplit: false,
     rollupOptions: {
@@ -15,3 +14,4 @@ export default defineConfig({
     }
   }
 })
+
