@@ -18,8 +18,8 @@ export default defineConfig({
     minify: 'esbuild',
     reportCompressedSize: true
   },
-  // Erhöhe Logging
-  logLevel: 'info'
+  // Loggen nur im Development-Modus erhöhen
+  logLevel: process.env.NODE_ENV !== 'production' ? 'info' : 'warn'
 })
         drop_debugger: true
       }
