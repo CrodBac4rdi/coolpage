@@ -5,6 +5,7 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import UserPreferences from './components/UserPreferences'
 import ModernNavbar from './components/ModernNavbar'
 import ModernFooter from './components/ModernFooter'
+import ErrorBoundary from './components/ErrorBoundary'
 
 // Lazy load all pages
 const Home = lazy(() => import('./pages/TabbedHome'))
@@ -38,29 +39,31 @@ function App() {
   if (isLoading) return <PageLoader />;
 
   return (
-    <ThemeProvider>
-      <Router>
-        <ScrollToTop />
-        <UserPreferences />
-        <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-          <ModernNavbar />
-          <main>
-            <Routes>
-              <Route index element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
-              <Route path="content" element={<Suspense fallback={<PageLoader />}><ContentHub /></Suspense>} />
-              <Route path="dashboard" element={<Suspense fallback={<PageLoader />}><UserDashboard /></Suspense>} />
-              <Route path="stories" element={<Suspense fallback={<PageLoader />}><Stories /></Suspense>} />
-              <Route path="anime-guide" element={<Suspense fallback={<PageLoader />}><RomanceAnimeGuide /></Suspense>} />
-              <Route path="reader/:storyId" element={<Suspense fallback={<PageLoader />}><Reader /></Suspense>} />
-              <Route path="about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
-              <Route path="contact" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />
-              <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
-            </Routes>
-          </main>
-          <ModernFooter />
-        </div>
-      </Router>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <Router>
+          <ScrollToTop />
+          <UserPreferences />
+          <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+            <ModernNavbar />
+            <main>
+              <Routes>
+                <Route index element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
+                <Route path="content" element={<Suspense fallback={<PageLoader />}><ContentHub /></Suspense>} />
+                <Route path="dashboard" element={<Suspense fallback={<PageLoader />}><UserDashboard /></Suspense>} />
+                <Route path="stories" element={<Suspense fallback={<PageLoader />}><Stories /></Suspense>} />
+                <Route path="anime-guide" element={<Suspense fallback={<PageLoader />}><RomanceAnimeGuide /></Suspense>} />
+                <Route path="reader/:storyId" element={<Suspense fallback={<PageLoader />}><Reader /></Suspense>} />
+                <Route path="about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
+                <Route path="contact" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />
+                <Route path="*" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
+              </Routes>
+            </main>
+            <ModernFooter />
+          </div>
+        </Router>
+      </ThemeProvider>
+    </ErrorBoundary>
   )
 }
 

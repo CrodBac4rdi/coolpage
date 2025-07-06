@@ -6,7 +6,10 @@ export default defineConfig({
   plugins: [react()],
   base: process.env.NODE_ENV === 'production' ? '/coolpage/' : '/',
   server: {
-    historyApiFallback: true,
+    port: 5174,
+    host: true
+  },
+  preview: {
     port: 5174,
     host: true
   },
@@ -17,12 +20,9 @@ export default defineConfig({
         manualChunks: undefined
       }
     },
-    // Aktiviere Source Maps für Debugging
     sourcemap: true,
-    // Detailliertere Build-Logs
     minify: 'esbuild',
     reportCompressedSize: true
   },
-  // Loggen nur im Development-Modus erhöhen
   logLevel: process.env.NODE_ENV !== 'production' ? 'info' : 'warn'
 })
