@@ -3,8 +3,11 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import './App.css'
 import './styles/mobile-enhancements.css'
-import './debug.css' // Debug-CSS auch hier einbinden
+import { patchDOMTokenList } from './utils/domTokenListPatch'
 import App from './App.tsx'
+
+// Patch vor allem anderen anwenden
+patchDOMTokenList();
 
 // Globaler Error Handler für unerwartete Fehler
 window.addEventListener('error', (event) => {

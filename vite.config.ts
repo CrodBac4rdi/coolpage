@@ -12,15 +12,15 @@ export default defineConfig({
         manualChunks: undefined
       }
     },
-    // Nur im Development-Modus Source Maps aktivieren
-    sourcemap: process.env.NODE_ENV !== 'production',
-    // In Produktion optimieren, in Development detaillierter loggen
-    minify: process.env.NODE_ENV === 'production' ? 'terser' : 'esbuild',
-    reportCompressedSize: process.env.NODE_ENV !== 'production',
-    // Terser-Optionen für bessere Optimierung in Produktion
-    terserOptions: process.env.NODE_ENV === 'production' ? {
-      compress: {
-        drop_console: true,
+    // Aktiviere Source Maps für Debugging
+    sourcemap: true,
+    // Detailliertere Build-Logs
+    minify: 'esbuild',
+    reportCompressedSize: true
+  },
+  // Erhöhe Logging
+  logLevel: 'info'
+})
         drop_debugger: true
       }
     } : undefined

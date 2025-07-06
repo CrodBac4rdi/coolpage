@@ -1,5 +1,5 @@
 /**
- * Vereinheitlichter Patch für DOMTokenList.add, um Whitespace-Probleme zu beheben
+ * Patch für DOMTokenList.add, um Whitespace-Probleme zu beheben
  */
 export function patchDOMTokenList() {
   if (typeof window !== 'undefined' && window.DOMTokenList) {
@@ -8,22 +8,22 @@ export function patchDOMTokenList() {
     
     // Überschreibe add-Methode mit einer sicheren Version
     DOMTokenList.prototype.add = function(...tokens) {
-      try {
-        return originalAdd.apply(this, tokens);
-      } catch (e) {
-        console.info('DOMTokenList.add-Fehler behoben:', e.message);
-        
-        // Bereinige Tokens und versuche es erneut
-        const cleanTokens = tokens
-          .filter(Boolean)
-          .map(token => 
-            typeof token === 'string' ? token.replace(/\s+/g, '-') : token
-          );
-        
-        return originalAdd.apply(this, cleanTokens);
-      }
+      // Filtere und bereinige Tokens
+      const safeTokens = tokens
+        .filter(token => token) // Entferne null/undefined
+        .map(token => {
+          if (typeof token === 'string') {
+            // Ersetze Leerzeichen durch Bindestriche
+            return token.trim().replace(/\s+/g, '-');
+          }
+          return token;
+        });
+      
+      // Wende Original-Methode mit bereinigten Tokens an
+      return originalAdd.apply(this, safeTokens);
     };
     
-    console.log('DOMTokenList.add wurde erfolgreich gepacht');
+    console.log('DOMTokenList.add wurde gepacht, um Whitespace-Fehler zu vermeiden');
   }
+}
 }
