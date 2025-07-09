@@ -22,8 +22,8 @@ export default function ModernNavbar() {
     { to: '/', label: 'Home', icon: Home },
     { to: '/stories', label: 'Stories', icon: Book },
     { to: '/content', label: 'Content', icon: Users },
-    { to: '/dashboard', label: 'Dashboard', icon: Clock },
-    { to: '/anime-guide', label: 'Anime Guide', icon: Gamepad2 },
+    { to: '/anime-guide', label: 'Anime Guide', icon: Clock },
+    { to: '/dashboard', label: 'Dashboard', icon: Gamepad2 },
   ]
 
   return (
@@ -82,14 +82,14 @@ export default function ModernNavbar() {
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center gap-3">
               <Link to="/contact">
-                <button className="btn btn-primary">
+                <button className="btn btn-primary mobile-touch-target">
                   Contact
                 </button>
               </Link>
               
               <button
                 onClick={toggleTheme}
-                className="btn btn-ghost"
+                className="btn btn-ghost mobile-touch-target"
                 aria-label="Toggle theme"
               >
                 <AnimatePresence mode="wait">
@@ -122,14 +122,14 @@ export default function ModernNavbar() {
             <div className="md:hidden flex items-center gap-2">
               <button
                 onClick={toggleTheme}
-                className="btn btn-ghost"
+                className="btn btn-ghost mobile-touch-target"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
               
               <button
-                className="btn btn-ghost"
+                className="btn btn-ghost mobile-touch-target"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle menu"
               >

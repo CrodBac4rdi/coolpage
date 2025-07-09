@@ -52,7 +52,7 @@ export default function EnhancedStoryCard({
     >
       <Link to={link}>
         <motion.div
-          className="relative group"
+          className="relative group story-card-mobile mobile-touch-target"
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           onHoverStart={() => setIsHovered(true)}
@@ -126,7 +126,7 @@ export default function EnhancedStoryCard({
                 transition={{ duration: 0.3 }}
               >
                 <motion.button
-                  className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+                  className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors mobile-touch-target"
                   whileTap={{ scale: 0.9 }}
                   onClick={(e) => {
                     e.preventDefault()

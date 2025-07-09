@@ -1,5 +1,11 @@
 /* Mobile-first enhancements */
 
+.mobile-touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
 /* Improve touch targets for mobile */
 @media (max-width: 768px) {
   /* Ensure minimum touch target size */
@@ -35,6 +41,23 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+  }
+  
+  /* Mobile-optimized animations */
+  .mobile-reduced-motion {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.3s !important;
+  }
+  
+  .mobile-smooth-transform {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  .mobile-gpu-acceleration {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
   }
 }
 

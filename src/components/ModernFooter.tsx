@@ -7,15 +7,15 @@ export default function ModernFooter() {
   
   const footerLinks = {
     product: [
-      { label: 'Stories', href: '/manhwa' },
-      { label: 'Characters', href: '/blog' },
-      { label: 'Timeline', href: '/timeline' },
-      { label: 'Games', href: '/games' },
+      { label: 'Stories', href: '/stories' },
+      { label: 'Characters', href: '/content' },
+      { label: 'Timeline', href: '/stories' },
+      { label: 'Games', href: '/content' },
     ],
     company: [
       { label: 'About', href: '/about' },
       { label: 'Contact', href: '/contact' },
-      { label: 'Blog', href: '/blog' },
+      { label: 'Blog', href: '/content' },
     ],
     legal: [
       { label: 'Privacy', href: '#' },
