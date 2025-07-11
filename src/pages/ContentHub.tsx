@@ -42,15 +42,19 @@ const contentCategories = [
   {
     id: 'anime',
     title: 'Anime',
-    subtitle: 'Streaming & Info',
-    description: 'Deine Lieblings-Anime an einem Ort - Reviews, Guides und mehr',
+    subtitle: 'Romance Searcher & Guide',
+    description: 'Entdecke Romance Anime mit Live-Suche, Bewertungen und Empfehlungen',
     icon: Play,
     gradient: 'from-red-600 to-orange-600',
     bgGradient: 'from-red-900/20 to-orange-900/20',
-    available: false,
-    count: 0,
-    comingSoon: 'Q4 2025',
-    preview: ['Simulcast', 'Klassiker', 'Movies', 'OVAs']
+    available: true,
+    count: 1000,
+    link: '/romance-search',
+    featured: [
+      { title: 'Your Name', rating: 4.9 },
+      { title: 'Toradora!', rating: 4.8 },
+      { title: 'Kaguya-sama', rating: 4.9 }
+    ]
   }
 ]
 
