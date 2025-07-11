@@ -56,7 +56,7 @@ export default function ModernIcon({ type, size = 'md', className = '', animate 
 
   return (
     <motion.div
-      className={`relative inline-block select-none ${sizeMap[size]}${className ? ` ${className}` : ''}`}
+      className={className ? `relative inline-block select-none ${sizeMap[size]} ${className}` : `relative inline-block select-none ${sizeMap[size]}`}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       initial={{ scale: 1 }}
