@@ -10,18 +10,32 @@ export function patchDOMTokenList() {
     DOMTokenList.prototype.add = function(...tokens) {
       // Filtere und bereinige Tokens
       const safeTokens = tokens
-        .filter(token => token) // Entferne null/undefined
+        .filter(token => token && token !== 'undefined' && token !== 'null') // Entferne null/undefined/string 'undefined'
         .map(token => {
           if (typeof token === 'string') {
-            // Ersetze Leerzeichen durch Bindestriche
-            return token.trim().replace(/\s+/g, '-');
+            // Entferne alle Whitespace-Zeichen komplett
+            return token.split(/\s+/).filter(Boolean).join('-');
           }
-          return token;
-        });
+          return String(token);
+        })
+        .filter(token => token && token.length > 0); // Entferne leere strings
       
-      // Wende Original-Methode mit bereinigten Tokens an
-      return originalAdd.apply(this, safeTokens);
+      // Nur anwenden wenn es safe tokens gibt
+      if (safeTokens.length > 0) {
+        return originalAdd.apply(this, safeTokens);
+      }
     };
+    
+    // Auch classList.add patchen falls es direkt aufgerufen wird
+    const originalClassListAdd = Element.prototype.classList.add;
+    if (originalClassListAdd) {
+      Object.defineProperty(Element.prototype.classList, 'add', {
+        value: function(...tokens) {
+          return DOMTokenList.prototype.add.apply(this, tokens);
+        },
+        configurable: true
+      });
+    }
     
     console.log('DOMTokenList.add wurde gepacht, um Whitespace-Fehler zu vermeiden');
   }
