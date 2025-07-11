@@ -38,7 +38,7 @@ export default function VoiceControls({ text, className = '' }: VoiceControlsPro
   }
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative${className ? ` ${className}` : ''}`}>
       {/* Main Controls */}
       <div className="flex items-center gap-2">
         <motion.button
