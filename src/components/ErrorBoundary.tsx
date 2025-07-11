@@ -44,7 +44,7 @@ class ErrorBoundary extends Component<Props, State> {
             >
               Seite neu laden
             </button>
-            {process.env.NODE_ENV === 'development' && this.state.error && (
+            {this.state.error && (
               <details className="mt-4 text-left">
                 <summary className="text-gray-400 cursor-pointer">Details anzeigen</summary>
                 <pre className="mt-2 p-3 bg-gray-700 rounded text-xs text-red-300 overflow-auto">
