@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Search, Heart, Loader2, Star, Calendar, Filter, X, ChevronDown, Tv2 } from 'lucide-react'
+import { Search, Heart, Loader2, Star, Calendar, Filter, X, ChevronDown, Tv2, Globe } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '../utils/cn'
 import { getStreamingPlatforms } from '../utils/streamingData'
+import { checkNetflixAvailabilityCached, getNetflixUrl } from '../utils/unogsApi'
 
 interface AnimeResult {
   mal_id: number
@@ -39,6 +40,11 @@ interface AnimeResult {
     name: string
     url: string
   }>
+  netflixInfo?: {
+    available: boolean
+    countries: string[]
+    netflixId?: string
+  }
 }
 
 // Streaming platform data (simulated - in production you'd use a real API)
@@ -88,16 +94,40 @@ export default function EnhancedAnimeSearcher() {
   }
   
   // Add streaming info to anime results using our database
-  const addStreamingInfo = (anime: AnimeResult[]): AnimeResult[] => {
-    return anime.map(item => {
+  const addStreamingInfo = async (anime: AnimeResult[]): Promise<AnimeResult[]> => {
+    // Process anime in parallel for better performance
+    const promises = anime.map(async (item) => {
       const platforms = getStreamingPlatforms(item.title_english || item.title)
       const streaming = platforms.map(platform => ({
         name: platform,
         url: streamingUrls[platform] || '#'
       }))
       
-      return { ...item, streaming }
+      // Check Netflix availability via uNoGS API
+      let netflixInfo = undefined
+      if (process.env.NODE_ENV === 'production' || process.env.VITE_UNOGS_API_KEY) {
+        try {
+          const netflixData = await checkNetflixAvailabilityCached(item.title_english || item.title)
+          if (netflixData.available) {
+            netflixInfo = netflixData
+            // Update streaming info if Netflix is available
+            const hasNetflix = streaming.some(s => s.name === 'Netflix')
+            if (!hasNetflix && netflixData.available) {
+              streaming.push({
+                name: 'Netflix',
+                url: getNetflixUrl(netflixData.netflixId)
+              })
+            }
+          }
+        } catch (error) {
+          console.error('Error checking Netflix for', item.title, error)
+        }
+      }
+      
+      return { ...item, streaming, netflixInfo }
     })
+    
+    return Promise.all(promises)
   }
 
   const searchAnime = useCallback(async (searchQuery: string, genreIds: number[], pageNum: number = 1) => {
@@ -122,7 +152,7 @@ export default function EnhancedAnimeSearcher() {
       }
 
       const data = await response.json()
-      const animeWithStreaming = addStreamingInfo(data.data || [])
+      const animeWithStreaming = await addStreamingInfo(data.data || [])
       
       if (pageNum === 1) {
         setResults(animeWithStreaming)
@@ -150,7 +180,7 @@ export default function EnhancedAnimeSearcher() {
         
         if (response.ok) {
           const data = await response.json()
-          const animeWithStreaming = addStreamingInfo(data.data || [])
+          const animeWithStreaming = await addStreamingInfo(data.data || [])
           setPopularAnime(animeWithStreaming)
         }
       } catch (err) {
@@ -207,6 +237,11 @@ export default function EnhancedAnimeSearcher() {
           <p className="text-gray-600 dark:text-gray-300">
             Find your next favorite anime with filters and streaming info
           </p>
+          {!process.env.VITE_UNOGS_API_KEY && (
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+              💡 For live Netflix availability, add your uNoGS API key to .env file
+            </p>
+          )}
         </motion.div>
 
         {/* Search Bar and Filters */}
@@ -367,15 +402,19 @@ export default function EnhancedAnimeSearcher() {
                         <div className="flex gap-2 mt-2">
                           {anime.streaming.map((platform, idx) => {
                             const platformInfo = streamingPlatforms[platform.name as keyof typeof streamingPlatforms]
+                            const isNetflix = platform.name === 'Netflix'
                             return platformInfo ? (
                               <div
                                 key={idx}
                                 className={cn(
-                                  "px-2 py-1 rounded text-xs text-white font-medium",
+                                  "px-2 py-1 rounded text-xs text-white font-medium flex items-center gap-1",
                                   platformInfo.color
                                 )}
                               >
                                 {platform.name}
+                                {isNetflix && anime.netflixInfo?.countries && (
+                                  <Globe className="w-3 h-3" />
+                                )}
                               </div>
                             ) : null
                           })}
@@ -522,20 +561,36 @@ export default function EnhancedAnimeSearcher() {
                           <div className="flex flex-wrap gap-2">
                             {selectedAnime.streaming.map((platform, idx) => {
                               const platformInfo = streamingPlatforms[platform.name as keyof typeof streamingPlatforms]
+                              const isNetflix = platform.name === 'Netflix'
                               return platformInfo ? (
-                                <div
+                                <a
                                   key={idx}
+                                  href={platform.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
                                   className={cn(
-                                    "px-4 py-2 rounded-lg text-white font-medium flex items-center gap-2",
+                                    "px-4 py-2 rounded-lg text-white font-medium flex items-center gap-2 hover:opacity-90 transition-opacity",
                                     platformInfo.color
                                   )}
                                 >
                                   <Tv2 className="w-4 h-4" />
                                   {platform.name}
-                                </div>
+                                  {isNetflix && selectedAnime.netflixInfo?.countries && (
+                                    <span className="text-xs opacity-90">
+                                      ({selectedAnime.netflixInfo.countries.length} regions)
+                                    </span>
+                                  )}
+                                </a>
                               ) : null
                             })}
                           </div>
+                          {selectedAnime.netflixInfo?.countries && selectedAnime.netflixInfo.countries.length > 0 && (
+                            <div className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                              <Globe className="w-4 h-4 inline mr-1" />
+                              Netflix available in: {selectedAnime.netflixInfo.countries.slice(0, 5).join(', ')}
+                              {selectedAnime.netflixInfo.countries.length > 5 && ` and ${selectedAnime.netflixInfo.countries.length - 5} more regions`}
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
