@@ -14,7 +14,6 @@ import {
   addToHistory,
   updateWatchlistItem
 } from '../utils/localStorage'
-import ModernNavbar from './ModernNavbar'
 
 interface AnimeResult {
   mal_id: number
@@ -291,10 +290,8 @@ export default function EnhancedAnimeSearcher() {
   const displayAnime = query || selectedGenres.length > 1 ? results : popularAnime
 
   return (
-    <>
-      <ModernNavbar />
-      <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 pt-16">
-        <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Back Button for Mobile */}
         <Link to="/" className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-pink-500 transition-colors mb-4 md:hidden">
           <ArrowLeft className="w-5 h-5" />
@@ -742,6 +739,5 @@ export default function EnhancedAnimeSearcher() {
         </AnimatePresence>
       </div>
     </div>
-    </>
   )
 }

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Heart, Trash2, Eye, CheckCircle, Clock, XCircle, BarChart3, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import ModernNavbar from '../components/ModernNavbar'
 import { cn } from '../utils/cn'
 import { 
   getWatchlist, 
@@ -77,10 +76,8 @@ export default function Watchlist() {
   }
 
   return (
-    <>
-      <ModernNavbar />
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 pt-16">
-        <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
+      <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Header */}
           <motion.div 
             className="text-center mb-8"
@@ -297,6 +294,5 @@ export default function Watchlist() {
           </AnimatePresence>
         </div>
       </div>
-    </>
   )
 }

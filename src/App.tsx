@@ -5,6 +5,7 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import UserPreferences from './components/UserPreferences'
 import ErrorBoundary from './components/ErrorBoundary'
 import { ToastProvider } from './components/ToastProvider'
+import Layout from './components/Layout'
 
 // Lazy load all pages with optimized chunks
 const Home = lazy(() => import('./pages/TabbedHome').then(module => ({ default: module.default })))
@@ -41,21 +42,23 @@ function App() {
           <Router>
             <ScrollToTop />
             <UserPreferences />
-            <Routes>
-              <Route index element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
-              <Route path="content" element={<Suspense fallback={<PageLoader />}><ContentHub /></Suspense>} />
-              <Route path="dashboard" element={<Suspense fallback={<PageLoader />}><UserDashboard /></Suspense>} />
-              <Route path="stories" element={<Suspense fallback={<PageLoader />}><Stories /></Suspense>} />
-              <Route path="manhwas" element={<Suspense fallback={<PageLoader />}><ManhwaHub /></Suspense>} />
-              <Route path="anime-guide" element={<Suspense fallback={<PageLoader />}><RomanceAnimeGuide /></Suspense>} />
-              <Route path="romance-search" element={<Suspense fallback={<PageLoader />}><EnhancedAnimeSearcher /></Suspense>} />
-              <Route path="watchlist" element={<Suspense fallback={<PageLoader />}><Watchlist /></Suspense>} />
-              <Route path="reader/:storyId" element={<Suspense fallback={<PageLoader />}><Reader /></Suspense>} />
-              <Route path="about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
-              <Route path="contact" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />
-              <Route path="/404" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
-              <Route path="*" element={<Navigate to="/404" replace />} />
-            </Routes>
+            <Layout>
+              <Routes>
+                <Route index element={<Suspense fallback={<PageLoader />}><Home /></Suspense>} />
+                <Route path="content" element={<Suspense fallback={<PageLoader />}><ContentHub /></Suspense>} />
+                <Route path="dashboard" element={<Suspense fallback={<PageLoader />}><UserDashboard /></Suspense>} />
+                <Route path="stories" element={<Suspense fallback={<PageLoader />}><Stories /></Suspense>} />
+                <Route path="manhwas" element={<Suspense fallback={<PageLoader />}><ManhwaHub /></Suspense>} />
+                <Route path="anime-guide" element={<Suspense fallback={<PageLoader />}><RomanceAnimeGuide /></Suspense>} />
+                <Route path="romance-search" element={<Suspense fallback={<PageLoader />}><EnhancedAnimeSearcher /></Suspense>} />
+                <Route path="watchlist" element={<Suspense fallback={<PageLoader />}><Watchlist /></Suspense>} />
+                <Route path="reader/:storyId" element={<Suspense fallback={<PageLoader />}><Reader /></Suspense>} />
+                <Route path="about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
+                <Route path="contact" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />
+                <Route path="/404" element={<Suspense fallback={<PageLoader />}><NotFound /></Suspense>} />
+                <Route path="*" element={<Navigate to="/404" replace />} />
+              </Routes>
+            </Layout>
           </Router>
         </ToastProvider>
       </ThemeProvider>
