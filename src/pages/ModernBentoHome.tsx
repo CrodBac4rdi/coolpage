@@ -15,6 +15,7 @@ import Interactive3DCard from '../components/Interactive3DCard'
 import { useParallax } from '../hooks/useParallax'
 import Carousel3D from '../components/Carousel3D'
 import MeshGradient, { StaticMeshGradient } from '../components/MeshGradient'
+import { carouselAnimeData } from '../data/animeImages'
 
 // Type definitions
 type CardSize = 'sm' | 'md' | 'lg' | 'xl'
@@ -128,7 +129,7 @@ function GlassCard({
     <motion.div
       ref={cardRef}
       className={cn(
-        "relative backdrop-blur-xl bg-white/10 dark:bg-gray-900/30",
+        "relative backdrop-blur-sm bg-white/5 dark:bg-gray-900/20",
         "border border-white/20 dark:border-gray-700/50",
         "rounded-3xl overflow-hidden",
         hover && "hover:bg-white/20 dark:hover:bg-gray-900/40 transition-all duration-300",
@@ -624,7 +625,7 @@ export default function ModernBentoHome() {
                 </Link>
               </motion.div>
 
-              {/* Live Activity Feed */}
+              {/* Recent Updates Card */}
               <motion.div
                 className="md:col-span-2"
                 initial={{ opacity: 0, x: -20 }}
@@ -635,12 +636,29 @@ export default function ModernBentoHome() {
                 <GlassCard className="h-full p-6" hover={false}>
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                      Live Activity
+                      <Clock className="w-5 h-5 text-yellow-400" />
+                      Recent Updates
                     </h3>
-                    <Globe className="w-5 h-5 text-gray-500" />
+                    <span className="text-sm text-gray-500">Last 7 days</span>
                   </div>
-                  <LiveActivityFeed />
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors">
+                      <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+                      <span className="text-sm text-gray-300">New anime season announced for Spring 2024</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors">
+                      <div className="w-2 h-2 bg-blue-400 rounded-full" />
+                      <span className="text-sm text-gray-300">Updated romance collection with 15 new titles</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors">
+                      <div className="w-2 h-2 bg-green-400 rounded-full" />
+                      <span className="text-sm text-gray-300">12 new stories added to the library</span>
+                    </div>
+                    <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors">
+                      <div className="w-2 h-2 bg-purple-400 rounded-full" />
+                      <span className="text-sm text-gray-300">Enhanced search features now available</span>
+                    </div>
+                  </div>
                 </GlassCard>
               </motion.div>
 
@@ -796,43 +814,7 @@ export default function ModernBentoHome() {
             </motion.div>
             
             <Carousel3D 
-              items={[
-                {
-                  id: '1',
-                  title: 'Your Name',
-                  image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400',
-                  description: 'A beautiful story of connection across time and space',
-                  gradient: 'from-blue-600 to-purple-600'
-                },
-                {
-                  id: '2',
-                  title: 'Horimiya',
-                  image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400',
-                  description: 'High school romance that warms your heart',
-                  gradient: 'from-pink-600 to-rose-600'
-                },
-                {
-                  id: '3',
-                  title: 'Attack on Titan',
-                  image: 'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=400',
-                  description: 'Epic tale of humanity\'s struggle for survival',
-                  gradient: 'from-red-600 to-orange-600'
-                },
-                {
-                  id: '4',
-                  title: 'Violet Evergarden',
-                  image: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400',
-                  description: 'A journey of understanding human emotions',
-                  gradient: 'from-violet-600 to-indigo-600'
-                },
-                {
-                  id: '5',
-                  title: 'Demon Slayer',
-                  image: 'https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=400',
-                  description: 'Breathtaking animation and heartfelt story',
-                  gradient: 'from-green-600 to-teal-600'
-                }
-              ]}
+              items={carouselAnimeData}
               className="mb-24"
             />
           </div>

@@ -33,7 +33,7 @@ export default function ModernNavbar() {
       <motion.nav 
         className={cn('fixed top-0 w-full z-50 transition-all duration-300',
           scrolled 
-            ? 'bg-surface-overlay backdrop-blur-xl border-b border-border-default' 
+            ? 'bg-surface-overlay backdrop-blur-sm border-b border-border-default' 
             : 'bg-transparent'
         )}
         initial={{ y: -100 }}

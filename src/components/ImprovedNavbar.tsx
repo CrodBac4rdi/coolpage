@@ -142,7 +142,7 @@ export default function ImprovedNavbar() {
         className={cn(
           'fixed top-0 w-full z-50 transition-all duration-300',
           scrolled
-            ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 shadow-sm'
+            ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 shadow-sm'
             : 'bg-transparent'
         )}
         initial={{ y: -100 }}
@@ -283,7 +283,7 @@ export default function ImprovedNavbar() {
         {isOpen && (
           <>
             <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-black/50 z-40 md:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
