@@ -134,9 +134,7 @@ export default function EnhancedStoryCard({
                   }}
                 >
                   <Heart 
-                    className={`w-4 h-4 transition-all ${
-                      isLiked ? 'fill-red-500 text-red-500' : 'text-white'
-                    }`}
+                    className={`w-4 h-4 transition-all ${isLiked ? 'fill-red-500 text-red-500' : 'text-white'}`}
                   />
                 </motion.button>
                 <Sparkles className="w-4 h-4 text-yellow-400 animate-pulse" />

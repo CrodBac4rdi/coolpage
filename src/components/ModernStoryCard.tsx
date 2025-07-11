@@ -112,9 +112,7 @@ export default function ModernStoryCard({
                 className="w-8 h-8 flex items-center justify-center bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full transition-colors"
               >
                 <Heart 
-                  className={`w-4 h-4 transition-all ${
-                    isStoryFavorite ? 'fill-red-500 text-red-500' : 'text-white/60 hover:text-white'
-                  }`}
+                  className={`w-4 h-4 transition-all ${isStoryFavorite ? 'fill-red-500 text-red-500' : 'text-white/60 hover:text-white'}`}
                 />
               </motion.button>
             </div>

@@ -63,14 +63,7 @@ export default function ModernNavbar() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`
-                      px-4 py-2 rounded-lg text-sm font-medium
-                      flex items-center gap-2 transition-all
-                      ${isActive 
-                        ? 'text-primary bg-surface-subtle' 
-                        : 'text-secondary hover:text-primary hover:bg-surface-subtle'
-                      }
-                    `}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${isActive ? 'text-primary bg-surface-subtle' : 'text-secondary hover:text-primary hover:bg-surface-subtle'}`}
                   >
                     <Icon className="w-4 h-4" />
                     <span>{link.label}</span>

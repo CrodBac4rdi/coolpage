@@ -160,11 +160,7 @@ export default function CharacterGallery() {
                   whileTap={{ scale: 0.9 }}
                 >
                   <Heart 
-                    className={`w-4 h-4 transition-all ${
-                      favorites.includes(character.id) 
-                        ? 'fill-red-500 text-red-500' 
-                        : 'text-white'
-                    }`}
+                    className={`w-4 h-4 transition-all ${favorites.includes(character.id) ? 'fill-red-500 text-red-500' : 'text-white'}`}
                   />
                 </motion.button>
 
