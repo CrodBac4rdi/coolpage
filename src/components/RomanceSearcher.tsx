@@ -42,6 +42,7 @@ export default function RomanceSearcher() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [selectedAnime, setSelectedAnime] = useState<AnimeResult | null>(null)
+  const [popularAnime, setPopularAnime] = useState<AnimeResult[]>([])
 
   const searchAnime = useCallback(async (searchQuery: string) => {
     if (!searchQuery.trim()) {
@@ -70,6 +71,30 @@ export default function RomanceSearcher() {
     } finally {
       setLoading(false)
     }
+  }, [])
+
+  // Load popular romance anime on mount
+  useEffect(() => {
+    const loadPopularAnime = async () => {
+      setLoading(true)
+      try {
+        // Get top romance anime
+        const response = await fetch(
+          'https://api.jikan.moe/v4/anime?genres=22&order_by=score&sort=desc&limit=12&sfw=true'
+        )
+        
+        if (response.ok) {
+          const data = await response.json()
+          setPopularAnime(data.data || [])
+        }
+      } catch (err) {
+        console.error('Failed to load popular anime:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    
+    loadPopularAnime()
   }, [])
 
   // Debounced search
@@ -140,16 +165,27 @@ export default function RomanceSearcher() {
           </motion.div>
         )}
 
-        {/* Results Grid */}
+        {/* Results or Popular Anime Grid */}
         <AnimatePresence mode="wait">
-          {results.length > 0 && (
+          {(query ? results : popularAnime).length > 0 && (
             <motion.div 
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              {results.map((anime, index) => (
+              <AnimatePresence>
+                {!query && (
+                  <motion.h2 
+                    className="col-span-full text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    🔥 Popular Romance Anime
+                  </motion.h2>
+                )}
+              </AnimatePresence>
+              {(query ? results : popularAnime).map((anime, index) => (
                 <motion.div
                   key={anime.mal_id}
                   initial={{ opacity: 0, y: 20 }}
@@ -215,6 +251,18 @@ export default function RomanceSearcher() {
           >
             <Heart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <p className="text-gray-500">No romance anime found. Try another search!</p>
+          </motion.div>
+        )}
+        
+        {/* Loading State for Initial Load */}
+        {loading && popularAnime.length === 0 && !query && (
+          <motion.div 
+            className="text-center py-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <Loader2 className="w-16 h-16 text-pink-500 mx-auto mb-4 animate-spin" />
+            <p className="text-gray-500">Loading popular romance anime...</p>
           </motion.div>
         )}
 
