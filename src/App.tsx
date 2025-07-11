@@ -8,7 +8,7 @@ import { ToastProvider } from './components/ToastProvider'
 import Layout from './components/Layout'
 
 // Lazy load all pages with optimized chunks
-const Home = lazy(() => import('./pages/TabbedHome').then(module => ({ default: module.default })))
+const Home = lazy(() => import('./pages/ModernBentoHome').then(module => ({ default: module.default })))
 const About = lazy(() => import('./pages/ModernAbout').then(module => ({ default: module.default })))
 const Contact = lazy(() => import('./pages/ModernContact').then(module => ({ default: module.default })))
 const NotFound = lazy(() => import('./pages/NotFound').then(module => ({ default: module.default })))
