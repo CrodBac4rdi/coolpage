@@ -52,18 +52,18 @@ function AnimatedGradient() {
   
   return (
     <div className="absolute inset-0 overflow-hidden">
-      <div className="absolute -inset-[10px] opacity-50">
+      <div className="absolute -inset-[10px] opacity-20">
         <motion.div 
           style={{ x: blob1X, y: blob1Y }}
-          className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-blob" 
+          className="absolute top-0 -left-4 w-72 h-72 bg-purple-900 rounded-full mix-blend-multiply filter blur-3xl animate-blob" 
         />
         <motion.div 
           style={{ x: useTransform(mouseX, [0, window.innerWidth], [100, -100]) }}
-          className="absolute top-0 -right-4 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000" 
+          className="absolute top-0 -right-4 w-72 h-72 bg-yellow-900 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" 
         />
         <motion.div 
           style={{ y: useTransform(mouseY, [0, window.innerHeight], [100, -100]) }}
-          className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000" 
+          className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-900 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" 
         />
       </div>
       
@@ -109,12 +109,12 @@ function GlassCard({
   }
   
   const gradientClasses: Record<GradientColor, string> = {
-    purple: 'from-purple-600/20 to-indigo-600/20',
-    pink: 'from-pink-600/20 to-rose-600/20',
-    yellow: 'from-yellow-600/20 to-orange-600/20',
-    blue: 'from-blue-600/20 to-cyan-600/20',
-    green: 'from-green-600/20 to-emerald-600/20',
-    orange: 'from-orange-600/20 to-red-600/20'
+    purple: 'from-purple-900/30 to-indigo-900/30',
+    pink: 'from-pink-900/30 to-rose-900/30',
+    yellow: 'from-yellow-900/30 to-orange-900/30',
+    blue: 'from-blue-900/30 to-cyan-900/30',
+    green: 'from-green-900/30 to-emerald-900/30',
+    orange: 'from-orange-900/30 to-red-900/30'
   }
   
   if (interactive) {
@@ -129,10 +129,10 @@ function GlassCard({
     <motion.div
       ref={cardRef}
       className={cn(
-        "relative backdrop-blur-sm bg-white/5 dark:bg-gray-900/20",
-        "border border-white/20 dark:border-gray-700/50",
+        "relative bg-gray-900/90 dark:bg-gray-950/95",
+        "border border-gray-700/50 dark:border-gray-700/30",
         "rounded-3xl overflow-hidden",
-        hover && "hover:bg-white/20 dark:hover:bg-gray-900/40 transition-all duration-300",
+        hover && "hover:bg-gray-800/95 dark:hover:bg-gray-900 transition-all duration-300",
         glow && "shadow-2xl",
         gradient && `bg-gradient-to-br ${gradientClasses[gradient]}`,
         sizeClasses[size],
@@ -366,9 +366,9 @@ export default function ModernBentoHome() {
       <div className="min-h-screen bg-gray-900 text-white overflow-hidden">
         {/* Dynamic mesh gradient background */}
         <MeshGradient 
-          colors={['#8B5CF6', '#EC4899', '#F59E0B', '#3B82F6']} 
+          colors={['#4C1D95', '#831843', '#92400E', '#1E3A8A']} 
           speed={0.3}
-          className="opacity-30"
+          className="opacity-10"
         />
         <AnimatedGradient />
         
@@ -439,7 +439,7 @@ export default function ModernBentoHome() {
                 
                 <Link to="/watchlist">
                   <motion.button
-                    className="px-8 py-4 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl font-semibold text-lg flex items-center gap-2 hover:bg-white/20 transition-all"
+                    className="px-8 py-4 bg-gray-800/90 border border-gray-700 rounded-2xl font-semibold text-lg flex items-center gap-2 hover:bg-gray-700/90 transition-all"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
