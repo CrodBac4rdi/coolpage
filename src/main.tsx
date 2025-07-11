@@ -5,9 +5,13 @@ import './App.css'
 import './styles/mobile-enhancements.css'
 import App from './App.tsx'
 import { patchDOMTokenList } from './utils/domTokenListPatch.js'
+import { debugClassList } from './utils/debugClassList'
 
 // Apply DOMTokenList patch before app loads
 patchDOMTokenList()
+
+// Enable debug mode to find whitespace issues
+debugClassList()
 
 // Debug: Log any errors with className
 if (typeof window !== 'undefined') {
