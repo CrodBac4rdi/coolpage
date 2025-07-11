@@ -33,7 +33,7 @@ export default function SkeletonLoader({
   
   if (variant === 'card') {
     return (
-      <div className={`space-y-4 ${className}`}>
+      <div className={`space-y-4 ${className || ''}`}>
         {/* Header */}
         <div className="flex items-center gap-4">
           {avatar && <div className={`w-12 h-12 rounded-full ${baseClasses}`} />}
@@ -67,7 +67,7 @@ export default function SkeletonLoader({
   if (variant === 'button') {
     return (
       <motion.div
-        className={`h-10 w-24 rounded-lg ${baseClasses} ${className}`}
+        className={`h-10 w-24 rounded-lg ${baseClasses} ${className || ''}`}
         {...shimmer}
       />
     )
@@ -76,7 +76,7 @@ export default function SkeletonLoader({
   if (variant === 'circle') {
     return (
       <motion.div
-        className={`w-12 h-12 rounded-full ${baseClasses} ${className}`}
+        className={`w-12 h-12 rounded-full ${baseClasses} ${className || ''}`}
         {...shimmer}
       />
     )
@@ -85,7 +85,7 @@ export default function SkeletonLoader({
   if (variant === 'rectangle') {
     return (
       <motion.div
-        className={`rounded ${baseClasses} ${className}`}
+        className={`rounded ${baseClasses} ${className || ''}`}
         style={{ width, height }}
         {...shimmer}
       />
@@ -94,7 +94,7 @@ export default function SkeletonLoader({
   
   // Default text variant
   return (
-    <div className={`space-y-2 ${className}`}>
+    <div className={`space-y-2 ${className || ''}`}>
       {Array.from({ length: lines }).map((_, i) => (
         <motion.div
           key={i}
