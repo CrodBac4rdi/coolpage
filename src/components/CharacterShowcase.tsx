@@ -35,7 +35,7 @@ export default function CharacterShowcase({ character, onClose }: CharacterShowc
         onClick={(e) => e.stopPropagation()}
       >
         {/* Background Pattern */}
-        <div className={cn('absolute inset-0 opacity-20 bg-gradient-to-br', character.gradient)} />
+        <div className={cn('absolute inset-0 opacity-20 bg-gradient-to-br', ...(character.gradient?.split(' ') || []))} />
         
         {/* Header */}
         <div className="relative p-8 pb-0">

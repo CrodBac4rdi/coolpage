@@ -96,7 +96,7 @@ export default function EnhancedStoryCard({
             {/* Icon with animation */}
             <div className="flex items-center gap-4 mb-6">
               <motion.div
-                className={cn('p-4 rounded-xl transition-all duration-300', iconBg, iconColor)}
+                className={cn('p-4 rounded-xl transition-all duration-300', ...(iconBg?.split(' ') || []), iconColor)}
                 animate={isHovered ? { 
                   rotate: [0, -10, 10, -10, 0],
                   scale: [1, 1.1, 1]

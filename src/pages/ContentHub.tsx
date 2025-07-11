@@ -171,11 +171,11 @@ export default function ContentHub() {
               >
                 {/* Glow Effect */}
                 <motion.div
-                  className={cn('absolute -inset-0.5 bg-gradient-to-r rounded-3xl blur opacity-0 group-hover:opacity-30 transition duration-1000', category.gradient)}
+                  className={cn('absolute -inset-0.5 bg-gradient-to-r rounded-3xl blur opacity-0 group-hover:opacity-30 transition duration-1000', ...(category.gradient.split(' ')))}
                 />
 
                 {/* Card */}
-                <div className={cn('relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 border border-white/20 rounded-3xl p-8 overflow-hidden backdrop-blur-sm', category.bgGradient)}>
+                <div className={cn('relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 border border-white/20 rounded-3xl p-8 overflow-hidden backdrop-blur-sm', ...(category.bgGradient.split(' ')))}>
                   {/* Status Badge */}
                   <div className="absolute top-4 right-4">
                     {category.available ? (
@@ -193,7 +193,7 @@ export default function ContentHub() {
 
                   {/* Icon */}
                   <motion.div
-                    className={cn('w-20 h-20 mb-6 bg-gradient-to-br rounded-2xl flex items-center justify-center', category.gradient)}
+                    className={cn('w-20 h-20 mb-6 bg-gradient-to-br rounded-2xl flex items-center justify-center', ...(category.gradient.split(' ')))}
                     animate={isHovered ? { 
                       scale: [1, 1.1, 1],
                       rotate: [0, 5, -5, 0]
@@ -218,7 +218,7 @@ export default function ContentHub() {
                         </div>
                         <div className="w-full bg-white/10 rounded-full h-2">
                           <motion.div
-                            className={cn('h-full bg-gradient-to-r rounded-full', category.gradient)}
+                            className={cn('h-full bg-gradient-to-r rounded-full', ...(category.gradient.split(' ')))}
                             initial={{ width: 0 }}
                             animate={{ width: '100%' }}
                             transition={{ delay: 0.5 + index * 0.1, duration: 1 }}
@@ -249,7 +249,7 @@ export default function ContentHub() {
                       {/* Action Button */}
                       <Link to={category.link!}>
                         <motion.button
-                          className={cn('w-full bg-gradient-to-r text-white px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-2 group', category.gradient)}
+                          className={cn('w-full bg-gradient-to-r text-white px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-2 group', ...(category.gradient.split(' ')))}
                           whileHover={{ y: -2 }}
                           whileTap={{ y: 0 }}
                         >

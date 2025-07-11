@@ -192,10 +192,10 @@ export default function Manhwas() {
                 className="group relative"
               >
                 {/* Glow Effect */}
-                <div className={cn('absolute -inset-0.5 bg-gradient-to-r rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500', manhwa.color)} />
+                <div className={cn('absolute -inset-0.5 bg-gradient-to-r rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500', ...(manhwa.color.split(' ')))} />
                 
                 {/* Card */}
-                <div className={cn('relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 border border-white/20 rounded-2xl p-6 overflow-hidden backdrop-blur-sm', manhwa.bgColor)}>
+                <div className={cn('relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 border border-white/20 rounded-2xl p-6 overflow-hidden backdrop-blur-sm', ...(manhwa.bgColor.split(' ')))}>
                   {/* Status Badge */}
                   <div className="absolute top-4 right-4">
                     <div className={cn('px-3 py-1 rounded-full text-xs font-medium',
@@ -247,7 +247,7 @@ export default function Manhwas() {
 
                     {/* Action Button */}
                     <button
-                      className={cn('w-full bg-gradient-to-r text-white px-4 py-3 rounded-xl font-semibold hover:scale-105 transition-transform', manhwa.color)}
+                      className={cn('w-full bg-gradient-to-r text-white px-4 py-3 rounded-xl font-semibold hover:scale-105 transition-transform', ...(manhwa.color.split(' ')))}
                     >
                       Jetzt lesen
                     </button>

@@ -118,7 +118,7 @@ export default function ModernAbout() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className={cn('p-3 rounded-lg bg-surface-subtle', step.color)}>
+                    <div className={cn('p-3 rounded-lg bg-surface-subtle', ...(step.color?.split(' ') || []))}>
                       <step.icon className="w-6 h-6" />
                     </div>
                     <div>

@@ -105,7 +105,7 @@ const ContinuousReader: React.FC = () => {
 
   if (loading) {
     return (
-      <div className={cn('min-h-screen bg-gradient-to-br flex items-center justify-center', theme.background)}>
+      <div className={cn('min-h-screen bg-gradient-to-br flex items-center justify-center', ...(theme.background?.split(' ') || []))}>
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
       </div>
     )
@@ -113,7 +113,7 @@ const ContinuousReader: React.FC = () => {
 
   if (error || !story) {
     return (
-      <div className={cn('min-h-screen bg-gradient-to-br flex items-center justify-center', theme.background)}>
+      <div className={cn('min-h-screen bg-gradient-to-br flex items-center justify-center', ...(theme.background?.split(' ') || []))}>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">{error || 'Story not found'}</h1>
           <button
@@ -130,7 +130,7 @@ const ContinuousReader: React.FC = () => {
   const contentJSX = (
     <div 
       ref={elementRef}
-      className={cn('min-h-screen bg-gradient-to-br relative', theme.background)} 
+      className={cn('min-h-screen bg-gradient-to-br relative', ...(theme.background?.split(' ') || []))} 
       style={{ fontFamily: readingPrefs.fontFamily }}
       onScroll={trackActivity}
       onClick={trackActivity}
@@ -269,7 +269,7 @@ const ContinuousReader: React.FC = () => {
             {/* Story Mood Indicator */}
             <div className="mt-3 p-2 bg-black/30 rounded text-center">
               <span className="text-xs text-gray-400">Aktuelle Stimmung: </span>
-              <span className={cn('text-xs font-medium', theme.accent)}>
+              <span className={cn('text-xs font-medium', ...(theme.accent?.split(' ') || []))}>
                 {theme.mood === 'romantic' ? '💕 Romantisch' :
                  theme.mood === 'mysterious' ? '🌙 Mysteriös' :
                  theme.mood === 'adventure' ? '⚡ Abenteuer' :
@@ -306,7 +306,7 @@ const ContinuousReader: React.FC = () => {
             <div 
               key={chapter.id} 
               data-chapter={chapter.id}
-              className={cn('p-4 sm:p-6 rounded-lg bg-white/5 backdrop-blur-sm border', theme.border)}
+              className={cn('p-4 sm:p-6 rounded-lg bg-white/5 backdrop-blur-sm border', ...(theme.border?.split(' ') || []))}
               onMouseEnter={() => {
                 setCurrentChapterText(chapterText)
                 trackChapterRead(chapter.id, chapter.content.length * 50) // Estimate word count
