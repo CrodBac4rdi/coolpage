@@ -17,7 +17,7 @@ const ContentHub = lazy(() => import('./pages/ContentHub').then(module => ({ def
 const UserDashboard = lazy(() => import('./pages/UserDashboard').then(module => ({ default: module.default })))
 const RomanceAnimeGuide = lazy(() => import('./components/RomanceAnimeGuide').then(module => ({ default: module.default })))
 const ManhwaHub = lazy(() => import('./pages/ManhwaHub').then(module => ({ default: module.default })))
-const RomanceSearcher = lazy(() => import('./components/RomanceSearcher').then(module => ({ default: module.default })))
+const EnhancedAnimeSearcher = lazy(() => import('./components/EnhancedAnimeSearcher').then(module => ({ default: module.default })))
 
 // Lazy load heavy components
 const HeavyComponents = {
@@ -47,7 +47,7 @@ function App() {
               <Route path="stories" element={<Suspense fallback={<PageLoader />}><Stories /></Suspense>} />
               <Route path="manhwas" element={<Suspense fallback={<PageLoader />}><ManhwaHub /></Suspense>} />
               <Route path="anime-guide" element={<Suspense fallback={<PageLoader />}><RomanceAnimeGuide /></Suspense>} />
-              <Route path="romance-search" element={<Suspense fallback={<PageLoader />}><RomanceSearcher /></Suspense>} />
+              <Route path="romance-search" element={<Suspense fallback={<PageLoader />}><EnhancedAnimeSearcher /></Suspense>} />
               <Route path="reader/:storyId" element={<Suspense fallback={<PageLoader />}><Reader /></Suspense>} />
               <Route path="about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
               <Route path="contact" element={<Suspense fallback={<PageLoader />}><Contact /></Suspense>} />

@@ -21,10 +21,9 @@ export default function ModernNavbar() {
 
   const links = [
     { to: '/', label: 'Home', icon: Home },
+    { to: '/romance-search', label: 'Anime Search', icon: Search },
     { to: '/stories', label: 'Stories', icon: Book },
-    { to: '/romance-search', label: 'Search', icon: Search },
-    { to: '/content', label: 'Content', icon: Users },
-    { to: '/anime-guide', label: 'Anime Guide', icon: Clock },
+    { to: '/manhwas', label: 'Manhwas', icon: Users },
     { to: '/dashboard', label: 'Dashboard', icon: Gamepad2 },
   ]
 
