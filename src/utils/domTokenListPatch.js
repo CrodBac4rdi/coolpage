@@ -27,14 +27,18 @@ export function patchDOMTokenList() {
     };
     
     // Auch classList.add patchen falls es direkt aufgerufen wird
-    const originalClassListAdd = Element.prototype.classList.add;
-    if (originalClassListAdd) {
-      Object.defineProperty(Element.prototype.classList, 'add', {
-        value: function(...tokens) {
-          return DOMTokenList.prototype.add.apply(this, tokens);
-        },
-        configurable: true
-      });
+    try {
+      const originalClassListAdd = Element.prototype.classList.add;
+      if (originalClassListAdd) {
+        Object.defineProperty(Element.prototype.classList, 'add', {
+          value: function(...tokens) {
+            return DOMTokenList.prototype.add.apply(this, tokens);
+          },
+          configurable: true
+        });
+      }
+    } catch (e) {
+      console.warn('Could not patch classList.add:', e);
     }
     
     console.log('DOMTokenList.add wurde gepacht, um Whitespace-Fehler zu vermeiden');
