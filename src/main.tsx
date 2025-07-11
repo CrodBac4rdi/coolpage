@@ -5,30 +5,9 @@ import './App.css'
 import './styles/mobile-enhancements.css'
 import App from './App.tsx'
 import { patchDOMTokenList } from './utils/domTokenListPatch.js'
-import { debugClassList } from './utils/debugClassList'
 
 // Apply DOMTokenList patch before app loads
 patchDOMTokenList()
-
-// Enable debug mode to find whitespace issues
-debugClassList()
-
-// Debug: Log any errors with className
-if (typeof window !== 'undefined') {
-  const originalError = console.error;
-  console.error = function(...args) {
-    if (args[0] && args[0].toString().includes('DOMTokenList')) {
-      console.warn('DOMTokenList Error caught:', args);
-      // Try to find the source
-      try {
-        throw new Error('Stack trace');
-      } catch (e) {
-        console.warn('Stack:', e.stack);
-      }
-    }
-    return originalError.apply(console, args);
-  };
-}
 
 // Register service worker for offline functionality
 if ('serviceWorker' in navigator) {
