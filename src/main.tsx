@@ -4,6 +4,10 @@ import './index.css'
 import './App.css'
 import './styles/mobile-enhancements.css'
 import App from './App.tsx'
+import { patchDOMTokenList } from './utils/domTokenListPatch.js'
+
+// Apply DOMTokenList patch before app loads
+patchDOMTokenList()
 
 // Register service worker for offline functionality
 if ('serviceWorker' in navigator) {
