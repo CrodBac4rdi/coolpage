@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Book, Star, Heart, Zap, Crown, Users, Clock } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import SEOHead from '../components/SEOHead'
+import { cn } from '../utils/cn'
 
 const manhwas = [
   {
@@ -191,17 +192,17 @@ export default function Manhwas() {
                 className="group relative"
               >
                 {/* Glow Effect */}
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${manhwa.color} rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500`} />
+                <div className={cn('absolute -inset-0.5 bg-gradient-to-r rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500', manhwa.color)} />
                 
                 {/* Card */}
-                <div className={`relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 ${manhwa.bgColor} border border-white/20 rounded-2xl p-6 overflow-hidden backdrop-blur-sm`}>
+                <div className={cn('relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 border border-white/20 rounded-2xl p-6 overflow-hidden backdrop-blur-sm', manhwa.bgColor)}>
                   {/* Status Badge */}
                   <div className="absolute top-4 right-4">
-                    <div className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    <div className={cn('px-3 py-1 rounded-full text-xs font-medium',
                       manhwa.status === 'Completed' 
                         ? 'bg-green-500/20 border border-green-400/30 text-green-300'
                         : 'bg-blue-500/20 border border-blue-400/30 text-blue-300'
-                    }`}>
+                    )}>
                       {manhwa.status}
                     </div>
                   </div>
@@ -246,7 +247,7 @@ export default function Manhwas() {
 
                     {/* Action Button */}
                     <button
-                      className={`w-full bg-gradient-to-r ${manhwa.color} text-white px-4 py-3 rounded-xl font-semibold hover:scale-105 transition-transform`}
+                      className={cn('w-full bg-gradient-to-r text-white px-4 py-3 rounded-xl font-semibold hover:scale-105 transition-transform', manhwa.color)}
                     >
                       Jetzt lesen
                     </button>

@@ -8,6 +8,7 @@ import { useFavorites } from '../hooks/useFavorites'
 import { useStoryTheme } from '../hooks/useStoryTheme'
 import { useReadingAnalytics } from '../hooks/useReadingAnalytics'
 import VoiceControls from './VoiceControls'
+import { cn } from '../utils/cn'
 import FloatingQuickActions from './FloatingQuickActions'
 // import ParticleBackground from './ParticleBackground' // Removed
 
@@ -104,7 +105,7 @@ const ContinuousReader: React.FC = () => {
 
   if (loading) {
     return (
-      <div className={`min-h-screen bg-gradient-to-br ${theme.background} flex items-center justify-center`}>
+      <div className={cn('min-h-screen bg-gradient-to-br flex items-center justify-center', theme.background)}>
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
       </div>
     )
@@ -112,7 +113,7 @@ const ContinuousReader: React.FC = () => {
 
   if (error || !story) {
     return (
-      <div className={`min-h-screen bg-gradient-to-br ${theme.background} flex items-center justify-center`}>
+      <div className={cn('min-h-screen bg-gradient-to-br flex items-center justify-center', theme.background)}>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">{error || 'Story not found'}</h1>
           <button
@@ -129,7 +130,7 @@ const ContinuousReader: React.FC = () => {
   const contentJSX = (
     <div 
       ref={elementRef}
-      className={`min-h-screen bg-gradient-to-br ${theme.background} relative`} 
+      className={cn('min-h-screen bg-gradient-to-br relative', theme.background)} 
       style={{ fontFamily: readingPrefs.fontFamily }}
       onScroll={trackActivity}
       onClick={trackActivity}
@@ -142,7 +143,7 @@ const ContinuousReader: React.FC = () => {
         density={themeSettings.intensity}
       /> */}
       {/* Auto-Hide Header */}
-      <div className={`fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 transition-transform duration-300 ${scrollDirection === 'down' ? '-translate-y-full' : 'translate-y-0'}`}>
+      <div className={cn('fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 transition-transform duration-300', scrollDirection === 'down' ? '-translate-y-full' : 'translate-y-0')}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -170,7 +171,7 @@ const ContinuousReader: React.FC = () => {
                 onClick={() => toggleFavorite(story.id)}
                 className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
               >
-                <Heart className={`w-5 h-5 ${isStoryFavorite ? 'fill-red-500 text-red-500' : 'text-white'}`} />
+                <Heart className={cn('w-5 h-5', isStoryFavorite ? 'fill-red-500 text-red-500' : 'text-white')} />
               </button>
               
               <button
@@ -268,7 +269,7 @@ const ContinuousReader: React.FC = () => {
             {/* Story Mood Indicator */}
             <div className="mt-3 p-2 bg-black/30 rounded text-center">
               <span className="text-xs text-gray-400">Aktuelle Stimmung: </span>
-              <span className={`text-xs font-medium ${theme.accent}`}>
+              <span className={cn('text-xs font-medium', theme.accent)}>
                 {theme.mood === 'romantic' ? '💕 Romantisch' :
                  theme.mood === 'mysterious' ? '🌙 Mysteriös' :
                  theme.mood === 'adventure' ? '⚡ Abenteuer' :
@@ -305,7 +306,7 @@ const ContinuousReader: React.FC = () => {
             <div 
               key={chapter.id} 
               data-chapter={chapter.id}
-              className={`p-4 sm:p-6 rounded-lg bg-white/5 backdrop-blur-sm border ${theme.border}`}
+              className={cn('p-4 sm:p-6 rounded-lg bg-white/5 backdrop-blur-sm border', theme.border)}
               onMouseEnter={() => {
                 setCurrentChapterText(chapterText)
                 trackChapterRead(chapter.id, chapter.content.length * 50) // Estimate word count

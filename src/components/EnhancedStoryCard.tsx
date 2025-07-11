@@ -2,6 +2,7 @@ import { motion, useMotionValue, useTransform } from 'framer-motion'
 import { useState } from 'react'
 import { ArrowRight, Heart, Sparkles, Eye } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { cn } from '../utils/cn'
 
 interface EnhancedStoryCardProps {
   title: string
@@ -95,7 +96,7 @@ export default function EnhancedStoryCard({
             {/* Icon with animation */}
             <div className="flex items-center gap-4 mb-6">
               <motion.div
-                className={`p-4 rounded-xl ${iconBg} ${iconColor} transition-all duration-300`}
+                className={cn('p-4 rounded-xl transition-all duration-300', iconBg, iconColor)}
                 animate={isHovered ? { 
                   rotate: [0, -10, 10, -10, 0],
                   scale: [1, 1.1, 1]
@@ -134,7 +135,7 @@ export default function EnhancedStoryCard({
                   }}
                 >
                   <Heart 
-                    className={`w-4 h-4 transition-all ${isLiked ? 'fill-red-500 text-red-500' : 'text-white'}`}
+                    className={cn('w-4 h-4 transition-all', isLiked ? 'fill-red-500 text-red-500' : 'text-white')}
                   />
                 </motion.button>
                 <Sparkles className="w-4 h-4 text-yellow-400 animate-pulse" />

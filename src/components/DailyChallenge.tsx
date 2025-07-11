@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Trophy, Clock, CheckCircle, Flame, Gift, Calendar } from 'lucide-react'
+import { cn } from '../utils/cn'
 
 interface Challenge {
   id: string
@@ -221,11 +222,11 @@ export default function DailyChallenge() {
             whileTap={{ scale: 0.98 }}
             onClick={completeChallenge}
             disabled={dailyChallenge.progress < dailyChallenge.target}
-            className={`w-full py-3 rounded-xl font-medium transition-all flex items-center justify-center gap-2 ${
+            className={cn('w-full py-3 rounded-xl font-medium transition-all flex items-center justify-center gap-2',
               dailyChallenge.progress >= dailyChallenge.target
                 ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white hover:from-green-600 hover:to-emerald-600'
                 : 'bg-white/10 text-gray-400 cursor-not-allowed'
-            }`}
+            )}
           >
             <CheckCircle className="w-5 h-5" />
             <span>Challenge abschließen</span>

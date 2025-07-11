@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Heart, Info, Sparkles, Users } from 'lucide-react'
+import { cn } from '../utils/cn'
 
 interface Character {
   id: string
@@ -127,7 +128,7 @@ export default function CharacterGallery() {
             <div className="relative">
               {/* Character Avatar */}
               <motion.div
-                className={`aspect-square bg-gradient-to-br ${character.color} rounded-2xl flex items-center justify-center text-5xl relative overflow-hidden`}
+                className={cn('aspect-square bg-gradient-to-br rounded-2xl flex items-center justify-center text-5xl relative overflow-hidden', character.color)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -160,7 +161,7 @@ export default function CharacterGallery() {
                   whileTap={{ scale: 0.9 }}
                 >
                   <Heart 
-                    className={`w-4 h-4 transition-all ${favorites.includes(character.id) ? 'fill-red-500 text-red-500' : 'text-white'}`}
+                    className={cn('w-4 h-4 transition-all', favorites.includes(character.id) ? 'fill-red-500 text-red-500' : 'text-white')}
                   />
                 </motion.button>
 
@@ -192,7 +193,7 @@ export default function CharacterGallery() {
         >
           <div className="flex items-start gap-6">
             <motion.div
-              className={`w-24 h-24 bg-gradient-to-br ${selectedCharacter.color} rounded-2xl flex items-center justify-center text-5xl flex-shrink-0`}
+              className={cn('w-24 h-24 bg-gradient-to-br rounded-2xl flex items-center justify-center text-5xl flex-shrink-0', selectedCharacter.color)}
               animate={{ rotate: [0, 5, -5, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >

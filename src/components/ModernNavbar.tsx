@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sun, Moon, Book, Users, Clock, Gamepad2, Home } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useTheme } from '../contexts/ThemeContext'
+import { cn } from '../utils/cn'
 
 export default function ModernNavbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -29,11 +30,11 @@ export default function ModernNavbar() {
   return (
     <>
       <motion.nav 
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        className={cn('fixed top-0 w-full z-50 transition-all duration-300',
           scrolled 
             ? 'bg-surface-overlay backdrop-blur-xl border-b border-border-default' 
             : 'bg-transparent'
-        }`}
+        )}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
@@ -63,7 +64,7 @@ export default function ModernNavbar() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all ${isActive ? 'text-primary bg-surface-subtle' : 'text-secondary hover:text-primary hover:bg-surface-subtle'}`}
+                    className={cn('px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition-all', isActive ? 'text-primary bg-surface-subtle' : 'text-secondary hover:text-primary hover:bg-surface-subtle')}
                   >
                     <Icon className="w-4 h-4" />
                     <span>{link.label}</span>
@@ -189,14 +190,13 @@ export default function ModernNavbar() {
                     <Link
                       key={link.to}
                       to={link.to}
-                      className={`
-                        flex items-center gap-3 px-4 py-3 rounded-lg
-                        text-base font-medium transition-all
-                        ${isActive 
+                      className={cn(
+                        'flex items-center gap-3 px-4 py-3 rounded-lg',
+                        'text-base font-medium transition-all',
+                        isActive 
                           ? 'text-primary bg-surface-subtle' 
                           : 'text-secondary hover:text-primary hover:bg-surface-subtle'
-                        }
-                      `}
+                      )}
                       onClick={() => setIsOpen(false)}
                     >
                       <Icon className="w-5 h-5" />

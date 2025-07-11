@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Filter, Play, Star, Calendar, X, Heart, Users, Globe, Clock, ArrowLeft, ExternalLink, Award, Info, BookOpen } from 'lucide-react'
+import { cn } from '../utils/cn'
 
 // Platform logos as SVG components
 const NetflixLogo = () => (
@@ -702,31 +703,31 @@ export default function RomanceAnimeGuide() {
                 <div className="flex gap-2 mb-6">
                   <button
                     onClick={() => setDetailLevel('overview')}
-                    className={`px-4 py-2 rounded-lg transition-colors ${
+                    className={cn('px-4 py-2 rounded-lg transition-colors',
                       detailLevel === 'overview' 
                         ? 'bg-purple-600 text-white' 
                         : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                    }`}
+                    )}
                   >
                     Übersicht
                   </button>
                   <button
                     onClick={() => setDetailLevel('details')}
-                    className={`px-4 py-2 rounded-lg transition-colors ${
+                    className={cn('px-4 py-2 rounded-lg transition-colors',
                       detailLevel === 'details' 
                         ? 'bg-purple-600 text-white' 
                         : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                    }`}
+                    )}
                   >
                     Details
                   </button>
                   <button
                     onClick={() => setDetailLevel('deep-dive')}
-                    className={`px-4 py-2 rounded-lg transition-colors ${
+                    className={cn('px-4 py-2 rounded-lg transition-colors',
                       detailLevel === 'deep-dive' 
                         ? 'bg-purple-600 text-white' 
                         : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                    }`}
+                    )}
                   >
                     Deep Dive
                   </button>

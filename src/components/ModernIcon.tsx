@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { cn } from '../utils/cn'
 
 interface ModernIconProps {
   type: string
@@ -56,7 +57,7 @@ export default function ModernIcon({ type, size = 'md', className = '', animate 
 
   return (
     <motion.div
-      className={className ? `relative inline-block select-none ${sizeMap[size]} ${className}` : `relative inline-block select-none ${sizeMap[size]}`}
+      className={cn('relative inline-block select-none', sizeMap[size], className)}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       initial={{ scale: 1 }}

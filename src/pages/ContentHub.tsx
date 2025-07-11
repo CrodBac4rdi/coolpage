@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Book, Palette, Play, Sparkles, ArrowRight, Star, TrendingUp, Clock } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { cn } from '../utils/cn'
 
 const contentCategories = [
   {
@@ -170,11 +171,11 @@ export default function ContentHub() {
               >
                 {/* Glow Effect */}
                 <motion.div
-                  className={`absolute -inset-0.5 bg-gradient-to-r ${category.gradient} rounded-3xl blur opacity-0 group-hover:opacity-30 transition duration-1000`}
+                  className={cn('absolute -inset-0.5 bg-gradient-to-r rounded-3xl blur opacity-0 group-hover:opacity-30 transition duration-1000', category.gradient)}
                 />
 
                 {/* Card */}
-                <div className={`relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 ${category.bgGradient} border border-white/20 rounded-3xl p-8 overflow-hidden backdrop-blur-sm`}>
+                <div className={cn('relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 border border-white/20 rounded-3xl p-8 overflow-hidden backdrop-blur-sm', category.bgGradient)}>
                   {/* Status Badge */}
                   <div className="absolute top-4 right-4">
                     {category.available ? (
@@ -192,7 +193,7 @@ export default function ContentHub() {
 
                   {/* Icon */}
                   <motion.div
-                    className={`w-20 h-20 mb-6 bg-gradient-to-br ${category.gradient} rounded-2xl flex items-center justify-center`}
+                    className={cn('w-20 h-20 mb-6 bg-gradient-to-br rounded-2xl flex items-center justify-center', category.gradient)}
                     animate={isHovered ? { 
                       scale: [1, 1.1, 1],
                       rotate: [0, 5, -5, 0]
@@ -217,7 +218,7 @@ export default function ContentHub() {
                         </div>
                         <div className="w-full bg-white/10 rounded-full h-2">
                           <motion.div
-                            className={`h-full bg-gradient-to-r ${category.gradient} rounded-full`}
+                            className={cn('h-full bg-gradient-to-r rounded-full', category.gradient)}
                             initial={{ width: 0 }}
                             animate={{ width: '100%' }}
                             transition={{ delay: 0.5 + index * 0.1, duration: 1 }}
@@ -248,7 +249,7 @@ export default function ContentHub() {
                       {/* Action Button */}
                       <Link to={category.link!}>
                         <motion.button
-                          className={`w-full bg-gradient-to-r ${category.gradient} text-white px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-2 group`}
+                          className={cn('w-full bg-gradient-to-r text-white px-6 py-4 rounded-xl font-semibold flex items-center justify-center gap-2 group', category.gradient)}
                           whileHover={{ y: -2 }}
                           whileTap={{ y: 0 }}
                         >

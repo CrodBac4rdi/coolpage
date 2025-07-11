@@ -3,6 +3,7 @@ import { Sparkles, Heart, ArrowLeft, Filter, Search, TrendingUp, Clock, Star, Gr
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import ModernStoryCard from '../components/ModernStoryCard'
+import { cn } from '../utils/cn'
 // Story metadata for initial display
 const storyMetadata = [
   { id: 'forbidden-desire', title: 'Forbidden Desire', genre: ['Romance', 'Drama'], emoji: '🔥', chapters: 45, mature: true },
@@ -133,11 +134,11 @@ export default function StoryFocusedHome() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowFilters(!showFilters)}
-                  className={`px-4 py-3 rounded-xl font-medium transition-colors flex items-center gap-2 ${
+                  className={cn('px-4 py-3 rounded-xl font-medium transition-colors flex items-center gap-2',
                     showFilters 
                       ? 'bg-purple-500 text-white' 
                       : 'bg-white/10 text-white hover:bg-white/20'
-                  }`}
+                  )}
                 >
                   <Filter className="w-5 h-5" />
                   <span className="hidden sm:inline">Filter</span>
@@ -175,11 +176,11 @@ export default function StoryFocusedHome() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setSelectedGenre(genre)}
-                            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                            className={cn('px-3 py-1.5 rounded-full text-sm font-medium transition-colors',
                               selectedGenre === genre
                                 ? 'bg-purple-500 text-white'
                                 : 'bg-white/10 text-gray-300 hover:bg-white/20'
-                            }`}
+                            )}
                           >
                             {genre === 'all' ? 'Alle' : genre}
                           </motion.button>
@@ -195,11 +196,11 @@ export default function StoryFocusedHome() {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => setSortBy('title')}
-                          className={`flex items-center gap-1 px-3 py-1.5 rounded-xl text-sm font-medium transition-colors ${
+                          className={cn('flex items-center gap-1 px-3 py-1.5 rounded-xl text-sm font-medium transition-colors',
                             sortBy === 'title'
                               ? 'bg-purple-500 text-white'
                               : 'bg-white/10 text-gray-300 hover:bg-white/20'
-                          }`}
+                          )}
                         >
                           <span>A-Z</span>
                         </motion.button>
@@ -207,11 +208,11 @@ export default function StoryFocusedHome() {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => setSortBy('rating')}
-                          className={`flex items-center gap-1 px-3 py-1.5 rounded-xl text-sm font-medium transition-colors ${
+                          className={cn('flex items-center gap-1 px-3 py-1.5 rounded-xl text-sm font-medium transition-colors',
                             sortBy === 'rating'
                               ? 'bg-purple-500 text-white'
                               : 'bg-white/10 text-gray-300 hover:bg-white/20'
-                          }`}
+                          )}
                         >
                           <Star className="w-3 h-3" />
                           <span>Bewertung</span>
@@ -220,11 +221,11 @@ export default function StoryFocusedHome() {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => setSortBy('newest')}
-                          className={`flex items-center gap-1 px-3 py-1.5 rounded-xl text-sm font-medium transition-colors ${
+                          className={cn('flex items-center gap-1 px-3 py-1.5 rounded-xl text-sm font-medium transition-colors',
                             sortBy === 'newest'
                               ? 'bg-purple-500 text-white'
                               : 'bg-white/10 text-gray-300 hover:bg-white/20'
-                          }`}
+                          )}
                         >
                           <Clock className="w-3 h-3" />
                           <span>Neueste</span>
@@ -279,11 +280,12 @@ export default function StoryFocusedHome() {
             <p className="text-gray-300 text-lg">Loading stories...</p>
           </div>
         ) : (
-          <div className={`${
+          <div className={cn(
             viewMode === 'grid' 
               ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8' 
-              : 'space-y-4'
-          } max-w-7xl mx-auto`}>
+              : 'space-y-4',
+            'max-w-7xl mx-auto'
+          )}>
             {filteredStories.map((story, index) => (
               <ModernStoryCard
                 key={story.id}

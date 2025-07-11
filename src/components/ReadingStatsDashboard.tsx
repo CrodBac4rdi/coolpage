@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { BarChart, TrendingUp, Clock, Award, BookOpen, Target } from 'lucide-react'
 import { useReadingList } from '../hooks/useReadingList'
+import { cn } from '../utils/cn'
 
 interface ReadingGoal {
   monthly: number
@@ -135,9 +136,9 @@ export default function ReadingStatsDashboard() {
               transition={{ delay: index * 0.1 }}
               className="relative group"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${stat.bgColor} rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity`} />
+              <div className={cn('absolute inset-0 bg-gradient-to-br rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity', stat.bgColor)} />
               <div className="relative bg-black/50 border border-white/10 rounded-2xl p-4">
-                <div className={`w-10 h-10 bg-gradient-to-br ${stat.color} rounded-lg flex items-center justify-center mb-3`}>
+                <div className={cn('w-10 h-10 bg-gradient-to-br rounded-lg flex items-center justify-center mb-3', stat.color)}>
                   <Icon className="w-5 h-5 text-white" />
                 </div>
                 <p className="text-3xl font-bold text-white mb-1">{stat.value}</p>

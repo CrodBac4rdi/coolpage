@@ -14,6 +14,7 @@
     "analyze": "npm run build:analyze && npx vite-bundle-analyzer dist"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "framer-motion": "^12.20.1",
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",

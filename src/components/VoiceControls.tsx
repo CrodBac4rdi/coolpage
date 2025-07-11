@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Play, Pause, Square, Volume2, Settings } from 'lucide-react'
 import { useState } from 'react'
 import { useSpeechSynthesis } from '../hooks/useSpeechSynthesis'
+import { cn } from '../utils/cn'
 
 interface VoiceControlsProps {
   text: string
@@ -38,7 +39,7 @@ export default function VoiceControls({ text, className = '' }: VoiceControlsPro
   }
 
   return (
-    <div className={className ? `relative ${className}` : 'relative'}>
+    <div className={cn('relative', className)}>
       {/* Main Controls */}
       <div className="flex items-center gap-2">
         <motion.button

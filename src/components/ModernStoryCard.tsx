@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Book, ArrowRight, Heart, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useFavorites } from '../hooks/useFavorites'
+import { cn } from '../utils/cn'
 
 interface ModernStoryCardProps {
   id: string
@@ -76,14 +77,14 @@ export default function ModernStoryCard({
         >
           {/* Glow effect */}
           <motion.div
-            className={`absolute -inset-0.5 bg-gradient-to-r ${getGradient()} rounded-3xl blur opacity-0 group-hover:opacity-50 transition duration-1000`}
+            className={cn('absolute -inset-0.5 bg-gradient-to-r rounded-3xl blur opacity-0 group-hover:opacity-50 transition duration-1000', getGradient())}
             animate={isHovered ? { opacity: 0.5 } : { opacity: 0 }}
           />
 
           {/* Card content with dynamic gradient */}
           <div className={`relative h-full bg-gradient-to-br from-gray-900/90 to-black/95 border border-white/20 rounded-3xl p-8 overflow-hidden backdrop-blur-sm`}>
             {/* Gradient overlay based on genre */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${getGradient()} opacity-10 rounded-3xl`} />
+            <div className={cn('absolute inset-0 bg-gradient-to-br opacity-10 rounded-3xl', getGradient())} />
             
             {/* Static decoration */}
             <div className="absolute inset-0 overflow-hidden opacity-5">
@@ -112,7 +113,7 @@ export default function ModernStoryCard({
                 className="w-8 h-8 flex items-center justify-center bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full transition-colors"
               >
                 <Heart 
-                  className={`w-4 h-4 transition-all ${isStoryFavorite ? 'fill-red-500 text-red-500' : 'text-white/60 hover:text-white'}`}
+                  className={cn('w-4 h-4 transition-all', isStoryFavorite ? 'fill-red-500 text-red-500' : 'text-white/60 hover:text-white')}
                 />
               </motion.button>
             </div>
@@ -128,7 +129,7 @@ export default function ModernStoryCard({
                 transition={{ duration: isHovered ? 20 : 0, repeat: Infinity, ease: "linear" }}
               >
                 {/* Gradient circle */}
-                <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${getGradient()} opacity-40 blur-xl`} />
+                <div className={cn('absolute inset-0 rounded-full bg-gradient-to-br opacity-40 blur-xl', getGradient())} />
                 
                 {/* Letter avatar */}
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-full border border-white/20">
@@ -161,7 +162,7 @@ export default function ModernStoryCard({
               </motion.span>
               {/* Title underline effect */}
               <motion.div
-                className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r ${getGradient()} rounded-full`}
+                className={cn('absolute -bottom-1 left-1/2 -translate-x-1/2 h-0.5 bg-gradient-to-r rounded-full', getGradient())}
                 initial={{ width: 0 }}
                 animate={isHovered ? { width: '60%' } : { width: 0 }}
                 transition={{ duration: 0.3 }}

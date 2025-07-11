@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { useEffect } from 'react'
+import { cn } from '../utils/cn'
 
 interface MobileModalProps {
   isOpen: boolean
@@ -45,7 +46,7 @@ export default function MobileModal({
           
           {/* Modal */}
           <motion.div
-            className={`fixed z-50 md:hidden ${fullscreen ? 'inset-0' : 'bottom-0 left-0 right-0 top-20'}`}
+            className={cn('fixed z-50 md:hidden', fullscreen ? 'inset-0' : 'bottom-0 left-0 right-0 top-20')}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}

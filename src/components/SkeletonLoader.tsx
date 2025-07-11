@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { cn } from '../utils/cn'
 
 interface SkeletonLoaderProps {
   className?: string
@@ -33,13 +34,13 @@ export default function SkeletonLoader({
   
   if (variant === 'card') {
     return (
-      <div className={`space-y-4 ${className || ''}`}>
+      <div className={cn('space-y-4', className)}>
         {/* Header */}
         <div className="flex items-center gap-4">
-          {avatar && <div className={`w-12 h-12 rounded-full ${baseClasses}`} />}
+          {avatar && <div className={cn('w-12 h-12 rounded-full', baseClasses)} />}
           <div className="flex-1 space-y-2">
-            <div className={`h-4 rounded ${baseClasses}`} style={{ width: '60%' }} />
-            <div className={`h-3 rounded ${baseClasses}`} style={{ width: '40%' }} />
+            <div className={cn('h-4 rounded', baseClasses)} style={{ width: '60%' }} />
+            <div className={cn('h-3 rounded', baseClasses)} style={{ width: '40%' }} />
           </div>
         </div>
         
@@ -48,7 +49,7 @@ export default function SkeletonLoader({
           {Array.from({ length: lines }).map((_, i) => (
             <motion.div
               key={i}
-              className={`h-3 rounded ${baseClasses}`}
+              className={cn('h-3 rounded', baseClasses)}
               style={{ width: i === lines - 1 ? '80%' : '100%' }}
               {...shimmer}
             />
@@ -57,8 +58,8 @@ export default function SkeletonLoader({
         
         {/* Footer */}
         <div className="flex gap-2">
-          <div className={`h-8 w-16 rounded ${baseClasses}`} />
-          <div className={`h-8 w-16 rounded ${baseClasses}`} />
+          <div className={cn('h-8 w-16 rounded', baseClasses)} />
+          <div className={cn('h-8 w-16 rounded', baseClasses)} />
         </div>
       </div>
     )
@@ -67,7 +68,7 @@ export default function SkeletonLoader({
   if (variant === 'button') {
     return (
       <motion.div
-        className={`h-10 w-24 rounded-lg ${baseClasses} ${className || ''}`}
+        className={cn('h-10 w-24 rounded-lg', baseClasses, className)}
         {...shimmer}
       />
     )
@@ -76,7 +77,7 @@ export default function SkeletonLoader({
   if (variant === 'circle') {
     return (
       <motion.div
-        className={`w-12 h-12 rounded-full ${baseClasses} ${className || ''}`}
+        className={cn('w-12 h-12 rounded-full', baseClasses, className)}
         {...shimmer}
       />
     )
@@ -85,7 +86,7 @@ export default function SkeletonLoader({
   if (variant === 'rectangle') {
     return (
       <motion.div
-        className={`rounded ${baseClasses} ${className || ''}`}
+        className={cn('rounded', baseClasses, className)}
         style={{ width, height }}
         {...shimmer}
       />
@@ -94,11 +95,11 @@ export default function SkeletonLoader({
   
   // Default text variant
   return (
-    <div className={`space-y-2 ${className || ''}`}>
+    <div className={cn('space-y-2', className)}>
       {Array.from({ length: lines }).map((_, i) => (
         <motion.div
           key={i}
-          className={`h-4 rounded ${baseClasses}`}
+          className={cn('h-4 rounded', baseClasses)}
           style={{ width: i === lines - 1 ? '60%' : '100%' }}
           {...shimmer}
         />

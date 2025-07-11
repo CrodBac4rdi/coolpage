@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Quote, RefreshCw, Heart } from 'lucide-react'
+import { cn } from '../utils/cn'
 
 interface AnimeQuote {
   anime: string
@@ -208,7 +209,7 @@ export default function AnimeQuotes() {
                   onClick={toggleFavorite}
                   className="text-white/60 hover:text-white transition-colors"
                 >
-                  <Heart className={`w-5 h-5 ${isFavorite ? 'fill-pink-500 text-pink-500' : ''}`} />
+                  <Heart className={cn('w-5 h-5', isFavorite ? 'fill-pink-500 text-pink-500' : '')} />
                 </motion.button>
               </div>
             </div>

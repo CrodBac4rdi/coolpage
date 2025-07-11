@@ -3,6 +3,7 @@ import { useState } from 'react'
 import type { Character } from '../data/characters'
 import ModernIcon, { getCharacterIconType } from '../components/ModernIcon'
 import { Heart, Sparkles, Quote, Coffee, Music } from 'lucide-react'
+import { cn } from '../utils/cn'
 
 interface CharacterShowcaseProps {
   character: Character
@@ -34,7 +35,7 @@ export default function CharacterShowcase({ character, onClose }: CharacterShowc
         onClick={(e) => e.stopPropagation()}
       >
         {/* Background Pattern */}
-        <div className={`absolute inset-0 opacity-20 bg-gradient-to-br ${character.gradient}`} />
+        <div className={cn('absolute inset-0 opacity-20 bg-gradient-to-br', character.gradient)} />
         
         {/* Header */}
         <div className="relative p-8 pb-0">
@@ -69,11 +70,11 @@ export default function CharacterShowcase({ character, onClose }: CharacterShowc
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
+                className={cn('flex items-center gap-2 px-4 py-2 rounded-full transition-all',
                   activeTab === tab.id
                     ? 'bg-white/20 text-white'
                     : 'bg-white/5 text-gray-400 hover:bg-white/10'
-                }`}
+                )}
               >
                 <Icon className="w-4 h-4" />
                 <span>{tab.label}</span>

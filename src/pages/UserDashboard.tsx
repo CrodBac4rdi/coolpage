@@ -8,6 +8,7 @@ import ReadingStatsDashboard from '../components/ReadingStatsDashboard'
 import StoryRecommendations from '../components/StoryRecommendations'
 import DailyChallenge from '../components/DailyChallenge'
 import CharacterGallery from '../components/CharacterGallery'
+import { cn } from '../utils/cn'
 import { useReadingList } from '../hooks/useReadingList'
 import { useFavorites } from '../hooks/useFavorites'
 
@@ -268,12 +269,12 @@ export default function UserDashboard() {
                     >
                       <h4 className="text-white font-medium mb-2">{item.title}</h4>
                       <div className="flex items-center justify-between">
-                        <span className={`text-xs px-2 py-1 rounded-full ${
+                        <span className={cn('text-xs px-2 py-1 rounded-full',
                           item.status === 'reading' ? 'bg-blue-500/20 text-blue-300' :
                           item.status === 'completed' ? 'bg-green-500/20 text-green-300' :
                           item.status === 'plan-to-read' ? 'bg-yellow-500/20 text-yellow-300' :
                           'bg-red-500/20 text-red-300'
-                        }`}>
+                        )}>
                           {item.status.replace('-', ' ')}
                         </span>
                         <div className="flex items-center gap-1 text-gray-400 text-xs">

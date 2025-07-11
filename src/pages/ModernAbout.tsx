@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { Code, Heart, Sparkles, BookOpen, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import SEOHead from '../components/SEOHead'
+import { cn } from '../utils/cn'
 
 const journey = [
   {
@@ -117,7 +118,7 @@ export default function ModernAbout() {
                   transition={{ delay: index * 0.1 }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-lg bg-surface-subtle ${step.color}`}>
+                    <div className={cn('p-3 rounded-lg bg-surface-subtle', step.color)}>
                       <step.icon className="w-6 h-6" />
                     </div>
                     <div>
