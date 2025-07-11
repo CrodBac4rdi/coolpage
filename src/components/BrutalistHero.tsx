@@ -128,17 +128,17 @@ export default function BrutalistHero() {
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-white" />
           </motion.div>
 
-          {/* Interactive element */}
+          {/* Interactive element - Enhanced for mobile */}
           <motion.div
-            className="mt-16 inline-block"
+            className="mt-12 sm:mt-16 inline-block"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <button 
               onClick={() => navigate('/stories')}
-              className="group relative px-8 py-4 bg-white text-black font-bold uppercase tracking-wider overflow-hidden cursor-pointer"
+              className="group relative px-6 py-3 sm:px-8 sm:py-4 bg-white text-black font-bold uppercase tracking-wider overflow-hidden cursor-pointer min-h-[48px] touch-action-manipulation rounded-sm"
             >
-              <span className="relative z-10">Enter Stories</span>
+              <span className="relative z-10 text-sm sm:text-base">Enter Stories</span>
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600"
                 initial={{ x: '-100%' }}
@@ -146,7 +146,7 @@ export default function BrutalistHero() {
                 transition={{ duration: 0.3 }}
               />
               <motion.span
-                className="absolute inset-0 flex items-center justify-center text-white font-bold uppercase tracking-wider"
+                className="absolute inset-0 flex items-center justify-center text-white font-bold uppercase tracking-wider text-sm sm:text-base"
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -158,30 +158,30 @@ export default function BrutalistHero() {
         </motion.div>
       </div>
 
-      {/* Floating colorful shapes */}
+      {/* Floating colorful shapes - Mobile responsive */}
       <div
-        className="absolute top-20 left-10 w-32 h-32 border-4 border-yellow-400/40 bg-yellow-400/10 rounded-lg animate-spin-slow"
+        className="absolute top-16 left-4 sm:top-20 sm:left-10 w-20 h-20 sm:w-32 sm:h-32 border-2 sm:border-4 border-yellow-400/40 bg-yellow-400/10 rounded-lg animate-spin-slow"
         style={{ willChange: 'transform' }}
       />
       
       <div
-        className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-br from-pink-400/20 to-purple-400/20 backdrop-blur-sm animate-spin-reverse"
+        className="absolute bottom-16 right-4 sm:bottom-20 sm:right-10 w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-pink-400/20 to-purple-400/20 backdrop-blur-sm animate-spin-reverse"
         style={{ willChange: 'transform' }}
       />
       
       <div
-        className="absolute top-1/3 right-20 w-16 h-16 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full animate-float"
+        className="absolute top-1/3 right-8 sm:right-20 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full animate-float"
         style={{ willChange: 'transform' }}
       />
       
       <div
-        className="absolute bottom-1/3 left-20 w-20 h-20 border-3 border-emerald-400/40 bg-emerald-400/10 animate-wiggle"
+        className="absolute bottom-1/3 left-8 sm:left-20 w-16 h-16 sm:w-20 sm:h-20 border-2 sm:border-3 border-emerald-400/40 bg-emerald-400/10 animate-wiggle"
         style={{ willChange: 'transform' }}
       />
 
-      {/* Mouse follower */}
+      {/* Mouse follower - Hidden on touch devices */}
       <motion.div
-        className="pointer-events-none fixed w-4 h-4 bg-white mix-blend-difference"
+        className="pointer-events-none fixed w-4 h-4 bg-white mix-blend-difference hidden sm:block"
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8
