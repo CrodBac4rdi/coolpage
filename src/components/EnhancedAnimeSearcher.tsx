@@ -1,9 +1,20 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Search, Heart, Loader2, Star, Calendar, Filter, X, ChevronDown, Tv2, Globe } from 'lucide-react'
+import { Search, Heart, Loader2, Star, Calendar, Filter, X, ChevronDown, Tv2, Globe, ArrowLeft, Home, Plus, Check, Eye, BookmarkPlus } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { cn } from '../utils/cn'
 import { getStreamingPlatforms } from '../utils/streamingData'
 import { checkNetflixAvailabilityCached, getNetflixUrl } from '../utils/unogsApi'
+import { 
+  addToWatchlist, 
+  removeFromWatchlist, 
+  isInWatchlist, 
+  toggleFavorite, 
+  isFavorite,
+  addToHistory,
+  updateWatchlistItem
+} from '../utils/localStorage'
+import ModernNavbar from './ModernNavbar'
 
 interface AnimeResult {
   mal_id: number
@@ -81,6 +92,8 @@ export default function EnhancedAnimeSearcher() {
   const [showFilters, setShowFilters] = useState(false)
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
+  const [watchlistIds, setWatchlistIds] = useState<Set<number>>(new Set())
+  const [favoriteIds, setFavoriteIds] = useState<Set<number>>(new Set())
 
   // Get streaming platform URLs
   const streamingUrls: Record<string, string> = {
@@ -219,12 +232,75 @@ export default function EnhancedAnimeSearcher() {
     searchAnime(query, selectedGenres, nextPage)
   }
 
+  // Handle favorite toggle
+  const handleToggleFavorite = (anime: AnimeResult) => {
+    const isFav = toggleFavorite(anime.mal_id)
+    if (isFav) {
+      setFavoriteIds(prev => new Set(prev).add(anime.mal_id))
+    } else {
+      setFavoriteIds(prev => {
+        const newSet = new Set(prev)
+        newSet.delete(anime.mal_id)
+        return newSet
+      })
+    }
+  }
+
+  // Handle watchlist toggle
+  const handleToggleWatchlist = (anime: AnimeResult) => {
+    if (isInWatchlist(anime.mal_id)) {
+      removeFromWatchlist(anime.mal_id)
+      setWatchlistIds(prev => {
+        const newSet = new Set(prev)
+        newSet.delete(anime.mal_id)
+        return newSet
+      })
+    } else {
+      addToWatchlist({
+        mal_id: anime.mal_id,
+        title: anime.title,
+        title_english: anime.title_english,
+        image_url: anime.images.jpg.image_url,
+        status: 'plan_to_watch',
+        total_episodes: anime.episodes
+      })
+      setWatchlistIds(prev => new Set(prev).add(anime.mal_id))
+    }
+  }
+
+  // Load watchlist and favorites on mount
+  useEffect(() => {
+    const loadSavedData = () => {
+      const watchlist = new Set(isInWatchlist)
+      const favorites = new Set(isFavorite)
+      
+      // Check each anime in popular list
+      popularAnime.forEach(anime => {
+        if (isInWatchlist(anime.mal_id)) watchlist.add(anime.mal_id)
+        if (isFavorite(anime.mal_id)) favorites.add(anime.mal_id)
+      })
+      
+      setWatchlistIds(watchlist)
+      setFavoriteIds(favorites)
+    }
+    
+    loadSavedData()
+  }, [popularAnime])
+
   // Display anime list
   const displayAnime = query || selectedGenres.length > 1 ? results : popularAnime
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
-      <div className="max-w-7xl mx-auto px-4 py-8">
+    <>
+      <ModernNavbar />
+      <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900 pt-16">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Back Button for Mobile */}
+        <Link to="/" className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-pink-500 transition-colors mb-4 md:hidden">
+          <ArrowLeft className="w-5 h-5" />
+          <span>Back to Home</span>
+        </Link>
+        
         {/* Header */}
         <motion.div 
           className="text-center mb-8"
@@ -422,8 +498,44 @@ export default function EnhancedAnimeSearcher() {
                       )}
                     </div>
 
-                    {/* Quick Info Badge */}
+                    {/* Quick Actions */}
                     <div className="absolute top-4 right-4 flex flex-col gap-2">
+                      <div className="flex gap-2">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            handleToggleFavorite(anime)
+                          }}
+                          className={cn(
+                            "p-2 rounded-full backdrop-blur-sm transition-all",
+                            favoriteIds.has(anime.mal_id)
+                              ? "bg-red-500 text-white"
+                              : "bg-white/80 text-gray-700 hover:bg-red-500 hover:text-white"
+                          )}
+                          aria-label="Toggle favorite"
+                        >
+                          <Heart className={cn("w-4 h-4", favoriteIds.has(anime.mal_id) && "fill-current")} />
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            handleToggleWatchlist(anime)
+                          }}
+                          className={cn(
+                            "p-2 rounded-full backdrop-blur-sm transition-all",
+                            watchlistIds.has(anime.mal_id)
+                              ? "bg-purple-500 text-white"
+                              : "bg-white/80 text-gray-700 hover:bg-purple-500 hover:text-white"
+                          )}
+                          aria-label="Toggle watchlist"
+                        >
+                          {watchlistIds.has(anime.mal_id) ? (
+                            <Check className="w-4 h-4" />
+                          ) : (
+                            <Plus className="w-4 h-4" />
+                          )}
+                        </button>
+                      </div>
                       {anime.genres.slice(0, 2).map((genre, idx) => (
                         <div
                           key={idx}
@@ -630,5 +742,6 @@ export default function EnhancedAnimeSearcher() {
         </AnimatePresence>
       </div>
     </div>
+    </>
   )
 }

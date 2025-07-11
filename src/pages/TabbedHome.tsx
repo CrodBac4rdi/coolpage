@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
-import { Book, Mail, Sparkles, ArrowRight, User } from 'lucide-react'
+import { Book, Mail, Sparkles, ArrowRight, User, Trophy } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import SEOHead from '../components/SEOHead'
 import BrutalistHero from '../components/BrutalistHero'
 import EnhancedStoryCard from '../components/EnhancedStoryCard'
 import GamingStats from '../components/GamingStats'
+import AnimeQuiz from '../components/AnimeQuiz'
 
 export default function TabbedHome() {
 
@@ -56,6 +57,23 @@ export default function TabbedHome() {
 
         {/* Gaming Stats Section */}
         <GamingStats />
+
+        {/* Anime Quiz Section */}
+        <section className="px-4 sm:px-6 lg:px-8 py-24">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-white mb-4">Test Your Anime Knowledge</h2>
+                <p className="text-gray-400 text-lg">Can you identify these popular anime characters?</p>
+              </div>
+              <AnimeQuiz />
+            </motion.div>
+          </div>
+        </section>
       </div>
     </>
   )

@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sun, Moon, Book, Users, Clock, Gamepad2, Home, Search } from 'lucide-react'
+import { Menu, X, Sun, Moon, Book, Users, Clock, Gamepad2, Home, Search, BookmarkPlus } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useTheme } from '../contexts/ThemeContext'
 import { cn } from '../utils/cn'
@@ -22,6 +22,7 @@ export default function ModernNavbar() {
   const links = [
     { to: '/', label: 'Home', icon: Home },
     { to: '/romance-search', label: 'Anime Search', icon: Search },
+    { to: '/watchlist', label: 'Watchlist', icon: BookmarkPlus },
     { to: '/stories', label: 'Stories', icon: Book },
     { to: '/manhwas', label: 'Manhwas', icon: Users },
     { to: '/dashboard', label: 'Dashboard', icon: Gamepad2 },
