@@ -14,6 +14,9 @@ import {
   addToHistory,
   updateWatchlistItem
 } from '../utils/localStorage'
+import OptimizedImage from './OptimizedImage'
+import { AnimeCardSkeleton } from './Skeleton'
+import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts'
 
 interface AnimeResult {
   mal_id: number
@@ -84,6 +87,7 @@ export default function EnhancedAnimeSearcher() {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<AnimeResult[]>([])
   const [loading, setLoading] = useState(false)
+  const [initialLoading, setInitialLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [selectedAnime, setSelectedAnime] = useState<AnimeResult | null>(null)
   const [popularAnime, setPopularAnime] = useState<AnimeResult[]>([])
@@ -93,6 +97,9 @@ export default function EnhancedAnimeSearcher() {
   const [hasMore, setHasMore] = useState(true)
   const [watchlistIds, setWatchlistIds] = useState<Set<number>>(new Set())
   const [favoriteIds, setFavoriteIds] = useState<Set<number>>(new Set())
+  
+  // Enable keyboard shortcuts
+  useKeyboardShortcuts()
 
   // Get streaming platform URLs
   const streamingUrls: Record<string, string> = {
@@ -184,7 +191,6 @@ export default function EnhancedAnimeSearcher() {
   // Load popular anime on mount
   useEffect(() => {
     const loadPopularAnime = async () => {
-      setLoading(true)
       try {
         const response = await fetch(
           'https://api.jikan.moe/v4/anime?genres=22&order_by=score&sort=desc&limit=24&sfw=true'
@@ -198,7 +204,7 @@ export default function EnhancedAnimeSearcher() {
       } catch (err) {
         console.error('Failed to load popular anime:', err)
       } finally {
-        setLoading(false)
+        setInitialLoading(false)
       }
     }
     
@@ -441,12 +447,12 @@ export default function EnhancedAnimeSearcher() {
                     onClick={() => setSelectedAnime(anime)}
                   >
                     {/* Image */}
-                    <div className="aspect-[3/4] overflow-hidden">
-                      <img
+                    <div className="aspect-[3/4] relative overflow-hidden">
+                      <OptimizedImage
                         src={anime.images.jpg.large_image_url}
                         alt={anime.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        loading="lazy"
+                        className="absolute inset-0 group-hover:scale-110 transition-transform duration-500"
+                        priority={index < 4}
                       />
                       {/* Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -577,15 +583,22 @@ export default function EnhancedAnimeSearcher() {
           </motion.div>
         )}
         
-        {/* Loading State */}
-        {loading && displayAnime.length === 0 && (
+        {/* Loading State with Skeletons */}
+        {(loading || initialLoading) && displayAnime.length === 0 && (
           <motion.div 
-            className="text-center py-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <Loader2 className="w-16 h-16 text-pink-500 mx-auto mb-4 animate-spin" />
-            <p className="text-gray-500">Loading amazing anime...</p>
+            {!query && (
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">
+                🔥 Popular Romance Anime
+              </h2>
+            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {[...Array(8)].map((_, i) => (
+                <AnimeCardSkeleton key={i} />
+              ))}
+            </div>
           </motion.div>
         )}
 

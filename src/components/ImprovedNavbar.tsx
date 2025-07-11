@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import { useTheme } from '../contexts/ThemeContext'
 import { cn } from '../utils/cn'
 import { getFavorites } from '../utils/localStorage'
+import QuickSearch from './QuickSearch'
 
 interface NavLink {
   to: string
@@ -177,6 +178,9 @@ export default function ImprovedNavbar() {
 
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center gap-3">
+              {/* Quick Search */}
+              <QuickSearch />
+              
               {/* Favorites Counter */}
               <Link to="/watchlist" className="relative">
                 <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
