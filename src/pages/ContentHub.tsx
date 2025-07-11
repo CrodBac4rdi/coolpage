@@ -29,10 +29,14 @@ const contentCategories = [
     icon: Palette,
     gradient: 'from-blue-600 to-cyan-600',
     bgGradient: 'from-blue-900/20 to-cyan-900/20',
-    available: false,
-    count: 0,
-    comingSoon: 'Q2 2025',
-    preview: ['Action', 'Romance', 'Fantasy', 'Thriller']
+    available: true,
+    count: 8,
+    link: '/manhwas',
+    featured: [
+      { title: 'Solo Leveling', rating: 4.9 },
+      { title: 'Tower of God', rating: 4.8 },
+      { title: 'The Beginning After The End', rating: 4.7 }
+    ]
   },
   {
     id: 'anime',

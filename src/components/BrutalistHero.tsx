@@ -25,15 +25,15 @@ export default function BrutalistHero() {
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-purple-900 via-pink-900 to-indigo-900">
-      {/* User Dashboard Button */}
-      <Link to="/dashboard" className="absolute top-6 right-6 z-20">
+      {/* User Dashboard Button - Enhanced for mobile */}
+      <Link to="/dashboard" className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20">
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-xl transition-all group"
+          className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 px-3 py-2 sm:px-4 sm:py-2 rounded-xl transition-all group min-h-[44px] touch-action-manipulation"
         >
           <User className="w-5 h-5 text-white group-hover:text-purple-300" />
-          <span className="text-white font-medium group-hover:text-purple-300">Dashboard</span>
+          <span className="text-white font-medium group-hover:text-purple-300 text-sm sm:text-base">Dashboard</span>
         </motion.button>
       </Link>
       {/* Static Grid Background */}
@@ -50,8 +50,8 @@ export default function BrutalistHero() {
         />
       </div>
 
-      {/* Glitch Effect Title */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
+      {/* Glitch Effect Title - Enhanced for mobile */}
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6">
         <motion.div
           className="text-center"
           onHoverStart={() => setIsHovered(true)}
@@ -60,7 +60,7 @@ export default function BrutalistHero() {
           {/* Glitch Layers */}
           <div className="relative">
             <motion.h1
-              className="text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter"
+              className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter"
               style={{
                 textShadow: isHovered ? `
                   3px 3px 0 #ff00ff,
@@ -76,7 +76,7 @@ export default function BrutalistHero() {
             {isHovered && (
               <>
                 <motion.div
-                  className="absolute inset-0 text-6xl md:text-8xl lg:text-9xl font-black text-red-500 uppercase tracking-tighter"
+                  className="absolute inset-0 text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-red-500 uppercase tracking-tighter"
                   animate={{
                     x: [-2, 2, -2],
                     opacity: [0.8, 0.5, 0.8]
@@ -89,7 +89,7 @@ export default function BrutalistHero() {
                   CROD
                 </motion.div>
                 <motion.div
-                  className="absolute inset-0 text-6xl md:text-8xl lg:text-9xl font-black text-blue-500 uppercase tracking-tighter"
+                  className="absolute inset-0 text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-blue-500 uppercase tracking-tighter"
                   animate={{
                     x: [2, -2, 2],
                     opacity: [0.8, 0.5, 0.8]
@@ -106,7 +106,7 @@ export default function BrutalistHero() {
           </div>
 
           <motion.h2
-            className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-wider mt-2"
+            className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-wider mt-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}

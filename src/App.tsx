@@ -16,12 +16,12 @@ const Reader = lazy(() => import('./components/ContinuousReader').then(module =>
 const ContentHub = lazy(() => import('./pages/ContentHub').then(module => ({ default: module.default })))
 const UserDashboard = lazy(() => import('./pages/UserDashboard').then(module => ({ default: module.default })))
 const RomanceAnimeGuide = lazy(() => import('./components/RomanceAnimeGuide').then(module => ({ default: module.default })))
+const ManhwaHub = lazy(() => import('./pages/ManhwaHub').then(module => ({ default: module.default })))
 
 // Lazy load heavy components
 const HeavyComponents = {
   BrutalistHero: lazy(() => import('./components/BrutalistHero').then(module => ({ default: module.default }))),
-  CharacterGallery: lazy(() => import('./components/CharacterGallery').then(module => ({ default: module.default }))),
-  ParticleBackground: lazy(() => import('./components/ParticleBackground').then(module => ({ default: module.default })))
+  CharacterGallery: lazy(() => import('./components/CharacterGallery').then(module => ({ default: module.default })))
 }
 
 // Loading component
@@ -44,6 +44,7 @@ function App() {
               <Route path="content" element={<Suspense fallback={<PageLoader />}><ContentHub /></Suspense>} />
               <Route path="dashboard" element={<Suspense fallback={<PageLoader />}><UserDashboard /></Suspense>} />
               <Route path="stories" element={<Suspense fallback={<PageLoader />}><Stories /></Suspense>} />
+              <Route path="manhwas" element={<Suspense fallback={<PageLoader />}><ManhwaHub /></Suspense>} />
               <Route path="anime-guide" element={<Suspense fallback={<PageLoader />}><RomanceAnimeGuide /></Suspense>} />
               <Route path="reader/:storyId" element={<Suspense fallback={<PageLoader />}><Reader /></Suspense>} />
               <Route path="about" element={<Suspense fallback={<PageLoader />}><About /></Suspense>} />
