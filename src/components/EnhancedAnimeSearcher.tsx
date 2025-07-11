@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { Search, Heart, Loader2, Star, Calendar, Filter, X, ChevronDown, Tv2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '../utils/cn'
+import { getStreamingPlatforms } from '../utils/streamingData'
 
 interface AnimeResult {
   mal_id: number
@@ -75,16 +76,28 @@ export default function EnhancedAnimeSearcher() {
   const [page, setPage] = useState(1)
   const [hasMore, setHasMore] = useState(true)
 
-  // Simulate streaming availability (in production, use real API)
+  // Get streaming platform URLs
+  const streamingUrls: Record<string, string> = {
+    'Crunchyroll': 'https://www.crunchyroll.com',
+    'Netflix': 'https://www.netflix.com',
+    'Prime Video': 'https://www.primevideo.com',
+    'Hulu': 'https://www.hulu.com',
+    'Funimation': 'https://www.funimation.com',
+    'HIDIVE': 'https://www.hidive.com',
+    'HBO Max': 'https://www.hbomax.com'
+  }
+  
+  // Add streaming info to anime results using our database
   const addStreamingInfo = (anime: AnimeResult[]): AnimeResult[] => {
-    return anime.map(item => ({
-      ...item,
-      streaming: Math.random() > 0.3 ? [
-        ...(Math.random() > 0.5 ? [{ name: 'Crunchyroll', url: '#' }] : []),
-        ...(Math.random() > 0.7 ? [{ name: 'Netflix', url: '#' }] : []),
-        ...(Math.random() > 0.8 ? [{ name: 'Prime Video', url: '#' }] : [])
-      ] : []
-    }))
+    return anime.map(item => {
+      const platforms = getStreamingPlatforms(item.title_english || item.title)
+      const streaming = platforms.map(platform => ({
+        name: platform,
+        url: streamingUrls[platform] || '#'
+      }))
+      
+      return { ...item, streaming }
+    })
   }
 
   const searchAnime = useCallback(async (searchQuery: string, genreIds: number[], pageNum: number = 1) => {
